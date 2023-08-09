@@ -2,6 +2,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import "@/styles/expert.modules.css";
+
 
 const OurExpertSingleCard = ({ singleCard }) => {
     const { id, name, specialty, experience, img, about } = singleCard;

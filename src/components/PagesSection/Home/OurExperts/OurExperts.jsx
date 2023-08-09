@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import OurExpertSingleCart from "./OurExpertSingleCart";
+import "@/styles/expert.modules.css";
 
 const ExpertSection = () => {
   const [ourExpert, setOurExpert] = useState([]);
