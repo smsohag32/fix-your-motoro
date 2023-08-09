@@ -25,7 +25,7 @@ const SpecialsOffers = () => {
   ];
   return (
     <div className="my-12">
-      <h1 className="text-4xl font-bold text-center mb-10">Special Offers</h1>
+      <h1 className="text-4xl font-bold text-center mb-10">Special Offer</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {offersData.map((offer, index) => (
           <div
