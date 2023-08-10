@@ -23,5 +23,5 @@
   }
 
   .icone{
-    @apply flex  text-center justify-center	gap-4 text-3xl my-4
+    @apply flex  text-center justify-center	gap-4 text-3xl my-4 
   }

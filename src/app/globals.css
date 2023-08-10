@@ -11,7 +11,7 @@ body {
 }
 
 .default-container {
-  @apply w-full max-w-[2520px] mx-auto md:px-10 sm:px-2 px-4
+  @apply w-full max-w-[2520px] mx-auto md:px-12 sm:px-4 px-5
 }
 
 .primary-text {
@@ -24,4 +24,8 @@ body {
 
 .primary-btn {
   @apply px-3 py-2 text-center font-semibold bg-[#f02801] text-white hover:bg-[#bb3f26e7]
+}
+
+.top-btn{
+  @apply pr-5 md:ps-16 py-2 text-center font-semibold bg-[#f02801] text-white hover:bg-[#bb3f26e7]
 }
