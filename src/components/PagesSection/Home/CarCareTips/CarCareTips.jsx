@@ -1,29 +1,4 @@
-// import React from 'react';
-// // import '../RecentNews/news.css';
-// import tipsData from './tips.json'; // Import the JSON data
-
-// function CarCareTips() {
-//   const tips = tipsData.tips; // Access the articles array
-
-//   return (
-//     <div className="App">
-      
-//       <h1 className="">Car Care Tips</h1>
-//       <div className="container">
-//         {tips.map((tip) => (
-//           <div key={tip.id} className="card">
-//             <h2>{tip.title}</h2>
-//             <p>{tip.description}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default CarCareTips;
 "use client"
-// import '~swiper/swiper-bundle.min.css'
 
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
@@ -40,7 +15,7 @@ import "./tips.css";
 import tipsData from './tips.json'; // Import the JSON data
 
 function CarCareTips() {
-  const tips = tipsData.tips; // Access the articles array
+  const tips = tipsData.tips; // Access the tips array
 
 return (
   <><h1 className="">Car Care Tips</h1>
@@ -48,6 +23,7 @@ return (
     {tips.map((tip) => (
           <SwiperSlide >
             <div key={tip.id} className="card bg-slate-500 ">
+            <img src={tip.image} alt="tips" />
             <h2>{tip.title}</h2>
             <p>{tip.description}</p>
           </div>
