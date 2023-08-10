@@ -47,11 +47,11 @@ const Footer = () => {
         </div>
         <div className="lg:w-1/3">
           <h2 className="text-2xl font-semibold mb-2">Follow Us</h2>
-          <div className="flex justify-center md:justify-start space-x-4">
-            <AiOutlineTwitter />
-            <AiFillFacebook />
-            <AiFillLinkedin />
-            <AiFillYoutube />
+          <div className="flex justify-center text-xl md:justify-start space-x-4">
+            <AiOutlineTwitter className="cursor-pointer" />
+            <AiFillFacebook className="cursor-pointer" />
+            <AiFillLinkedin className="cursor-pointer" />
+            <AiFillYoutube className="cursor-pointer" />
           </div>
           <div className="mt-4">
             <h2 className="text-2xl font-semibold mb-2">
@@ -60,11 +60,11 @@ const Footer = () => {
             <p className="text-gray-400 mb-4">
               Stay updated with the latest news and offers.
             </p>
-            <div className="flex items-center">
+            <div className="flex justify-center md:justify-start items-center text-center">
               <input
                 type="email"
                 placeholder="Your email"
-                className="bg-gray-800 text-white md:mx-0 rounded-l-lg py-2 px-3 focus:outline-none focus:ring focus:border-[#f02801]"
+                className="bg-gray-800 text-center text-white md:mx-0 rounded-l-lg py-2 px-3 focus:outline-none focus:ring focus:border-[#f02801]"
               />
               <button type="submit" className="primary-btn ms-3">
                 Subscribe
