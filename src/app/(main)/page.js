@@ -14,11 +14,11 @@ const HomePage = () => {
       <Hero />
       <OurExperts />
       <Categories />
-      <OurServices />
-      <CarCareTips />
+      <OurServices /> 
       <SpecialsOffers />
       <SuccessReviews/>
       <RecentNews />
+      <CarCareTips />
       <GetInTouch />
     </main>
   );

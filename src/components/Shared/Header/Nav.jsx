@@ -54,8 +54,14 @@ const Nav = () => {
           </li>
         ))}
       </ul>
-      <div className="flex items-center gap-5">
-        <Image src={userLogo} alt="" width={40} height={40} />
+      <div className="flex items-center  gap-5">
+        <Image
+          src={userLogo}
+          alt=""
+          width={40}
+          height={40}
+          className="cursor-pointer"
+        />
         <Link className="font-bold cursor-pointer" href="/login">
           Login
         </Link>

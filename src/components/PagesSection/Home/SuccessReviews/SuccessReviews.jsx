@@ -1,5 +1,6 @@
 import React from "react";
 import StarRating from "./StarRating";
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 const reviews = [
   {
@@ -27,16 +28,24 @@ const reviews = [
 
 const SuccessReviews = () => {
   return (
-    <div className="p-4 bg-gray-100">
-      <h1 className="">Customer Reviews</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {reviews.map((review) => (
-          <div key={review.id} className="bg-white p-4 rounded-lg shadow-md">
-            <p className="text-lg font-semibold">{review.name}</p>
-            <StarRating rating={review.rating} />
-            <p className="text-gray-700 mt-2">{review.reviewText}</p>
-          </div>
-        ))}
+    <div className="bg-gray-50">
+      <div className="default-container py-12">
+        <SectionTitle
+          title={"Customers Review"}
+          subTitle="What to say our satisfied customer?"
+        />
+        <div className="grid grid-cols-1 mt-12 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {reviews.map((review) => (
+            <div
+              key={review.id}
+              className="bg-white duration-500 primary-shadow hover-border border-gray-200 border cursor-pointer p-4 rounded-lg"
+            >
+              <p className="text-lg font-semibold">{review.name}</p>
+              <StarRating rating={review.rating} />
+              <p className="text-gray-700 mt-2">{review.reviewText}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

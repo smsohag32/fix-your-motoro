@@ -3,8 +3,14 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "@/styles/expert.modules.css";
-import { FaTwitterSquare , FaInstagramSquare , FaFacebookSquare , FaLinkedin} from 'react-icons/fa';
+import {
+  FaTwitterSquare,
+  FaInstagramSquare,
+  FaFacebookSquare,
+  FaLinkedin,
+} from "react-icons/fa";
 
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle.jsx";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,7 +20,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import {Autoplay , Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const ExpertSection = () => {
   const [ourExpert, setOurExpert] = useState([]);
@@ -40,10 +46,10 @@ const ExpertSection = () => {
     /*slider*/
   }
   const [swiperRef, setSwiperRef] = useState(null);
-  
+
   return (
-    <div className="max-w-[1250px] mx-auto">
-      <h1 className="secondary-text">Our Expert</h1>
+    <div className="default-container py-12">
+      <SectionTitle title={"Our Exparts"} />
       <Swiper
         onSwiper={setSwiperRef}
         slidesPerView={3}
@@ -53,8 +59,8 @@ const ExpertSection = () => {
           delay: 1500,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay,Pagination, Navigation]}
-        className="mySwiper"
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper my-12"
       >
         {ourExpert.slice(0, expertLimit).map((singleCard, index) => (
           <SwiperSlide key={index}>
@@ -69,17 +75,13 @@ const ExpertSection = () => {
                 />
               </Link>
               <Link href="/expert">
-                <h2 className="name-text primary-text">
-                  {singleCard.name}
-                </h2>
-                <h2 className="specialty-text">
-                - {singleCard.specialty} -
-                </h2>
+                <h2 className="name-text primary-text">{singleCard.name}</h2>
+                <h2 className="specialty-text">- {singleCard.specialty} -</h2>
                 <div className="icone">
-                    <FaFacebookSquare/>
-                    <FaTwitterSquare/>
-                    <FaInstagramSquare/>
-                    <FaLinkedin/>
+                  <FaFacebookSquare />
+                  <FaTwitterSquare />
+                  <FaInstagramSquare />
+                  <FaLinkedin />
                 </div>
               </Link>
             </div>
