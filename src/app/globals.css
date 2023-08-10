@@ -33,3 +33,19 @@ body {
 .outline-btn{
   @apply px-5 hover:bg-[#f02801] transition-all duration-500 transform py-3 border-[#f02801] border-2 font-bold  tracking-widest
 }
+
+.primary-border{
+  @apply border-[#f02801] border-2
+}
+.hover-border{
+  @apply hover:border-[#f02801]
+}
+.secondary-border{
+  @apply border-gray-400 border
+}
+
+
+.primary-shadow{
+  box-shadow: 0px 4px 6px rgba(240, 40, 1, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
+}
+

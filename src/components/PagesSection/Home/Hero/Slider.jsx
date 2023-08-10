@@ -1,6 +1,6 @@
 "use client";
 
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 import React, { useRef } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -23,18 +23,17 @@ const Slider = () => {
   return (
     <>
       <Swiper
-        spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 7500,
+          delay: 5500,
           disableOnInteraction: false,
         }}
         pagination={{
           clickable: true,
         }}
+        effect="fade"
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
+        modules={[Autoplay, Pagination, EffectFade, Navigation]}
         className="mySwiper"
       >
         {imageData.map((image) => (
@@ -47,7 +46,7 @@ const Slider = () => {
                 width: "100%",
                 height: "100%",
               }}
-              className="flex flex-col gap-9 h-full default-container justify-center text-left w-full ms-10"
+              className="flex flex-col transition-all duration-500 ease-linear gap-9 h-full default-container justify-center text-left w-full ms-10"
             >
               <div className="text-center font-extrabold flex flex-col gap-6">
                 <p className="text-2xl md:text-4xl leading-relaxed text-white">
