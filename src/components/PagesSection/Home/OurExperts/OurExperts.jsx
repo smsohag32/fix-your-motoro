@@ -70,7 +70,7 @@ const ExpertSection = () => {
                   className="card-img"
                   src={singleCard.img}
                   alt=""
-                  width="400"
+                  width="700"
                   height="300"
                 />
               </Link>
