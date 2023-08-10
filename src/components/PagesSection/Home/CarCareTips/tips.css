@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-/* src/index.css or src/index.scss */
-@import "~swiper/swiper-bundle.min.css";
 
-
-/* Example styles for the message slide */
-.tips-slide {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-=======
 #app {
   height: 100%;
 }
@@ -55,4 +42,4 @@ body {
   object-fit: cover;
   text-align: center;
 }
->>>>>>> 5909593266185f4fd9c34d092f29fd5d77b784b0
+
