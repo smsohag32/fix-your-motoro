@@ -39,7 +39,7 @@ return (
             <img src={tip.image} alt="tips" />
            <div className='ml-12  text-justify text-black-800'>
            <h2>{tip.title}</h2>
-            <p className='mt-12 text-black-800'>News Details: <br />{tip.description}</p>
+            <p className='mt-12 text-black-800'>Tips Details: <br />{tip.description}</p>
             </div> 
           </div>
           </SwiperSlide>

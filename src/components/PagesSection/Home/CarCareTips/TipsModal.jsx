@@ -15,7 +15,7 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
       <h1 >Car Care Tips</h1>
         <h2 className='mb-12 text-3xl'>{tip.title}</h2>
         <img src={tip.image} alt="news" />
-        <p className='mt-12'>News Details: {tip.description}</p>
+        <p className='mt-12 text-black-800'>News Details: <br />{tip.description}</p>
         <p className='mt-12'>Authore Name: {tip.author}</p>
         <p>Publish date: {tip.date}</p>
         {/* Add more information */}
