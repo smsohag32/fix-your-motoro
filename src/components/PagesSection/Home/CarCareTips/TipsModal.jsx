@@ -10,7 +10,7 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
       <div className="modal-content text-orange-600">
         <h1>Car Care Tips</h1>
         <h2 className="mb-12 text-3xl">{tip.title}</h2>
-        <Image src={tip.image} alt="news" />
+        <Image src={tip.image} width={350} height={350} alt="news" />
         <p className="mt-12 text-black-800">
           Tips Details: <br />
           {tip.description}

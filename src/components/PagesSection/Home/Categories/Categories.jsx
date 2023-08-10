@@ -52,11 +52,14 @@ const Categories = () => {
                   src={img1}
                   alt="Maintenance"
                   className="lg:w-[50%] mb-2"
+                  width={350}
+                  height={350}
                 />
                 <Image
                   src={img2}
                   alt="Maintenance"
                   className="lg:w-[50%] mb-2"
+                  height={350}
                 />
               </div>
               <div className="lg:flex lg:justify-center">
@@ -120,6 +123,7 @@ const Categories = () => {
                   src={img4}
                   alt="Maintenance"
                   className="lg:w-[50%] mb-2"
+                  height={350}
                 />
               </div>
               <div className="lg:flex lg:justify-center">
