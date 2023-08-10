@@ -4,27 +4,41 @@
         "id": 1,
         "title": "Importance of Regular Motor Servicing",
         "description": "Regular motor servicing is crucial for maintaining the performance and longevity of your vehicle. Experts recommend getting your motor serviced at least once a year to ensure optimal functionality."
-      },
+        ,"image": "https://example.com/images/motorcycle-maintenance.jpg",
+        "author": "John Smith",
+        "date": "2023-08-10"
+       },
       {
         "id": 2,
         "title": "New Motor Servicing Technology",
         "description": "The automotive industry is witnessing a technological revolution in motor servicing. Advanced diagnostic tools and computerized systems are now used to detect and address motor issues more efficiently."
-      },
+      ,"image": "https://example.com/images/motorcycle-maintenance.jpg",
+      "author": "John Smith",
+      "date": "2023-08-10"
+    },
       {
         "id": 3,
         "title": "DIY Motor Servicing Tips",
         "description": "Looking to perform basic motor servicing at home? Learn about essential tasks such as changing motor oil, replacing air filters, and checking fluid levels to keep your vehicle running smoothly."
-      },
+     ,
+     "image": "https://example.com/images/motorcycle-maintenance.jpg",
+     "author": "John Smith",
+     "date": "2023-08-10" },
       {
         "id": 4,
         "title": "Eco-Friendly Motor Servicing Practices",
         "description": "With a growing emphasis on sustainability, motor servicing centers are adopting eco-friendly practices. Discover how they're recycling motor oil, reducing waste, and using environmentally-friendly products."
-      },
+      ,
+      "image": "https://example.com/images/motorcycle-maintenance.jpg",
+      "author": "John Smith",
+      "date": "2023-08-10"},
       {
         "id": 5,
         "title": "Choosing the Right Motor Servicing Center",
         "description": "Not all motor servicing centers are created equal. Find out what factors to consider when selecting a servicing center, including reputation, expertise, customer reviews, and available services."
-      }
+      ,"image": "https://example.com/images/motorcycle-maintenance.jpg",
+      "author": "John Smith",
+      "date": "2023-08-10"}
       
     ]
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import './news.css';
 import newsData from './news.json'; // Import the JSON data
 
-function App() {
+function RecentNews() {
   const articles = newsData.articles; // Access the articles array
 
   return (
@@ -21,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default RecentNews;

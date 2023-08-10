@@ -15,7 +15,7 @@ const HomePage = () => {
       <OurExperts />
       <Categories />
       <OurServices />
-      <CarCareTips />
+      {/* <CarCareTips /> */}
       <SpecialsOffers />
       <SuccessReviews/>
       <RecentNews />
