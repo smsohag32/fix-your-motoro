@@ -1,35 +1,61 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/swiper-bundle.min.css'; // Import Swiper styles
-import './Tips.css';
-import '../RecentNews/news.css';
-import tipsData from './tips.json';
+// import React from 'react';
+// // import '../RecentNews/news.css';
+// import tipsData from './tips.json'; // Import the JSON data
 
-const CarCareTips = () => {
-  const tips = tipsData.tips;
-  return (
-    
-    <Swiper
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-    >
-      <SwiperSlide>
-      <div className="container">
-     
-        { tips.map((article) => (
-             <div key={tips.id} className="tips-slide">
-            <h2>{tips.title}</h2>
-            <p>{tips.description}</p>
+// function CarCareTips() {
+//   const tips = tipsData.tips; // Access the articles array
+
+//   return (
+//     <div className="App">
+      
+//       <h1 className="">Car Care Tips</h1>
+//       <div className="container">
+//         {tips.map((tip) => (
+//           <div key={tip.id} className="card">
+//             <h2>{tip.title}</h2>
+//             <p>{tip.description}</p>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default CarCareTips;
+"use client"
+// import '~swiper/swiper-bundle.min.css'
+
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+// import required modules
+import { Navigation } from 'swiper/modules';
+import "./tips.css";
+
+
+import tipsData from './tips.json'; // Import the JSON data
+
+function CarCareTips() {
+  const tips = tipsData.tips; // Access the articles array
+
+return (
+  <><h1 className="">Car Care Tips</h1>
+    <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+    {tips.map((tip) => (
+          <SwiperSlide >
+            <div key={tip.id} className="card bg-slate-500 ">
+            <h2>{tip.title}</h2>
+            <p>{tip.description}</p>
           </div>
-          
+          </SwiperSlide>
         ))}
-          
-        </div>
-      </SwiperSlide>
-      {/* Add more slides as needed */}
     </Swiper>
-  );
-};
+  </>
+);
+}
 
 export default CarCareTips;
