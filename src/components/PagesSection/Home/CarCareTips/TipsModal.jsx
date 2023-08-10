@@ -11,7 +11,7 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
       onRequestClose={closeModal}
       contentLabel="tip Modal"
     >
-      <div className="modal-content">
+      <div className="modal-content text-orange-600">
       <h1 >Car Care Tips</h1>
         <h2 className='mb-12 text-3xl'>{tip.title}</h2>
         <img src={tip.image} alt="news" />
