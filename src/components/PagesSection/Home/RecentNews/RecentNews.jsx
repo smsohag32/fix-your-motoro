@@ -4,11 +4,8 @@ import NewsModal from './NewsModal';
 import './news.css';
 import newsData from './news.json'; // Import the JSON data
 
-<<<<<<< HEAD
-function RecentNews() {
-=======
+
 function RecenNews() {
->>>>>>> dc2972497bc84bc3b95491d1427c4db108b5af8c
   const articles = newsData.articles; // Access the articles array
   const [selectedArticle, setSelectedArticle] = useState(null);
 
@@ -22,9 +19,9 @@ function RecenNews() {
   };
 
   return (
-    <div className="App">
+    <div className="App text-orange-600">
       
-      <h1>Motor Servicing News</h1>
+      <h1 className=" text-orange-600">Motor Servicing News</h1>
       <div className="container">
         {articles.map((article) => (
           <div key={article.id} 
@@ -46,8 +43,4 @@ function RecenNews() {
   );
 }
 
-<<<<<<< HEAD
-export default RecentNews;
-=======
  export default RecenNews;
->>>>>>> dc2972497bc84bc3b95491d1427c4db108b5af8c

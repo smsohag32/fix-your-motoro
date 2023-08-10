@@ -27,7 +27,7 @@ function CarCareTips() {
     setSelectedTip(null);
   };
 return (
-  <><h1 className="">Car Care Tips</h1>
+  <><h1 className=" text-orange-600">Car Care Tips</h1>
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
     <div className="container">
     {tips.map((tip) => (
@@ -37,9 +37,9 @@ return (
           onClick={() => openModal(tip)}
           >
             <img src={tip.image} alt="tips" />
-           <div className='ml-12  text-justify text-black-800'>
+           <div className='ml-12  text-justify text-orange-600'>
            <h2>{tip.title}</h2>
-            <p className='mt-12 text-black-800'>Tips Details: <br />{tip.description}</p>
+            <p className='mt-12 text-orange-600'>Tips Details: <br />{tip.description}</p>
             </div> 
           </div>
           </SwiperSlide>
