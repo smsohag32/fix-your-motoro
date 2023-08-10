@@ -1,8 +1,21 @@
+"use client"
+import React, { useState } from 'react';
+import NewsModal from './NewsModal'; 
 import './news.css';
 import newsData from './news.json'; // Import the JSON data
 
-function App() {
+function RecenNews() {
   const articles = newsData.articles; // Access the articles array
+  const [selectedArticle, setSelectedArticle] = useState(null);
+
+
+  const openModal = (article) => {
+    setSelectedArticle(article);
+  };
+
+  const closeModal = () => {
+    setSelectedArticle(null);
+  };
 
   return (
     <div className="App">
@@ -10,15 +23,23 @@ function App() {
       <h1>Motor Servicing News</h1>
       <div className="container">
         {articles.map((article) => (
-          <div key={article.id} className="card">
+          <div key={article.id} 
+          className="card" 
+          onClick={() => openModal(article)}
+          >
             <img src={article.image} alt="news" />
             <h2>{article.title}</h2>
-            <p>{article.description}</p>
+            
           </div>
         ))}
       </div>
+      <NewsModal
+        isOpen={selectedArticle !== null}
+        closeModal={closeModal}
+        article={selectedArticle || {}}
+      />
     </div>
   );
 }
 
-export default App;
+ export default RecenNews;
