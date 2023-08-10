@@ -2,6 +2,7 @@
 import React from "react";
 import Modal from "react-modal";
 import "./tips.modules.css";
+import Image from "next/image";
 
 const NewsModal = ({ isOpen, closeModal, tip }) => {
   return (
@@ -9,7 +10,7 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
       <div className="modal-content text-orange-600">
         <h1>Car Care Tips</h1>
         <h2 className="mb-12 text-3xl">{tip.title}</h2>
-        <img src={tip.image} alt="news" />
+        <Image src={tip.image} alt="news" />
         <p className="mt-12 text-black-800">
           Tips Details: <br />
           {tip.description}
