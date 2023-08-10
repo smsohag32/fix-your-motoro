@@ -1,0 +1,131 @@
+[
+    {
+      "id": "1",
+      "name": "John Smith",
+      "specialty": "Engine Repair",
+      "experience": "10 years",
+      "location": "Los Angeles, CA",
+      "img": "https://i.ibb.co/W3f3T43/expart10.jpg",
+      "socialMedia": {
+        "facebook": "john.smith",
+        "twitter": "jsmith_auto",
+        "instagram": "johnsmith_autorepair"
+      },
+      "about": "I am a highly skilled car service expert with a passion for engine repair. With over a decade of experience under my belt, I've tackled a wide range of engine issues, from minor repairs to complex diagnostics. My mission is to keep your vehicle running smoothly and efficiently."
+    },
+    {
+      "id": "2",
+      "name": "Emily Johnson",
+      "specialty": "Transmission Service",
+      "experience": "8 years",
+      "location": "New York, NY",
+      "img": "https://i.ibb.co/rMqd5Bs/expart9.jpg",
+      "socialMedia": {
+        "facebook": "emily.johnson.auto",
+        "twitter": "ejtransmissions",
+        "instagram": "emily.transmission.expert"
+      },
+      "about": "With a strong background in transmission service, I've spent the last 8 years ensuring that your gears shift seamlessly and your driving experience remains reliable. I'm dedicated to providing top-notch service that keeps your vehicle on the road with confidence."
+    },
+    {
+      "id": "3",
+      "name": "Michael Davis",
+      "specialty": "Brake System",
+      "experience": "12 years",
+      "location": "Chicago, IL",
+      "img": "https://i.ibb.co/0XjxK6w/expart8.jpg",
+      "socialMedia": {
+        "facebook": "michael.davis.car",
+        "twitter": "mikedavisautos",
+        "instagram": "michael.brakes"
+      },
+      "about": "As a brake system specialist, I've spent over a decade ensuring your safety on the road. With a keen eye for brake diagnostics and repairs, I take pride in delivering reliable and responsive brake systems that you can count on."
+    },
+    {
+      "id": "4",
+      "name": "Sophia Martinez",
+      "specialty": "Electrical Systems",
+      "experience": "7 years",
+      "location": "Houston, TX",
+      "img": "https://i.ibb.co/mDFWJT8/expart7.jpg",
+      "socialMedia": {
+        "facebook": "sophia.electrics",
+        "twitter": "sophia_autoelectrics",
+        "instagram": "sophia.electric.expert"
+      },
+      "about": "With a passion for electrical systems, I've spent the last 7 years diagnosing and repairing complex electrical issues. From lighting to advanced vehicle electronics, my goal is to ensure your vehicle's electrical components function flawlessly."
+    },
+    {
+      "id": "5",
+      "name": "Daniel Lee",
+      "specialty": "Suspension & Steering",
+      "experience": "9 years",
+      "location": "San Francisco, CA",
+      "img": "https://i.ibb.co/pZcVFyD/expart6.jpg",
+      "socialMedia": {
+        "facebook": "daniel.lee.suspension",
+        "twitter": "danielsuspension",
+        "instagram": "daniel.suspension.expert"
+      },
+      "about": "With 9 years of experience in suspension and steering systems, I'm dedicated to providing smooth and controlled rides. Whether it's diagnosing alignment issues or optimizing handling, my expertise ensures your vehicle's stability and comfort."
+    },
+    {
+      "id": "6",
+      "name": "Olivia Wilson",
+      "specialty": "Air Conditioning",
+      "experience": "6 years",
+      "location": "Miami, FL",
+      "img": "https://i.ibb.co/Tg92KKY/expart5.jpg",
+      "socialMedia": {
+        "facebook": "olivia.wilson.ac",
+        "twitter": "olivia_ac_expert",
+        "instagram": "olivia.aircon"
+      },
+      "about": "I specialize in air conditioning systems, ensuring your comfort no matter the weather. With 6 years of experience, I've mastered diagnosing and repairing AC issues, providing you with cool and refreshing drives every time."
+    },
+    {
+      "id": "7",
+      "name": "Liam Brown",
+      "specialty": "Diagnostic Services",
+      "experience": "11 years",
+      "location": "Seattle, WA",
+      "img": "https://i.ibb.co/Hpwkcvc/expart3.jpg",
+      "socialMedia": {
+        "facebook": "liam.brown.diagnostics",
+        "twitter": "liamdiagnostics",
+        "instagram": "liam.diagnostics"
+      },
+      "about": "With 11 years of expertise in diagnostic services, I'm committed to uncovering and resolving even the trickiest vehicle issues. My goal is to provide accurate and efficient diagnostics, keeping your vehicle running at its best."
+    },
+    {
+      "id": "8",
+      "name": "Ava Smith",
+      "specialty": "Exhaust Systems",
+      "experience": "5 years",
+      "location": "Boston, MA",
+      "img": "https://i.ibb.co/hs8XRTk/expart4.jpg",
+      "socialMedia": {
+        "facebook": "ava.smith.exhaust",
+        "twitter": "avasmithexhaust",
+        "instagram": "ava.exhaust.expert"
+      },
+      "about": "As an exhaust systems specialist, I've spent 5 years optimizing your vehicle's performance and reducing emissions. From mufflers to catalytic converters, I ensure your exhaust system functions efficiently and quietly."
+    },
+    {
+      "id": "9",
+      "name": "Ethan Johnson",
+      "specialty": "Tire Services",
+      "experience": "8 years",
+      "location": "Dallas, TX",
+      "img": "https://i.ibb.co/d4XL8Z5/expart2.jpg",
+      "socialMedia": {
+        "facebook": "ethan.johnson.tires",
+        "twitter": "ethantireexpert",
+        "instagram": "ethan.tire.service"
+      },
+      "about": "With 8 years of experience in tire services, I focus on keeping your vehicle grounded and safe on the road. From tire rotations to replacements, my expertise ensures your tires provide optimal grip and handling."
+    }
+  ]
+  
+
+ 

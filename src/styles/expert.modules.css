@@ -1,0 +1,27 @@
+.primary-btn-position-center{
+    @apply mx-auto my-8 w-28
+  }
+  
+  .card-section {
+    @apply grid gap-2 my-8 md:gap-8 md:grid-cols-3 max-w-[1250px] mx-auto
+  }
+  
+  .card-img {
+    @apply rounded-lg h-[250px]
+  }
+  
+  .card-box {
+    @apply  border-2 rounded-lg border-slate-400 m-2
+  }
+
+  .name-text{
+    @apply text-center text-2xl  font-semibold mt-4 mb-2 
+  }
+
+  .specialty-text{
+   @apply text-center mb-2
+  }
+
+  .icone{
+    @apply flex  text-center justify-center	gap-4 text-3xl my-4 
+  }
