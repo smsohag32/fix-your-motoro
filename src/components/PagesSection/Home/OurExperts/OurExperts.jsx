@@ -48,7 +48,7 @@ const ExpertSection = () => {
   const [swiperRef, setSwiperRef] = useState(null);
 
   return (
-    <div className="default-container py-12">
+    <div className="py-12 default-container">
       <SectionTitle title={"Our Exparts"} />
       <Swiper
         onSwiper={setSwiperRef}
@@ -56,21 +56,21 @@ const ExpertSection = () => {
         centeredSlides={true}
         spaceBetween={30}
         autoplay={{
-          delay: 1500,
+          delay: 2500,
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper my-12"
+        className="my-12 mySwiper"
       >
         {ourExpert.slice(0, expertLimit).map((singleCard, index) => (
           <SwiperSlide key={index}>
             <div className="card-box">
               <Link href="/expert">
                 <Image
-                  className="card-img"
+                className=""
                   src={singleCard.img}
-                  alt=""
-                  width="400"
+                  alt="img"
+                  width="1000"
                   height="300"
                 />
               </Link>

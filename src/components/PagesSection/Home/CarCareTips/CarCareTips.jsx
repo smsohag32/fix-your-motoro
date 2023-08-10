@@ -28,7 +28,7 @@ function CarCareTips() {
   };
   return (
     <>
-      <h1 className=" text-orange-600">Car Care Tips</h1>
+      <h1 className="text-orange-600 ">Car Care Tips</h1>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <div className="container">
           {tips.map((tip, index) => (
@@ -39,7 +39,7 @@ function CarCareTips() {
                 onClick={() => openModal(tip)}
               >
                 <Image src={tip.image} width={250} height={250} alt="tips" />
-                <div className="ml-12  text-justify text-orange-600">
+                <div className="ml-12 text-justify text-orange-600">
                   <h2>{tip.title}</h2>
                   <p className="mt-12 text-orange-600">
                     Tips Details: <br />
