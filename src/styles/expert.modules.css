@@ -6,9 +6,12 @@
     @apply grid gap-2 my-8 md:gap-8 md:grid-cols-3 max-w-[1250px] mx-auto
   }
   
+  .card-img {
+    @apply rounded-lg h-[250px]
+  }
   
   .card-box {
-    @apply  border-2 rounded-lg border-slate-400 m-2
+    @apply  border-2 rounded-lg border-slate-400 m-2 w-[350px]
   }
 
   .name-text{

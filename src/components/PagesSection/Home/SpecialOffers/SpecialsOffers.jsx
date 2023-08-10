@@ -27,7 +27,7 @@ const SpecialsOffers = () => {
     <div className="my-12 ">
       <h1 className="mb-10 text-4xl font-bold text-center">Special Offer</h1>
       <div className="container">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2">
           {offersData.map((offer, index) => (
             <div
               key={index}
