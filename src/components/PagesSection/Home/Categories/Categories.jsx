@@ -10,17 +10,16 @@ import img3 from "../../../../assets/serviceCategory/paint.jpg";
 import img4 from "../../../../assets/serviceCategory/paint2.jpg";
 import img5 from "../../../../assets/serviceCategory/perform.jpg";
 import img6 from "../../../../assets/serviceCategory/performance.jpg";
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 const Categories = () => {
   return (
-    <section className="text-center default-container mb-20">
+    <section className="text-center default-container py-12">
       <div className="mb-8">
-        <h1 className="text-4xl primary-text font-bold font-sans py-2">
-          Services Category
-        </h1>
-        <p className="text-xl text-slate-600 font-semibold tracking-tight font-sans">
-          We aim to earn your trust and have a long term relationship with you
-        </p>
+        <SectionTitle
+          title="Service Categories"
+          subTitle="Choice our collections of services"
+        />
       </div>
       <div className="mt-20">
         <Tabs>
