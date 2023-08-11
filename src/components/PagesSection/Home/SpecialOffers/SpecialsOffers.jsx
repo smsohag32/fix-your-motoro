@@ -1,4 +1,5 @@
 import React from "react";
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 const SpecialsOffers = () => {
   const offersData = [
