@@ -7,7 +7,7 @@
   }
   
   .card-img {
-    @apply rounded-lg w-96
+    @apply rounded-lg w-[400px] h-[250px]
   }
   
   .card-box {
