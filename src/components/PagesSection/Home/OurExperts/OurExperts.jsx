@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import "@/styles/expert.modules.css";
 import "@/app/globals.css";
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import {
   FaTwitterSquare,
   FaInstagramSquare,
@@ -42,6 +43,10 @@ const ExpertSection = () => {
   const expertLimit = 6;
   return (
     <div className="container py-12">
+       <SectionTitle
+          title={"Our Expert"}
+          subTitle="What to say our satisfied customer?"
+        />
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -71,7 +76,7 @@ const ExpertSection = () => {
       >
         {ourExpert.slice(0, expertLimit).map((singleCard, index) => (
           <SwiperSlide key={index}>
-            <div className="card-box primary-shadow">
+            <div className="my-4 card-box primary-shadow">
               <Link href="/expert">
                 <Image
                   src={singleCard.img}
