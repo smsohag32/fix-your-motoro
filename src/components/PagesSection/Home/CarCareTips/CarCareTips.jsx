@@ -1,9 +1,6 @@
-"use client";
-import TipsModal from "./TipsModal";
-import React, { useRef, useState } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from "react";
 
+<<<<<<< HEAD
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -63,5 +60,10 @@ function CarCareTips() {
     </>
   );
 }
+=======
+const CarCareTips = () => {
+  return <div></div>;
+};
+>>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
 
 export default CarCareTips;

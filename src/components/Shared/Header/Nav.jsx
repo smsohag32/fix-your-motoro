@@ -36,8 +36,8 @@ const Nav = () => {
       <ul
         className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
           isOpen
-            ? "top-[80px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
-            : "-left-60 top-[80px] overflow-hidden duration-100"
+            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
+            : "-left-60 top-[64px] overflow-hidden duration-100"
         }`}
       >
         {navLinkData.map((link, index) => (

@@ -7,7 +7,11 @@
   }
   
   .card-img {
+<<<<<<< HEAD
     @apply rounded-lg w-[400px] h-[250px]
+=======
+    @apply hover:scale-105 duration-500 transition-all
+>>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
   }
   
   .card-box {

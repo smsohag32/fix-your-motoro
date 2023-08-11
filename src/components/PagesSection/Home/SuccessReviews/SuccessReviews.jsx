@@ -39,7 +39,11 @@ const SuccessReviews = () => {
           {reviews.map((review) => (
             <div
               key={review.id}
+<<<<<<< HEAD
               className="p-4 duration-500 bg-white border border-gray-200 rounded-lg cursor-pointer primary-shadow hover-border"
+=======
+              className="bg-white duration-500 hover:scale-x-105 primary-shadow hover-border border-gray-200 border cursor-pointer p-4 rounded-lg"
+>>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
             >
               <p className="text-lg font-semibold">{review.name}</p>
               <StarRating rating={review.rating} />
