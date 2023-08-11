@@ -14,10 +14,10 @@ const ServiceSingleCard = ({singleCard}) => {
             <Link href="/service">
                  <Image className='card-img' src={image} alt=''  width="400" height="300" />
             </Link>
-            <Link href="/service">
-                 <h2 className=''>{serviceName}</h2>
+            <div className="p-2">
+                 <h2 className='my-2 text-2xl font-semibold text-[#f02801]'>{serviceName}</h2>
                  <h2 className='font-semibold'>Experience: {about}</h2>
-            </Link>
+            </div>
         </div>
         </div>
     );

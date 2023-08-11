@@ -23,7 +23,7 @@ body {
 }
 
 .primary-btn {
-  @apply px-3 py-2 text-center font-semibold bg-[#f02801] text-white hover:bg-[#bb3f26e7]
+  @apply px-3 py-2 text-center font-semibold bg-[#f02801] text-white hover:bg-[#bb3f26e7] rounded-lg
 }
 
 .top-btn{
