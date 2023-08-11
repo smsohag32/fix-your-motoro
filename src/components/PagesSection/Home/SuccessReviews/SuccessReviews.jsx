@@ -32,7 +32,7 @@ const SuccessReviews = () => {
       <div className="default-container py-12">
         <SectionTitle
           title={"Customers Review"}
-          subTitle="What to say our satisfied customer?"
+          subTitle="What are our satisfied customer saying?"
         />
         <div className="grid grid-cols-1 mt-12 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {reviews.map((review) => (
