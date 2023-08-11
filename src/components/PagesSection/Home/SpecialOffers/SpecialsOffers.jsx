@@ -31,7 +31,7 @@ const SpecialsOffers = () => {
     },
   ];
   return (
-    <div className="default-container my-12">
+    <div className="default-container mt-4 mb-12">
       <SectionTitle
         title="Special Offers"
         subTitle="We are offering discount"

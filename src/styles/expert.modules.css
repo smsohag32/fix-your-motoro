@@ -7,7 +7,7 @@
   }
   
   .card-img {
-    @apply rounded-lg w-96
+    @apply hover:scale-105 duration-500 transition-all
   }
   
   .card-box {

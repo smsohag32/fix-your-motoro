@@ -49,17 +49,35 @@ const ExpertSection = () => {
 
   return (
     <div className="default-container py-12">
-      <SectionTitle title={"Our Exparts"} />
+      <SectionTitle
+        title={"Our Exparts"}
+        subTitle={"Ready all time to provide motor servicing"}
+      />
       <Swiper
-        onSwiper={setSwiperRef}
-        slidesPerView={3}
-        centeredSlides={true}
-        spaceBetween={30}
+        slidesPerView={1}
+        spaceBetween={10}
         autoplay={{
-          delay: 1500,
+          delay: 2500,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay, Pagination, Navigation]}
+        pagination={{
+          clickable: true,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        }}
+        modules={[Autoplay, Pagination]}
         className="mySwiper my-12"
       >
         {ourExpert.slice(0, expertLimit).map((singleCard, index) => (
@@ -67,7 +85,7 @@ const ExpertSection = () => {
             <div className="card-box">
               <Link href="/expert">
                 <Image
-                  className="card-img"
+                  className="card-img w-full h-60"
                   src={singleCard.img}
                   alt=""
                   width="700"
