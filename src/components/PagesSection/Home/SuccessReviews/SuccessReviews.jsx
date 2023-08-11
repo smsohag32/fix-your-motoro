@@ -28,24 +28,22 @@ const reviews = [
 
 const SuccessReviews = () => {
   return (
-    <div className="bg-gray-50">
-      <div className="default-container py-12">
-        <SectionTitle
-          title={"Customers Review"}
-          subTitle="What are our satisfied customer saying?"
-        />
-        <div className="grid grid-cols-1 mt-12 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {reviews.map((review) => (
-            <div
-              key={review.id}
-              className="bg-white duration-500 primary-shadow hover-border border-gray-200 border cursor-pointer p-4 rounded-lg"
-            >
-              <p className="text-lg font-semibold">{review.name}</p>
-              <StarRating rating={review.rating} />
-              <p className="text-gray-700 mt-2">{review.reviewText}</p>
-            </div>
-          ))}
-        </div>
+    <div className="bg-gray-50 default-container py-12">
+      <SectionTitle
+        title={"Customers Review"}
+        subTitle="What are our satisfied customer saying?"
+      />
+      <div className="grid grid-cols-1 mt-12 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {reviews.map((review) => (
+          <div
+            key={review.id}
+            className="bg-white duration-500 primary-shadow hover-border border-gray-200 border cursor-pointer p-4 rounded-lg"
+          >
+            <p className="text-lg font-semibold">{review.name}</p>
+            <StarRating rating={review.rating} />
+            <p className="text-gray-700 mt-2">{review.reviewText}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
