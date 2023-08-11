@@ -36,16 +36,16 @@ const SuccessReviews = () => {
         />
         <div className="container">
           <div className="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review) => (
-            <div
-              key={review.id}
-              className="p-4 duration-500 bg-white border border-gray-200 rounded-lg cursor-pointer primary-shadow hover-border"
-            >
-              <p className="text-lg font-semibold">{review.name}</p>
-              <StarRating rating={review.rating} />
-              <p className="mt-2 text-gray-700">{review.reviewText}</p>
-            </div>
-          ))}
+            {reviews.map((review) => (
+              <div
+                key={review.id}
+                className="bg-white duration-500 hover:scale-x-105 primary-shadow hover-border border-gray-200 border cursor-pointer p-4 rounded-lg"
+              >
+                <p className="text-lg font-semibold">{review.name}</p>
+                <StarRating rating={review.rating} />
+                <p className="mt-2 text-gray-700">{review.reviewText}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

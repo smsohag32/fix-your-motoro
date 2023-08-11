@@ -1,5 +1,5 @@
-import React from "react";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
+import React from "react";
 
 const SpecialsOffers = () => {
   const offersData = [
@@ -23,29 +23,39 @@ const SpecialsOffers = () => {
       discount: 20,
       buttonText: "Book Now",
     },
+    {
+      title: "Special Summer Offer",
+      description: "Get your car serviced this summer and beat the heat!",
+      discount: 25,
+      buttonText: "Book Now",
+    },
   ];
   return (
-    <div className="my-12 ">
-       <SectionTitle
-          title={"Special Offer"}
-          subTitle="What to say our Special Offer?"
-        />
-      <div className="container">
-        <div className="grid gap-4 md:grid-cols-2">
-          {offersData.map((offer, index) => (
-            <div
-              key={index}
-              className="p-4 rounded-lg shadow-md drop-shadow-lg bg-[#f5f5f5]"
-            >
-              <h2 className="mb-2 text-2xl font-bold">{offer.title}</h2>
-              <p className="text-lg">{offer.description}</p>
-              <p className="mt-2">Discount: {offer.discount}% off</p>
-              <button className="px-4 py-2 mt-4 primary-btn">
-                {offer.buttonText}
-              </button>
+    <div className="default-container mt-4 mb-12">
+      <SectionTitle
+        title="Special Offers"
+        subTitle="We are offering discount"
+      />
+      <div className="grid grid-cols-1 my-12 md:grid-cols-2 gap-6">
+        {offersData.map((offer, index) => (
+          <div
+            key={index}
+            className="p-5 rounded-sm primary-shadow hover:scale-105 duration-500 flex flex-col transition-all"
+          >
+            <h2 className="text-2xl font-bold mb-2">{offer.title}</h2>
+            <p className="text-lg">{offer.description}</p>
+            <p className="mt-2 mb-5">
+              Discount:
+              <span className="font-bold primary-text">
+                {offer.discount}%
+              </span>{" "}
+              off
+            </p>
+            <div className="mt-auto">
+              <button className="primary-btn">{offer.buttonText}</button>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
