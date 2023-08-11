@@ -26,7 +26,10 @@ const SpecialsOffers = () => {
   ];
   return (
     <div className="my-12 ">
-      <h1 className="mb-10 text-4xl font-bold text-center">Special Offer</h1>
+       <SectionTitle
+          title={"Special Offer"}
+          subTitle="What to say our Special Offer?"
+        />
       <div className="container">
         <div className="grid gap-4 md:grid-cols-2">
           {offersData.map((offer, index) => (

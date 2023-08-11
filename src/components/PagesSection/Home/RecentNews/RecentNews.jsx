@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import NewsModal from './NewsModal'; 
 import './news.css';
 import newsData from './news.json'; // Import the JSON data
+import SectionTitle from '@/components/Shared/SectionTitle/SectionTitle';
 
 
 function RecenNews() {
@@ -19,9 +20,12 @@ function RecenNews() {
   };
 
   return (
-    <div className="App text-orange-600">
-      
-      <h1 className=" text-orange-600">Motor Servicing News</h1>
+    <div className="text-orange-600 App">
+       <SectionTitle
+          title={"Motor Servicing News"}
+          subTitle="What to see our Servicing News?"
+        />
+      <h1 className="text-orange-600 "></h1>
       <div className="container">
         {articles.map((article) => (
           <div key={article.id} 

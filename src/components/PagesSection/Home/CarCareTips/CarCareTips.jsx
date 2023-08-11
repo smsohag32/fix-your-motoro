@@ -14,6 +14,7 @@ import "../RecentNews/news.css";
 
 import tipsData from "./tips.json"; // Import the JSON data
 import Image from "next/image";
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 function CarCareTips() {
   const tips = tipsData.tips; // Access the tips array
@@ -28,7 +29,10 @@ function CarCareTips() {
   };
   return (
     <>
-      <h1 className="text-orange-600 ">Car Care Tips</h1>
+      <SectionTitle
+          title={"Car Care Tips"}
+          subTitle="What to see our Care Tips?"
+        />
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <div className="container">
           {tips.map((tip, index) => (
