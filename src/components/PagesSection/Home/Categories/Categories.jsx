@@ -14,13 +14,6 @@ import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 const Categories = () => {
   return (
-<<<<<<< HEAD
-    <section className="mb-20 text-center default-container">
-      <SectionTitle
-          title={"Services Category"}
-          subTitle="We aim to earn your trust and have a long term relationship with you"
-        />
-=======
     <section className="text-center default-container pt-6 pb-12">
       <div className="mb-8">
         <SectionTitle
@@ -28,7 +21,6 @@ const Categories = () => {
           subTitle="Choice our collections of services"
         />
       </div>
->>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
       <div className="mt-20">
         <Tabs>
           <TabList className="border-0">
@@ -50,13 +42,8 @@ const Categories = () => {
           </TabList>
 
           <TabPanel>
-<<<<<<< HEAD
-            <section className="w-full mt-8 lg:relative">
-              <h2 className="font-mono text-3xl font-semibold primary-text">
-=======
             <section className="mt-8 w-full lg:relative">
               <h2 className="text-3xl font-semibold primary-text">
->>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
                 Maintain Your vehicle perfectly
               </h2>
               <div className="gap-5 pt-8 lg:flex lg:justify-around lg:items-center">
@@ -122,11 +109,7 @@ const Categories = () => {
           </TabPanel>
           <TabPanel>
             <section className="mt-8 lg:relative">
-<<<<<<< HEAD
-              <h2 className="font-mono text-3xl font-semibold primary-text">
-=======
               <h2 className="text-3xl font-semibold primary-text">
->>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
                 Make Your vehicle GORGEOUS
               </h2>
               <div className="gap-5 pt-8 lg:flex lg:justify-around lg:items-center">

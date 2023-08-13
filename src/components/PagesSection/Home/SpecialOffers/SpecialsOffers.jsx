@@ -1,6 +1,4 @@
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
-import React from "react";
-import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 const SpecialsOffers = () => {
   const offersData = [
@@ -32,29 +30,6 @@ const SpecialsOffers = () => {
     },
   ];
   return (
-<<<<<<< HEAD
-    <div className="my-12 ">
-       <SectionTitle
-          title={"Special Offer"}
-          subTitle="What to say our Special Offer?"
-        />
-      <div className="container">
-        <div className="grid gap-4 md:grid-cols-2">
-          {offersData.map((offer, index) => (
-            <div
-              key={index}
-              className="p-4 rounded-lg shadow-md drop-shadow-lg bg-[#f5f5f5]"
-            >
-              <h2 className="mb-2 text-2xl font-bold">{offer.title}</h2>
-              <p className="text-lg">{offer.description}</p>
-              <p className="mt-2">Discount: {offer.discount}% off</p>
-              <button className="px-4 py-2 mt-4 primary-btn">
-                {offer.buttonText}
-              </button>
-            </div>
-          ))}
-        </div>
-=======
     <div className="default-container mt-4 mb-12">
       <SectionTitle
         title="Special Offers"
@@ -80,7 +55,6 @@ const SpecialsOffers = () => {
             </div>
           </div>
         ))}
->>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
       </div>
     </div>
   );

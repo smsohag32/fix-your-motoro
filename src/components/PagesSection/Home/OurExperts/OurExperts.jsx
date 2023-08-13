@@ -12,8 +12,8 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 
-import {  Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay} from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -22,8 +22,6 @@ import { Pagination } from "swiper/modules";
 
 const ExpertSection = () => {
   const [ourExpert, setOurExpert] = useState([]);
-
- 
 
   {
     /*json data fetch section */
@@ -42,19 +40,11 @@ const ExpertSection = () => {
   }
   const expertLimit = 6;
   return (
-<<<<<<< HEAD
-    <div className="container py-12">
-       <SectionTitle
-          title={"Our Expert"}
-          subTitle="What to say our satisfied customer?"
-        />
-=======
     <div className="default-container py-12">
       <SectionTitle
         title={"Our Exparts"}
         subTitle={"Ready all time to provide motor servicing"}
       />
->>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -79,23 +69,15 @@ const ExpertSection = () => {
             spaceBetween: 20,
           },
         }}
-<<<<<<< HEAD
-        modules={[Autoplay , Pagination]}
-        className="mySwiper"
-=======
         modules={[Autoplay, Pagination]}
         className="mySwiper my-12"
->>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
       >
         {ourExpert.slice(0, expertLimit).map((singleCard, index) => (
           <SwiperSlide key={index}>
             <div className="my-4 card-box primary-shadow">
               <Link href="/expert">
                 <Image
-<<<<<<< HEAD
-=======
                   className="card-img w-full h-60"
->>>>>>> 4fb5c2c9340ab025db3653ce0e2fa3b0dba5c6bd
                   src={singleCard.img}
                   alt="img"
                   width="300"
