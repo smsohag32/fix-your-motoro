@@ -23,7 +23,7 @@ body {
 }
 
 .primary-btn {
-  @apply px-3 py-2 text-center font-semibold bg-[#f02801] text-white hover:bg-[#bb3f26e7]
+  @apply px-3 py-2 text-center transition-all duration-500 font-semibold bg-[#f02801] text-white hover:bg-[#ed5233ee]
 }
 
 .top-btn{
@@ -48,4 +48,3 @@ body {
 .primary-shadow{
   box-shadow: 0px 4px 6px rgba(240, 40, 1, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
 }
-

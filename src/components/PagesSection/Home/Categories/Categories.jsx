@@ -10,33 +10,32 @@ import img3 from "../../../../assets/serviceCategory/paint.jpg";
 import img4 from "../../../../assets/serviceCategory/paint2.jpg";
 import img5 from "../../../../assets/serviceCategory/perform.jpg";
 import img6 from "../../../../assets/serviceCategory/performance.jpg";
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 const Categories = () => {
   return (
-    <section className="text-center default-container mb-20">
+    <section className="text-center default-container pt-6 pb-12">
       <div className="mb-8">
-        <h1 className="text-4xl primary-text font-bold font-sans py-2">
-          Services Category
-        </h1>
-        <p className="text-xl text-slate-600 font-semibold tracking-tight font-sans">
-          We aim to earn your trust and have a long term relationship with you
-        </p>
+        <SectionTitle
+          title="Service Categories"
+          subTitle="Choice our collections of services"
+        />
       </div>
       <div className="mt-20">
         <Tabs>
           <TabList className="border-0">
             <Tab>
-              <span className="hover:text-orange-600 text-2xl font-bold uppercase">
+              <span className="text-2xl font-bold uppercase hover:text-orange-600">
                 Maintenance
               </span>
             </Tab>
             <Tab>
-              <span className="hover:text-orange-600 text-2xl font-bold uppercase">
+              <span className="text-2xl font-bold uppercase hover:text-orange-600">
                 Detailing
               </span>
             </Tab>
             <Tab>
-              <span className="hover:text-orange-600 text-2xl font-bold uppercase">
+              <span className="text-2xl font-bold uppercase hover:text-orange-600">
                 Performance
               </span>
             </Tab>
@@ -44,10 +43,10 @@ const Categories = () => {
 
           <TabPanel>
             <section className="mt-8 w-full lg:relative">
-              <h2 className="text-3xl font-mono font-semibold primary-text">
+              <h2 className="text-3xl font-semibold primary-text">
                 Maintain Your vehicle perfectly
               </h2>
-              <div className="lg:flex lg:justify-around lg:items-center gap-5 pt-8">
+              <div className="gap-5 pt-8 lg:flex lg:justify-around lg:items-center">
                 <Image
                   src={img1}
                   alt="Maintenance"
@@ -65,42 +64,42 @@ const Categories = () => {
               <div className="lg:flex lg:justify-center">
                 <div className="bg-black backdrop-blur-md lg:w-[75%] text-left px-16 py-8 lg:absolute -bottom-32 lg:flex lg:justify-around ">
                   <div>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Oil Change and Filter Replacement
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Brake System Inspection and Repair
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Check Engine Light Diagnosis
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Engine Diagnostics and Repair
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Tire Rotation and Balancing
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Battery Testing and Replacement
                     </li>
                   </div>
                   <div>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Fuel System Cleaning
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Cabin Air Filter Replacement
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Suspension and Steering Repairs
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Air Conditioning Service
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Transmission Fluid Change
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Coolant System Flush
                     </li>
                   </div>
@@ -110,10 +109,10 @@ const Categories = () => {
           </TabPanel>
           <TabPanel>
             <section className="mt-8 lg:relative">
-              <h2 className="text-3xl font-mono font-semibold primary-text">
+              <h2 className="text-3xl font-semibold primary-text">
                 Make Your vehicle GORGEOUS
               </h2>
-              <div className="lg:flex lg:justify-around lg:items-center gap-5 pt-8">
+              <div className="gap-5 pt-8 lg:flex lg:justify-around lg:items-center">
                 <Image
                   src={img3}
                   alt="Maintenance"
@@ -129,42 +128,42 @@ const Categories = () => {
               <div className="lg:flex lg:justify-center">
                 <div className="bg-black backdrop-blur-2xl lg:w-[75%] text-left px-16 py-8 lg:absolute -bottom-32 lg:flex lg:justify-around ">
                   <div>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Dent and Scratch Repair
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Paint Touch-Up
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Collision Repair
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Panel Replacement
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Rust Repair
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Paint Restoration
                     </li>
                   </div>
                   <div>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Bumper Repair and Refinishing
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Windshield and Glass Replacement
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Frame Straightening
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Custom Paint Jobs
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Body Kit Installation
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Vinyl Wrap Installation
                     </li>
                   </div>
@@ -177,7 +176,7 @@ const Categories = () => {
               <h2 className="text-3xl font-semibold primary-text">
                 Upgrade Your Machine
               </h2>
-              <div className="lg:flex lg:justify-around lg:items-center gap-5 pt-8">
+              <div className="gap-5 pt-8 lg:flex lg:justify-around lg:items-center">
                 <Image
                   src={img5}
                   alt="Maintenance"
@@ -192,42 +191,42 @@ const Categories = () => {
               <div className="lg:flex lg:justify-center">
                 <div className="bg-slate-600 lg:w-[75%] text-left px-16 py-8 lg:absolute -bottom-32 lg:flex lg:justify-around ">
                   <div>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Engine Tuning
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Exhaust System Upgrades
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Suspension Enhancements
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Intake System Upgrades
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Turbocharger or Supercharger Installation
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Performance Chip Tuning
                     </li>
                   </div>
                   <div>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Brake System Upgrades
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Transmission Upgrades
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Performance Wheels and Tires
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       ECU Remapping
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Nitrous Oxide Kit Installation
                     </li>
-                    <li className="text-lg font-semibold pb-2 text-white">
+                    <li className="pb-2 text-lg font-semibold text-white">
                       Suspension Lowering or Lifting
                     </li>
                   </div>
