@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "@/styles/expert.modules.css";
+import "@/app/globals.css";
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import {
   FaTwitterSquare,
   FaInstagramSquare,
@@ -10,17 +12,13 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 
-import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle.jsx";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
 
-// import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 
 const ExpertSection = () => {
   const [ourExpert, setOurExpert] = useState([]);
@@ -41,12 +39,6 @@ const ExpertSection = () => {
     /*slice section*/
   }
   const expertLimit = 6;
-
-  {
-    /*slider*/
-  }
-  const [swiperRef, setSwiperRef] = useState(null);
-
   return (
     <div className="default-container py-12">
       <SectionTitle
@@ -82,13 +74,13 @@ const ExpertSection = () => {
       >
         {ourExpert.slice(0, expertLimit).map((singleCard, index) => (
           <SwiperSlide key={index}>
-            <div className="card-box">
+            <div className="my-4 card-box primary-shadow">
               <Link href="/expert">
                 <Image
                   className="card-img w-full h-60"
                   src={singleCard.img}
-                  alt=""
-                  width="700"
+                  alt="img"
+                  width="300"
                   height="300"
                 />
               </Link>
@@ -96,10 +88,10 @@ const ExpertSection = () => {
                 <h2 className="name-text primary-text">{singleCard.name}</h2>
                 <h2 className="specialty-text">- {singleCard.specialty} -</h2>
                 <div className="icone">
-                  <FaFacebookSquare />
-                  <FaTwitterSquare />
-                  <FaInstagramSquare />
-                  <FaLinkedin />
+                  <FaFacebookSquare className="hover:bg-[#f02801] hover:text-white" />
+                  <FaTwitterSquare className="hover:bg-[#f02801] hover:text-white" />
+                  <FaInstagramSquare className="hover:bg-[#f02801] hover:text-white" />
+                  <FaLinkedin className="hover:bg-[#f02801] hover:text-white" />
                 </div>
               </Link>
             </div>

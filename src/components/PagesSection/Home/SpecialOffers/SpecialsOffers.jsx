@@ -46,9 +46,7 @@ const SpecialsOffers = () => {
             <p className="text-lg">{offer.description}</p>
             <p className="mt-2 mb-5">
               Discount:
-              <span className="font-bold primary-text">
-                {offer.discount}%
-              </span>{" "}
+              <span className="font-bold primary-text">{offer.discount}%</span>
               off
             </p>
             <div className="mt-auto">
