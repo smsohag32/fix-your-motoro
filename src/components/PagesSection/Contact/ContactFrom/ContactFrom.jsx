@@ -3,9 +3,7 @@ import "@/app/globals.css";
 
 const ContactFrom = () => {
   return (
-   
-   <div className="py-24 mt-24 ">
-     <div className="w-2/4 min-h-full py-4 rounded-lg shadow-lg  lg:px-8 shadow-black">
+     <div className="w-2/4 min-h-full py-4 rounded-lg shadow-lg lg:px-8 shadow-black">
         <form>
           <div>
             <label
@@ -81,7 +79,6 @@ const ContactFrom = () => {
           <input type="submit" className="w-full primary-btn" />
         </form>
       </div>
-   </div>
    
   );
 };

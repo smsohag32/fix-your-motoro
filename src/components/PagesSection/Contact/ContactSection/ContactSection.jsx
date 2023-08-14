@@ -4,10 +4,9 @@ import { FaPhoneAlt, FaHome } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 
 
-const Contact = () => {
+const ContactSection = () => {
   return (
-    <div className="py-24 mt-24 ">
-      <div className="w-2/4 mx-auto p-2">
+      <div className="w-2/4 p-2 mx-auto">
         <h1 className="font-semibold uppercase text-slate-500 ">
           contact us
         </h1>
@@ -34,8 +33,7 @@ const Contact = () => {
           
       </div>
       </div>
-    </div>
   );
 };
 
-export default Contact;
+export default ContactSection;
