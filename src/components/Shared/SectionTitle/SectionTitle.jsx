@@ -2,10 +2,10 @@ import React from "react";
 
 const SectionTitle = ({ title, subTitle }) => {
   return (
-    <div className="flex w-full text-center items-center flex-col justify-center max-w-xl mx-auto">
-      <h1 className="text-5xl opacity-80 tracking-widest font-bold">{title}</h1>
-      <p className="font-bold opacity-80 text-lg tracking-wider">{subTitle}</p>
-      <hr className="w-20 mx-auto primary-border mt-3" />
+    <div className="flex flex-col items-center justify-center w-full max-w-xl mx-auto text-center ">
+      <h1 className="text-5xl font-bold tracking-widest opacity-80">{title}</h1>
+      <p className="text-lg font-bold tracking-wider opacity-80">{subTitle}</p>
+      <hr className="w-20 mx-auto mt-3 primary-border" />
     </div>
   );
 };

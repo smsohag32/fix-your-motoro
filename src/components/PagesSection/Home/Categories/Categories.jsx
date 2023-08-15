@@ -14,7 +14,7 @@ import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 const Categories = () => {
   return (
-    <section className="text-center default-container pt-6 pb-12">
+    <section className="pt-6 pb-12 text-center default-container">
       <div className="mb-8">
         <SectionTitle
           title="Service Categories"
@@ -42,7 +42,7 @@ const Categories = () => {
           </TabList>
 
           <TabPanel>
-            <section className="mt-8 w-full lg:relative">
+            <section className="w-full mt-8 lg:relative">
               <h2 className="text-3xl font-semibold primary-text">
                 Maintain Your vehicle perfectly
               </h2>
