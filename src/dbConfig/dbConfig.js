@@ -1,21 +1,26 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri = process.env.DB_URI;
-console.log(uri);
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
-dbConnect();
+import mongoose from "mongoose";
 
-async function dbConnect() {
-  try {
-    await client.connect();
-    console.log("You successfully connected to MongoDB!");
-  } finally {
+let isConnected = false; // track the connection
+
+export const connectToDB = async () => {
+  mongoose.set("strictQuery", true);
+
+  if (isConnected) {
+    console.log("MongoDB is already connected");
+    return;
   }
-}
 
-export default client;
+  try {
+    await mongoose.connect(process.env.DB_URI, {
+      dbName: "fymDB",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    isConnected = true;
+
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.log(error);
+  }
+};
