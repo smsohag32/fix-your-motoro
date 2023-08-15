@@ -4,14 +4,13 @@ import { CiMenuFries } from "react-icons/ci";
 import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 import navLinkData from "@/utils/data/navLinkData";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import logo from "@/assets/logoFix.jpeg";
 import userLogo from "@/assets/userlogo.png";
+import NavLink from "./NavLink";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState();
-  const router = useRouter();
   return (
     <nav className="flex default-container items-center justify-between">
       <div className="md:hidden">
@@ -42,15 +41,13 @@ const Nav = () => {
       >
         {navLinkData.map((link, index) => (
           <li key={index}>
-            <Link href={link.path}>
-              <span
-                className={`text-black hover:text-[#f02801] ${
-                  router.pathname === link.path ? "primary-text" : ""
-                }`}
-              >
-                {link.label}
-              </span>
-            </Link>
+            <NavLink
+              exact={link.path == "/"}
+              activeClassName={"text-[#f02801]"}
+              href={link.path}
+            >
+              {link.label}
+            </NavLink>
           </li>
         ))}
       </ul>
