@@ -21,7 +21,7 @@ const GallerySection = () => {
         subTitle="Choice our collections of services"
       />
       <ResponsiveMasonry
-        className="max-w-[1250px] mx-auto"
+        className="default-container"
         columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
       >
         <Masonry>
