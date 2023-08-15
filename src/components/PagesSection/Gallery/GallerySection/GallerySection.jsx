@@ -13,6 +13,8 @@ import img6 from "../../../../assets/gallery/gallery6.jpeg";
 import img7 from "../../../../assets/gallery/gallery7.jpeg";
 import img8 from "../../../../assets/gallery/gallery8.jpeg";
 import img9 from "../../../../assets/gallery/gallery9.jpeg";
+import img10 from "../../../../assets/gallery/gallery10.jpeg";
+import img11 from "../../../../assets/gallery/gallery11.jpeg";
 
 const GalleryImage = ({ src, alt, text }) => {
   return (
@@ -27,7 +29,7 @@ const GalleryImage = ({ src, alt, text }) => {
 
 const GallerySection = () => {
   return (
-    <div className="py-24 mt-4">
+    <div className="">
       <PageTitle
         title="Our Gallery"
         subTitle="Choose our collections of services"
@@ -46,6 +48,8 @@ const GallerySection = () => {
           <GalleryImage src={img7} alt="" text="Image 7" />
           <GalleryImage src={img8} alt="" text="Image 8" />
           <GalleryImage src={img9} alt="" text="Image 9" />
+          <GalleryImage src={img10} alt="" text="Image 10" />
+          <GalleryImage src={img11} alt="" text="Image 11" />
         </Masonry>
       </ResponsiveMasonry>
     </div>

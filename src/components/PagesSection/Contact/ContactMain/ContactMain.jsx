@@ -5,7 +5,7 @@ import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 
 const ContactMain = () => {
   return (
-    <div className="py-24">
+    <div className="py-4">
         <PageTitle
             title="Contact Us"
             subTitle="Choice our collections of services"
