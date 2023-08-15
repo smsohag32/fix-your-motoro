@@ -15,7 +15,7 @@ import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 
 const GallerySection = () => {
   return (
-    <div className="py-24 mt-16">
+    <div className="py-24 mt-4">
       <PageTitle
         title="Our Gallery"
         subTitle="Choice our collections of services"
@@ -25,15 +25,15 @@ const GallerySection = () => {
         columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
       >
         <Masonry>
-          <Image className="p-4" src={img1} alt="" width="500" height="300" />
-          <Image className="p-4" src={img2} alt="" width="700" height="400" />
-          <Image className="p-4" src={img3} alt="" width="400" height="500" />
-          <Image className="p-4" src={img4} alt="" width="550" height="350" />
-          <Image className="p-4" src={img5} alt="" width="350" height="450" />
-          <Image className="p-4" src={img6} alt="" width="600" height="200" />
-          <Image className="p-4" src={img7} alt="" width="540" height="420" />
-          <Image className="p-4" src={img8} alt="" width="700" height="410" />
-          <Image className="p-4" src={img9} alt="" width="400" height="500" />
+          <Image className="w-full h-full p-2" src={img1} alt="" width="500" height="300" />
+          <Image className="w-full h-full p-2" src={img2} alt="" width="700" height="400" />
+          <Image className="w-full h-full p-2" src={img3} alt="" width="400" height="500" />
+          <Image className="w-full h-full p-2" src={img4} alt="" width="550" height="350" />
+          <Image className="w-full h-full p-2" src={img5} alt="" width="350" height="450" />
+          <Image className="w-full h-full p-2" src={img6} alt="" width="600" height="200" />
+          <Image className="w-full h-full p-2" src={img7} alt="" width="540" height="420" />
+          <Image className="w-full h-full p-2" src={img8} alt="" width="700" height="410" />
+          <Image className="w-full h-full p-2" src={img9} alt="" width="400" height="500" />
         </Masonry>
       </ResponsiveMasonry>
     </div>
