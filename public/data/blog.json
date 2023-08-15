@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Top 10 Car Maintenance Tips for Winter",
+    "date": "October 10, 2023",
+    "content": "Prepare your car for winter with these essential maintenance tips..."
+  },
+  {
+    "id": 2,
+    "title": "How to Change Your Car's Oil: A Step-by-Step Guide",
+    "date": "November 5, 2023",
+    "content": "Learn how to change your car's oil on your own with this detailed guide..."
+  },
+  {
+    "id": 3,
+    "title": "The Importance of Brake Inspection and Replacement",
+    "date": "December 15, 2023",
+    "content": "Understanding when and why to inspect and replace your car's brakes can save lives..."
+  },
+  {
+    "id": 4,
+    "title": "Common Car Engine Problems and Their Solutions",
+    "date": "January 20, 2024",
+    "content": "Explore some of the most common car engine issues and how to troubleshoot them..."
+  },
+  {
+    "id": 5,
+    "title": "Preparing Your Car for a Road Trip: Checklist and Tips",
+    "date": "February 8, 2024",
+    "content": "Planning a road trip? Follow this checklist to ensure your car is road-trip ready..."
+  },
+  {
+    "id": 6,
+    "title": "How to Properly Maintain Your Car's Exterior Finish",
+    "date": "March 12, 2024",
+    "content": "Maintaining your car's exterior finish helps preserve its appearance and value..."
+  },
+  {
+    "id": 7,
+    "title": "Choosing the Right Windshield Wipers for Your Car",
+    "date": "April 5, 2024",
+    "content": "Discover the factors to consider when selecting the best windshield wipers for your vehicle..."
+  },
+  {
+    "id": 8,
+    "title": "Understanding Car Suspension: Components and Maintenance",
+    "date": "May 18, 2024",
+    "content": "Learn about the different components of your car's suspension system and how to maintain them..."
+  }
+]
