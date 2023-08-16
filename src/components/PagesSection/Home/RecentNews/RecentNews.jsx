@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import NewsModal from './NewsModal'; 
 import './news.css';
 import newsData from './news.json'; // Import the JSON data
+import Image from 'next/image';
 
 
-function RecenNews() {
+function RecentNews() {
   const articles = newsData.articles; // Access the articles array
   const [selectedArticle, setSelectedArticle] = useState(null);
 
@@ -19,15 +20,16 @@ function RecenNews() {
   };
 
   return (
-    <div className="App text-orange-600">
+    <div className="App ">
       
-      <h1 className=" text-orange-600">Motor Servicing News</h1>
+      <h1 className="">Motor Servicing News</h1>
       <div className="container">
         {articles.map((article) => (
           <div key={article.id} 
           className="card" 
           onClick={() => openModal(article)}
           >
+            {/* <Image src={article.image} width={500} height={300} alt="news" style={{ width: '50%' }}/> */}
             <img src={article.image} alt="news" />
             <h2>{article.title}</h2>
             
@@ -43,4 +45,4 @@ function RecenNews() {
   );
 }
 
- export default RecenNews;
+ export default RecentNews;

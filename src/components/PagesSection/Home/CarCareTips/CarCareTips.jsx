@@ -9,10 +9,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // import required modules
 import { Navigation } from 'swiper/modules';
-import "./tips.css";
+import "./tips.modules.css";
 import "../RecentNews/news.css";
 
 import tipsData from './tips.json'; // Import the JSON data
+import Image from 'next/image';
 
 function CarCareTips() {
   const tips = tipsData.tips; // Access the tips array
@@ -27,19 +28,20 @@ function CarCareTips() {
     setSelectedTip(null);
   };
 return (
-  <><h1 className=" text-orange-600">Car Care Tips</h1>
+  <><h1 className=" ">Car Care Tips</h1>
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
     <div className="container">
     {tips.map((tip) => (
-          <SwiperSlide >
+          <SwiperSlide key={tip.id} >
            <div key={tip.id} 
           className="flex card" 
           onClick={() => openModal(tip)}
           >
-            <img src={tip.image} alt="tips" />
-           <div className='ml-12  text-justify text-orange-600'>
+           {/* <Image src={tip.image} width={500} height={300} alt="tips" style={{ width: '50%' }}/> */}
+           <img src={tip.image} alt="tips" />
+           <div className='ml-12  text-justify'>
            <h2>{tip.title}</h2>
-            <p className='mt-12 text-orange-600'>Tips Details: <br />{tip.description}</p>
+            <p className='mt-12'>Tips Details: <br />{tip.description}</p>
             </div> 
           </div>
           </SwiperSlide>
