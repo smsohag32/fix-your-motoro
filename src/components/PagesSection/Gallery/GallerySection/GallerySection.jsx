@@ -4,6 +4,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import "@/styles/gallery.modules.css";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import Image from "next/image";
+import { Helmet } from 'react-helmet';
 
 
 const GalleryImage = ({ src, alt, text }) => {
@@ -37,6 +38,9 @@ const GallerySection = () => {
         title="Our Gallery"
         subTitle="Our Gallery Image"
       />
+       <Helmet>
+                <title>FYM | Gallery</title>
+            </Helmet>
       <ResponsiveMasonry
         className="default-container"
         columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
@@ -47,7 +51,6 @@ const GallerySection = () => {
               <GalleryImage key={index} src={singleCard.gallery} alt="img" text="Image 1" />
             ))
           }
-          
         </Masonry>
       </ResponsiveMasonry>
     </div>
