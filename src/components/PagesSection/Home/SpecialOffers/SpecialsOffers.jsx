@@ -1,3 +1,4 @@
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import React from "react";
 
 const SpecialsOffers = () => {
@@ -22,22 +23,35 @@ const SpecialsOffers = () => {
       discount: 20,
       buttonText: "Book Now",
     },
+    {
+      title: "Special Summer Offer",
+      description: "Get your car serviced this summer and beat the heat!",
+      discount: 25,
+      buttonText: "Book Now",
+    },
   ];
   return (
-    <div className="my-12">
-      <h1 className="text-4xl font-bold text-center mb-10">Special Offer</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="default-container mt-4 mb-12">
+      <SectionTitle
+        title="Special Offers"
+        subTitle="We are offering discount"
+      />
+      <div className="grid grid-cols-1 my-12 md:grid-cols-2 gap-6">
         {offersData.map((offer, index) => (
           <div
             key={index}
-            className="bg-blue-500 text-white p-4 rounded-lg shadow-md"
+            className="p-5 rounded-sm primary-shadow hover:scale-105 duration-500 flex flex-col transition-all"
           >
             <h2 className="text-2xl font-bold mb-2">{offer.title}</h2>
             <p className="text-lg">{offer.description}</p>
-            <p className="mt-2">Discount: {offer.discount}% off</p>
-            <button className="mt-4 bg-white text-blue-500 px-4 py-2 rounded-md shadow-md hover:bg-blue-500 hover:text-white">
-              {offer.buttonText}
-            </button>
+            <p className="mt-2 mb-5">
+              Discount:
+              <span className="font-bold primary-text">{offer.discount}%</span>
+              off
+            </p>
+            <div className="mt-auto">
+              <button className="primary-btn">{offer.buttonText}</button>
+            </div>
           </div>
         ))}
       </div>

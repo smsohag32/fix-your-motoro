@@ -1,8 +1,5 @@
-"use client"
-import TipsModal from './TipsModal'; 
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from "react";
+import TipsModal from "./TipsModal";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -14,6 +11,8 @@ import "../RecentNews/news.css";
 
 import tipsData from './tips.json'; // Import the JSON data
 import Image from 'next/image';
+import Swiper from "swiper";
+import { SwiperSlide } from "swiper/react";
 
 function CarCareTips() {
   const tips = tipsData.tips; // Access the tips array
@@ -37,8 +36,8 @@ return (
           className="flex card" 
           onClick={() => openModal(tip)}
           >
-           {/* <Image src={tip.image} width={500} height={300} alt="tips" style={{ width: '50%' }}/> */}
-           <img src={tip.image} alt="tips" />
+           <Image src={tip.image} width={500} height={300} alt="tips" style={{ width: '50%' }}/>
+           {/* <img src={tip.image} alt="tips" /> */}
            <div className='ml-12  text-justify'>
            <h2>{tip.title}</h2>
             <p className='mt-12'>Tips Details: <br />{tip.description}</p>

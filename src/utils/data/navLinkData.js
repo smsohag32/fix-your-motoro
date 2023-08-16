@@ -2,9 +2,10 @@ const navLinkData = [
   { label: "Home", path: "/" },
   { label: "About Us", path: "/about" },
   { label: "Services", path: "/services" },
-  { label: "Blog", path: "/blog" },
+  { label: "Workshop", path: "/workshop" },
+  { label: "Blogs", path: "/blogs" },
   { label: "Gallery", path: "/gallery" },
-  { label: "Shop", path: "/shop" },
+  { label: "Shops", path: "/shops" },
   { label: "Contacts", path: "/contacts" },
 ];
 

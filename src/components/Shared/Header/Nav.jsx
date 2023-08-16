@@ -4,14 +4,13 @@ import { CiMenuFries } from "react-icons/ci";
 import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 import navLinkData from "@/utils/data/navLinkData";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import logo from "@/assets/logoFix.jpeg";
 import userLogo from "@/assets/userlogo.png";
+import NavLink from "./NavLink";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState();
-  const router = useRouter();
   return (
     <nav className="flex default-container items-center justify-between">
       <div className="md:hidden">
@@ -36,21 +35,19 @@ const Nav = () => {
       <ul
         className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
           isOpen
-            ? "top-[80px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
-            : "-left-60 top-[80px] overflow-hidden duration-100"
+            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
+            : "-left-60 top-[64px] overflow-hidden duration-100"
         }`}
       >
         {navLinkData.map((link, index) => (
           <li key={index}>
-            <Link href={link.path}>
-              <span
-                className={`text-black hover:text-[#f02801] ${
-                  router.pathname === link.path ? "primary-text" : ""
-                }`}
-              >
-                {link.label}
-              </span>
-            </Link>
+            <NavLink
+              exact={link.path == "/"}
+              activeClassName={"text-[#f02801]"}
+              href={link.path}
+            >
+              {link.label}
+            </NavLink>
           </li>
         ))}
       </ul>
