@@ -12,6 +12,7 @@ import useAuth from "@/hooks/useAuth";
 
 const Nav = () => {
   const { user, logOut } = useAuth();
+  console.log(user);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -66,42 +67,38 @@ const Nav = () => {
           height={40}
           className="cursor-pointer"
         /> */}
-         {user?.photoURL ? (
-        <img
-          className="w-[35px] h-[35px] rounded-full"
-          src={user.photoURL}
-          title={user.displayName}
-          alt=""
-        />
-      ) : (
-        <>
+        {user?.photoURL ? (
           <Image
-          src={userLogo}
-          alt=""
-          width={40}
-          height={40}
-          className="cursor-pointer"
-        />
-        </>
-      )}
+            className="w-[35px] h-[35px] rounded-full"
+            src={user.photoURL}
+            width={35}
+            height={35}
+            title={user.displayName}
+            alt=""
+          />
+        ) : (
+          <>
+            <Image
+              src={userLogo}
+              alt=""
+              width={40}
+              height={40}
+              className="cursor-pointer"
+            />
+          </>
+        )}
         {/* <Link className="font-bold cursor-pointer" href="/login">
           Login
         </Link> */}
         {user ? (
           <>
-            <button
-              onClick={handleLogOut}
-              className="font-bold cursor-pointer"
-            >
+            <button onClick={handleLogOut} className="font-bold cursor-pointer">
               LogOut
             </button>
           </>
         ) : (
           <>
-            <Link
-              className="font-bold cursor-pointe"
-              href="/login"
-            >
+            <Link className="font-bold cursor-pointe" href="/login">
               Login
             </Link>
           </>
