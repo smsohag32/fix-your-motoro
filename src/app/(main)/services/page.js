@@ -4,11 +4,12 @@ import React from "react";
 
 const ServicesPage = () => {
   return (
-    <div className="mt-32 default-container">
+    <div className="mt-32 mb-12 default-container">
       <PageTitle
         title="Masterful Car Service Solutions"
         subTitle="Comprehensive Care for a Seamless Driving Experience"
       />
+
       <Services></Services>
     </div>
   );
