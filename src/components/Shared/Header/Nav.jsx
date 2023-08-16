@@ -8,19 +8,26 @@ import Image from "next/image";
 import logo from "@/assets/logoFix.jpeg";
 import userLogo from "@/assets/userlogo.png";
 import NavLink from "./NavLink";
+import useAuth from "@/hooks/useAuth";
 
 const Nav = () => {
+  const { user, logOut } = useAuth();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   const [isOpen, setIsOpen] = useState();
   return (
-    <nav className="flex default-container items-center justify-between">
+    <nav className="flex items-center justify-between default-container">
       <div className="md:hidden">
         {isOpen ? (
           <span onClick={() => setIsOpen(false)}>
-            <GrClose className="text-2xl font-bold cursor-pointer duration-200" />
+            <GrClose className="text-2xl font-bold duration-200 cursor-pointer" />
           </span>
         ) : (
           <span onClick={() => setIsOpen(true)}>
-            <CiMenuFries className="text-2xl cursor-pointer font-bold duration-200"></CiMenuFries>
+            <CiMenuFries className="text-2xl font-bold duration-200 cursor-pointer"></CiMenuFries>
           </span>
         )}
       </div>
@@ -51,17 +58,54 @@ const Nav = () => {
           </li>
         ))}
       </ul>
-      <div className="flex items-center  gap-5">
-        <Image
+      <div className="flex items-center gap-5">
+        {/* <Image
+          src={userLogo}
+          alt=""
+          width={40}
+          height={40}
+          className="cursor-pointer"
+        /> */}
+         {user?.photoURL ? (
+        <img
+          className="w-[35px] h-[35px] rounded-full"
+          src={user.photoURL}
+          title={user.displayName}
+          alt=""
+        />
+      ) : (
+        <>
+          <Image
           src={userLogo}
           alt=""
           width={40}
           height={40}
           className="cursor-pointer"
         />
-        <Link className="font-bold cursor-pointer" href="/login">
+        </>
+      )}
+        {/* <Link className="font-bold cursor-pointer" href="/login">
           Login
-        </Link>
+        </Link> */}
+        {user ? (
+          <>
+            <button
+              onClick={handleLogOut}
+              className="font-bold cursor-pointer"
+            >
+              LogOut
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              className="font-bold cursor-pointe"
+              href="/login"
+            >
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

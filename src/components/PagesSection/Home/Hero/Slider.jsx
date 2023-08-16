@@ -46,20 +46,20 @@ const Slider = () => {
                 width: "100%",
                 height: "100%",
               }}
-              className="flex flex-col transition-all duration-500 ease-linear gap-9 h-full default-container justify-center text-left w-full ms-10"
+              className="flex flex-col justify-center w-full h-full text-left transition-all duration-500 ease-linear gap-9 default-container ms-10"
             >
-              <div className="text-center font-extrabold flex flex-col gap-6">
-                <p className="text-2xl md:text-4xl leading-relaxed text-white">
+              <div className="flex flex-col gap-6 font-extrabold text-center">
+                <p className="text-2xl leading-relaxed text-white md:text-4xl">
                   {image.title}
                 </p>
-                <h1 className="primary-text  text-4xl md:text-7xl ">
+                <h1 className="text-4xl primary-text md:text-7xl ">
                   {image.subTitle}
                 </h1>
-                <p className=" text-white text-2xl leading-relaxed md:3xl">
+                <p className="text-2xl leading-relaxed text-white  md:3xl">
                   {image.nextLine}
                 </p>
                 <div className="">
-                  <button className="outline-btn text-white">
+                  <button className="text-white outline-btn">
                     Choice Services
                   </button>
                 </div>
