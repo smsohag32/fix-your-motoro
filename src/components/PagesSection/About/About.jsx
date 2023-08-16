@@ -4,12 +4,12 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="bg-gray-100 py-12">
+    <div className="bg-gray-100">
       <PageTitle
         title="About Us"
         subTitle="Welcome to the Future of Car Care"
       />
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-4xl px-4 mx-auto">
         <p className="text-gray-700">
           At Fix Your Motoro, we're not just fixing cars; we're shaping the
           future of automotive care. Our mission is to redefine car servicing by

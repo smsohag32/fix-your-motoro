@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 import "@/app/globals.css";
 
 const ContactFrom = () => {
   return (
-     <div className="w-2/4 min-h-full py-4 rounded-lg shadow-lg lg:px-8 shadow-black">
+     <div className="min-h-full px-2 py-4 mx-4 rounded-lg shadow-lg md:w-2/4 lg:px-8 shadow-black">
         <form>
           <div>
             <label
@@ -62,7 +63,7 @@ const ContactFrom = () => {
                 for="password"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Password
+                Message 
               </label>
             </div>
             <div className="mt-2">
