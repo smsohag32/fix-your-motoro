@@ -1,34 +1,13 @@
-// import PageTitle from "@/components/Shared/PageTitle/PageTitle";
-// import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
-// import React from "react";
-
-// const WorkShops = () => {
-//   return (
-//     <div>
-//       <PageTitle title="Workshop" subTitle={"You are treble now!"} />
-//       <div className="default-container">
-//         <SectionTitle
-//           title={"Our Featured Gradge"}
-//           subTitle={"to be like you"}
-//         />
-//         <div></div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default WorkShops;
-
 "use client";
 import React, { useState } from "react";
-import WorkShop from "../../../../utils/data/workShopData";
+import WorkShop from "./workshopData.json";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import Image from "next/image";
 import SingleWorkshop from "../SingleWorkShop/SingleWorkshop";
 function WorkShops() {
-  const workshopsData = WorkShop.workshops; // Access the workshops array
+  const workshops = WorkShop.workshops; // Access the workshops array
   const [selectedWorkshops, setSelectedWorkshops] = useState(null);
-  console.log(workshopsData);
+  console.log(workshops);
   const [garage, setGarage] = useState([]);
 
   // useEffect(() => {
@@ -56,7 +35,7 @@ function WorkShops() {
       />
       <div className="grid grid-cols-1 my-12 md:grid-cols-3 gap-6">
         {
-        workshopsData.map((workshop) => (
+        workshops.map((workshop) => (
           <div
             key={workshop.id}
             className="cursor-pointer flex flex-col primary-shadow hover:scale-95 duration-500 pb-5 transition-all transform items-center"
