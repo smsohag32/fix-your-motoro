@@ -26,7 +26,7 @@ const Shops = () => {
           {shopData.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-lg shadow-md p-5 sm:p-6 relative"
+              className="bg-white rounded-lg shadow-md p-5 sm:p-6 relative transition hover:bg-red-50"
             >
               <div className="aspect-w-3 aspect-h-2 mt-5">
                 <Image
