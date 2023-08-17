@@ -67,7 +67,7 @@ const Nav = () => {
             width={40}
             height={40}
             title={displayName}
-            className="cursor-pointer"
+            className="rounded-full cursor-pointer"
           />
         )) || (
           <Image
@@ -75,7 +75,7 @@ const Nav = () => {
             alt=""
             width={40}
             height={40}
-            className="cursor-pointer"
+            className="cursor-pointer "
           />
         )}
 

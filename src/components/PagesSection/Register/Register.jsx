@@ -7,26 +7,38 @@ import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import RegisterFrom from "./RegisterFrom";
 import useAuth from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
-import createJWT from "@/utils/createJWT";
+import { useRouter } from "next/navigation";
 
 
 const SingUp = () => {
-
+  const router = useRouter();
   const {googleLogin} = useAuth()
 
-  const handleGoogleSingIn = async () => {
-    const toastId = toast.loading("Loading...")
-    try{
-      const {user} = await googleLogin();
-      createJWT({email: user.email})
-      toast.dismiss(toastId)
-      toast.success("User Sing in Successfully")
-    }
-    catch(error){
-      toast.dismiss(toastId)
-      toast.error(error.message || "User not Sing in")
-    }
+  // const handleGoogleSingIn = async () => {
+  //   const toastId = toast.loading("Loading...")
+   
+  //     googleLogin();
+  //       .then((result) => {
+  //         router.push("/");
+  //         console.log(result.user);
+  //         toast.success("User Sing in Successfully")
+  //       })
+  //   }
+  //   catch(error){
+  //     toast.dismiss(toastId)
+  //     toast.error(error.message || "User not Sing in")
+  //   }
+  // };
+
+  const handleGoogleSingIn = () => {
+    googleLogin()
+      .then(() => {
+        router.push("/");
+      })
+      .catch();
   };
+
+
   return (
     <>
     <Helmet>

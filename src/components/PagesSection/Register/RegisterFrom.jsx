@@ -4,9 +4,10 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
-import createJWT from "@/utils/createJWT";
+import { useRouter } from "next/navigation";
 
 const SignUpForm = () => {
+  const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -65,8 +66,12 @@ const SignUpForm = () => {
         displayName: name ,
         photoURL: photo,
       })
-      toast.dismiss(toastId)
-      toast.success("User Sing in Successfully")
+      .then((result) => {
+        router.push("/");
+        console.log(result.user);
+        toast.dismiss(toastId)
+        toast.success("User Sing in Successfully")
+      })
     }
     catch(error) {
       toast.dismiss(toastId)
@@ -105,7 +110,7 @@ const SignUpForm = () => {
         )}
       </div>
 
-      <div className="form-control">
+      {/* <div className="form-control">
         <label className="label">
           <span className="block mb-2 font-bold text-gray-700">Phone Number</span>
         </label>
@@ -119,12 +124,17 @@ const SignUpForm = () => {
         {errors.phoneNumber && (
           <span className="text-red-600">Phone Number is required</span>
         )}
-      </div>
+      </div> */}
 
       <div className="form-control">
         <label className="label">
           <span className="block mb-2 font-bold text-gray-700">Photo URL</span>
         </label>
+
+        
+        {/* <input type="file" placeholder="You can't touch this" className="w-full max-w-xs file-input file-input-bordered" disabled /> */}
+
+        
         <input
           type="text"
           {...register("photoURL", { required: true })}
