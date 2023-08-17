@@ -1,13 +1,17 @@
+"use client";
 import AuthContext from "@/context/AuthContext";
-import auth, { googlleProvider } from "@/firebase/firebase.auth";
+import auth from "@/firebase/firebase.auth";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
+
+const GoogleProvider = new GoogleAuthProvider();
 import { useEffect, useState } from "react";
 
 const AuthProvider = ({ children }) => {
@@ -26,8 +30,12 @@ const AuthProvider = ({ children }) => {
 
   const profileUpdate = async (updateUser = {}) => {
     setLoading(true);
-    await updateProfile(auth, updateUser);
+    await updateProfile(auth.currentUser, updateUser);
     setUser((preUser) => ({ ...preUser, ...updateUser }));
+  };
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, GoogleProvider);
   };
 
   const logout = () => {
@@ -36,10 +44,11 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsub = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
     });
+    return () => unsub();
   }, []);
 
   const value = {
