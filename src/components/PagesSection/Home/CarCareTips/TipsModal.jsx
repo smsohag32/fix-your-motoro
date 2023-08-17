@@ -7,9 +7,10 @@ import Image from "next/image";
 const NewsModal = ({ isOpen, closeModal, tip }) => {
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="tip Modal">
-      <div className="modal-content text-orange-600">
+      <div className="modal-content ">
         <h1>Car Care Tips</h1>
         <h2 className="mb-12 text-3xl">{tip.title}</h2>
+
         <Image src={tip.image} width={350} height={350} alt="news" />
         <p className="mt-12 text-black-800">
           Tips Details: <br />
@@ -21,7 +22,7 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
       </div>
       <button
         onClick={closeModal}
-        className="text-white text-3xl mt-5 bg-red-900"
+        className="text-3xl btn-close  mt-5 "
       >
         Close
       </button>
