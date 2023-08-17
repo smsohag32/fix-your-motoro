@@ -1,10 +1,10 @@
+
 "use client";
 import React, { useState } from "react";
 import NewsModal from "./NewsModal";
 import newsData from "./news.json"; // Import the JSON data
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import Image from "next/image";
-
 function RecentNews() {
   const articles = newsData.articles; // Access the articles array
   const [selectedArticle, setSelectedArticle] = useState(null);
@@ -30,6 +30,7 @@ function RecentNews() {
             className="cursor-pointer flex flex-col primary-shadow hover:scale-95 duration-500 pb-5 transition-all transform items-center"
             onClick={() => openModal(article)}
           >
+
             <Image
               src={article.image}
               alt="news"
