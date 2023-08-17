@@ -3,7 +3,7 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <div className="mt-32 default-container mx-auto p-8">
+      <div className="mt-32 max-w-4xl mx-auto p-8">
         <h1 className="text-2xl font-bold mb-4">Work Order Request</h1>
         <form className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -131,12 +131,17 @@ const page = () => {
           </div>
           {/* ... More form fields */}
 
-          <button
-            type="submit"
-            className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-          >
-            Submit
-          </button>
+          <div className="md:flex justify-between">
+            <button type="submit" className="primary-btn rounded-md">
+              Submit
+            </button>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600"
+            >
+              Print
+            </button>
+          </div>
         </form>
       </div>
     </>

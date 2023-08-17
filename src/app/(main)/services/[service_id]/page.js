@@ -36,7 +36,9 @@ const ServicePage = ({ params }) => {
     service_duration,
     customer_reviews,
     warranty,
-  } = await loadSingleService(params.service_id);
+    _id,
+  } = service;
+  // loadSingleService(params.service_id);
   return (
     <div className="mt-32 default-container">
       <PageTitle
