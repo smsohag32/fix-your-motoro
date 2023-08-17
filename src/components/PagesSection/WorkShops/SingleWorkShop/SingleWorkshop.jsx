@@ -28,7 +28,7 @@ const SingleWorkshop = (props) => {
               <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {description}
               </p>
-              <Link href={`/services/${_id}`}>
+              <Link href={`/workshops/${_id}`}>
                 <button className="rounded-full bg-white py-2 px-3.5 font-semibold text-sm capitalize text-black  shadow shadow-black/60">
                   View Details
                 </button>
