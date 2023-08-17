@@ -17,6 +17,8 @@ const ServicePage = async ({ params }) => {
     service_duration,
     customer_reviews,
     warranty,
+    _id,
+    workshop_id,
   } = await loadSingleService(params.service_id);
   return (
     <div className="mt-32 default-container">
