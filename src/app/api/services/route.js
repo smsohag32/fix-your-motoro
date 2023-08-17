@@ -7,7 +7,6 @@ export const GET = async (request) => {
 
     const category = request.nextUrl.searchParams.get("service_category");
     console.log(category);
-    // Convert category to lowercase (for case-insensitive matching)
     const query = category ? { service_category: category } : {};
     const servicesData = await services.find(query);
 
