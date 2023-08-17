@@ -7,6 +7,7 @@ module.exports = {
       "images.unsplash.com",
       "cdn.pixabay.com",
       "images.pexel.com",
+      "media.istockphoto.com",
     ],
   },
 };
