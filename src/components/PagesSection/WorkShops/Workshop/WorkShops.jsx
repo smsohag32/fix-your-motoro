@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import WorkShop from "./workshopData.json";
-import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import Image from "next/image";
 import SingleWorkshop from "../SingleWorkShop/SingleWorkshop";
 function WorkShops() {
@@ -28,11 +27,7 @@ function WorkShops() {
   };
 
   return (
-    <div className="default-container py-12">
-      <SectionTitle
-        title="Special Workshop"
-        subTitle="Recent motor servicing Workshop"
-      />
+    <div className="default-container py-12  mt-12">
       <div className="grid grid-cols-1 my-12 md:grid-cols-3 gap-6">
         {
         workshops.map((workshop) => (
