@@ -9,7 +9,6 @@ import { BiMessageRounded } from "react-icons/bi";
 
 const ServicePage = ({ params }) => {
   const { service, setService } = useContext(ServiceContext);
-  // console.log(params.service_id);
 
   useEffect(() => {
     const fetchData = async () => {
