@@ -5,10 +5,15 @@ import SingleService from "./SingleService";
 
 const Services = () => {
   const [servicesData, setServicesData] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
 
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/services");
+      const response = await fetch(
+        `/api/services?service_category=${selectedOption}`
+      );
       const data = await response.json();
       setServicesData(data);
     } catch (error) {
@@ -16,14 +21,24 @@ const Services = () => {
     }
   };
 
+  const selectOption = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [selectedOption]);
 
   return (
     <>
       <div className="my-8 text-right">
-        <ServiceFilter></ServiceFilter>
+        <ServiceFilter
+          selectOption={selectOption}
+          selectedOption={selectedOption}
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+        ></ServiceFilter>
       </div>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {servicesData.map((service) => (

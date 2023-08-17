@@ -1,38 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-const ServiceFilter = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [filteredServices, setFilteredServices] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+const ServiceFilter = ({ selectOption, selectedOption, setIsOpen, isOpen }) => {
+  // const [isLoading, setIsLoading] = useState(false);
 
   const options = ["Maintenance", "Detailing", "Performance"];
-  const apiBaseUrl = "/api/services";
-
-  useEffect(() => {
-    if (selectedOption) {
-      setIsLoading(true);
-      fetch(`${apiBaseUrl}?service_category=${selectedOption}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setFilteredServices(data);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setIsLoading(false);
-        });
-    }
-  }, [selectedOption]);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-  };
-
-  const selectOption = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
   };
 
   return (
@@ -83,7 +58,7 @@ const ServiceFilter = () => {
       )}
 
       {/* Display the filtered services */}
-      {isLoading ? (
+      {/* {isLoading ? (
         <p>Loading...</p>
       ) : (
         <div>
@@ -93,7 +68,7 @@ const ServiceFilter = () => {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
