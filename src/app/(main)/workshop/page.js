@@ -14,7 +14,7 @@ import Services from "@/components/PagesSection/Services/Services";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import React from "react";
 
-const WorkshopPage = () => {
+const WorkshopsPage = () => {
   return (
     <div className="mt-32 mb-12 default-container">
     <PageTitle
@@ -27,4 +27,4 @@ const WorkshopPage = () => {
   );
 };
 
-export default WorkshopPage;
+export default WorkshopsPage;
