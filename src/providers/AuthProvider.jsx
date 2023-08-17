@@ -1,14 +1,15 @@
+"use client";
 import AuthContext from "@/context/AuthContext";
-import auth, { googlleProvider } from "@/firebase/firebase.auth";
+import auth from "@/firebase/firebase.auth";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
   updateProfile,
+  singInWhitPopup
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext } from "react";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -26,9 +27,14 @@ const AuthProvider = ({ children }) => {
 
   const profileUpdate = async (updateUser = {}) => {
     setLoading(true);
-    await updateProfile(auth, updateUser);
+    await updateProfile(auth.currentUser, updateUser);
     setUser((preUser) => ({ ...preUser, ...updateUser }));
   };
+
+  const googleLogin = () => {
+    setLoading(true)
+    return singInWhitPopup(auth , email , password)
+  }
 
   const logout = () => {
     setLoading(true);
@@ -42,6 +48,16 @@ const AuthProvider = ({ children }) => {
     });
   }, []);
 
+//   useEffect(() => {
+//     const unsubscribe =  onAuthStateChanged(auth, (currentUser) => {
+//       setUser(currentUser);
+//       setLoading(false);
+//       return () => {
+//         return unsubscribe();
+//       }
+//     });
+//   }, []);
+
   const value = {
     user,
     loading,
@@ -54,5 +70,7 @@ const AuthProvider = ({ children }) => {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
+
+
 
 export default AuthProvider;
