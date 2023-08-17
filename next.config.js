@@ -7,6 +7,8 @@ module.exports = {
       "images.unsplash.com",
       "cdn.pixabay.com",
       "images.pexel.com",
+      "firebasestorage.googleapis.com",
+      "lh3.googleusercontent.com",
     ],
   },
 };

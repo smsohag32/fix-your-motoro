@@ -7,9 +7,12 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  singInWhitPopup,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
-import { useEffect, useState, useContext } from "react";
+
+const GoogleProvider = new GoogleAuthProvider();
+import { useEffect, useState } from "react";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -32,7 +35,7 @@ const AuthProvider = ({ children }) => {
   };
   const googleLogin = () => {
     setLoading(true);
-    return singInWhitPopup(auth, googlleProvider);
+    return signInWithPopup(auth, GoogleProvider);
   };
 
   const logout = () => {
@@ -47,16 +50,6 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsub();
   }, []);
-
-  //   useEffect(() => {
-  //     const unsubscribe =  onAuthStateChanged(auth, (currentUser) => {
-  //       setUser(currentUser);
-  //       setLoading(false);
-  //       return () => {
-  //         return unsubscribe();
-  //       }
-  //     });
-  //   }, []);
 
   const value = {
     user,
