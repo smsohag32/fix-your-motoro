@@ -1,6 +1,9 @@
-import React from "react";
+"use client";
+import ServiceContext from "@/context/ServiceContext";
+import React, { useContext } from "react";
 
-const page = () => {
+const BookingPage = ({ params }) => {
+  console.log(params.id);
   return (
     <>
       <div className="mt-32 default-container mx-auto p-8">
@@ -143,4 +146,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default BookingPage;
