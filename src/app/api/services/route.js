@@ -6,7 +6,6 @@ export const GET = async (request) => {
     await connectToDB();
 
     const category = request.nextUrl.searchParams.get("service_category");
-    console.log(category);
     const query = category ? { service_category: category } : {};
     const servicesData = await services.find(query);
 

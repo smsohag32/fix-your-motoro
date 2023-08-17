@@ -16,9 +16,8 @@ export const POST = async (request) => {
   const user = await request.json();
   try {
     await connectToDB();
-    const newUser = new BookInfo(user);
+    const newUser = new usersInfo(user);
     await newUser.save();
-
     return new Response(JSON.stringify({ message: "User created cuss" }), {
       status: 201,
     });
