@@ -8,25 +8,23 @@ const Services = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        `/api/services?service_category=${selectedOption}`
-      );
-      const data = await response.json();
-      setServicesData(data);
-    } catch (error) {
-      console.error("Error fetching JSON data:", error);
-    }
-  };
-
   const selectOption = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `/api/services?service_category=${selectedOption}`
+        );
+        const data = await response.json();
+        setServicesData(data);
+      } catch (error) {
+        console.error("Error fetching JSON data:", error);
+      }
+    };
     fetchData();
   }, [selectedOption]);
 

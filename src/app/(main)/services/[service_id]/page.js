@@ -1,12 +1,31 @@
+"use client";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
+import ServiceContext from "@/context/ServiceContext";
 import loadSingleService from "@/utils/data/fetchData/loadSingleService";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { BiMessageRounded } from "react-icons/bi";
 
-const ServicePage = async ({ params }) => {
+const ServicePage = ({ params }) => {
+  const { service, setService } = useContext(ServiceContext);
   // console.log(params.service_id);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/services/${params.service_id}`
+        );
+        const data = await response.json();
+        setService(data);
+      } catch (error) {
+        console.error("Error fetching JSON data:", error);
+      }
+    };
+    fetchData();
+  }, [setService, params]);
+
   const {
     service_name,
     service_image,
@@ -17,8 +36,6 @@ const ServicePage = async ({ params }) => {
     service_duration,
     customer_reviews,
     warranty,
-    _id,
-    workshop_id,
   } = await loadSingleService(params.service_id);
   return (
     <div className="mt-32 default-container">
@@ -96,7 +113,7 @@ const ServicePage = async ({ params }) => {
                 </p>
               </div>
 
-              <Link href={"service/booking"}>
+              <Link href={`/services/booking/${_id}`}>
                 <button className="primary-btn">Book Now</button>
               </Link>
             </div>
@@ -107,7 +124,7 @@ const ServicePage = async ({ params }) => {
             Reviews :
           </h2>
           <div className="">
-            {customer_reviews.map((review, idx) => (
+            {customer_reviews?.map((review, idx) => (
               <p className="text-slate-600 font-medium text-xl py-2" key={idx}>
                 <BiMessageRounded className="md:inline text-orange-700 mr-4" />{" "}
                 {review}

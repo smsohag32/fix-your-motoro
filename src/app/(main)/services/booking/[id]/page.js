@@ -1,40 +1,11 @@
-"use client";
 import React from "react";
 
 const page = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const firstName = form.firstName.value;
-    const lastName = form.lastName.value;
-    const email = form.email.value;
-    const phone = form.phone.value;
-    const vehicle = form.vehicle.value;
-    const streetAddress = form.streetAddress.value;
-    const city = form.city.value;
-    const state = form.state.value;
-    const postal = form.postal.value;
-
-    const bookingData = {
-      firstName,
-      lastName,
-      email,
-      phone,
-      vehicle,
-      streetAddress,
-      city,
-      state,
-      postal,
-    };
-  };
-
   return (
     <>
-      <div className="mt-32 max-w-4xl mx-auto p-8">
-        <h1 className="text-2xl font-bold mb-4">
-          Book Your <span className="primary-text">Service</span> From Here
-        </h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="mt-32 default-container mx-auto p-8">
+        <h1 className="text-2xl font-bold mb-4">Work Order Request</h1>
+        <form className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="col-span-2 sm:col-span-1">
               <label htmlFor="firstName" className="block text-sm font-medium">
@@ -98,7 +69,7 @@ const page = () => {
             </label>
             <input
               type="text"
-              id="vehicle"
+              id="company"
               name="vehicle"
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Toyota Land Cruiser Prado - 2020"
@@ -160,17 +131,12 @@ const page = () => {
           </div>
           {/* ... More form fields */}
 
-          <div className="md:flex justify-between items-baseline">
-            <button type="submit" className="primary-btn rounded-md">
-              Submit
-            </button>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-            >
-              Print Now
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+          >
+            Submit
+          </button>
         </form>
       </div>
     </>
