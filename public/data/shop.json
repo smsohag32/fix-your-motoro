@@ -1,0 +1,112 @@
+[
+   {
+    "id": 1,
+    "title": "Oil Change",
+    "description": "Keep your engine running smoothly with our oil change service.",
+    "price": 49.99,
+    "discount": true,
+    "discountedPrice": 39.99,
+    "discountPercentage": 20,
+    "image": "https://media.istockphoto.com/id/1415260442/photo/car-engine-oil-is-poured-into-the-engine-close-up.jpg?s=612x612&w=0&k=20&c=9v-sjtCMVTX3Wf6hszlZgJqq4i2UgUEVMhkefT-aGRM=",
+    "rating": 4.5,
+    "likes": 120
+  },
+  {
+    "id": 2,
+    "title": "Brake Inspection",
+    "description": "Ensure your safety with our thorough brake inspection.",
+    "price": 29.99,
+    "discount": false,
+    "image": "https://media.istockphoto.com/id/1193247877/photo/handsome-mechanic-in-uniform.jpg?s=612x612&w=0&k=20&c=ZDIuniZcHY0McW4Zc654glUrtTGa8A7U2X2enGM7_60=",
+    "rating": 4.2,
+    "likes": 95
+  },
+  {
+    "id": 3,
+    "title": "Tire Rotation",
+    "description": "Extend the lifespan of your tires with our tire rotation service.",
+    "price": 19.99,
+    "discount": true,
+    "discountedPrice": 16.99,
+    "discountPercentage": 15,
+    "image": "https://media.istockphoto.com/id/683108192/photo/winter-tires-replacement.jpg?s=612x612&w=0&k=20&c=c74gSggWy1UClB3bGSe6WF1d0X1veMtcHKXiWkQSnXs=",
+    "rating": 4.8,
+    "likes": 150
+  },
+  {
+    "id": 4,
+    "title": "Engine Diagnostics",
+    "description": "Identify and troubleshoot engine issues with our advanced diagnostics.",
+    "price": 59.99,
+    "discount": false,
+    "image": "https://media.istockphoto.com/id/1367581969/photo/mechanic-using-laptop-during-car-engine-diagnostic.jpg?s=612x612&w=0&k=20&c=Qn8i9uNXzIxRMv74KTQDdpAR-J7zGyh9RT5xP5h4sLU=",
+    "rating": 4.3,
+    "likes": 80
+  },
+  {
+    "id": 5,
+    "title": "Transmission Flush",
+    "description": "Maintain the health of your transmission with our specialized flush.",
+    "price": 79.99,
+    "discount": true,
+    "discountedPrice": 69.99,
+    "discountPercentage": 13,
+    "image": "https://media.istockphoto.com/id/1294078148/photo/car-mechanic-drain-automatic-transmission-fluid.jpg?s=612x612&w=0&k=20&c=D25k4wvf0K19a7Os1eeOQtf9gLGaCY0_R5WdwgkzclI=",
+    "rating": 4.6,
+    "likes": 110
+  },
+  {
+    "id": 6,
+    "title": "Wheel Alignment",
+    "description": "Ensure proper alignment for improved handling and tire wear.",
+    "price": 39.99,
+    "discount": false,
+    "image": "https://media.istockphoto.com/id/463462731/photo/computerized-wheel-alignment-machine-clamp.jpg?s=612x612&w=0&k=20&c=1TSPgkpZYY8ha69Fbp0Ny9oaAPtgGexcwmBbVXVB0_w=",
+    "rating": 4.4,
+    "likes": 105
+  },
+  {
+    "id": 7,
+    "title": "Coolant Flush",
+    "description": "Keep your engine cool and protected with our coolant flush service.",
+    "price": 49.99,
+    "discount": true,
+    "discountedPrice": 44.99,
+    "discountPercentage": 10,
+    "image": "https://media.istockphoto.com/id/1136523351/photo/add-water-to-the-radiator.jpg?s=612x612&w=0&k=20&c=lxXXWTqv2Pna6tYM-DI8R1MJBxHAGbWiaVxKAMDwL3E=",
+    "rating": 4.7,
+    "likes": 135
+  },
+  {
+    "id": 8,
+    "title": "Air Conditioning Service",
+    "description": "Stay comfortable on the road with our air conditioning service.",
+    "price": 69.99,
+    "discount": false,
+    "image": "https://media.istockphoto.com/id/1406024793/photo/working-of-servicing-car-air-conditioner-in-vehicle-auto-service-or-repair-workshop.jpg?s=612x612&w=0&k=20&c=AMbYFd68qtyszpEIQyHxdQHwyI2TFA5BmurtxAjVR-A=",
+    "rating": 4.1,
+    "likes": 70
+  },
+  {
+    "id": 9,
+    "title": "Battery Replacement",
+    "description": "Ensure reliable starts with our quality battery replacement.",
+    "price": 89.99,
+    "discount": true,
+    "discountedPrice": 79.99,
+    "discountPercentage": 11,
+    "image": "https://media.istockphoto.com/id/1596813342/photo/a-car-mechanic-installs-a-battery-in-a-car-battery-replacement-and-repair.jpg?s=612x612&w=0&k=20&c=mbQDRelxYmTw1MAOFmONtlzqP154fS2n4hKfx1lEaPI=",
+    "rating": 4.9,
+    "likes": 160
+  },
+  {
+    "id": 10,
+    "title": "Spark Plug Replacement",
+    "description": "Improve engine performance and efficiency with new spark plugs.",
+    "price": 24.99,
+    "discount": false,
+    "image": "https://media.istockphoto.com/id/1034502990/photo/replacement-of-spark-plugs-in-a-modern-engine.jpg?s=612x612&w=0&k=20&c=1qzKJIqmNVxGkdkzP7WZfctoeYIzm1fluVtY0QX233s=",
+    "rating": 4.0,
+    "likes": 55
+  }
+]
