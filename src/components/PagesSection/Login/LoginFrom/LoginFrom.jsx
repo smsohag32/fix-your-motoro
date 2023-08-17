@@ -4,42 +4,63 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { Helmet } from "react-helmet";
 import { HiEye, HiEyeOff } from "react-icons/hi";
-import { signInWithPopup } from "firebase/auth";
-import useAuth from "@/hooks/useAuth";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
-import auth, { googlleProvider } from "@/firebase/firebase.auth";
+import useAuth from "@/hooks/useAuth";
+import { toast } from "react-hot-toast";
+
 
 const LoginFrom = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
 
-  const { signIn } = useAuth();
+  const { signIn , googleLogin} = useAuth();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handelLogin = (event) => {
+  const handelLogin = async (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+    const toastId = toast.loading("Loading...")
+    try{
+      const user = await signIn(email , password)
+      toast.dismiss(toastId)
+      toast.success("User Sing in Successfully")
+    }
+    catch(error) {
+      toast.dismiss(toastId)
+      toast.error(error.message || "User not Sing in")
+    }
+
+    // signIn(email, password).then((result) => {
+    //   const user = result.user;
+    //   console.log(user);
+    // });
   };
 
-  const handleGoogleSingIn = () => {
-    signInWithPopup(auth, googlleProvider)
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const handleGoogleSingIn = async () => {
+    const toastId = toast.loading("Loading...")
+    try{
+      const user = await googleLogin();
+      toast.dismiss(toastId)
+      toast.success("User Sing in Successfully")
+    }
+    catch(error){
+      toast.dismiss(toastId)
+      toast.error(error.message || "User not Sing in")
+    }
+
+    // signInWithPopup(auth, googlleProvider)
+    //   .then((result) => {
+    //     const loggedUser = result.user;
+    //     console.log(loggedUser);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (

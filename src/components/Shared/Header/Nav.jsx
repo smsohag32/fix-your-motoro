@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { GrClose } from "react-icons/gr";
+import { toast } from "react-hot-toast";
 import Link from "next/link";
 import navLinkData from "@/utils/data/navLinkData";
 import Image from "next/image";
@@ -11,11 +12,11 @@ import NavLink from "./NavLink";
 import useAuth from "@/hooks/useAuth";
 
 const Nav = () => {
-  const { user, logOut } = useAuth();
-  const handleLogOut = () => {
-    logOut()
-      .then(() => {})
-      .catch((error) => console.log(error));
+  const { user, logout } = useAuth();
+  const { uid, displayName, photoURL } = user || {};
+  const handleLogOut = async () => {
+    await logout();
+    toast.success("Successfully logout!");
   };
   const [isOpen, setIsOpen] = useState();
   return (
@@ -59,18 +60,32 @@ const Nav = () => {
         ))}
       </ul>
       <div className="flex items-center gap-5">
-        {/* <Image
-          src={userLogo}
-          alt=""
+        {(uid && (
+          <Image
+            src={photoURL || userLogo}
+            alt=""
+            width={40}
+            height={40}
+            title={displayName}
+            className="cursor-pointer"
+          />
+        )) || (
+          <Image
+            src={userLogo}
+            alt=""
+            width={40}
+            height={40}
+            className="cursor-pointer"
+          />
+        )}
+
+        {/* {user?.photoURL ? (
+        <Image
+          className="rounded-full"
           width={40}
           height={40}
-          className="cursor-pointer"
-        /> */}
-         {user?.photoURL ? (
-        <img
-          className="w-[35px] h-[35px] rounded-full"
-          src={user.photoURL}
-          title={user.displayName}
+          src={photoURL || userLogo}
+          title={displayName}
           alt=""
         />
       ) : (
@@ -83,25 +98,20 @@ const Nav = () => {
           className="cursor-pointer"
         />
         </>
-      )}
+      )} */}
+
         {/* <Link className="font-bold cursor-pointer" href="/login">
           Login
         </Link> */}
         {user ? (
           <>
-            <button
-              onClick={handleLogOut}
-              className="font-bold cursor-pointer"
-            >
+            <button onClick={handleLogOut} className="font-bold cursor-pointer">
               LogOut
             </button>
           </>
         ) : (
           <>
-            <Link
-              className="font-bold cursor-pointe"
-              href="/login"
-            >
+            <Link className="font-bold cursor-pointe" href="/login">
               Login
             </Link>
           </>
