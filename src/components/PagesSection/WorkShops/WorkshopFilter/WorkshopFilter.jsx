@@ -7,7 +7,7 @@ const WorkshopFilter = () => {
   const [filteredWorkshop, setFilteredWorkshop] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const options = ["Maintenance", "Detailing", "Performance"];
+  const options = ["Khulna", "Chittagong", "Sylhet", "Dhaka", "Barishal"];
   const apiBaseUrl = "/api/search";
 
   useEffect(() => {
