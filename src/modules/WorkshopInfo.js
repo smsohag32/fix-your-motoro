@@ -9,53 +9,41 @@ const workshopSchema = new Schema({
     type: String,
     required: [true, "image is required."],
   },
-  service_name: {
+  address: {
     type: String,
-    required: [true, "Service name is required."],
+    required: [true, "address name is required."],
   },
-  service_category: {
+  email: {
     type: String,
-    required: [true, "service_category is required."],
+    required: [true, "email is required."],
   },
-  service_description: {
+  phone: {
+    type: Number,
+    required: [true, "phone is required."],
+  },
+  description: {
     type: String,
-    required: [true, "service_description is required."],
+    required: [true, "description is required."],
   },
-  service_description: {
-    type: String,
-    required: [true, "service_description is required."],
-  },
-  service_duration: {
-    type: String,
-    required: [true, "service_duration is required."],
-  },
-  service_price: {
-    type: String,
-    required: [true, "service_price is required."],
-  },
-  benefits: {
-    type: String,
-    required: [true, "benefits is required."],
-  },
-  customer_reviews: {
+  services: {
     type: [],
-    required: [true, "customer_reviews is required."],
+    required: [true, "services is required."],
   },
-  benefits: {
-    type: String,
+  products: {
+    type: [],
     required: [true, "service_price is required."],
   },
-  workshop_image: {
+  workshopCode: {
     type: String,
-    required: [true, "workshop_image is required."],
+    required: [true, "workshopCode is required."],
   },
-  service_image: {
+  rating: {
     type: String,
-    required: [true, "service_image is required."],
+    required: [true, "rating is required."],
   },
-  warranty: {
+  location: {
     type: String,
-    required: [true, "warranty is required."],
+    required: [true, "location is required."],
   },
 });
 
