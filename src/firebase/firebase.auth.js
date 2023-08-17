@@ -4,6 +4,6 @@ import app from "./firebase.config";
 
 const auth = getAuth(app)
 
-export const googlleProvider = new GoogleAuthProvider();
+export const googleProvider = new GoogleAuthProvider();
 
 export default auth;

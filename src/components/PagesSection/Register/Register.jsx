@@ -6,20 +6,24 @@ import Link from "next/link";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import RegisterFrom from "./RegisterFrom";
 import useAuth from "@/hooks/useAuth";
-import { signInWithPopup } from "firebase/auth";
-import auth, { googlleProvider } from "@/firebase/firebase.auth";
+import { toast } from "react-hot-toast";
 
 
 const SingUp = () => {
-  const handleGoogleSingIn = () => {
-    signInWithPopup(auth, googlleProvider)
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+  const {googleLogin} = useAuth()
+
+  const handleGoogleSingIn = async () => {
+    const toastId = toast.loading("Loading...")
+    try{
+      const user = await googleLogin();
+      toast.dismiss(toastId)
+      toast.success("User Sing in Successfully")
+    }
+    catch(error){
+      toast.dismiss(toastId)
+      toast.error(error.message || "User not Sing in")
+    }
   };
   return (
     <>
@@ -30,7 +34,7 @@ const SingUp = () => {
         title="Our Register"
         subTitle="Our Register page"
       />
-    <div className="flex-col primary-shadow primary-border  mx-auto my-8 rounded-lg md:w-2/6  hero-content lg:flex-row-reverse">
+    <div className="flex-col mx-auto my-8 rounded-lg primary-shadow primary-border md:w-2/6 hero-content lg:flex-row-reverse">
         <RegisterFrom />
         <div className="mt-4 text-center">
           <button>
@@ -40,11 +44,11 @@ const SingUp = () => {
             </Link>
           </button>
         </div>
-        <div
-          onClick={handleGoogleSingIn}
-          className="p-[10px] mb-8 bg-blue-200 cursor-pointer border rounded-lg w-4/5 md:w-2/4  mx-auto flex gap-[6px] mt-[30px]">
-          <FcGoogle className="text-[32px]" />
+        <div onClick={handleGoogleSingIn}>
+          <button className="p-[10px] mb-8 bg-blue-200 cursor-pointer border rounded-lg w-4/5 md:w-2/4  mx-auto flex gap-[6px] mt-[30px]">
+            <FcGoogle className="text-[32px]" />
           <span>Continue with Google</span>
+          </button>
         </div>
       </div>
   </>

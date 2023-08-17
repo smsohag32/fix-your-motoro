@@ -14,9 +14,9 @@ const HomePage = () => {
       <Hero />
       <OurExperts />
       <Categories />
-      <OurServices /> 
+      <OurServices />
       <SpecialsOffers />
-      <SuccessReviews/>
+      <SuccessReviews />
       <RecentNews />
       <CarCareTips />
       <GetInTouch />

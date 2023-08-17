@@ -4,42 +4,49 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { Helmet } from "react-helmet";
 import { HiEye, HiEyeOff } from "react-icons/hi";
-import { signInWithPopup } from "firebase/auth";
-import useAuth from "@/hooks/useAuth";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
-import auth, { googlleProvider } from "@/firebase/firebase.auth";
+import useAuth from "@/hooks/useAuth";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const LoginFrom = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
 
-  const { signIn } = useAuth();
+  const { signIn, googleLogin } = useAuth();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handelLogin = (event) => {
+  const handelLogin = async (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+    const toastId = toast.loading("Loading...");
+    try {
+      await signIn(email, password)
+        .then((result) => {
+          router.push("/");
+          console.log(result.user);
+        })
+        .catch((err) => console.log(err));
+      toast.dismiss(toastId);
+      toast.success("User Sing in Successfully");
+    } catch (error) {
+      toast.dismiss(toastId);
+      toast.error(error.message || "User not Sing in");
+    }
   };
 
   const handleGoogleSingIn = () => {
-    signInWithPopup(auth, googlleProvider)
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
+    googleLogin()
+      .then(() => {
+        router.push("/");
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch();
   };
 
   return (
@@ -47,10 +54,7 @@ const LoginFrom = () => {
       <Helmet>
         <title>FYM | Login</title>
       </Helmet>
-      <PageTitle
-        title="Our Login"
-        subTitle="Our Login page"
-      />
+      <PageTitle title="Our Login" subTitle="Our Login page" />
       <div className="w-full max-w-sm mx-auto rounded-lg shadow bg-gray-50 primary-shadow primary-border sm:p-6 md:p-8 ">
         <form onSubmit={handelLogin} className="space-y-6">
           <h5 className="text-3xl font-medium text-center text-gray-900 dark:text-white">
@@ -103,10 +107,7 @@ const LoginFrom = () => {
           />
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}
-            <Link
-              href="/register"
-              className="font-semibold primary-text"
-            >
+            <Link href="/register" className="font-semibold primary-text">
               Create account
             </Link>
           </div>

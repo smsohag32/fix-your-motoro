@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
+import { toast } from "react-hot-toast";
 
 const SignUpForm = () => {
   const [password, setPassword] = useState("");
@@ -25,33 +26,51 @@ const SignUpForm = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm();
 
-  const {createUser} = useAuth();
+  // const uploadImage = async (event) => {
+  //   const formData = new FormData();
+  //   if(!event.target.files[0]) return;
+  //   formData.append("image", event.target.files[0])
+  //   const toastId = toast.loading("Image uploading...")
+  //   try{
+  //     const rsc = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`) 
+  //     {
+  //       method: "POST"
+  //       body: formData
+  //     }
+  //   }
+  // }
+
+  const {createUser , profileUpdate} = useAuth();
  
-  const onSubmit = (data) => {
+  const onSubmit = async (data , event) => {
+    const {name , email , password , photo} = data;
     setError()
     if (data.password !== data.confirmPassword) {
       setError("Your password did not match");
       return;
     }
 
-    createUser(data.email, data.password)
-      .then((result) => {
-        const currentUser = result.user;
-        console.log(currentUser);
-        reset();
+    const toastId = toast.loading("Loading...")
+    try{
+      const user = await createUser(email , password)
+      await profileUpdate({
+        displayName: name ,
+        photoURL: photo,
       })
-      .catch((error) => {
-        setError(error.message);
-      });
+      toast.dismiss(toastId)
+      toast.success("User Sing in Successfully")
+    }
+    catch(error) {
+      toast.dismiss(toastId)
+      toast.error(error.message || "User not Sing in")
+    }
   };
 
   
@@ -95,11 +114,11 @@ const SignUpForm = () => {
         <input
           type="number"
           {...register("number", { required: true })}
-          name="email"
+          name="phoneNumber"
           placeholder="Phone Number"
           className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"
         />
-        {errors.email && (
+        {errors.phoneNumber && (
           <span className="text-red-600">Phone Number is required</span>
         )}
       </div>
