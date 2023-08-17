@@ -1,6 +1,7 @@
 import AuthContext from "@/context/AuthContext";
 import auth, { googlleProvider } from "@/firebase/firebase.auth";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -29,17 +30,21 @@ const AuthProvider = ({ children }) => {
     await updateProfile(auth, updateUser);
     setUser((preUser) => ({ ...preUser, ...updateUser }));
   };
-
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googlleProvider);
+  };
   const logout = () => {
     setLoading(true);
     return signOut(auth);
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsub = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
     });
+    return () => unsub();
   }, []);
 
   const value = {

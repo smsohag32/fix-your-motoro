@@ -12,7 +12,6 @@ import useAuth from "@/hooks/useAuth";
 
 const Nav = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -68,9 +67,11 @@ const Nav = () => {
           className="cursor-pointer"
         /> */}
         {user?.photoURL ? (
-          <img
+          <Image
             className="w-[35px] h-[35px] rounded-full"
             src={user.photoURL}
+            width={35}
+            height={35}
             title={user.displayName}
             alt=""
           />
