@@ -2,6 +2,7 @@
 import { AiFillHeart } from "react-icons/ai";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { FaBeer, FaGreaterThan, FaLessThan } from "react-icons/fa";
 // import { useRouter } from "next/navigation";
 import StarRating from "../../Home/SuccessReviews/StarRating";
 import toast, { Toaster } from "react-hot-toast";
@@ -15,6 +16,9 @@ const Shops = () => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
   const notify = () => toast("Coming Soon...");
 
   useEffect(() => {
@@ -26,12 +30,19 @@ const Shops = () => {
       });
   }, []);
 
-  const filteredShopData = shopData.filter(
-    (item) =>
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      (minPrice === "" || item.price >= parseFloat(minPrice)) &&
-      (maxPrice === "" || item.price <= parseFloat(maxPrice))
-  );
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const filteredShopData = shopData
+    .filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        (minPrice === "" || item.price >= parseFloat(minPrice)) &&
+        (maxPrice === "" || item.price <= parseFloat(maxPrice))
+    )
+    .slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(shopData.length / itemsPerPage);
 
   return (
     <div className="default-container py-12">
@@ -107,12 +118,34 @@ const Shops = () => {
                 >
                   View Details
                 </button> */}
-                <button onClick={notify}>Add to Card</button>
+                <button onClick={notify} className="primary-btn">
+                  Add to Card
+                </button>
                 <Toaster />
                 <p className="text-gray-700">${item.price.toFixed(2)}</p>
               </div>
             </div>
           ))}
+        </div>
+        
+        <div className="mt-4 flex justify-center">
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="mr-2 primary-btn"
+          >
+            <FaLessThan />
+          </button>
+          <p>
+            {currentPage} of {totalPages}
+          </p>
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={endIndex >= shopData.length}
+            className="ml-2 primary-btn"
+          >
+            <FaGreaterThan />
+          </button>
         </div>
       </div>
     </div>
