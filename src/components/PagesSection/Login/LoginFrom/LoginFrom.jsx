@@ -7,6 +7,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import useAuth from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
+import createJWT from "@/utils/createJWT";
 
 
 const LoginFrom = () => {
@@ -27,6 +28,7 @@ const LoginFrom = () => {
     const toastId = toast.loading("Loading...")
     try{
       const user = await signIn(email , password)
+      createJWT({email})
       toast.dismiss(toastId)
       toast.success("User Sing in Successfully")
     }
@@ -44,7 +46,8 @@ const LoginFrom = () => {
   const handleGoogleSingIn = async () => {
     const toastId = toast.loading("Loading...")
     try{
-      const user = await googleLogin();
+      const {user} = await googleLogin();
+      createJWT({email: user.email})
       toast.dismiss(toastId)
       toast.success("User Sing in Successfully")
     }

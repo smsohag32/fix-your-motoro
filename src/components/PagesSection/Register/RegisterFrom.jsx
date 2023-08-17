@@ -4,6 +4,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
+import createJWT from "@/utils/createJWT";
 
 const SignUpForm = () => {
   const [password, setPassword] = useState("");
@@ -29,7 +30,6 @@ const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -60,6 +60,7 @@ const SignUpForm = () => {
     const toastId = toast.loading("Loading...")
     try{
       const user = await createUser(email , password)
+      createJWT({email})
       await profileUpdate({
         displayName: name ,
         photoURL: photo,
@@ -73,9 +74,6 @@ const SignUpForm = () => {
     }
   };
 
-  
-
-
   return (
     <form className="m-3 md:m-6" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-control">
@@ -87,7 +85,7 @@ const SignUpForm = () => {
           type="name"
           name="name"
           placeholder="Name"
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded"
         />
         {errors.name && <span className="text-red-600">Name is required</span>}
       </div>
@@ -100,7 +98,7 @@ const SignUpForm = () => {
           {...register("email", { required: true })}
           name="email"
           placeholder="email"
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded"
         />
         {errors.email && (
           <span className="text-red-600">Email is required</span>
