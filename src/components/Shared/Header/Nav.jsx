@@ -67,7 +67,7 @@ const Nav = () => {
             width={40}
             height={40}
             title={displayName}
-            className="rounded-full cursor-pointer"
+            className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
           />
         )) || (
           <Image
@@ -78,31 +78,6 @@ const Nav = () => {
             className="cursor-pointer "
           />
         )}
-
-        {/* {user?.photoURL ? (
-        <Image
-          className="rounded-full"
-          width={40}
-          height={40}
-          src={photoURL || userLogo}
-          title={displayName}
-          alt=""
-        />
-      ) : (
-        <>
-          <Image
-          src={userLogo}
-          alt=""
-          width={40}
-          height={40}
-          className="cursor-pointer"
-        />
-        </>
-      )} */}
-
-        {/* <Link className="font-bold cursor-pointer" href="/login">
-          Login
-        </Link> */}
         {user ? (
           <>
             <button onClick={handleLogOut} className="font-bold cursor-pointer">
