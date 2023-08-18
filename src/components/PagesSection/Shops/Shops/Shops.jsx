@@ -2,7 +2,7 @@
 import { AiFillHeart } from "react-icons/ai";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { FaBeer, FaGreaterThan, FaLessThan } from "react-icons/fa";
+import { FaGreaterThan, FaLessThan } from "react-icons/fa";
 // import { useRouter } from "next/navigation";
 import StarRating from "../../Home/SuccessReviews/StarRating";
 import toast, { Toaster } from "react-hot-toast";
@@ -17,7 +17,8 @@ const Shops = () => {
   const [maxPrice, setMaxPrice] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const [itemsPerPage, setItemsPerPage]=useState(6)
+  // const itemsPerPage = 10;
 
   const notify = () => toast("Coming Soon...");
 
@@ -47,29 +48,43 @@ const Shops = () => {
   return (
     <div className="default-container py-12">
       <div className=" px-4">
-        <div className="flex mb-4">
+        <div className=" mb-4">
           <input
-            type="number"
-            placeholder="Min Price"
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
-            className="border p-2 mr-2"
+            type="text"
+            placeholder="Search products"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="border p-2 mb-4 w-full"
           />
-          <input
-            type="number"
-            placeholder="Max Price"
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
-            className="border p-2"
-          />
+          <div>
+            <div>
+              <input
+                type="number"
+                placeholder="Min Price"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+                className="border p-2 mr-2"
+              />
+              <input
+                type="number"
+                placeholder="Max Price"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+                className="border p-2"
+              />
+            </div>
+            <div className="flex my-2 items-center gap-3">
+              <p>Product per page: </p>
+              <input
+                type="number"
+                placeholder="Items PerPage"
+                value={itemsPerPage}
+                onChange={(e) => setItemsPerPage(e.target.value)}
+                className="border p-2 mr-2"
+              />
+            </div>
+          </div>
         </div>
-        <input
-          type="text"
-          placeholder="Search products"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="border p-2 mb-4 w-full"
-        />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {filteredShopData.map((item) => (
             <div
@@ -127,7 +142,7 @@ const Shops = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-4 flex justify-center">
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
