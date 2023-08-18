@@ -1,6 +1,7 @@
 import React from "react";
 
 const page = () => {
+  
   return (
     <>
       <div className="mt-32 max-w-4xl mx-auto p-8">

@@ -40,7 +40,7 @@ const ServicePage = ({ params }) => {
   } = service;
   // loadSingleService(params.service_id);
   return (
-    <div className="mt-32 default-container">
+    <div className="mt-32">
       <PageTitle
         title={service_name}
         subTitle={service_description}
