@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import "@/app/globals.css";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";

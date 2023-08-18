@@ -18,7 +18,7 @@ const Services = () => {
   }, []);
   const expertLimit = 6;
   return (
-    <div className="py-12 mt-20 default-container">
+    <div className="py-12 mt-12 default-container">
       <SectionTitle
         title="Special Services"
         subTitle="We are provide motor servicing"
@@ -32,9 +32,11 @@ const Services = () => {
           ></OurServiceSingleCart>
         ))}
       </div>
-      <button className=" w-[100px] mx-auto text-center">
-        <Link className="text-center rou primary-btn" href="service">see all</Link>
-      </button>
+      <div className="text-center w-full">
+        <Link className="text-center primary-btn" href="service">
+          See all
+        </Link>
+      </div>
     </div>
   );
 };
