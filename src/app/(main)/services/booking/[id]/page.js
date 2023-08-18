@@ -1,14 +1,21 @@
-"use client";
-import ServiceContext from "@/context/ServiceContext";
-import React, { useContext } from "react";
+import React from "react";
+import toast, { Toaster } from "react-hot-toast";
 
-const BookingPage = ({ params }) => {
-  console.log(params.id);
+const page = () => {
+  const notify = () =>
+    toast("This Service Has been booked successfully.......");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    notify();
+    form.reset();
+  };
+
   return (
     <>
-      <div className="mt-32 default-container mx-auto p-8">
+      <div className="mt-32 max-w-4xl mx-auto p-8">
         <h1 className="text-2xl font-bold mb-4">Work Order Request</h1>
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="col-span-2 sm:col-span-1">
               <label htmlFor="firstName" className="block text-sm font-medium">
@@ -134,16 +141,22 @@ const BookingPage = ({ params }) => {
           </div>
           {/* ... More form fields */}
 
-          <button
-            type="submit"
-            className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
-          >
-            Submit
-          </button>
+          <div className="md:flex justify-between">
+            <button type="submit" className="primary-btn rounded-md">
+              Submit
+            </button>
+            <Toaster />
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600"
+            >
+              Print
+            </button>
+          </div>
         </form>
       </div>
     </>
   );
 };
 
-export default BookingPage;
+export default page;
