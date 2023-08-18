@@ -1,15 +1,12 @@
 "use client";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
-import ServiceContext from "@/context/ServiceContext";
-import loadSingleService from "@/utils/data/fetchData/loadSingleService";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BiMessageRounded } from "react-icons/bi";
 
 const ServicePage = ({ params }) => {
-  const { service, setService } = useContext(ServiceContext);
-
+  const [service, setService] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -84,7 +81,6 @@ const ServicePage = ({ params }) => {
                   Service Duration
                 </p>
                 <p className="primary-text md:pl-10">
-                  :{" "}
                   <p className="md:inline md:pl-10 font-bold font-mono">
                     {service_duration}
                   </p>
