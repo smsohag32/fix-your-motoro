@@ -10,12 +10,15 @@ import logo from "@/assets/logoFix.jpeg";
 import userLogo from "@/assets/userlogo.png";
 import NavLink from "./NavLink";
 import useAuth from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
+  const router = useRouter();
   const { user, logout } = useAuth();
   const { uid, displayName, photoURL } = user || {};
   const handleLogOut = async () => {
     await logout();
+    router.push("/");
     toast.success("Successfully logout!");
   };
   const [isOpen, setIsOpen] = useState();

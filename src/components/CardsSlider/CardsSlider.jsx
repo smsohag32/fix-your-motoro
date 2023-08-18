@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import "@/app/globals.css";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -41,7 +40,7 @@ const CardSlider = ({ items, loading }) => {
         >
           {items.map((item) => (
             <SwiperSlide key={item._id}>
-              <div className="cursor-pointer border border-gray-300 ">
+              <div className="border border-gray-300 cursor-pointer ">
                 <div className="relative">
                   <Image
                     className="w-full h-48"
@@ -56,8 +55,8 @@ const CardSlider = ({ items, loading }) => {
                 <div className="px-5 pt-2">
                   <h2 className="name-text primary-text">{item.name}</h2>
                   {item.discount && (
-                    <div className="absolute top-2 right-5 text-white rounded-full primary-bg">
-                      <p className=" p-1">
+                    <div className="absolute text-white rounded-full top-2 right-5 primary-bg">
+                      <p className="p-1 ">
                         {item.discount ? (
                           <span>{item.discountPercentage}%</span>
                         ) : (
@@ -72,9 +71,9 @@ const CardSlider = ({ items, loading }) => {
                       <p className="ml-1">{item.rating.toFixed(1)}</p>
                     </div>
                   </div>
-                  <h3 className="text-lg font-semibold my-2">{item.name}</h3>
+                  <h3 className="my-2 text-lg font-semibold">{item.name}</h3>
 
-                  <div className="flex justify-between items-center my-2">
+                  <div className="flex items-center justify-between my-2">
                     <p className="text-gray-700 opacity-90">
                       ${item.price.toFixed(2)}
                     </p>
