@@ -1,6 +1,6 @@
 const createJWT = async (payload) => {
     try {
-        const res = await fetch("/api/route", {
+        const res = await fetch("/api/auth", {
             method: "POST",
             headers: {
                 "context-type": "application/json"

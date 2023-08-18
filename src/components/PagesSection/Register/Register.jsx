@@ -35,7 +35,7 @@ const SingUp = () => {
       .then(() => {
         router.push("/");
       })
-      .catch();
+      .catch()
   };
 
 

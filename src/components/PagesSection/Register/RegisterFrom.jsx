@@ -61,7 +61,6 @@ const SignUpForm = () => {
     const toastId = toast.loading("Loading...")
     try{
       const user = await createUser(email , password)
-      createJWT({email})
       await profileUpdate({
         displayName: name ,
         photoURL: photo,
