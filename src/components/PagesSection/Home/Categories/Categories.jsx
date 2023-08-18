@@ -21,21 +21,21 @@ const Categories = () => {
           subTitle="Choice our collections of services"
         />
       </div>
-      <div className="mt-20">
+      <div className="mt-14">
         <Tabs>
           <TabList className="border-0">
             <Tab>
-              <span className="text-2xl font-bold uppercase hover:text-orange-600">
+              <span className="text-lg font-bold uppercase hover:text-gray-800">
                 Maintenance
               </span>
             </Tab>
             <Tab>
-              <span className="text-2xl font-bold uppercase hover:text-orange-600">
+              <span className="text-lg font-bold uppercase hover:text-gray-800">
                 Detailing
               </span>
             </Tab>
             <Tab>
-              <span className="text-2xl font-bold uppercase hover:text-orange-600">
+              <span className="text-lg font-bold uppercase hover:text-gray-800">
                 Performance
               </span>
             </Tab>
@@ -43,7 +43,7 @@ const Categories = () => {
 
           <TabPanel>
             <section className="w-full mt-8 lg:relative">
-              <h2 className="text-3xl font-semibold primary-text">
+              <h2 className="text-xl font-semibold">
                 Maintain Your vehicle perfectly
               </h2>
               <div className="gap-5 pt-8 lg:flex lg:justify-around lg:items-center">
@@ -109,7 +109,7 @@ const Categories = () => {
           </TabPanel>
           <TabPanel>
             <section className="mt-8 lg:relative">
-              <h2 className="text-3xl font-semibold primary-text">
+              <h2 className="text-xl font-semibold">
                 Make Your vehicle GORGEOUS
               </h2>
               <div className="gap-5 pt-8 lg:flex lg:justify-around lg:items-center">
@@ -173,9 +173,7 @@ const Categories = () => {
           </TabPanel>
           <TabPanel>
             <section className="mt-8 lg:relative">
-              <h2 className="text-3xl font-semibold primary-text">
-                Upgrade Your Machine
-              </h2>
+              <h2 className="text-xl font-semibold">Upgrade Your Machine</h2>
               <div className="gap-5 pt-8 lg:flex lg:justify-around lg:items-center">
                 <Image
                   src={img5}
@@ -189,7 +187,7 @@ const Categories = () => {
                 />
               </div>
               <div className="lg:flex lg:justify-center">
-                <div className="bg-slate-600 lg:w-[75%] text-left px-16 py-8 lg:absolute -bottom-32 lg:flex lg:justify-around ">
+                <div className="bg-black lg:w-[75%] text-left px-16 py-8 lg:absolute -bottom-32 lg:flex lg:justify-around ">
                   <div>
                     <li className="pb-2 text-lg font-semibold text-white">
                       Engine Tuning

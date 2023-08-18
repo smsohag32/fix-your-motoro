@@ -1,75 +1,102 @@
+"use client";
 import React from "react";
-import styles from "./BlurredImageSection.module.css";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
+import "@/styles/about.modules.css";
+import { Toaster, toast } from "react-hot-toast";
 
 const GetInTouch = () => {
+  const handleMessage = (e) => {
+    e.preventDefault();
+    toast.success("message send success");
+    e.target.reset();
+  };
+
   return (
-    <section className="">
-      <div>
-        <div className="text-center mb-12">
-          <SectionTitle
-            title="Engage With Us"
-            subTitle={"Empowering Your Vehicles with Quality Servicing"}
-          />
-        </div>
-        <section className="md:relative mt-8">
-          <div className={styles.sectionContainer}>
-            <div className={styles.backgroundImage}></div>
-            <div className={styles.blurOverlay}></div>
-            <div className={styles.imageOverlay}></div>
-            <div className={styles.rightBlurOverlay}></div>
-            {/* Your content for the section */}
-          </div>
-          <div className="bg-black bg-opacity-90 text-white p-10 lg:w-[450px] h-full text-left md:absolute top-0 right-5">
-            <div className="">
-              <h2 className="font-bold text-3xl text-white lg:pt-16">
-                Contact Info
-              </h2>
-              <p className="text-lg font-medium text-gray-400 pt-2">
-                56 Banasree - Staff Quarter - Demra Rd, Dhaka
-              </p>
-              <p className="text-lg font-medium text-gray-400 pt-2">
-                Call : +880123698574
-              </p>
-              <p className="text-lg font-medium text-gray-400 pt-2">
-                Email : fixyourmotoro@gmail.com
-              </p>
-              <h2 className="font-bold text-3xl text-white lg:pt-16">
-                Opening Ours
-              </h2>
-              <p className="text-lg font-medium text-gray-400 pt-2">
-                Sun-Thurs : 9:00 AM - 11:00 PM{" "}
-              </p>
-              <p className="text-lg font-medium text-gray-400 pt-2">
-                Fri : CLOSED
-              </p>
-              <p className="text-lg font-medium text-gray-400 pt-2">
-                Sat : 2:00 PM - 9:00 PM
-              </p>
+    <section className=" mb-12 pb-8 default-container">
+      <div className="text-center mb-12">
+        <SectionTitle
+          title="Engage With Us"
+          subTitle={"Empowering Your Vehicles with Quality Servicing"}
+        />
+      </div>
+      <div className="flex flex-col md:flex-row gap-10 md:items-center justify-center md:justify-start">
+        <div className="w-full">
+          <div className="h-96 map-container">
+            <iframe
+              title="Head Office"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.3757240475534!2d90.36696441471575!3d23.805234886252663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c1a96f884313%3A0x35ab43a99a1eb7f0!2sFix%20Moto!5e0!3m2!1sen!2sbd!4v1692256035601!5m2!1sen!2sbd"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+            ></iframe>
+            <div className="map-tooltip">
+              <p>FYA Head Office</p>
             </div>
           </div>
-          <div className="bg-black bg-opacity-90 p-10 lg:w-96 h-full text-left md:absolute top-0 left-4">
-            <h2 className="font-bold text-3xl text-white lg:pt-16">
-              Our Branches
-            </h2>
-            <p className="font-semibold text-xl text-gray-400 pt-2">
-              Divisions -
-            </p>
-            <li className="text-lg font-medium text-gray-400 pt-2">Dhaka</li>
-            <li className="text-lg font-medium text-gray-400 pt-2">
-              Chittogong
-            </li>
-            <li className="text-lg font-medium text-gray-400 pt-2">Rajshahi</li>
-            <li className="text-lg font-medium text-gray-400 pt-2">Barishal</li>
-            <li className="text-lg font-medium text-gray-400 pt-2">Khulna</li>
-            <li className="text-lg font-medium text-gray-400 pt-2">Shylet</li>
-            <li className="text-lg font-medium text-gray-400 pt-2">
-              Maymansingh
-            </li>
-            <li className="text-lg font-medium text-gray-400 pt-2">Rangpur</li>
-          </div>
-        </section>
+        </div>
+        <div className="w-full">
+          <form onSubmit={handleMessage} className="max-w-md mx-auto">
+            <div>
+              <label
+                for="name"
+                className="block text-sm font-medium text-gray-900"
+              >
+                Name
+              </label>
+              <div className="mt-2">
+                <input
+                  name="name"
+                  type="name"
+                  required
+                  className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2 "
+                />
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label
+                for="email"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Email address
+              </label>
+              <div className="mt-2">
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+                />
+              </div>
+            </div>
+            <div className="mt-4">
+              <div className="flex items-center justify-between">
+                <label
+                  for="message"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Message
+                </label>
+              </div>
+              <div className="mt-2">
+                <textarea
+                  required
+                  className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+                  name="message"
+                  rows="4"
+                  cols="50"
+                />
+              </div>
+            </div>
+            <button type="submit" className="primary-btn mt-4">
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
+      <Toaster />
     </section>
   );
 };
