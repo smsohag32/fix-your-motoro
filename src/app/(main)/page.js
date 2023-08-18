@@ -14,10 +14,10 @@ const HomePage = () => {
   return (
     <main>
       <Hero />
-      <OurExperts />
-      <Categories />
-      <OurServices />
       <NearWorkshop />
+      <Categories />
+      <OurExperts />
+      <OurServices />
       <SpecialsOffers />
       <SuccessReviews />
       <BestProducts />

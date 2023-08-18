@@ -40,7 +40,7 @@ const SpecialsOffers = () => {
         {offersData.map((offer, index) => (
           <div
             key={index}
-            className="p-5 rounded-sm primary-shadow hover:scale-105 duration-500 flex flex-col transition-all"
+            className="p-5 rounded-sm border-gray-300 border hover:scale-105 duration-500 flex flex-col transition-all"
           >
             <h2 className="text-2xl font-bold mb-2">{offer.title}</h2>
             <p className="text-lg">{offer.description}</p>
