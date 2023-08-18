@@ -38,80 +38,84 @@ const ServicePage = ({ params }) => {
     warranty,
     _id,
   } = service || {};
+  if (loading) {
+    return <Spinner />;
+  }
   return (
-    <div className="mt-32 default-container">
-      <PageTitle
-        title={service_name}
-        subTitle={service_description}
-      ></PageTitle>
-      <div>
-        {/* Service Area */}
-        <div className="lg:flex justify-between gap-10">
-          <figure>
-            <Image
-              className="rounded-lg shadow-md"
-              src={service_image}
-              alt={service_name}
-              width={850}
-              height={340}
-            />
-            <figcaption className="text-sm font-thin">
-              {service_name}
-            </figcaption>
-          </figure>
-          <div>
-            <h3 className="text-4xl text-slate-950 font-extrabold tracking-wide mt-6 mb-2">
-              {service_name}
-            </h3>
-            <p className="text-slate-600 text-xl font-semibold mb-12">
-              {service_description}
-            </p>
-            <div className="bg-orange-100 px-8 py-4 rounded-md shadow-xl">
-              <div className="md:flex items-center text-xl my-2">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Price{" "}
-                </p>
-                <p className="md:pl-10">
-                  :
-                  <p className="md:inline md:pl-10">
-                    <span className="bg-orange-300 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
-                      {service_price}
-                    </span>
+    <>
+      <div className="mt-32 default-container">
+        <PageTitle
+          title={service_name}
+          subTitle={service_description}
+        ></PageTitle>
+        <div>
+          {/* Service Area */}
+          <div className="lg:flex justify-between gap-10">
+            <figure>
+              <Image
+                className="rounded-lg shadow-md"
+                src={service_image ? service_image : ""}
+                alt={service_name}
+                width={850}
+                height={340}
+              />
+              <figcaption className="text-sm font-thin">
+                {service_name}
+              </figcaption>
+            </figure>
+            <div>
+              <h3 className="text-4xl text-slate-950 font-extrabold tracking-wide mt-6 mb-2">
+                {service_name}
+              </h3>
+              <p className="text-slate-600 text-xl font-semibold mb-12">
+                {service_description}
+              </p>
+              <div className="bg-orange-100 px-8 py-4 rounded-md shadow-xl">
+                <div className="md:flex items-center text-xl my-2">
+                  <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
+                    Price{" "}
                   </p>
-                </p>
-              </div>
-              <div className="text-xl font-medium md:flex items-center mb-2">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Service Duration
-                </p>
-                <p className="primary-text md:pl-10">
-                  <p className="md:inline md:pl-10 font-bold font-mono">
-                    {service_duration}
+                  <p className="md:pl-10">
+                    :
+                    <p className="md:inline md:pl-10">
+                      <span className="bg-orange-300 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
+                        {service_price}
+                      </span>
+                    </p>
                   </p>
-                </p>
-              </div>
-              <div className="md:flex text-xl mb-2">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Warranty
-                </p>
-                <p className="md:pl-10">
-                  :
-                  <p className="md:inline md:pl-10 font-bold font-mono">
-                    {warranty}
+                </div>
+                <div className="text-xl font-medium md:flex items-center mb-2">
+                  <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
+                    Service Duration
                   </p>
-                </p>
-              </div>
-              <div className="md:flex text-xl mb-4">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Benefits
-                </p>
-                <p className="md:pl-[130px]">
-                  :
-                  <p className="md:inline md:pl-10 font-bold font-mono">
-                    {benefits}
+                  <p className="primary-text md:pl-10">
+                    <p className="md:inline md:pl-10 font-bold font-mono">
+                      {service_duration}
+                    </p>
                   </p>
-                </p>
-              </div>
+                </div>
+                <div className="md:flex text-xl mb-2">
+                  <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
+                    Warranty
+                  </p>
+                  <p className="md:pl-10">
+                    :
+                    <p className="md:inline md:pl-10 font-bold font-mono">
+                      {warranty}
+                    </p>
+                  </p>
+                </div>
+                <div className="md:flex text-xl mb-4">
+                  <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
+                    Benefits
+                  </p>
+                  <p className="md:pl-[130px]">
+                    :
+                    <p className="md:inline md:pl-10 font-bold font-mono">
+                      {benefits}
+                    </p>
+                  </p>
+                </div>
 
                 <Link href={`/services/booking/${_id}`}>
                   <button className="primary-btn">Book Now</button>
