@@ -148,11 +148,11 @@ const ServicePage = ({ params }) => {
         </div>
         <div>
           <h2 className="primary-text text-xl font-semibold">
-            Crafting Automotive Perfection: Your Vehicle's Trusted Haven
+            Crafting Automotive Perfection: Your Vehicles Trusted Haven
           </h2>
           <p className="text-md text-cyan-800 tracking-tight leading-4">
-            At our station, cars aren't just machines; they're passions. Witness
-            the transformation as we elevate each vehicle's performance and
+            At our station, cars arent just machines; they re passions. Witness
+            the transformation as we elevate each vehicles performance and
             aesthetics.
             <div className="p-4 border border-teal-600 rounded mt-8">
               <h4 className="text-sky-600 font-mono text-xl font-semibold">
