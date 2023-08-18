@@ -18,16 +18,16 @@ function RecentNews() {
   };
 
   return (
-    <div className="default-container py-12">
+    <div className="py-12 default-container">
       <SectionTitle
         title="Special News"
         subTitle="Recent motor servicing news and blogs"
       />
-      <div className="grid grid-cols-1 my-12 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
         {articles.map((article) => (
           <div
             key={article.id}
-            className="cursor-pointer flex flex-col primary-shadow hover:scale-95 duration-500 pb-5 transition-all transform items-center"
+            className="flex flex-col items-center pb-5 transition-all duration-500 transform cursor-pointer primary-shadow hover:scale-95"
             onClick={() => openModal(article)}
           >
 
@@ -35,10 +35,10 @@ function RecentNews() {
               src={article.image}
               alt="news"
               width={280}
-              className="w-full h-44 object-cover"
+              className="object-cover w-full h-44"
               height={280}
             />
-            <h2 className="text-lg px-3 font-semibold tracking-wider mt-4 md:text-xl">
+            <h2 className="px-3 mt-4 text-lg font-semibold tracking-wider md:text-xl">
               {article.title}
             </h2>
           </div>

@@ -2,7 +2,6 @@ import { connectToDB } from "@/dbConfig/dbConfig";
 import services from "@/modules/services";
 
 export const GET = async (request, { params }) => {
-  console.log(params.id);
   try {
     await connectToDB();
     const service = await services.findById(params.id);
