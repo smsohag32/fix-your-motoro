@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiMessageRounded } from "react-icons/bi";
-import  UserOnly  from "@/private/UserOnly";
 
 const ServicePage = ({ params }) => {
   const [service, setService] = useState([]);
@@ -43,8 +42,7 @@ const ServicePage = ({ params }) => {
     return <Spinner />;
   }
   return (
-    <UserOnly>
-      <div className="mt-32 default-container">
+    <div className="mt-32 default-container">
       <PageTitle
         title={service_name}
         subTitle={service_description}
@@ -203,7 +201,6 @@ const ServicePage = ({ params }) => {
         </div>
       </div>
     </div>
-    </UserOnly>
   );
 };
 
