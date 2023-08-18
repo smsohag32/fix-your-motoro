@@ -1,10 +1,11 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import WorkshopDetails from "../WorkshopDetails/WorkshopDetails";
+import StarRating from "../../Home/SuccessReviews/StarRating";
 
 const SingleWorkshop = (props) => {
   
-  const { name, _id, image,description } =props.workshopsData;
+  const { name, _id, image,phone,email,address,rating } =props.workshopsData;
   // const { workshop } = props.workshopData;
 
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
@@ -33,12 +34,22 @@ const SingleWorkshop = (props) => {
               />
             </div>
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-4 pb-12 text-center transition-all duration-500 group-hover:translate-y-0">
-              <h1 className="font-serif text-3xl font-bold text-white">
+              <h1 className="font-serif text-3xl font-bold name-text primary-text">
                 {name}
               </h1>
-              <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {description}
+              
+              <p className="mb-3 text-lg italic primary-text font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {email}
               </p>
+              <p className="mb-3 text-lg italic primary-text font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {  address}
+              </p>
+              <div className="">
+                    <div className="flex mr-2">
+                      <StarRating rating={rating} />
+                      <p className="ml-1 primary-text">{rating}</p>
+                    </div>
+                  </div>
             
             </div>
           </div>
