@@ -1,5 +1,6 @@
 "use client";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
+import Spinner from "@/components/Spinners/Spinner";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -8,16 +9,19 @@ import  UserOnly  from "@/private/UserOnly";
 
 const ServicePage = ({ params }) => {
   const [service, setService] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/services/${params.service_id}`
-        );
+        const response = await fetch(`/api/services/${params.service_id}`);
         const data = await response.json();
         setService(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching JSON data:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -35,9 +39,11 @@ const ServicePage = ({ params }) => {
     warranty,
     _id,
   } = service || {};
+  if (loading) {
+    return <Spinner />;
+  }
   return (
-   <UserOnly>
-       <div className="mt-32 default-container">
+    <div className="mt-32 default-container">
       <PageTitle
         title={service_name}
         subTitle={service_description}
@@ -196,7 +202,6 @@ const ServicePage = ({ params }) => {
         </div>
       </div>
     </div>
-   </UserOnly>
   );
 };
 
