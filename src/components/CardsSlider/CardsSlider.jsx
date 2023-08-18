@@ -8,8 +8,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import StarRating from "../PagesSection/Home/SuccessReviews/StarRating";
 import MidSpinner from "../Spinners/MidSpinner";
+import { useRouter } from "next/navigation";
 
 const CardSlider = ({ items, loading }) => {
+  const router = useRouter();
   return (
     <div className="default-container">
       {loading ? (
@@ -40,7 +42,10 @@ const CardSlider = ({ items, loading }) => {
           className="mt-8 mySwiper"
         >
           {items.map((item) => (
-            <SwiperSlide key={item._id}>
+            <SwiperSlide
+              key={item._id}
+              onClick={() => router.push(`/shops/${item?._id}`)}
+            >
               <div className="cursor-pointer border border-gray-300 ">
                 <div className="relative">
                   <Image

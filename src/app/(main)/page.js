@@ -1,3 +1,4 @@
+import BestProducts from "@/components/PagesSection/Home/BestProducts/BestProducts";
 import CarCareTips from "@/components/PagesSection/Home/CarCareTips/CarCareTips";
 import Categories from "@/components/PagesSection/Home/Categories/Categories";
 import GetInTouch from "@/components/PagesSection/Home/GetInTouch/GetInTouch";
@@ -17,6 +18,7 @@ const HomePage = () => {
       <OurServices />
       <SpecialsOffers />
       <SuccessReviews />
+      <BestProducts />
       <RecentNews />
       <CarCareTips />
       <GetInTouch />
