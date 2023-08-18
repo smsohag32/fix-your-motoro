@@ -8,8 +8,8 @@ const ServiceSingleCard = ({ singleCard }) => {
   const { id, serviceName, image, about } = singleCard;
 
   return (
-    <div className="cursor-pointer flex flex-col primary-shadow hover:scale-95 duration-500 pb-5 transition-all transform items-center">
-      <Link href="/service">
+    <div className="flex flex-col items-center pb-5 transition-all duration-500 transform cursor-pointer primary-shadow hover:scale-95">
+      <div>
         <Image
           className="w-full h-60"
           src={image}
@@ -17,14 +17,14 @@ const ServiceSingleCard = ({ singleCard }) => {
           width="400"
           height="300"
         />
-      </Link>
-      <div className="flex p-3 flex-col mt-auto">
-        <Link href="/service">
-          <h2 className="mb-2 font-semibold hover:text-orange-600 tracking-wider">
+      </div>
+      <div className="flex flex-col p-3 mt-auto">
+        <div>
+          <h2 className="mb-2 font-semibold tracking-wider hover:text-orange-600">
             {serviceName}
           </h2>
-          <h2 className="opacity-90 text-sm">Experience: {about}</h2>
-        </Link>
+          <h2 className="text-sm opacity-90">Experience: {about}</h2>
+        </div>
       </div>
     </div>
   );

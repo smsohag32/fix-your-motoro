@@ -11,10 +11,10 @@ import { useRouter } from "next/navigation";
 
 const LoginFrom = () => {
   const router = useRouter();
+  const { signIn, googleLogin } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
 
-  const { signIn, googleLogin } = useAuth();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -31,10 +31,10 @@ const LoginFrom = () => {
         .then((result) => {
           router.push("/");
           console.log(result.user);
+          toast.dismiss(toastId);
+          toast.success("User Sing in Successfully");
         })
-        .catch((err) => console.log(err));
-      toast.dismiss(toastId);
-      toast.success("User Sing in Successfully");
+        // .catch((err) => console.log(err));
     } catch (error) {
       toast.dismiss(toastId);
       toast.error(error.message || "User not Sing in");
@@ -50,12 +50,12 @@ const LoginFrom = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="">
       <Helmet>
         <title>FYM | Login</title>
       </Helmet>
       <PageTitle title="Our Login" subTitle="Our Login page" />
-      <div className="w-full max-w-sm mx-auto rounded-lg shadow bg-gray-50 primary-shadow primary-border sm:p-6 md:p-8 ">
+      <div className="w-full max-w-sm mx-auto mb-8 rounded-lg shadow bg-gray-50 primary-shadow primary-border sm:p-6 md:p-8 ">
         <form onSubmit={handelLogin} className="space-y-6">
           <h5 className="text-3xl font-medium text-center text-gray-900 dark:text-white">
             Login

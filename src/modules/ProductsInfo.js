@@ -1,61 +1,48 @@
 import { Schema, model, models } from "mongoose";
 
 const productSchema = new Schema({
-  title: {
+  workShop_id: {
     type: String,
-    required: [true, "title is required."],
+    required: [true, "workShop_id is required."],
   },
-  workshop_id: {
+  image: {
     type: String,
-    required: [true, "workshop is required."],
+    required: [true, "image is required."],
   },
-  service_name: {
+  name: {
     type: String,
-    required: [true, "Service name is required."],
+    required: [true, "address name is required."],
   },
-  service_category: {
+  category: {
     type: String,
-    required: [true, "service_category is required."],
+    required: [true, "email is required."],
   },
-  service_description: {
+  description: {
     type: String,
-    required: [true, "service_description is required."],
+    required: [true, "phone is required."],
   },
-  service_description: {
+  price: {
+    type: Number,
+    required: [true, "Price is required."],
+  },
+  stock: {
+    type: Number,
+    required: [true, "services is required."],
+  },
+  discount: {
+    type: Boolean,
+  },
+  discountedPrice: {
+    type: Number,
+  },
+  discountPercentage: {
     type: String,
-    required: [true, "service_description is required."],
   },
-  service_duration: {
-    type: String,
-    required: [true, "service_duration is required."],
+  rating: {
+    type: Number,
   },
-  service_price: {
-    type: String,
-    required: [true, "service_price is required."],
-  },
-  benefits: {
-    type: String,
-    required: [true, "benefits is required."],
-  },
-  customer_reviews: {
-    type: [],
-    required: [true, "customer_reviews is required."],
-  },
-  benefits: {
-    type: String,
-    required: [true, "service_price is required."],
-  },
-  workshop_image: {
-    type: String,
-    required: [true, "workshop_image is required."],
-  },
-  service_image: {
-    type: String,
-    required: [true, "service_image is required."],
-  },
-  warranty: {
-    type: String,
-    required: [true, "warranty is required."],
+  likes: {
+    type: Number,
   },
 });
 

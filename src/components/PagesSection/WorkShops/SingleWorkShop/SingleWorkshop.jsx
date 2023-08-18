@@ -1,50 +1,66 @@
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import WorkshopDetails from "../WorkshopDetails/WorkshopDetails";
+import StarRating from "../../Home/SuccessReviews/StarRating";
 
 const SingleWorkshop = (props) => {
-  // console.log(props.service);
-  const { name, _id, image,description } =
-    props.workshopsData;
+  
+  const { name, _id, image,phone,email,address,rating } =props.workshopsData;
+  // const { workshop } = props.workshopData;
+
+  const [selectedWorkshop, setSelectedWorkshop] = useState(null);
+  console.log(selectedWorkshop);
+  const openModal = (workshopData) => {
+    
+    setSelectedWorkshop(workshopData);
+  };
+
+  const closeModal = () => {
+    setSelectedWorkshop(null);
+  };
   return (
-    <div>
+    <div >
       <div className="flex items-center justify-center bg-gray-50">
-        <div className="">
-          <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-            <div className="h-72 w-96">
+        <div onClick={() => openModal(props.workshopsData)}>
+          <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+            <div className="h-72 w-96"
+            >
               <Image
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                 src={image}
-                alt=""
+                alt="zzxv"
                 width={384}
                 height={288}
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-4 pb-12 text-center transition-all duration-500 group-hover:translate-y-0">
-              <h1 className="font-serif text-3xl font-bold text-white">
+              <h1 className="font-serif text-3xl font-bold name-text primary-text">
                 {name}
               </h1>
-              <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {description}
+              
+              <p className="mb-3 text-lg italic primary-text font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {email}
               </p>
-              <Link href={`/workshops/${_id}`}>
-                <button className="rounded-full bg-white py-2 px-3.5 font-semibold text-sm capitalize text-black  shadow shadow-black/60">
-                  View Details
-                </button>
-              </Link>
+              <p className="mb-3 text-lg italic primary-text font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                {  address}
+              </p>
+              <div className="">
+                    <div className="flex mr-2">
+                      <StarRating rating={rating} />
+                      <p className="ml-1 primary-text">{rating}</p>
+                    </div>
+                  </div>
+            
             </div>
           </div>
         </div>
-        {/* <div class="fixed bottom-16">
-          <p class="font-com text-2xl font-semibold text-white">
-            All Images are from{" "}
-            <a href="https://unsplash.com" class="text-blue-500">
-              Unsplash.com
-            </a>
-          </p>
-        </div> */}
+       
       </div>
+      <WorkshopDetails
+        isOpen={selectedWorkshop !== null}
+        closeModal={closeModal}
+        workshop={selectedWorkshop || {}}
+      />
     </div>
   );
 };

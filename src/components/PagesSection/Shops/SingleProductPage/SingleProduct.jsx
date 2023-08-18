@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 // import shopData from "../../data/shopData"; // Import your shop data
 
-const ShopDetail = ({ params }) => {
-  console.log(params);
+const ShopDetail = ({ param }) => {
+  console.log(param);
   const [shopData, setShopData] = useState([]);
 
   useEffect(() => {

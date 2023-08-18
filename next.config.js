@@ -10,6 +10,8 @@ module.exports = {
       "media.istockphoto.com",
       "firebasestorage.googleapis.com",
       "lh3.googleusercontent.com",
+      "st.depositphotos.com",
+      "st3.depositphotos.com",
     ],
   },
 };

@@ -18,12 +18,12 @@ const Services = () => {
   }, []);
   const expertLimit = 6;
   return (
-    <div className="default-container py-12  mt-20">
+    <div className="py-12 mt-20 default-container">
       <SectionTitle
         title="Special Services"
         subTitle="We are provide motor servicing"
       />
-      <div className="card-section pt-8">
+      <div className="pt-8 card-section">
         {/*json map section*/}
         {service.slice(0, expertLimit).map((singleCard, index) => (
           <OurServiceSingleCart
@@ -32,6 +32,9 @@ const Services = () => {
           ></OurServiceSingleCart>
         ))}
       </div>
+      <button className=" w-[100px] mx-auto text-center">
+        <Link className="text-center rou primary-btn" href="service">see all</Link>
+      </button>
     </div>
   );
 };
