@@ -43,7 +43,8 @@ const ServicePage = ({ params }) => {
     return <Spinner />;
   }
   return (
-    <div className="mt-32 default-container">
+    <UserOnly>
+      <div className="mt-32 default-container">
       <PageTitle
         title={service_name}
         subTitle={service_description}
@@ -202,6 +203,7 @@ const ServicePage = ({ params }) => {
         </div>
       </div>
     </div>
+    </UserOnly>
   );
 };
 
