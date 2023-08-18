@@ -1,7 +1,9 @@
+import BestProducts from "@/components/PagesSection/Home/BestProducts/BestProducts";
 import CarCareTips from "@/components/PagesSection/Home/CarCareTips/CarCareTips";
 import Categories from "@/components/PagesSection/Home/Categories/Categories";
 import GetInTouch from "@/components/PagesSection/Home/GetInTouch/GetInTouch";
 import Hero from "@/components/PagesSection/Home/Hero/Hero";
+import NearWorkshop from "@/components/PagesSection/Home/NearWorkshop/NearWorkshop";
 import OurExperts from "@/components/PagesSection/Home/OurExperts/OurExperts";
 import OurServices from "@/components/PagesSection/Home/OurServices/OurServices";
 import RecentNews from "@/components/PagesSection/Home/RecentNews/RecentNews";
@@ -15,8 +17,10 @@ const HomePage = () => {
       <OurExperts />
       <Categories />
       <OurServices />
+      <NearWorkshop />
       <SpecialsOffers />
       <SuccessReviews />
+      <BestProducts />
       <RecentNews />
       <CarCareTips />
       <GetInTouch />

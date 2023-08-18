@@ -22,7 +22,7 @@ const Shops = () => {
   const notify = () => toast("Coming Soon...");
 
   useEffect(() => {
-    fetch("/data/shop.json")
+    fetch("/api/all/products")
       .then((res) => res.json())
       .then((data) => setShopData(data))
       .catch((error) => {
@@ -127,7 +127,7 @@ const Shops = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-4 flex justify-center">
           <button
             onClick={() => setCurrentPage(currentPage - 1)}

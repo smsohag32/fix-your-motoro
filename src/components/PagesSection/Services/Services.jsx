@@ -2,11 +2,13 @@
 import ServiceFilter from "@/components/PagesSection/Services/ServiceFilter";
 import React, { useEffect, useState } from "react";
 import SingleService from "./SingleService";
+import MidSpinner from "@/components/Spinners/MidSpinner";
 
 const Services = () => {
   const [servicesData, setServicesData] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const selectOption = (option) => {
     setSelectedOption(option);
@@ -14,6 +16,7 @@ const Services = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -21,8 +24,11 @@ const Services = () => {
         );
         const data = await response.json();
         setServicesData(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching JSON data:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -38,14 +44,20 @@ const Services = () => {
           isOpen={isOpen}
         ></ServiceFilter>
       </div>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {servicesData.map((service) => (
-          <SingleService
-            key={service.service_id}
-            service={service}
-          ></SingleService>
-        ))}
-      </div>
+      {loading ? (
+        <MidSpinner />
+      ) : (
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {servicesData.map((service) => (
+            <SingleService
+              key={service.service_id}
+              service={service}
+            ></SingleService>
+          ))}
+        </div>
+      )}
+
+      <div></div>
     </>
   );
 };
