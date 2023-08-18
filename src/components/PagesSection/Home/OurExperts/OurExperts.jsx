@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import "@/styles/expert.modules.css";
 import "@/app/globals.css";
@@ -12,16 +11,25 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 
+import NewsModal from "./OurExpertModal";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Pagination } from "swiper/modules";
 
 const ExpertSection = () => {
   const [ourExpert, setOurExpert] = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+
+  const openModal = (article) => {
+    setSelectedArticle(article);
+  };
+
+  const closeModal = () => {
+    setSelectedArticle(null);
+  };
 
   {
     /*json data fetch section */
@@ -40,9 +48,9 @@ const ExpertSection = () => {
   }
   const expertLimit = 6;
   return (
-    <div className="default-container py-12">
+    <div className="default-container">
       <SectionTitle
-        title={"Our Exparts"}
+        title={"Our Experts"}
         subTitle={"Ready all time to provide motor servicing"}
       />
       <Swiper
@@ -52,9 +60,7 @@ const ExpertSection = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
+        
         breakpoints={{
           640: {
             slidesPerView: 1,
@@ -69,35 +75,40 @@ const ExpertSection = () => {
             spaceBetween: 20,
           },
         }}
-        modules={[Autoplay, Pagination]}
-        className="mySwiper my-12"
+        modules={[Autoplay]}
+        className="mt-8 mySwiper"
       >
-        {ourExpert.slice(0, expertLimit).map((singleCard, index) => (
-          <SwiperSlide key={index}>
-            <div className="my-4 card-box primary-shadow">
-              <Link href="/expert">
+        {ourExpert.slice(0, expertLimit).map((article) => (
+          <SwiperSlide key={article.id} onClick={() => openModal(article)}>
+            <div className="cursor-pointer card-box " >
+              <div>
                 <Image
-                  className="card-img w-full h-60"
-                  src={singleCard.img}
+                  className="w-full h-60"
+                  src={article.img}
                   alt="img"
                   width="300"
                   height="300"
                 />
-              </Link>
-              <Link href="/expert">
-                <h2 className="name-text primary-text">{singleCard.name}</h2>
-                <h2 className="specialty-text">- {singleCard.specialty} -</h2>
+              </div>
+              <div>
+                <h2 className="name-text primary-text">{article.name}</h2>
+                <h2 className="specialty-text">- {article.specialty} -</h2>
                 <div className="icone">
-                  <FaFacebookSquare className="hover:bg-[#f02801] hover:text-white" />
-                  <FaTwitterSquare className="hover:bg-[#f02801] hover:text-white" />
-                  <FaInstagramSquare className="hover:bg-[#f02801] hover:text-white" />
-                  <FaLinkedin className="hover:bg-[#f02801] hover:text-white" />
+                  <FaFacebookSquare className="text-[#f02801] hover:text-[#bb3f26e7] " />
+                  <FaTwitterSquare className="text-[#f02801] hover:text-[#bb3f26e7]" />
+                  <FaInstagramSquare className="text-[#f02801] hover:text-[#bb3f26e7]" />
+                  <FaLinkedin className="text-[#f02801] hover:text-[#bb3f26e7]" />
                 </div>
-              </Link>
+              </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+      <NewsModal
+        isOpen={selectedArticle !== null}
+        closeModal={closeModal}
+        article={selectedArticle || {}}
+      />
     </div>
   );
 };

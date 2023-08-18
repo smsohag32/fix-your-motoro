@@ -1,15 +1,12 @@
 "use client";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
-import ServiceContext from "@/context/ServiceContext";
-import loadSingleService from "@/utils/data/fetchData/loadSingleService";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BiMessageRounded } from "react-icons/bi";
 
 const ServicePage = ({ params }) => {
-  const { service, setService } = useContext(ServiceContext);
-
+  const [service, setService] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -84,7 +81,6 @@ const ServicePage = ({ params }) => {
                   Service Duration
                 </p>
                 <p className="primary-text md:pl-10">
-                  :{" "}
                   <p className="md:inline md:pl-10 font-bold font-mono">
                     {service_duration}
                   </p>
@@ -148,11 +144,11 @@ const ServicePage = ({ params }) => {
         </div>
         <div>
           <h2 className="primary-text text-xl font-semibold">
-            Crafting Automotive Perfection: Your Vehicle's Trusted Haven
+            Crafting Automotive Perfection: Your Vehicles Trusted Haven
           </h2>
           <p className="text-md text-cyan-800 tracking-tight leading-4">
-            At our station, cars aren't just machines; they're passions. Witness
-            the transformation as we elevate each vehicle's performance and
+            At our station, cars arent just machines; they re passions. Witness
+            the transformation as we elevate each vehicles performance and
             aesthetics.
             <div className="p-4 border border-teal-600 rounded mt-8">
               <h4 className="text-sky-600 font-mono text-xl font-semibold">

@@ -4,8 +4,10 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const SignUpForm = () => {
+  const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +31,6 @@ const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -64,17 +65,18 @@ const SignUpForm = () => {
         displayName: name ,
         photoURL: photo,
       })
-      toast.dismiss(toastId)
-      toast.success("User Sing in Successfully")
+      .then((result) => {
+        router.push("/");
+        console.log(result.user);
+        toast.dismiss(toastId)
+        toast.success("User Sing in Successfully")
+      })
     }
     catch(error) {
       toast.dismiss(toastId)
       toast.error(error.message || "User not Sing in")
     }
   };
-
-  
-
 
   return (
     <form className="m-3 md:m-6" onSubmit={handleSubmit(onSubmit)}>
@@ -87,7 +89,7 @@ const SignUpForm = () => {
           type="name"
           name="name"
           placeholder="Name"
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded"
         />
         {errors.name && <span className="text-red-600">Name is required</span>}
       </div>
@@ -100,14 +102,14 @@ const SignUpForm = () => {
           {...register("email", { required: true })}
           name="email"
           placeholder="email"
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"
+          className="w-full px-4 py-2 border border-gray-300 rounded"
         />
         {errors.email && (
           <span className="text-red-600">Email is required</span>
         )}
       </div>
 
-      <div className="form-control">
+      {/* <div className="form-control">
         <label className="label">
           <span className="block mb-2 font-bold text-gray-700">Phone Number</span>
         </label>
@@ -121,12 +123,17 @@ const SignUpForm = () => {
         {errors.phoneNumber && (
           <span className="text-red-600">Phone Number is required</span>
         )}
-      </div>
+      </div> */}
 
       <div className="form-control">
         <label className="label">
           <span className="block mb-2 font-bold text-gray-700">Photo URL</span>
         </label>
+
+        
+        {/* <input type="file" placeholder="You can't touch this" className="w-full max-w-xs file-input file-input-bordered" disabled /> */}
+
+        
         <input
           type="text"
           {...register("photoURL", { required: true })}
