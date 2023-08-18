@@ -12,12 +12,13 @@ import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 
 const Nav = () => {
-  const { user, logout } = useAuth();
   const router = useRouter();
+  const { user, logout } = useAuth();
   const { uid, displayName, photoURL } = user || {};
   const handleLogOut = async () => {
     await logout();
-    router.push("/login");
+    router.push("/");
+    toast.success("Successfully logout!");
   };
   const [isOpen, setIsOpen] = useState();
   return (
