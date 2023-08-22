@@ -2,7 +2,7 @@
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const page = () => {
+const page = ({ params }) => {
   const notify = () =>
     toast("This Service Has been booked successfully.......");
   const handleSubmit = (e) => {

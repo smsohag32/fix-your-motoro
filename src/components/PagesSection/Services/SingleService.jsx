@@ -2,10 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const SingleService = (props) => {
-  // console.log(props.service);
+const SingleService = ({ service }) => {
   const { service_name, _id, service_image, service_description } =
-    props?.service || {};
+    service || {};
   return (
     <div>
       <div className="flex items-center justify-center bg-gray-50">
@@ -36,14 +35,6 @@ const SingleService = (props) => {
             </div>
           </div>
         </div>
-        {/* <div class="fixed bottom-16">
-          <p class="font-com text-2xl font-semibold text-white">
-            All Images are from{" "}
-            <a href="https://unsplash.com" class="text-blue-500">
-              Unsplash.com
-            </a>
-          </p>
-        </div> */}
       </div>
     </div>
   );
