@@ -5,52 +5,50 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiMessageRounded } from "react-icons/bi";
-import  UserOnly  from "@/private/UserOnly";
 
 const ServicePage = ({ params }) => {
-  const [service, setService] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(`/api/services/${params.service_id}`);
-        const data = await response.json();
-        setService(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching JSON data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [setService, params]);
+  // const [service, setService] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const response = await fetch(`/api/services/${params.service_id}`);
+  //       const data = await response.json();
+  //       setService(data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching JSON data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [setService, params]);
 
-  const {
-    service_name,
-    service_image,
-    service_description,
-    service_price,
-    workshop_image,
-    benefits,
-    service_duration,
-    customer_reviews,
-    warranty,
-    _id,
-  } = service || {};
-  if (loading) {
-    return <Spinner />;
-  }
+  // const {
+  //   service_name,
+  //   service_image,
+  //   service_description,
+  //   service_price,
+  //   workshop_image,
+  //   benefits,
+  //   service_duration,
+  //   customer_reviews,
+  //   warranty,
+  //   _id,
+  // } = service || {};
+  // if (loading) {
+  //   return <Spinner />;
+  // }
   return (
-    <UserOnly>
-      <div className="mt-32 default-container">
-      <PageTitle
+    <div className="mt-32 default-container">
+      {/* <PageTitle
         title={service_name}
         subTitle={service_description}
-      ></PageTitle>
-      <div>
-        {/* Service Area */}
+      ></PageTitle> */}
+      {/* <div>
+      
         <div className="justify-between gap-10 lg:flex">
           <figure>
             <Image
@@ -137,9 +135,9 @@ const ServicePage = ({ params }) => {
             ))}
           </div>
         </div>
-      </div>
-      <div className="flex-row-reverse items-center justify-around gap-10 p-8 mb-2 md:flex bg-teal-50">
-        {/* Workshop Area */}
+      </div> */}
+      {/* <div className="flex-row-reverse items-center justify-around gap-10 p-8 mb-2 md:flex bg-teal-50">
+       
         <div>
           <figure>
             <Image
@@ -201,9 +199,8 @@ const ServicePage = ({ params }) => {
             </div>
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
-    </UserOnly>
   );
 };
 

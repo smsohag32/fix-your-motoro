@@ -47,9 +47,6 @@ const ExpertSection = () => {
     setLoading(false);
   }, []);
 
-  {
-    /*slice section*/
-  }
   const expertLimit = 6;
   return (
     <div className="default-container mt-20">
