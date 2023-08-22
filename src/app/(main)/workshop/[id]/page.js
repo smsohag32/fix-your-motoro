@@ -5,7 +5,7 @@ import React from "react";
 const WorkShops = () => {
   return (
     <div>
-        <WorkshopDetails  />
+        {/* <WorkshopDetails  /> */}
    
     </div>
   );
