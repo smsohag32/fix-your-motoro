@@ -78,7 +78,7 @@ const Shops = () => {
               <input
                 type="number"
                 placeholder="Items PerPage"
-                value={itemsPerPage}
+                // value={itemsPerPage}
                 onChange={(e) => setItemsPerPage(e.target.value)}
                 className="border p-2 mr-2"
               />
