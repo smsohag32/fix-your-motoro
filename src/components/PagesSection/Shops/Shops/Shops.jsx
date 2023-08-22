@@ -23,7 +23,7 @@ const Shops = () => {
   const notify = () => toast("Coming Soon...");
 
   useEffect(() => {
-    fetch("/data/shop.json")
+    fetch("/api/all/products")
       .then((res) => res.json())
       .then((data) => setShopData(data))
       .catch((error) => {

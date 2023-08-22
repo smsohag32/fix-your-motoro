@@ -17,6 +17,9 @@ body {
 .primary-text {
   @apply text-[#f02801]
 }
+.primary-bg {
+  @apply bg-[#f02801]
+}
 
 .secondary-text {
   @apply text-gray-700 text-5xl font-bold my-8

@@ -5,16 +5,16 @@ import React from "react";
 const SingleService = (props) => {
   // console.log(props.service);
   const { service_name, _id, service_image, service_description } =
-    props.service;
+    props?.service || {};
   return (
     <div>
       <div className="flex items-center justify-center bg-gray-50">
         <div className="">
-          <div class="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+          <div class="group relative  items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
             <div className="h-72 w-96">
               <Image
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-                src={service_image}
+                className="object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                src={service_image ? service_image : ""}
                 alt=""
                 width={384}
                 height={288}
@@ -25,7 +25,7 @@ const SingleService = (props) => {
               <h1 className="font-serif text-3xl font-bold text-white">
                 {service_name}
               </h1>
-              <p className="mb-3 text-lg italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <p className="mb-3 text-lg italic text-white transition-opacity duration-300 opacity-0 group-hover:opacity-100">
                 {service_description}
               </p>
               <Link href={`/services/${_id}`}>
