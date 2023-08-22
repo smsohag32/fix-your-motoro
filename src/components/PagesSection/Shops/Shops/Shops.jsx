@@ -55,6 +55,9 @@ const Shops = () => {
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
+  console.log(products);
+
+
   return (
     <div className="default-container py-12">
       {loading ? (
