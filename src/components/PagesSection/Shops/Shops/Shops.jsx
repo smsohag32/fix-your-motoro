@@ -3,13 +3,13 @@ import { AiFillHeart } from "react-icons/ai";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaGreaterThan, FaLessThan } from "react-icons/fa";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import StarRating from "../../Home/SuccessReviews/StarRating";
 import toast, { Toaster } from "react-hot-toast";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 
 const Shops = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState([]);
   const [like, setLike] = useState(true);
@@ -91,7 +91,7 @@ const Shops = () => {
                 <input
                   type="number"
                   placeholder="Items PerPage"
-                  // value={itemsPerPage}
+                  value={itemsPerPage}
                   onChange={(e) => setItemsPerPage(e.target.value)}
                   className="border p-2 mr-2"
                 />
@@ -101,6 +101,7 @@ const Shops = () => {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredShopData.map((item) => (
               <div
+                onClick={() => router.push(`/shops/${item?._id}`)}
                 key={item.id}
                 className="bg-white rounded-lg shadow-md p-5 sm:p-6 relative transition hover:bg-red-50"
               >
