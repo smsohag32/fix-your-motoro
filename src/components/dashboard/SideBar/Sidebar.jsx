@@ -30,13 +30,15 @@ const Sidebar = () => {
               {/* <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer">
                 Virtual Dashboard
               </h1> */}
-              <Image
-                className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"
-                src="https://i.ibb.co/Tm3vXhj/logoFix.jpg"
-                alt="logo"
-                width="350"
-                height="300"
-              />
+              <Link href="/">
+                <Image
+                  className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"
+                  src="https://i.ibb.co/Tm3vXhj/logoFix.jpg"
+                  alt="logo"
+                  width="350"
+                  height="300"
+                />
+              </Link>
               {/* name Dynamic */}
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 border-b border-gray-100 cursor-pointer">
                 FYM
