@@ -46,7 +46,7 @@ const WorkShopPage = () => {
       const fetchData = async () => {
         try {
           const response = await fetch(
-            "fya-backend.vercel.app/api/v1/auth/workshops"
+            "https://fya-backend.vercel.app/api/v1/auth/workshops"
           );
           const data = await response.json();
           setProducts(data);

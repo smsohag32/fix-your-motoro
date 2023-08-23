@@ -9,14 +9,16 @@ import Spinner from "@/components/Spinners/Spinner";
 
 const WorkShops = () => {
   const [workshopsData, setWorkshopsData] = useState([]);
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [pLoading, setPLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch("/api/workshops");
+        const response = await fetch(
+          "https://fya-backend.vercel.app/api/v1/auth/workshops"
+        );
         const data = await response.json();
         setWorkshopsData(data);
         setLoading(false);
@@ -29,22 +31,9 @@ const WorkShops = () => {
     };
     fetchData();
   }, []);
-  useEffect(() => {
-    setPLoading(true);
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/all/products");
-        const data = await response.json();
-        setProducts(data);
-        setPLoading(false);
-      } catch (error) {
-        console.error("Error fetching JSON data:", error);
-      } finally {
-        setPLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+
+  // console.log(workshopsData);
+
 
   return (
     <>
@@ -63,15 +52,6 @@ const WorkShops = () => {
           ))}
         </div>
       )}
-      <div className="mt-8 pb-8">
-        <SectionTitle
-          title="Products Zone"
-          subTitle="Order now our best products"
-        />
-        <div>
-          <CardSlider items={products} loading={pLoading} />
-        </div>
-      </div>
     </>
   );
 };
