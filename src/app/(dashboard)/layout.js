@@ -1,6 +1,7 @@
 import Sidebar from "@/components/dashboard/SideBar/Sidebar";
 import PrivateRote from "@/utils/PrivateRote";
 import { Inter } from "next/font/google";
+import { FaSearch } from "react-icons/fa";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

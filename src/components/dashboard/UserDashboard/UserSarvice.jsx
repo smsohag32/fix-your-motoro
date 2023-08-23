@@ -1,9 +1,8 @@
 "use client";
 import DashboardTitle from "@/components/Shared/DashboardTitle/DashboardTitle";
-import React, { Component } from "react";
+import React from "react";
 
-export class UserSarvice extends Component {
-  render() {
+const UserService = () =>  {
     return (
       <>
         <DashboardTitle title="Our Service" subTitle="Welcome to the Service" />
@@ -89,6 +88,5 @@ export class UserSarvice extends Component {
       </>
     );
   }
-}
 
 export default UserSarvice;

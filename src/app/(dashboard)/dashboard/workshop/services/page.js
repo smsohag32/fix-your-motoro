@@ -1,11 +1,11 @@
 import React from 'react';
 
-const WorkshopServices = () => {
+const ServicesQueue = () => {
     return (
         <div>
-            
+            <p>All of the booked services queue.....</p>
         </div>
     );
 };
 
-export default WorkshopServices;
+export default ServicesQueue;

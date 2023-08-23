@@ -11,7 +11,7 @@ import UserLink from "./UserLink";
 import useAuth from "@/hooks/useAuth";
 
 const Sidebar = () => {
-  const {userInfo, cLoading} = useUserInfo();
+  const { userInfo, cLoading } = useUserInfo();
   console.log(userInfo);
 
   // logout section 
@@ -44,10 +44,9 @@ const Sidebar = () => {
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 border-b border-gray-100 cursor-pointer">
                 FYM
               </h1>
-              {
-                userInfo?.result?.role ? <WorkshopAgentLink/> : <UserLink/>
-              }
-            
+              {userInfo?.result?.role ? <WorkshopAgentLink /> : <UserLink />}
+              {/* <WorkshopAgentLink /> */}
+
               {/* logout btn */}
               <div className="">
                 <div className="my-4 ">

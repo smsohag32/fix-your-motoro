@@ -20,7 +20,7 @@ const Services = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://fya-backend-smsohag32.vercel.app/api/v1/auth/services`
+          `https://fya-backend.vercel.app/api/v1/auth/services`
         );
         const data = await response.json();
         setServicesData(data);
