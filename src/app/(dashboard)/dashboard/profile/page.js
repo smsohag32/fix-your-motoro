@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const page = () => {
   return (
     <div className="p-6 mx-auto bg-white rounded-md shadow-md sm:w-96">

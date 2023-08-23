@@ -36,7 +36,7 @@ function UserLink() {
               alt=""
               width={40}
               height={40}
-              className="w-8 h-8 rounded-full cursor-pointer "
+              className="w-8 h-8 rounded-full cursor-pointer"
             />
           )}
             <h3 className="text-base font-semibold text-gray-800 group-hover:text-white ">
