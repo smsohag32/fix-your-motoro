@@ -6,30 +6,12 @@ import Link from "next/link";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import RegisterFrom from "./RegisterFrom";
 import useAuth from "@/hooks/useAuth";
-import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 
 const SingUp = () => {
   const router = useRouter();
   const {googleLogin} = useAuth()
-
-  // const handleGoogleSingIn = async () => {
-  //   const toastId = toast.loading("Loading...")
-   
-  //     googleLogin();
-  //       .then((result) => {
-  //         router.push("/");
-  //         console.log(result.user);
-  //         toast.success("User Sing in Successfully")
-  //       })
-  //   }
-  //   catch(error){
-  //     toast.dismiss(toastId)
-  //     toast.error(error.message || "User not Sing in")
-  //   }
-  // };
-
   const handleGoogleSingIn = () => {
     googleLogin()
       .then(() => {
