@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-"use client"
-
-import Link from "next/link";
-=======
 "use client";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Disclosure } from "@headlessui/react";
@@ -11,7 +6,6 @@ import TechnicianLink from "./TechnicianLink";
 import { MdOutlineLogout } from "react-icons/md";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
->>>>>>> 177dcef6418116a2e19be41b9d9784a4ae5f4232
 import useUserInfo from "@/hooks/useUserInfo";
 import WorkshopAgentLink from "./WorkshopAgentLink";
 import UserLink from "./UserLink";
@@ -20,24 +14,6 @@ const Sidebar = () => {
   const {userInfo, cLoading} = useUserInfo();
   console.log(userInfo);
   return (
-<<<<<<< HEAD
-    <div className="flex flex-col gap-5 bg-red-200">
-      <Link href="/dashboard/workshop">
-        WorkShop
-      </Link>
-      <Link href="/dashboard/profile">
-        Profile
-      </Link>
-      <Link href="/dashboard/product">
-        Product
-      </Link>
-      <Link href="/dashboard/service">
-        Service
-      </Link>
-      <Link href="/dashboard/technician">
-        Technician
-      </Link>
-=======
     <div>
       {/* Technician side nav */}
       <div className="">
@@ -93,7 +69,6 @@ const Sidebar = () => {
           </div>
         </Disclosure>
       </div>
->>>>>>> 177dcef6418116a2e19be41b9d9784a4ae5f4232
     </div>
   );
 };

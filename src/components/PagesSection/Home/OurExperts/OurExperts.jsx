@@ -84,7 +84,7 @@ const ExpertSection = () => {
                   />
                 </div>
                 <div>
-                  <h2 className="name-text primary-text">{article.name}</h2>
+                  <h2 className="name-text text-xl font-semibold">{article.name}</h2>
                   <h2 className="specialty-text">- {article.specialty} -</h2>
                   <div className="icone">
                     <FaFacebookSquare className="text-[#f02801] hover:text-[#bb3f26e7] " />

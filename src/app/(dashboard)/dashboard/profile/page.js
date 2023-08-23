@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -105,12 +104,6 @@ const Profile = () => {
           </button>
         </div>
       )}
-=======
-const page = () => {
-  return (
-    <div>
-      <h3>i am from profile</h3>
->>>>>>> 177dcef6418116a2e19be41b9d9784a4ae5f4232
     </div>
   );
 };
