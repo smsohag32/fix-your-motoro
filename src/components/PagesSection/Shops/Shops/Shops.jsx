@@ -22,7 +22,7 @@ const Shops = () => {
   const notify = () => toast("Coming Soon...");
 
   useEffect(() => {
-    fetch("/api/all/products")
+    fetch("https://fya-backend.vercel.app/api/v1/auth/products")
       .then((res) => res.json())
       .then((data) => setShopData(data))
       .catch((error) => {
