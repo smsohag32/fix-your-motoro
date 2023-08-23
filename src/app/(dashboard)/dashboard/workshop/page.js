@@ -1,17 +1,20 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa"; 
 
 const WorkShopPage = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
   const Data = [
     {
       id: 1,
       image:
         "https://media.istockphoto.com/id/1488626517/photo/customer-leaving-his-car-at-an-auto-repair-shop-and-signing-a-form.jpg?s=612x612&w=0&k=20&c=fZlBNY1XzjxUYx0Vx80evUxKFB18DFrWXg6SpUEQpl8=",
-      title: "Product 1",
+      title: "tabal",
       description: "Description for Product 1",
       price: "$100",
       technician: "Technician 1",
@@ -20,7 +23,7 @@ const WorkShopPage = () => {
       id: 2,
       image:
         "https://media.istockphoto.com/id/1488626517/photo/customer-leaving-his-car-at-an-auto-repair-shop-and-signing-a-form.jpg?s=612x612&w=0&k=20&c=fZlBNY1XzjxUYx0Vx80evUxKFB18DFrWXg6SpUEQpl8=",
-      title: "Product 2",
+      title: "mabal",
       description: "Description for Product 2",
       price: "$150",
       technician: "Technician 2",
@@ -29,12 +32,37 @@ const WorkShopPage = () => {
       id: 3,
       image:
         "https://media.istockphoto.com/id/1488626517/photo/customer-leaving-his-car-at-an-auto-repair-shop-and-signing-a-form.jpg?s=612x612&w=0&k=20&c=fZlBNY1XzjxUYx0Vx80evUxKFB18DFrWXg6SpUEQpl8=",
-      title: "Product 3",
+      title: "kabal",
       description: "Description for Product 3",
       price: "$120",
       technician: "Technician 3",
     },
   ];
+
+
+  // api data loading 
+    useEffect(() => {
+      setLoading(true);
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            "fya-backend.vercel.app/api/v1/auth/workshops"
+          );
+          const data = await response.json();
+          setProducts(data);
+          setLoading(false);
+        } catch (error) {
+          console.error("Error fetching JSON data:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchData();
+    }, []);
+  // api data console.log
+  console.log(products);
+
+
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -51,15 +79,17 @@ const WorkShopPage = () => {
           Services
         </p>
 
-        {/* <div className="mt-4">
+        <div className="mt-4 relative">
           <input
             type="text"
             placeholder="Search products..."
-            className="px-4 py-2 rounded-md border border-gray-300"
+            className="px-4 py-2 pl-10 rounded-md border border-gray-300"
             value={searchQuery}
             onChange={handleSearchInputChange}
           />
-        </div> */}
+          <FaSearch className="absolute top-2 left-2 text-gray-400" />
+        </div>
+
         <div className="flex flex-col">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -85,7 +115,7 @@ const WorkShopPage = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {Data.map((item) => (
+                    {filteredData.map((item) => (
                       <tr key={item.id}>
                         <td className="px-6 py-4 whitespace-no-wrap">
                           <div className="h-16 w-16">
@@ -113,13 +143,6 @@ const WorkShopPage = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                           {item.technician}
-                        </td>
-
-                        <td className="px-6 py-4 whitespace-no-wrap overflow-hidden overflow-ellipsis">
-                          {/* Make the truncated text clickable */}
-                          <Link href={`/product/${item.id}`} className="">
-                            ...
-                          </Link>
                         </td>
                       </tr>
                     ))}

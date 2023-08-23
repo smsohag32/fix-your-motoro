@@ -12,6 +12,9 @@ const Sidebar = () => {
         Profile
       </Link>
       <Link href="/dashboard/product">
+        Product
+      </Link>
+      <Link href="/dashboard/product">
         Service
       </Link>
       <Link href="/dashboard/technician">
