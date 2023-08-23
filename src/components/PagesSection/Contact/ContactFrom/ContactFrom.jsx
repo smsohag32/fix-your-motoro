@@ -8,7 +8,7 @@ const ContactFrom = () => {
         <form>
           <div>
             <label
-              for="name"
+              htmlFor="name"
               className="block text-sm font-medium text-gray-900"
             >
               Name
@@ -25,7 +25,7 @@ const ContactFrom = () => {
 
           <div>
             <label
-              for="email"
+              htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               Email address
@@ -42,7 +42,7 @@ const ContactFrom = () => {
 
           <div>
             <label
-              for="phone"
+              htmlFor="phone"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               Phone Number
@@ -60,7 +60,7 @@ const ContactFrom = () => {
           <div>
             <div className="flex items-center justify-between">
               <label
-                for="password"
+                htmlFor="password"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Message 

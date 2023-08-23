@@ -33,7 +33,7 @@ const Services = () => {
         ))}
       </div>
       <div className="text-center w-full">
-        <Link className="text-center primary-btn" href="service">
+        <Link className="text-center primary-btn" href="/service">
           See all
         </Link>
       </div>
