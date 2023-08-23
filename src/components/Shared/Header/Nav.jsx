@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const { uid, displayName, photoURL } = user || {};
   const handleLogOut = async () => {
     await logout();
@@ -49,6 +49,7 @@ const Nav = () => {
             : "-left-60 top-[64px] overflow-hidden duration-100"
         }`}
       >
+
         {navLinkData.map((link, index) => (
           <li key={index}>
             <NavLink
@@ -62,26 +63,34 @@ const Nav = () => {
         ))}
       </ul>
       <div className="flex items-center gap-5">
-        {(uid && (
-          <span onClick={() => router.push("/dashboard")}>
-            <Image
-              src={photoURL || userLogo}
-              alt=""
-              width={40}
-              height={40}
-              title={displayName}
-              className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
-            />
-          </span>
-        )) || (
+        {
+          loading ? <Image
+          src={userLogo}
+          alt=""
+          width={40}
+          height={40}
+          className="cursor-pointer animate-spin "
+        /> : <span> {
+          
+          uid ? <span onClick={() => router.push("/dashboard")}>
           <Image
-            src={userLogo}
+            src={photoURL || userLogo}
             alt=""
             width={40}
             height={40}
-            className="cursor-pointer "
+            title={displayName}
+            className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
           />
-        )}
+        </span> : <Image
+          src={userLogo}
+          alt=""
+          width={40}
+          height={40}
+          className="cursor-pointer "
+        />
+          } </span>
+        
+}
         {user ? (
           <>
             <button onClick={handleLogOut} className="font-bold cursor-pointer">

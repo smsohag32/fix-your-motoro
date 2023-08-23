@@ -1,14 +1,11 @@
-import React from "react";
+import React from 'react';
 
-const Dashboard = () => {
+const OverviewDashboard = () => {
   return (
-    <div className="">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam
-      perferendis veritatis voluptatem adipisci delectus, odit, qui, velit minus
-      quo alias ut animi magnam sit provident neque aspernatur dolor porro
-      facere.
+    <div>
+      
     </div>
   );
 };
 
-export default Dashboard;
+export default OverviewDashboard;

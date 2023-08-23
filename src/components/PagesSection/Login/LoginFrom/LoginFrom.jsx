@@ -62,7 +62,7 @@ const LoginFrom = () => {
             Login
           </h5>
           <div>
-            <label for="email" className="block mb-2 font-bold text-gray-700">
+            <label htmlFor="email" className="block mb-2 font-bold text-gray-700">
               Your email
             </label>
             <input
