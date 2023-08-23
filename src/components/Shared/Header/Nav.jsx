@@ -18,7 +18,6 @@ const Nav = () => {
   const handleLogOut = async () => {
     await logout();
     router.push("/");
-    toast.success("Successfully logout!");
   };
   const [isOpen, setIsOpen] = useState();
 

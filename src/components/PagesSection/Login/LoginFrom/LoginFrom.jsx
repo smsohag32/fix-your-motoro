@@ -8,6 +8,7 @@ import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import useAuth from "@/hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import saveUser from "@/utils/saveUser";
 
 const LoginFrom = () => {
   const router = useRouter();
@@ -43,7 +44,12 @@ const LoginFrom = () => {
 
   const handleGoogleSingIn = () => {
     googleLogin()
-      .then(() => {
+      .then((result) => {
+        const user = result.user;
+        saveUser(user).then(data => {
+          console.log(data);
+        })
+        console.log(user);
         router.push("/");
       })
       .catch();
