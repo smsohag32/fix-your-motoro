@@ -1,4 +1,4 @@
-import Sidebar from "@/components/dashboard/SideBar/Sidebar";
+import SideNavbar from "@/components/dashboard/SideNavbar/SideNavbar";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <div className={inter.className}>
-      <Sidebar/>
+      <SideNavbar/>
       <div className="">{children}</div>
     </div>
   );

@@ -15,7 +15,6 @@ const LoginFrom = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
 
-
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
@@ -34,8 +33,8 @@ const LoginFrom = () => {
           toast.dismiss(toastId);
           toast.success("User Sing in Successfully");
         })
-        // .catch((err) => console.log(err));
-    } catch (error) {
+    } 
+    catch (error) {
       toast.dismiss(toastId);
       toast.error(error.message || "User not Sing in");
     }
