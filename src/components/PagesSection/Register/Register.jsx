@@ -30,7 +30,7 @@ const SingUp = () => {
         title="Our Register"
         subTitle="Our Register page"
       />
-    <div className="flex-col mx-auto my-8 rounded-lg primary-shadow primary-border md:w-2/6 hero-content lg:flex-row-reverse">
+    <div className="flex-col mx-auto my-8 rounded-lg primary-shadow secondary-border max-w-2xl">
         <RegisterFrom />
         <div className="mt-4 text-center">
           <button>
@@ -41,7 +41,7 @@ const SingUp = () => {
           </button>
         </div>
         <div onClick={handleGoogleSingIn}>
-          <button className="p-[10px] mb-8 bg-blue-200 cursor-pointer border rounded-lg w-4/5 md:w-2/4  mx-auto flex gap-[6px] mt-[30px]">
+          <button className="p-[10px] mb-8 cursor-pointer border rounded-lg w-4/5 md:w-2/4  mx-auto flex gap-[6px] mt-[30px]">
             <FcGoogle className="text-[32px]" />
           <span>Continue with Google</span>
           </button>
