@@ -16,48 +16,6 @@
       "serviceName": "Tire Rotation",
       "about": "Regular tire rotations extend tire life and improve handling. Our experts ensure your tires wear evenly for a smoother and safer ride and we ensure your perfectly.",
       "image": "https://i.ibb.co/Kbh3y5x/tire-rotation.jpg"
-    },
-    {
-      "id": 4,
-      "serviceName": "Wheel Alignment",
-      "about": "Wheel alignment ensures proper tire wear and handling. Our precision equipment ensures your vehicle's alignment is within manufacturer specifications.",
-      "image": "https://i.ibb.co/x1y7fcn/wheel-alignment.jpg"
-    },
-    {
-      "id": 5,
-      "serviceName": "Diagnostic Check",
-      "about": "Our advanced diagnostic tools identify issues affecting your vehicle's performance. Timely diagnostics help prevent larger problems down the road.",
-      "image": "https://i.ibb.co/6vMTdt7/diagnostic-check.jpg"
-    },
-    {
-      "id": 6,
-      "serviceName": "Coolant Flush",
-      "about": "A coolant flush prevents overheating and maintains your engine's temperature. Our experts use quality coolant to protect your engine.",
-      "image": "https://i.ibb.co/X58h9W0/coolant-flush.jpg"
-    },
-    {
-      "id": 7,
-      "serviceName": "Transmission Service",
-      "about": "Transmission service ensures smooth gear shifts and extends transmission life. Our technicians use specialized fluids and perform thorough inspections.",
-      "image": "https://i.ibb.co/nfjMcDQ/transmission-service.jpg"
-    },
-    {
-      "id": 8,
-      "serviceName": "Battery Replacement",
-      "about": "Our battery replacement service ensures reliable starts in all conditions. We use quality batteries and perform proper installation.",
-      "image": "https://i.ibb.co/3BPX9Fk/battery-replacement.jpg"
-    },
-    {
-      "id": 9,
-      "serviceName": "AC System Check",
-      "about": "A properly functioning AC system keeps you comfortable year-round. Our AC system check ensures optimal cooling performance.",
-      "image": "https://i.ibb.co/y0GtCyX/ac-system-check.jpg"
-    },
-    {
-      "id": 10,
-      "serviceName": "Radiator Flush",
-      "about": "A radiator flush prevents overheating and extends the life of your cooling system. Our experts ensure your radiator is clean and efficient.",
-      "image": "https://i.ibb.co/Yp4BtV5/radiator-flush.jpg"
     }
   ]
   

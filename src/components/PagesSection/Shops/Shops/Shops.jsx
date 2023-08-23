@@ -11,7 +11,7 @@ import MidSpinner from "@/components/Spinners/MidSpinner";
 const Shops = () => {
   const router = useRouter();
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [like, setLike] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -24,12 +24,13 @@ const Shops = () => {
 
   const notify = () => toast("Coming Soon...");
 
-<<<<<<< HEAD
-   useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/all/products");
+        const response = await fetch(
+          `https://fya-backend.vercel.app/api/v1/auth/products`
+        );
         const data = await response.json();
         setProducts(data);
         setLoading(false);
@@ -40,15 +41,6 @@ const Shops = () => {
       }
     };
     fetchData();
-=======
-  useEffect(() => {
-    fetch("https://fya-backend.vercel.app/api/v1/auth/products")
-      .then((res) => res.json())
-      .then((data) => setShopData(data))
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
->>>>>>> 177dcef6418116a2e19be41b9d9784a4ae5f4232
   }, []);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
