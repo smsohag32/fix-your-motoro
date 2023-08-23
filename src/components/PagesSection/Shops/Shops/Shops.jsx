@@ -24,6 +24,7 @@ const Shops = () => {
 
   const notify = () => toast("Coming Soon...");
 
+<<<<<<< HEAD
    useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
@@ -39,6 +40,15 @@ const Shops = () => {
       }
     };
     fetchData();
+=======
+  useEffect(() => {
+    fetch("https://fya-backend.vercel.app/api/v1/auth/products")
+      .then((res) => res.json())
+      .then((data) => setShopData(data))
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+>>>>>>> 177dcef6418116a2e19be41b9d9784a4ae5f4232
   }, []);
 
   const startIndex = (currentPage - 1) * itemsPerPage;

@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const { uid, displayName, photoURL } = user || {};
   const handleLogOut = async () => {
     await logout();
@@ -43,12 +43,12 @@ const Nav = () => {
       </span>
 
       <ul
-        className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
-          isOpen
-            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
-            : "-left-60 top-[64px] overflow-hidden duration-100"
-        }`}
+        className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:border-none md:flex-row ${isOpen
+          ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
+          : "-left-60 top-[64px] overflow-hidden duration-100"
+          }`}
       >
+
         {navLinkData.map((link, index) => (
           <li key={index}>
             <NavLink
@@ -74,14 +74,14 @@ const Nav = () => {
             />
           </span>
         )) || (
-          <Image
-            src={userLogo}
-            alt=""
-            width={40}
-            height={40}
-            className="cursor-pointer "
-          />
-        )}
+            <Image
+              src={userLogo}
+              alt=""
+              width={40}
+              height={40}
+              className="cursor-pointer "
+            />
+          )}
         {user ? (
           <>
             <button onClick={handleLogOut} className="font-bold cursor-pointer">

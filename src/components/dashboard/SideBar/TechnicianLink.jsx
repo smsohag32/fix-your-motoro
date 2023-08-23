@@ -8,7 +8,7 @@ import { CgProfile } from "react-icons/cg";
 import { BiMessageSquareDots } from "react-icons/bi";
 import Link from "next/link";
 
-function WorkshopAgentLink() {
+function TechnicianLink() {
   return (
     <>
       <ul className="pb-4 my-4 border-b border-gray-100">
@@ -16,7 +16,7 @@ function WorkshopAgentLink() {
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-orange-600 group hover:shadow-lg">
           <CgProfile className="text-2xl text-gray-600 group-hover:text-white " />
           <h3 className="text-base font-semibold text-gray-800 group-hover:text-white ">
-            <Link href="/dashboard/profile">Workshop Profile</Link>
+            <Link href="/dashboard/profile">Profile</Link>
           </h3>
         </li>
         {/* Service section  */}
@@ -30,7 +30,7 @@ function WorkshopAgentLink() {
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-orange-600 group hover:shadow-lg">
           <MdOutlineAnalytics className="text-2xl text-gray-600 group-hover:text-white " />
           <h3 className="text-base font-semibold text-gray-800 group-hover:text-white ">
-            <Link href="/dashboard/technicians">Workshop</Link>
+            <Link href="/dashboard/technicians">Technicians</Link>
           </h3>
         </li>
         {/* payment section  */}
@@ -45,4 +45,4 @@ function WorkshopAgentLink() {
   );
 }
 
-export default WorkshopAgentLink;
+export default TechnicianLink;

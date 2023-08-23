@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import useAuth from "@/hooks/useAuth";
-import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import saveUser from "@/utils/saveUser";
 
@@ -15,7 +14,6 @@ const LoginFrom = () => {
   const { signIn, googleLogin } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
-
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -26,19 +24,15 @@ const LoginFrom = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    const toastId = toast.loading("Loading...");
     try {
       await signIn(email, password)
         .then((result) => {
           router.push("/");
-          console.log(result.user);
-          toast.dismiss(toastId);
-          toast.success("User Sing in Successfully");
+
         })
         // .catch((err) => console.log(err));
     } catch (error) {
-      toast.dismiss(toastId);
-      toast.error(error.message || "User not Sing in");
+     
     }
   };
 
@@ -61,20 +55,21 @@ const LoginFrom = () => {
         <title>FYM | Login</title>
       </Helmet>
       <PageTitle title="Our Login" subTitle="Our Login page" />
-      <div className="w-full max-w-sm mx-auto mb-8 rounded-lg shadow bg-gray-50 primary-shadow primary-border sm:p-6 md:p-8 ">
+      <div className="default-container py-12">
+      <div className="w-full py-12 max-w-xl mx-auto rounded-lg shadow bg-gray-50 p-8 primary-shadow secondary-border ">
         <form onSubmit={handelLogin} className="space-y-6">
-          <h5 className="text-3xl font-medium text-center text-gray-900 dark:text-white">
+          <h5 className="text-3xl font-medium text-center text-gray-900">
             Login
           </h5>
           <div>
-            <label for="email" className="block mb-2 font-bold text-gray-700">
+            <label htmlFor="email" className="block mb-2 font-bold text-gray-700">
               Your email
             </label>
             <input
               type="email"
               name="email"
               id="email"
-              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"
+              className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
               placeholder="name@company.com"
               required
             />
@@ -94,7 +89,7 @@ const LoginFrom = () => {
                   name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded"
+                  className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
                 />
                 <button
                   type="button"
@@ -111,7 +106,7 @@ const LoginFrom = () => {
             type="submit"
             value="Login"
           />
-          <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+          <div className="text-sm font-medium text-gray-600 dark:text-gray-600">
             Not registered?{" "}
             <Link href="/register" className="font-semibold primary-text">
               Create account
@@ -119,12 +114,13 @@ const LoginFrom = () => {
           </div>
           <div
             onClick={handleGoogleSingIn}
-            className="p-[10px] bg-blue-200 cursor-pointer border rounded w-full flex justify-center items-center gap-[6px] mt-[33px]"
+            className="p-[10px]  cursor-pointer border rounded w-full flex justify-center items-center gap-[6px] mt-[33px]"
           >
             <FcGoogle className="text-[32px]" />
             <span>Continue with Google</span>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

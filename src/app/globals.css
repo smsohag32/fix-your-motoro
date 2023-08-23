@@ -29,6 +29,10 @@ body {
   @apply px-3 py-2 text-center transition-all duration-500 font-semibold bg-[#f02801] text-white hover:bg-[#ed5233ee]
 }
 
+.delete-btn{
+  @apply px-3 py-2 text-center transition-all duration-500 font-semibold bg-red-800 text-white hover:bg-red-600 rounded-lg
+}
+
 .top-btn{
   @apply pr-5 md:ps-16 py-2 text-center font-semibold bg-[#f02801] text-white hover:bg-[#bb3f26e7]
 }
