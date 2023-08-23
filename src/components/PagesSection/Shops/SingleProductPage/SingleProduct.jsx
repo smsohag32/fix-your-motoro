@@ -69,7 +69,7 @@ const SingleProduct = ({ id }) => {
             <div className="bg-orange-100 px-8 py-4 rounded-md shadow-xl">
               <div className="md:flex items-center text-xl my-2">
                 <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Price: {price}
+                  Price:
                 </p>
                 <p className="md:pl-10">
                   :
@@ -77,17 +77,6 @@ const SingleProduct = ({ id }) => {
                     <span className="bg-orange-300 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
                       {price}
                     </span>
-                  </p>
-                </p>
-              </div>
-              <div className="md:flex text-xl mb-2">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Product Info
-                </p>
-                <p className="md:pl-10">
-                  :
-                  <p className="md:inline md:pl-10 font-bold font-mono">
-                    Discount: {discount} %
                   </p>
                 </p>
               </div>

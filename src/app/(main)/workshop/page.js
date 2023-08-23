@@ -22,7 +22,7 @@ const WorkshopsPage = () => {
       subTitle="Recent motor servicing Workshop"
     />
 
-        <WorkShops />
+        {/* <WorkShops /> */}
     </div>
   );
 };

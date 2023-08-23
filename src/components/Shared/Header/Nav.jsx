@@ -21,6 +21,7 @@ const Nav = () => {
     toast.success("Successfully logout!");
   };
   const [isOpen, setIsOpen] = useState();
+
   return (
     <nav className="flex items-center justify-between default-container">
       <div className="md:hidden">
@@ -63,14 +64,16 @@ const Nav = () => {
       </ul>
       <div className="flex items-center gap-5">
         {(uid && (
-          <Image
-            src={photoURL || userLogo}
-            alt=""
-            width={40}
-            height={40}
-            title={displayName}
-            className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
-          />
+          <span onClick={() => router.push("/dashboard")}>
+            <Image
+              src={photoURL || userLogo}
+              alt=""
+              width={40}
+              height={40}
+              title={displayName}
+              className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
+            />
+          </span>
         )) || (
           <Image
             src={userLogo}

@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiMessageRounded } from "react-icons/bi";
-import  UserOnly  from "@/private/UserOnly";
 
 const ServicePage = ({ params }) => {
   const [service, setService] = useState([]);
@@ -14,7 +13,9 @@ const ServicePage = ({ params }) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/api/services/${params.service_id}`);
+        const response = await fetch(
+          `https://fya-backend-smsohag32.vercel.app/api/v1/auth/services/${params.service_id}`
+        );
         const data = await response.json();
         setService(data);
         setLoading(false);
@@ -43,14 +44,12 @@ const ServicePage = ({ params }) => {
     return <Spinner />;
   }
   return (
-    <UserOnly>
-      <div className="mt-32 default-container">
+    <div className="mt-32 default-container">
       <PageTitle
         title={service_name}
         subTitle={service_description}
       ></PageTitle>
       <div>
-        {/* Service Area */}
         <div className="justify-between gap-10 lg:flex">
           <figure>
             <Image
@@ -74,7 +73,7 @@ const ServicePage = ({ params }) => {
             <div className="px-8 py-4 bg-orange-100 rounded-md shadow-xl">
               <div className="items-center my-2 text-xl md:flex">
                 <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Price{" "}
+                  Price
                 </p>
                 <p className="md:pl-10">
                   :
@@ -139,7 +138,6 @@ const ServicePage = ({ params }) => {
         </div>
       </div>
       <div className="flex-row-reverse items-center justify-around gap-10 p-8 mb-2 md:flex bg-teal-50">
-        {/* Workshop Area */}
         <div>
           <figure>
             <Image
@@ -203,7 +201,6 @@ const ServicePage = ({ params }) => {
         </div>
       </div>
     </div>
-    </UserOnly>
   );
 };
 
