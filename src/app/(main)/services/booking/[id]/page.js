@@ -1,22 +1,84 @@
 "use client";
-import React from "react";
+
+import Spinner from "@/components/Spinners/Spinner";
+import useAuth from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
+  const { id } = params;
+  const { user } = useAuth();
+  const router = useRouter();
+  const { register, handleSubmit, reset } = useForm();
   const notify = () =>
     toast("This Service Has been booked successfully.......");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    notify();
-    form.reset();
-  };
 
+    const [service, setService] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `https://fya-backend.vercel.app/api/v1/auth/services/${id}`
+        );
+        const data = await response.json();
+        setService(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching JSON data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [id]);
+
+  
+
+  const onSubmit = async (data) => {
+    const serviceData = {
+      service_id: id,
+      workshop_email: "tr.tonmoy0110.trt@gmail.com",
+      service_category: service?.service_category,
+      ...data,
+    };
+
+    // console.log(serviceData)
+
+    const response = await fetch("https://fya-backend.vercel.app/api/v1/auth/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(serviceData),
+      })
+      const result = await response.json();
+      console.log(result);
+    // try {
+      
+
+    //   // if (response.ok) {
+    //   //   // Notify and reset the form
+    //   //   notify();
+    //   //   reset();
+    //   // } else {
+    //   //   toast.error("Failed to book the service. Please try again later.");
+    //   // }
+    // } catch (error) {
+    //   toast.error("An error occurred. Please try again later.");
+    // }
+  };
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <>
       <div className="mt-32 max-w-4xl mx-auto p-8">
         <h1 className="text-2xl font-bold mb-4">Work Order Request</h1>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="col-span-2 sm:col-span-1">
               <label htmlFor="firstName" className="block text-sm font-medium">
@@ -26,9 +88,10 @@ const page = ({ params }) => {
                 type="text"
                 id="firstName"
                 name="firstName"
-                className="mt-1 p-2 w-full border rounded-md"
+                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
                 placeholder="Jason"
                 required
+                {...register("firstName")}
               />
             </div>
             <div className="col-span-2 sm:col-span-1">
@@ -39,9 +102,10 @@ const page = ({ params }) => {
                 type="text"
                 id="lastName"
                 name="lastName"
-                className="mt-1 p-2 w-full border rounded-md"
+                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
                 placeholder="Momoa"
                 required
+                {...register("lastName")}
               />
             </div>
           </div>
@@ -54,9 +118,10 @@ const page = ({ params }) => {
                 type="text"
                 id="email"
                 name="email"
-                className="mt-1 p-2 w-full border rounded-md"
-                placeholder="json.momoa@gamil.com"
+                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                placeholder="jason.momoa@gmail.com"
                 required
+                {...register("email")}
               />
             </div>
             <div className="col-span-2 sm:col-span-1">
@@ -67,25 +132,42 @@ const page = ({ params }) => {
                 type="text"
                 id="phone"
                 name="phone"
-                className="mt-1 p-2 w-full border rounded-md"
+                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
                 placeholder="+8801............"
                 required
+                {...register("phone")}
               />
             </div>
-          </div>
-
-          <div>
-            <label htmlFor="company" className="block text-sm font-medium">
-              Vehicle Details
-            </label>
-            <input
-              type="text"
-              id="company"
-              name="vehicle"
-              className="mt-1 p-2 w-full border rounded-md"
-              placeholder="Toyota Land Cruiser Prado - 2020"
-              required
-            />
+            <div className="col-span-2 sm:col-span-1">
+              <label htmlFor="vehicle" className="block text-sm font-medium">
+                Vehicle Details
+              </label>
+              <input
+                type="text"
+                id="vehicle"
+                name="vehicle"
+                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                placeholder="Toyota Land Cruiser Prado - 2020"
+                required
+                {...register("vehicle")}
+              />
+            </div>
+            <div className="col-span-2 sm:col-span-1">
+              <label
+                htmlFor="bookingDate"
+                className="block text-sm font-medium"
+              >
+                Date
+              </label>
+              <input
+                type="date"
+                id="bookingDate"
+                name="bookingDate"
+                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                required
+                {...register("bookingDate")}
+              />
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -102,7 +184,8 @@ const page = ({ params }) => {
                   type="text"
                   id="streetAddress"
                   name="streetAddress"
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                  {...register("streetAddress")}
                 />
               </div>
               <div>
@@ -113,7 +196,8 @@ const page = ({ params }) => {
                   type="text"
                   id="city"
                   name="city"
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                  {...register("city")}
                 />
               </div>
               <div>
@@ -124,7 +208,8 @@ const page = ({ params }) => {
                   type="text"
                   id="state"
                   name="state"
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                  {...register("state")}
                 />
               </div>
               <div>
@@ -135,11 +220,13 @@ const page = ({ params }) => {
                   type="text"
                   id="postal"
                   name="postal"
-                  className="mt-1 p-2 w-full border rounded-md"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                  {...register("postal")}
                 />
               </div>
             </div>
           </div>
+
           {/* ... More form fields */}
 
           <div className="md:flex justify-between">
@@ -148,7 +235,7 @@ const page = ({ params }) => {
             </button>
             <Toaster />
             <button
-              type="submit"
+              type="button"
               className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600"
             >
               Print
@@ -160,4 +247,4 @@ const page = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;
