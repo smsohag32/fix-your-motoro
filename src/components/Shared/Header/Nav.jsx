@@ -43,11 +43,10 @@ const Nav = () => {
       </span>
 
       <ul
-        className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
-          isOpen
-            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
-            : "-left-60 top-[64px] overflow-hidden duration-100"
-        }`}
+        className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:border-none md:flex-row ${isOpen
+          ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
+          : "-left-60 top-[64px] overflow-hidden duration-100"
+          }`}
       >
 
         {navLinkData.map((link, index) => (
@@ -63,34 +62,26 @@ const Nav = () => {
         ))}
       </ul>
       <div className="flex items-center gap-5">
-        {
-          loading ? <Image
-          src={userLogo}
-          alt=""
-          width={40}
-          height={40}
-          className="cursor-pointer animate-spin "
-        /> : <span> {
-          
-          uid ? <span onClick={() => router.push("/dashboard")}>
-          <Image
-            src={photoURL || userLogo}
-            alt=""
-            width={40}
-            height={40}
-            title={displayName}
-            className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
-          />
-        </span> : <Image
-          src={userLogo}
-          alt=""
-          width={40}
-          height={40}
-          className="cursor-pointer "
-        />
-          } </span>
-        
-}
+        {(uid && (
+          <span onClick={() => router.push("/dashboard")}>
+            <Image
+              src={photoURL || userLogo}
+              alt=""
+              width={40}
+              height={40}
+              title={displayName}
+              className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
+            />
+          </span>
+        )) || (
+            <Image
+              src={userLogo}
+              alt=""
+              width={40}
+              height={40}
+              className="cursor-pointer "
+            />
+          )}
         {user ? (
           <>
             <button onClick={handleLogOut} className="font-bold cursor-pointer">
