@@ -3,61 +3,44 @@ import Image from "next/image";
 import React, { useState } from "react";
 import WorkshopDetails from "../WorkshopDetails/WorkshopDetails";
 import StarRating from "../../Home/SuccessReviews/StarRating";
+import { useRouter } from "next/navigation";
 
 const SingleWorkshop = (props) => {
   const { name, _id, image, phone, email, address, rating } =
     props.workshopsData;
-  // const { workshop } = props.workshopData;
-
-  const [selectedWorkshop, setSelectedWorkshop] = useState(null);
-  console.log(selectedWorkshop);
-  const openModal = (workshopData) => {
-    setSelectedWorkshop(workshopData);
-  };
-
-  const closeModal = () => {
-    setSelectedWorkshop(null);
-  };
+  const router = useRouter();
+  // console.log(props)
+  
   return (
-    <div>
-      <div className="flex items-center justify-center bg-gray-50">
-        <div onClick={() => openModal(props.workshopsData)}>
-          <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-            <div className="h-72 w-96">
+    <div onClick={() => router.push(`/workshop/${_id}`)}>
+      <div className="mx-auto  bg-gray-50">
+        <div >
+          <div className="p-3  cursor-pointer ">
+            <div className="h-80 mt-5 relative">
               <Image
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+                className="h-full w-full object-cover transition-transform duration-500"
                 src={image}
                 alt="zzxv"
                 width={384}
                 height={288}
               />
+              <div className="absolute top-4 left-5 bg-red-500 text-white shadow-emerald-50">
+                <p className="py-2 px-3">{address}</p>
+              </div>
             </div>
-            <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-4 pb-12 text-center transition-all duration-500 group-hover:translate-y-0">
-              <h1 className="font-serif text-3xl font-bold name-text primary-text">
-                {name}
-              </h1>
-
-              <p className="mb-3 text-lg italic primary-text font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {email}
-              </p>
-              <p className="mb-3 text-lg italic primary-text font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {address}
-              </p>
+            <div>
+              <p className="text-xl font-semibold mb-2">{name}</p>
+              <p>{email}</p>
               <div className="">
                 <div className="flex mr-2">
                   <StarRating rating={rating} />
-                  <p className="ml-1 primary-text">{rating}</p>
+                  <p>{rating}</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <WorkshopDetails
-        isOpen={selectedWorkshop !== null}
-        closeModal={closeModal}
-        workshop={selectedWorkshop || {}}
-      />
     </div>
   );
 };
