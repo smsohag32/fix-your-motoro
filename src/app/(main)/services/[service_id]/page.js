@@ -14,7 +14,7 @@ const ServicePage = ({ params }) => {
       setLoading(true);
       try {
         const response = await fetch(
-          `https://fya-backend-smsohag32.vercel.app/api/v1/auth/services/${params.service_id}`
+          `https://fya-backend.vercel.app/api/v1/auth/services/${params.service_id}`
         );
         const data = await response.json();
         setService(data);
@@ -71,52 +71,30 @@ const ServicePage = ({ params }) => {
               {service_description}
             </p>
             <div className="px-8 py-4 bg-orange-100 rounded-md shadow-xl">
-              <div className="items-center my-2 text-xl md:flex">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Price
+              <div className="grid grid-cols-1 md:grid-cols-2 my-2">
+                <p className="font-mono font-bold text-slate-700 text-2xl">
+                  Price:
                 </p>
-                <p className="md:pl-10">
-                  :
-                  <p className="md:inline md:pl-10">
-                    <span className="px-4 py-1 text-2xl font-bold text-black bg-orange-300 rounded-xl ">
-                      {service_price}
-                    </span>
-                  </p>
-                </p>
+                <p className="text-xl text-slate-700">{service_price}</p>
               </div>
-              <div className="items-center mb-2 text-xl font-medium md:flex">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Service Duration
+              <div className="grid grid-cols-1 md:grid-cols-2 my-2">
+                <p className="font-mono font-bold text-slate-700 text-2xl">
+                  Service Duration:
                 </p>
-                <p className="primary-text md:pl-10">
-                  <p className="font-mono font-bold md:inline md:pl-10">
-                    {service_duration}
-                  </p>
-                </p>
+                <p className="text-xl text-slate-700">{service_duration}</p>
               </div>
-              <div className="mb-2 text-xl md:flex">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Warranty
+              <div className="grid grid-cols-1 md:grid-cols-2 my-2">
+                <p className="font-mono font-bold text-slate-700 text-2xl">
+                  Warranty:
                 </p>
-                <p className="md:pl-10">
-                  :
-                  <p className="font-mono font-bold md:inline md:pl-10">
-                    {warranty}
-                  </p>
-                </p>
+                <p className="text-xl text-slate-700">{warranty}</p>
               </div>
-              <div className="mb-4 text-xl md:flex">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Benefits
+              <div className="grid grid-cols-1 md:grid-cols-2 my-2">
+                <p className="font-mono font-bold text-slate-700 text-2xl">
+                  Benefits:
                 </p>
-                <p className="md:pl-[130px]">
-                  :
-                  <p className="font-mono font-bold md:inline md:pl-10">
-                    {benefits}
-                  </p>
-                </p>
+                <p className="text-xl text-slate-700">{benefits}</p>
               </div>
-
               <Link href={`/services/booking/${_id}`}>
                 <button className="primary-btn">Book Now</button>
               </Link>
