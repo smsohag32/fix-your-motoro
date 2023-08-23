@@ -10,7 +10,6 @@ import userLogo from "@/assets/userlogo.png";
 import NavLink from "./NavLink";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
-import { toast } from "react-hot-toast";
 
 const Nav = () => {
   const router = useRouter();
@@ -19,9 +18,9 @@ const Nav = () => {
   const handleLogOut = async () => {
     await logout();
     router.push("/");
-    toast.success("Successfully logout!");
   };
   const [isOpen, setIsOpen] = useState();
+
   return (
     <nav className="flex items-center justify-between default-container">
       <div className="md:hidden">
@@ -63,12 +62,7 @@ const Nav = () => {
       </ul>
       <div className="flex items-center gap-5">
         {(uid && (
-          <>
-            <button>
-              <Link href="/dashboard">
-                dashboard
-              </Link>
-            </button>
+          <span onClick={() => router.push("/dashboard")}>
             <Image
               src={photoURL || userLogo}
               alt=""
@@ -77,7 +71,7 @@ const Nav = () => {
               title={displayName}
               className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
             />
-          </>
+          </span>
         )) || (
             <Image
               src={userLogo}
