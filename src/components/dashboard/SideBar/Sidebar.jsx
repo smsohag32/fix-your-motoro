@@ -1,18 +1,10 @@
-"use client";
-import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { Disclosure } from "@headlessui/react";
-import {
-  MdOutlineAnalytics,
-  MdOutlineLogout,
-  MdOutlineMiscellaneousServices,
-} from "react-icons/md";
-import { FaHome } from "react-icons/fa";
-import Link from "next/link";
-import TechnicianLink from "./TechnicianLink";
-import Image from "next/image";
+"use client"
+
+import useUserInfo from "@/hooks/useUserInfo";
 
 const Sidebar = () => {
+  const {userInfo, cLoading} = useUserInfo();
+  console.log(userInfo);
   return (
     <div>
       {/* Technician side nav */}

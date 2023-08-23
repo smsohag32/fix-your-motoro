@@ -1,6 +1,7 @@
 "use client";
 import AuthContext from "@/context/AuthContext";
 import auth from "@/firebase/firebase.auth";
+import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -10,6 +11,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { NextResponse } from "next/server";
 
 const GoogleProvider = new GoogleAuthProvider();
 import { useEffect, useState } from "react";
@@ -44,9 +46,24 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false);
+    const unsub = onAuthStateChanged(auth, (loggedUser) => {
+        setUser(loggedUser)
+      if (loggedUser?.email) {
+        axios
+          .post("https://fya-backend.vercel.app/api/v1/auth/users/jwt", {
+            email: loggedUser.email,
+          })
+          .then((data) => {
+            localStorage.setItem("access-token", data.data.token);
+            setLoading(false);
+          })
+          .catch((err) => {
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
     return () => unsub();
   }, []);

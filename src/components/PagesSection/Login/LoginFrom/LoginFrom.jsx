@@ -6,8 +6,8 @@ import { Helmet } from "react-helmet";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import useAuth from "@/hooks/useAuth";
-import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import saveUser from "@/utils/saveUser";
 
 const LoginFrom = () => {
   const router = useRouter();
@@ -25,25 +25,26 @@ const LoginFrom = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    const toastId = toast.loading("Loading...");
     try {
       await signIn(email, password)
         .then((result) => {
           router.push("/");
-          console.log(result.user);
-          toast.dismiss(toastId);
-          toast.success("User Sing in Successfully");
+
         })
         // .catch((err) => console.log(err));
     } catch (error) {
-      toast.dismiss(toastId);
-      toast.error(error.message || "User not Sing in");
+     
     }
   };
 
   const handleGoogleSingIn = () => {
     googleLogin()
-      .then(() => {
+      .then((result) => {
+        const user = result.user;
+        saveUser(user).then(data => {
+          console.log(data);
+        })
+        console.log(user);
         router.push("/");
       })
       .catch();
