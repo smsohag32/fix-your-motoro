@@ -58,6 +58,7 @@ const Profile = () => {
             <input
               type="text"
               name="name"
+              placeholder="Name "
               value={formData.name}
               onChange={handleInputChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
@@ -70,6 +71,7 @@ const Profile = () => {
             <input
               type="email"
               name="email"
+              placeholder="Email"
               value={formData.email}
               onChange={handleInputChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
