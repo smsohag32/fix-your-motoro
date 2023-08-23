@@ -15,10 +15,8 @@ const HomePage = () => {
     <main>
       <Hero />
       <NearWorkshop />
-      <Categories />
       <OurExperts />
       <OurServices />
-      <SpecialsOffers />
       <SuccessReviews />
       <BestProducts />
       <RecentNews />
