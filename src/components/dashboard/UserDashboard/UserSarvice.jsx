@@ -1,8 +1,6 @@
 import PageTitle from '@/components/Shared/PageTitle/PageTitle'
-import React, { Component } from 'react'
 
-export class UserSarvice extends Component {
-  render() {
+const UserService = () =>  {
     return (
       <div className="relative overflow-x-auto md:mt-40">
          <PageTitle
@@ -86,6 +84,5 @@ export class UserSarvice extends Component {
         </div>
     )
   }
-}
 
-export default UserSarvice
+export default UserService

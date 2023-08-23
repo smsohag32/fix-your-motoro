@@ -10,7 +10,7 @@ const BestProducts = () => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/all/products");
+        const response = await fetch("https://fya-backend.vercel.app/api/v1/auth/products");
         const data = await response.json();
         setProducts(data);
         setLoading(false);
