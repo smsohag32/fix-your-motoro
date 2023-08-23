@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
-import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import saveUser from "@/utils/saveUser";
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -34,19 +34,6 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm();
 
-  // const uploadImage = async (event) => {
-  //   const formData = new FormData();
-  //   if(!event.target.files[0]) return;
-  //   formData.append("image", event.target.files[0])
-  //   const toastId = toast.loading("Image uploading...")
-  //   try{
-  //     const rsc = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`) 
-  //     {
-  //       method: "POST"
-  //       body: formData
-  //     }
-  //   }
-  // }
 
   const {createUser , profileUpdate} = useAuth();
  
@@ -58,7 +45,6 @@ const SignUpForm = () => {
       return;
     }
 
-    const toastId = toast.loading("Loading...")
     try{
       const user = await createUser(email , password)
       await profileUpdate({
@@ -66,15 +52,13 @@ const SignUpForm = () => {
         photoURL: photo,
       })
       .then((result) => {
-        router.push("/");
-        console.log(result.user);
-        toast.dismiss(toastId)
-        toast.success("User Sing in Successfully")
+        saveUser(result?.user).then(data => {
+          router.push("/");
+        })
       })
     }
     catch(error) {
-      toast.dismiss(toastId)
-      toast.error(error.message || "User not Sing in")
+     console.log(error);
     }
   };
 
@@ -109,29 +93,13 @@ const SignUpForm = () => {
         )}
       </div>
 
-      {/* <div className="form-control">
-        <label className="label">
-          <span className="block mb-2 font-bold text-gray-700">Phone Number</span>
-        </label>
-        <input
-          type="number"
-          {...register("number", { required: true })}
-          name="phoneNumber"
-          placeholder="Phone Number"
-          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-500"
-        />
-        {errors.phoneNumber && (
-          <span className="text-red-600">Phone Number is required</span>
-        )}
-      </div> */}
+  
 
       <div className="form-control">
         <label className="label">
           <span className="block mb-2 font-bold text-gray-700">Photo URL</span>
         </label>
 
-        
-        {/* <input type="file" placeholder="You can't touch this" className="w-full max-w-xs file-input file-input-bordered" disabled /> */}
 
         
         <input
