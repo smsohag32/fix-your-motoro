@@ -1,16 +1,4 @@
 import WorkShops from "@/components/PagesSection/WorkShops/Workshop/WorkShops";
-// import React from "react";
-
-// const WorkShopsPage = () => {
-//   return (
-//     <div>
-//      
-//     </div>
-//   );
-// };
-
-// export default WorkShopsPage;
-import Services from "@/components/PagesSection/Services/Services";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import React from "react";
 
@@ -22,7 +10,7 @@ const WorkshopsPage = () => {
       subTitle="Recent motor servicing Workshop"
     />
 
-        {/* <WorkShops /> */}
+        <WorkShops />
     </div>
   );
 };
