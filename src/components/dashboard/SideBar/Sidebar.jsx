@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-"use client"
-
-import Link from "next/link";
-=======
 "use client";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Disclosure } from "@headlessui/react";
@@ -11,33 +6,14 @@ import TechnicianLink from "./TechnicianLink";
 import { MdOutlineLogout } from "react-icons/md";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
->>>>>>> 177dcef6418116a2e19be41b9d9784a4ae5f4232
 import useUserInfo from "@/hooks/useUserInfo";
 import WorkshopAgentLink from "./WorkshopAgentLink";
 import UserLink from "./UserLink";
 
 const Sidebar = () => {
-  const {userInfo, cLoading} = useUserInfo();
+  const { userInfo, cLoading } = useUserInfo();
   console.log(userInfo);
   return (
-<<<<<<< HEAD
-    <div className="flex flex-col gap-5 bg-red-200">
-      <Link href="/dashboard/workshop">
-        WorkShop
-      </Link>
-      <Link href="/dashboard/profile">
-        Profile
-      </Link>
-      <Link href="/dashboard/product">
-        Product
-      </Link>
-      <Link href="/dashboard/service">
-        Service
-      </Link>
-      <Link href="/dashboard/technician">
-        Technician
-      </Link>
-=======
     <div>
       {/* Technician side nav */}
       <div className="">
@@ -54,21 +30,24 @@ const Sidebar = () => {
               {/* <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer">
                 Virtual Dashboard
               </h1> */}
-              <Image
-                className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"
-                src="https://i.ibb.co/Tm3vXhj/logoFix.jpg"
-                alt="logo"
-                width="350"
-                height="300"
-              />
+              <Link href="/">
+                <Image
+                  className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"
+                  src="https://i.ibb.co/Tm3vXhj/logoFix.jpg"
+                  alt="logo"
+                  width="350"
+                  height="300"
+                />
+              </Link>
               {/* name Dynamic */}
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 border-b border-gray-100 cursor-pointer">
                 FYM
               </h1>
-              {
+              {/* {
                 userInfo?.result?.role ? <WorkshopAgentLink/> : <UserLink/>
-              }
-            
+              } */}
+              <WorkshopAgentLink />
+
               {/* logout btn */}
               <div className="">
                 <div className="my-4 ">
@@ -93,7 +72,6 @@ const Sidebar = () => {
           </div>
         </Disclosure>
       </div>
->>>>>>> 177dcef6418116a2e19be41b9d9784a4ae5f4232
     </div>
   );
 };
