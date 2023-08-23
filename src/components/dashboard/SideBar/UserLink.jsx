@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 const UserLink = () => {
   return (
     <>
-      <li></li>
+      <li> <Link></Link> </li>
     </>
   );
 };

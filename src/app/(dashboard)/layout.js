@@ -10,15 +10,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-   <PrivateRote>
-     <div className={inter.className}>
-      <div className="relative min-h-screen md:flex">
-        <Sidebar />
-        <div className="flex-1">
-          <div className="p-5">{children}</div>
+    <PrivateRote>
+      <div className={inter.className}>
+        <div className="relative min-h-screen md:flex">
+          <Sidebar />
+
+          <div className="flex-1 md:ml-40 md:pl-20 bg-slate-200">
+            <div className="p-5">{children}</div>
+          </div>
         </div>
       </div>
-    </div>
-   </PrivateRote>
+    </PrivateRote>
   );
 }
