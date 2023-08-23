@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const { uid, displayName, photoURL } = user || {};
   const handleLogOut = async () => {
     await logout();
@@ -48,6 +48,7 @@ const Nav = () => {
           : "-left-60 top-[64px] overflow-hidden duration-100"
           }`}
       >
+
         {navLinkData.map((link, index) => (
           <li key={index}>
             <NavLink

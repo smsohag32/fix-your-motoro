@@ -65,7 +65,7 @@ const SignUpForm = () => {
   return (
     <form className="m-3 md:m-6" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-control">
-        <label className="label">
+        <label htmlFor="" className="label">
           <span className="block mb-2 font-bold text-gray-700">Name</span>
         </label>
         <input
@@ -78,7 +78,7 @@ const SignUpForm = () => {
         {errors.name && <span className="text-red-600">Name is required</span>}
       </div>
       <div className="form-control">
-        <label className="label">
+        <label htmlFor="" className="label">
           <span className="block mb-2 font-bold text-gray-700">Email</span>
         </label>
         <input
@@ -96,7 +96,7 @@ const SignUpForm = () => {
   
 
       <div className="form-control">
-        <label className="label">
+        <label htmlFor="" className="label">
           <span className="block mb-2 font-bold text-gray-700">Photo URL</span>
         </label>
 

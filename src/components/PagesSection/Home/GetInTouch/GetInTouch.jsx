@@ -40,7 +40,7 @@ const GetInTouch = () => {
           <form onSubmit={handleMessage} className="max-w-md mx-auto">
             <div>
               <label
-                for="name"
+                htmlFor="name"
                 className="block text-sm font-medium text-gray-900"
               >
                 Name
@@ -57,7 +57,7 @@ const GetInTouch = () => {
 
             <div className="mt-4">
               <label
-                for="email"
+                htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Email address
@@ -74,7 +74,7 @@ const GetInTouch = () => {
             <div className="mt-4">
               <div className="flex items-center justify-between">
                 <label
-                  for="message"
+                  htmlFor="message"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Message

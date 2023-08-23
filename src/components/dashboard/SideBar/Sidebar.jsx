@@ -6,8 +6,13 @@ import TechnicianLink from "./TechnicianLink";
 import { MdOutlineLogout } from "react-icons/md";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
+import useUserInfo from "@/hooks/useUserInfo";
+import WorkshopAgentLink from "./WorkshopAgentLink";
+import UserLink from "./UserLink";
 
 const Sidebar = () => {
+  const {userInfo, cLoading} = useUserInfo();
+  console.log(userInfo);
   return (
     <div>
       {/* Technician side nav */}
@@ -34,14 +39,12 @@ const Sidebar = () => {
               />
               {/* name Dynamic */}
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 border-b border-gray-100 cursor-pointer">
-                Technicians
+                FYM
               </h1>
-
-              <TechnicianLink />
-              {/* {
-              technician & <TechnicianLink></TechnicianLink>
-            } */}
-
+              {
+                userInfo?.result?.role ? <WorkshopAgentLink/> : <UserLink/>
+              }
+            
               {/* logout btn */}
               <div className="">
                 <div className="my-4 ">

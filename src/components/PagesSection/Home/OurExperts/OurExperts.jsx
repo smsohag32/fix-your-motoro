@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "@/styles/expert.modules.css";
-import "@/app/globals.css";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import {
   FaTwitterSquare,
@@ -11,7 +10,6 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 
-import NewsModal from "./OurExpertModal";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -24,27 +22,19 @@ const ExpertSection = () => {
   const [loading, setLoading] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState(null);
 
-  const openModal = (article) => {
-    setSelectedArticle(article);
-  };
-
-  const closeModal = () => {
-    setSelectedArticle(null);
-  };
-
-  {
-    /*json data fetch section */
-  }
+  
   useEffect(() => {
     setLoading(true);
     fetch("/data/expert.json")
       .then((res) => res.json())
-      .then((data) => setOurExpert(data))
+      .then((data) => {
+        setOurExpert(data)
+        setLoading(false)
+      })
       .catch((error) => {
         setLoading(false);
         console.error("Error fetching data:", error);
       });
-    setLoading(false);
   }, []);
 
   const expertLimit = 6;
@@ -74,7 +64,7 @@ const ExpertSection = () => {
               spaceBetween: 20,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               spaceBetween: 20,
             },
           }}
