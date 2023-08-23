@@ -11,7 +11,7 @@ import WorkshopAgentLink from "./WorkshopAgentLink";
 import UserLink from "./UserLink";
 
 const Sidebar = () => {
-  const {userInfo, cLoading} = useUserInfo();
+  const { userInfo, cLoading } = useUserInfo();
   console.log(userInfo);
   return (
     <div>
@@ -41,10 +41,11 @@ const Sidebar = () => {
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 border-b border-gray-100 cursor-pointer">
                 FYM
               </h1>
-              {
+              {/* {
                 userInfo?.result?.role ? <WorkshopAgentLink/> : <UserLink/>
-              }
-            
+              } */}
+              <WorkshopAgentLink />
+
               {/* logout btn */}
               <div className="">
                 <div className="my-4 ">
