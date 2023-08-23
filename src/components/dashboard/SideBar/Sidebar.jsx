@@ -11,7 +11,7 @@ const Sidebar = () => {
   return (
     <div>
       {/* Technician side nav */}
-      <div className="bg-red-400">
+      <div className="">
         <Disclosure as="nav">
           <Disclosure.Button className="absolute inline-flex items-center justify-center p-2 text-gray-800 rounded-md top-4 right-4 peer hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white group">
             <GiHamburgerMenu
