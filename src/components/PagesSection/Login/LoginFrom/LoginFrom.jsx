@@ -15,7 +15,6 @@ const LoginFrom = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
 
-
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
