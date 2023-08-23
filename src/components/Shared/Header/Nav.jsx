@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const router = useRouter();
-  const { user, logout, loading } = useAuth();
+  const { user, logout } = useAuth();
   const { uid, displayName, photoURL } = user || {};
   const handleLogOut = async () => {
     await logout();

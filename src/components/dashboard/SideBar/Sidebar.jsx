@@ -2,17 +2,24 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Disclosure } from "@headlessui/react";
 import Image from "next/image";
-import TechnicianLink from "./TechnicianLink";
 import { MdOutlineLogout } from "react-icons/md";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import useUserInfo from "@/hooks/useUserInfo";
 import WorkshopAgentLink from "./WorkshopAgentLink";
 import UserLink from "./UserLink";
+import useAuth from "@/hooks/useAuth";
 
 const Sidebar = () => {
   const {userInfo, cLoading} = useUserInfo();
   console.log(userInfo);
+
+  // logout section 
+  const { logout } = useAuth();
+  const handleLogOut = async () => {
+    await logout();
+    router.push("/");
+  };
   return (
     <div>
       {/* Technician side nav */}
@@ -26,10 +33,6 @@ const Sidebar = () => {
           </Disclosure.Button>
           <div className="fixed top-0 z-20 w-1/2 h-screen p-6 duration-200 ease-out delay-150 bg-white -left-96 lg:left-0 lg:w-60 peer-focus:left-0 peer:transition">
             <div className="flex flex-col justify-start item-center">
-              {/* logo  */}
-              {/* <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer">
-                Virtual Dashboard
-              </h1> */}
               <Image
                 className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"
                 src="https://i.ibb.co/Tm3vXhj/logoFix.jpg"
@@ -51,7 +54,7 @@ const Sidebar = () => {
                   <div className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 border border-gray-200 rounded-md cursor-pointer hover:bg-orange-600 group hover:shadow-lg">
                     <MdOutlineLogout className="text-2xl text-gray-600 group-hover:text-white " />
                     <h3 className="text-base text-gray-800 fnt-semibold group-hover:text-white">
-                      <Link href="/">Logout</Link>
+                      <button onClick={handleLogOut}>Logout</button>
                     </h3>
                   </div>
                 </div>
