@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`select-none ${inter.className}`}>
         <Providers>{children}</Providers>
       </body>
     </html>
