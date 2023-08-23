@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const Profile = () => {
-  // Replace with actual user data from your authentication system or API
   const [user, setUser] = useState({
     name: "John Doe",
     email: "john@example.com",
@@ -11,10 +10,7 @@ const Profile = () => {
       "https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.webp?b=1&s=170667a&w=0&k=20&c=KZM6TIhdaJAy28BA9sg0Sn-ZRd160F6HytdAKykza-s=",
   });
 
-  // State to track editing mode
   const [isEditing, setIsEditing] = useState(false);
-
-  // State to manage form inputs
   const [formData, setFormData] = useState({
     name: user.name,
     email: user.email,
@@ -30,15 +26,14 @@ const Profile = () => {
   };
 
   const handleSaveClick = () => {
-    // Update user data in the backend (you would typically make an API request here)
-    // For this example, we'll just update the state
+    // TODO: Update user data in the backend . make an API request here
+
     setUser({
       ...user,
       name: formData.name,
       email: formData.email,
     });
 
-    // Exit edit mode
     setIsEditing(false);
   };
 
@@ -49,8 +44,8 @@ const Profile = () => {
         <Image
           src={user.profileImage}
           alt={`${user.name}'s Profile`}
-          width={96} // Set the desired width
-          height={96} // Set the desired height
+          width={96}
+          height={96}
           className=" mx-auto"
         />
       </div>

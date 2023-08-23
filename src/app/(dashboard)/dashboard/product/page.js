@@ -25,9 +25,9 @@ const ProductPage = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    // TODO: You can add code here to send the productData (including the image) to your backend API.
+    // TODO: send the productData to your backend API.
 
-    // Clear the form inputs after submission
+   
     setProductData({
       name: '',
       description: '',
