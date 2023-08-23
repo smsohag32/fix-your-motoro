@@ -14,7 +14,7 @@ const ServicePage = ({ params }) => {
       setLoading(true);
       try {
         const response = await fetch(
-          `https://fya-backend-smsohag32.vercel.app/api/v1/auth/services/${params.service_id}`
+          `https://fya-backend.vercel.app/api/v1/auth/services/${params.service_id}`
         );
         const data = await response.json();
         setService(data);
