@@ -8,7 +8,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import useAuth from "@/hooks/useAuth";
-import { FaHistory } from "react-icons/fa";
+import { FaHistory, FaUsers } from "react-icons/fa";
 import { BiCreditCard } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import NavLink from "@/components/Shared/Header/NavLink";
@@ -31,14 +31,7 @@ function UserLink() {
             </NavLink>
             </h3>
         </li>
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-            <MdOutlineMiscellaneousServices className="w-8 h-8  group-hover:text-[#f02801] " />
-            <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
-                <NavLink   exact={'/dashboard/user/user_service' == "/dashboard"}
-              activeClassName={"text-[#f02801]"} href="/dashboard/user/user_service">Service</NavLink>
-            </h3>
-        </li>
-        
+       
         {/* add to card section  */}
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
             <BiCreditCard className="w-8 h-8  group-hover:text-[#f02801]" />
@@ -66,6 +59,15 @@ function UserLink() {
                 <Link href="/dashboard/user/user_payments"> Billing & Payments</Link>
             </h3>
         </li>
+
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <FaUsers className="w-8 h-8  group-hover:text-[#f02801] " />
+            <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+                <NavLink   exact={'/dashboard/comuinity' == "/dashboard"}
+              activeClassName={"text-[#f02801]"} href="/dashboard/user/user_service">Community</NavLink>
+            </h3>
+        </li>
+        
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
             <MdSupportAgent className="w-8 h-6 group-hover:text-[#f02801] " />
             <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">

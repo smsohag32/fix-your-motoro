@@ -38,7 +38,7 @@ body {
 }
 
 .outline-btn{
-  @apply px-5 hover:bg-[#f02801] transition-all duration-500 transform py-3 border-[#f02801] border-2 font-bold  tracking-widest
+  @apply px-5 hover:bg-[#f02801] hover:text-white transition-all duration-500 transform py-3 border-[#f02801] border-2 font-bold  tracking-widest
 }
 
 .primary-border{

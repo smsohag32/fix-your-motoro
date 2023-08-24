@@ -38,7 +38,7 @@ const CardSlider = ({ items, loading, workshops }) => {
             },
           }}
           modules={[Autoplay]}
-          className="mt-8 mySwiper max-w-4xl"
+          className="mt-8 mySwiper"
         >
           {items &&
             items.map((item) => (

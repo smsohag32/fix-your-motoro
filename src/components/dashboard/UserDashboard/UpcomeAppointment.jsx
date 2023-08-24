@@ -1,6 +1,7 @@
 "use client"
 
 import Steps from "@/components/PagesSection/Dasboard/UpComeAppt/Steps";
+import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
@@ -31,7 +32,7 @@ const UpcomeAppointment = () => {
         </div>
             <div className="grid grid-cols-1 gap-10">
                 {
-                    workOrder ? workOrder.map(order => <Steps key={order._id} order={order}/>) : <p>No Appointment found</p>
+                    workOrder?.length>  0 ? workOrder.map(order => <Steps key={order._id} order={order}/>) : <EmptyState label={'Book a Appointment'} message={'Upcomming appointment not found'} address={'/services'} />
                 }
             </div>
         </div>
