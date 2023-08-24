@@ -14,7 +14,6 @@ const Services = () => {
     setSelectedOption(option);
     setIsOpen(false);
   };
-
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
