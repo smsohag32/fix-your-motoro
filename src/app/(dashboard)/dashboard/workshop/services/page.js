@@ -1,11 +1,12 @@
-import React from 'react';
+import ServicesQueue from "@/components/dashboard/workshopDash/Services/ServicesQueue";
+import React from "react";
 
-const ServicesQueue = () => {
-    return (
-        <div>
-            <p>All of the booked services queue.....</p>
-        </div>
-    );
+const ServicesQue = () => {
+  return (
+    <div>
+      <ServicesQueue></ServicesQueue>
+    </div>
+  );
 };
 
-export default ServicesQueue;
+export default ServicesQue;
