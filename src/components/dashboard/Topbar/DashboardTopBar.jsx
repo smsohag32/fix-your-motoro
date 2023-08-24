@@ -11,7 +11,7 @@ const DashboardTopBar = () => {
 const {user } = useAuth();
 
   return (
-    <div className="h-16 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6 flex justify-between">
+    <div className="h-16 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6 hidden md:flex justify-between">
       <div className="flex-1">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
