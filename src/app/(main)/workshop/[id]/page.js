@@ -1,11 +1,12 @@
 "use client"
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
+import SingleProductCard from "@/components/PagesSection/WorkShops/SingleProductCard/SingleProductCard";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const WorkShopDetail = ({ params }) => {
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState([]);
   const [showBookingForm, setShowBookingForm] = useState(false);
   const _id = params.id;
@@ -29,7 +30,7 @@ const WorkShopDetail = ({ params }) => {
           `https://fya-backend.vercel.app/api/v1/auth/workshops/${_id}`
         );
         const data = await response.json();
-        setProducts(data);
+        setProduct(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching JSON data:", error);
@@ -69,6 +70,8 @@ const WorkShopDetail = ({ params }) => {
     });
   };
 
+  console.log(product);
+
    if (loading) {
      return <MidSpinner />; 
    }
@@ -78,23 +81,25 @@ const WorkShopDetail = ({ params }) => {
       <div className="flex gap-5">
         <Image
           className="object-cover transition-transform duration-500"
-          src={products.image}
-          alt={products.name}
+          src={product.image}
+          alt={product.name}
           width={384}
           height={288}
         />
         <div>
-          <p className="text-2xl mb-2">{products.name}</p>
-          <p className="mb-2">Workshop Code: {products.workshopCode}</p>
-          <p className="mb-2">Email: {products.email}</p>
+          <p className="text-2xl mb-2">{product.name}</p>
+          <p className="mb-2">Workshop Code: {product.workshopCode}</p>
+          <p className="mb-2">Email: {product.email}</p>
           <div className="flex mr-2">
-            <StarRating rating={products.rating} />
-            <p className="ml-1">{products.rating}</p>
+            <StarRating rating={product.rating} />
+            <p className="ml-1">{product.rating}</p>
           </div>
         </div>
       </div>
-      <p>Location: {products.address}</p>
-      <p className="my-3  text-slate-500">Workshop Details: {products.description}</p>
+      <p>Location: {product.address}</p>
+      <p className="my-3  text-slate-500">
+        Workshop Details: {product.description}
+      </p>
 
       {/* Booking Form */}
       {showBookingForm && (
@@ -215,6 +220,11 @@ const WorkShopDetail = ({ params }) => {
       >
         Book Now
       </button>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {product.products.map((product, index) => (
+          <SingleProductCard key={index} product={product} />
+        ))}
+      </div>
     </div>
   );
 };
