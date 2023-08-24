@@ -12,9 +12,9 @@ import useAuth from "@/hooks/useAuth";
 
 const Sidebar = () => {
   const { userInfo, cLoading } = useUserInfo();
-  console.log(userInfo);
+  // console.log(userInfo);
 
-  // logout section 
+  // logout section
   const { logout } = useAuth();
   const handleLogOut = async () => {
     await logout();
@@ -31,7 +31,7 @@ const Sidebar = () => {
               aria-hidden="true"
             />
           </Disclosure.Button>
-          <div className="fixed top-0 z-20 w-1/2 h-screen p-6 duration-200 ease-out delay-150 bg-white -left-96 lg:left-0 lg:w-60 peer-focus:left-0 peer:transition">
+          <div className="fixed top-0 z-20 w-full overflow-y-scroll h-screen p-6 duration-200 ease-out delay-150 bg-white -left-full lg:left-0 lg:w-72 peer-focus:left-0 peer:transition">
             <div className="flex flex-col justify-start item-center">
               <Image
                 className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"

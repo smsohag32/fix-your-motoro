@@ -1,11 +1,12 @@
+import Appointments from '@/components/dashboard/WorkshopDashboard/Appointments';
 import React from 'react';
 
-const MangeAppointment = () => {
+const AppointmentPage = () => {
     return (
         <div>
-            <p>Manage All Appointments here.........</p>
+            <Appointments/>
         </div>
     );
 };
 
-export default MangeAppointment;
+export default AppointmentPage;
