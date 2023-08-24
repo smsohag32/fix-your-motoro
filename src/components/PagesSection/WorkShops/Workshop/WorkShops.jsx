@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react";
 import WorkshopFilter from "../WorkshopFilter/WorkshopFilter";
 import SingleWorkshop from "../SingleWorkShop/SingleWorkshop";
-import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
-import CardSlider from "@/components/CardsSlider/CardsSlider";
 import Spinner from "@/components/Spinners/Spinner";
 
 const WorkShops = () => {
