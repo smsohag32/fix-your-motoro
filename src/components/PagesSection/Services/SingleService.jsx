@@ -9,7 +9,7 @@ const SingleService = ({ service }) => {
     <div>
       <div className="flex items-center justify-center bg-gray-50">
         <div className="">
-          <div class="group relative  items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+          <div className="group relative  items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
             <div className="h-72 w-96">
               <Image
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
