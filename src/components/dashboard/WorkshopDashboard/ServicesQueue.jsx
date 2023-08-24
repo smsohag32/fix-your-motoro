@@ -55,7 +55,7 @@ const ServicesQueue = () => {
     return (
       <>
         <div className="mt-20 ">
-          <div className="md:flex justify-around items-center mb-5">
+          <div className="items-center justify-around mb-5 md:flex">
             <h2 className="text-xl font-semibold text-slate-800"> Name : </h2>
             <p className="text-xl font-semibold text-slate-800"> Category </p>
             <p className="text-xl font-semibold text-slate-800"> Vehicle </p>
@@ -66,7 +66,7 @@ const ServicesQueue = () => {
               orders?.map((item, idx) => (
                 <div key={idx}>
                   <div>
-                    <div className="md:flex justify-around items-center mb-2">
+                    <div className="items-center justify-around mb-2 md:flex">
                       <h2 className="text-lg font-medium text-slate-600">
                         {service_name}
                       </h2>
@@ -88,8 +88,8 @@ const ServicesQueue = () => {
             )}
           </div>
           <div className="min-h-[40vh] border md:flex justify-center items-end">
-            <Link href="/">
-              <button className="primary-btn">Post a new Service</button>{" "}
+            <Link href="/dashboard/workshop/service_form">
+              <button className="rounded-lg primary-btn">Post a new Service</button>{" "}
             </Link>
           </div>
         </div>

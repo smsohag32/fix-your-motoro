@@ -88,14 +88,14 @@ const Nav = () => {
         }
         {user ? (
           <>
-            <button onClick={handleLogOut} className="font-bold w-20 text-center cursor-pointer">
-              Logout
+            <button onClick={handleLogOut} className="font-bold rounded-lg cursor-pointer primary-btn">
+              LogOut
             </button>
           </>
         ) : (
           <>
-            <Link className="font-bold w-20 cursor-pointer text-center" href="/login">
-              {loading ? '' : 'Login'}
+            <Link className="font-bold rounded-lg primary-btn" href="/login">
+              Login
             </Link>
           </>
         )}

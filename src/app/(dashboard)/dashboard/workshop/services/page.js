@@ -1,10 +1,10 @@
-import ServicesQueue from "@/components/dashboard/workshopDash/Services/ServicesQueue";
+import ServicesQueue from "@/components/dashboard/WorkshopDashboard/ServicesQueue";
 import React from "react";
 
 const ServicesQue = () => {
   return (
     <div>
-      <ServicesQueue></ServicesQueue>
+        <ServicesQueue/>
     </div>
   );
 };

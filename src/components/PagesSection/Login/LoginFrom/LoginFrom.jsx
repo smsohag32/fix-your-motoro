@@ -54,8 +54,8 @@ const LoginFrom = () => {
         <title>FYM | Login</title>
       </Helmet>
       <PageTitle title="Our Login" subTitle="Our Login page" />
-      <div className="default-container py-12">
-      <div className="w-full py-12 max-w-xl mx-auto rounded-lg shadow bg-gray-50 p-8 primary-shadow secondary-border ">
+      <div className="py-12 default-container">
+      <div className="w-full max-w-xl p-8 py-12 mx-auto rounded-lg shadow bg-gray-50 primary-shadow secondary-border ">
         <form onSubmit={handelLogin} className="space-y-6">
           <h5 className="text-3xl font-medium text-center text-gray-900">
             Login
