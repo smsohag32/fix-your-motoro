@@ -1,57 +1,37 @@
-"use client"
+"use client";
 import DashboardTitle from "@/components/Shared/DashboardTitle/DashboardTitle";
 import useAuth from "@/hooks/useAuth";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-
 const ServiceFrom = () => {
-  const { register, handleSubmit } = useForm()
-  const {user} = useAuth();
-  const imageHostingApi = `https://api.imgbb.com/1/upload?key=4ef7007f7046a0746df3c9c722fd7459`
+  const { register, handleSubmit } = useForm();
+  const { user } = useAuth();
+  const imageHostingApi = `https://api.imgbb.com/1/upload?key=4ef7007f7046a0746df3c9c722fd7459`;
 
   const [workshopData, setWorkshopData] = useState({
-    workshopId: '',
-    serviceName: '',
-    serviceCategory: '',
-    serviceDescription: '',
-    serviceDuration: '',
-    servicePrice: '',
-    benefits: '',
-    serviceImage: '',
-    warranty: '',
+    workshopId: "",
+    serviceName: "",
+    serviceCategory: "",
+    serviceDescription: "",
+    serviceDuration: "",
+    servicePrice: "",
+    benefits: "",
+    serviceImage: "",
+    warranty: "",
   });
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setWorkshopData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleImageUpload = (e) => {
-  //   const file = e.target.files[0];
-  //   const imageUrl = URL.createObjectURL(file);
-  //   setWorkshopData((prevData) => ({
-  //     ...prevData,
-  //     serviceImage: imageUrl,
-  //   }));
-  // };
-
-  
   const addNewClass = (data) => {
-    console.log(data)
-    const formData = new FormData()
-    formData.append("image", data.image[0])
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
 
     fetch(imageHostingApi, {
       method: "POST",
-      body: formData
+      body: formData,
     })
-      .then(res => res.json())
-      .then(imgResponse => {
+      .then((res) => res.json())
+      .then((imgResponse) => {
         if (imgResponse.success) {
           const newClass = {
             workshop_id: data.workshopId,
@@ -62,23 +42,18 @@ const ServiceFrom = () => {
             service_price: data.servicePrice,
             benefits: data.benefits,
             service_image: imgResponse.data.display_url,
-            warranty: data.warranty
-          }
-
-          axios.post(`https://fya-backend.vercel.app/api/v1/auth/services/${user.email}`, newClass)
-            .then(res => {
-              console.log(res.data)
-
-            })
+            warranty: data.warranty,
+          };
         }
-
-      })
-
-  }
+      });
+  };
 
   return (
     <div>
-      <DashboardTitle title="Add Service" subTitle="Welcome to the Add Service" />
+      <DashboardTitle
+        title="Add Service"
+        subTitle="Welcome to the Add Service"
+      />
       <div className="max-w-lg py-4 mx-auto">
         <form onSubmit={addNewClass} className="p-6 bg-white rounded shadow">
           <h2 className="mb-4 text-2xl font-semibold">Add Workshop Details</h2>
@@ -91,7 +66,7 @@ const ServiceFrom = () => {
               type="text"
               id="workshopId"
               className="w-full p-2 border rounded"
-              {...register("workshopId", { required: true })}
+              {...register("workshop  Id", { required: true })}
             />
           </div>
 
@@ -102,20 +77,20 @@ const ServiceFrom = () => {
             <input
               type="text"
               id="serviceCategory"
-
-              
               className="w-full p-2 border rounded"
               {...register("serviceCategory", { required: true })}
             />
           </div>
 
           <div className="mb-4">
-            <label htmlFor="serviceDescription" className="block mb-1 font-medium">
+            <label
+              htmlFor="serviceDescription"
+              className="block mb-1 font-medium"
+            >
               Service Description
             </label>
             <textarea
               id="serviceDescription"
-             
               className="w-full p-2 border rounded"
               rows="4"
               {...register("serviceDescription", { required: true })}
@@ -129,7 +104,6 @@ const ServiceFrom = () => {
             <input
               type="text"
               id="serviceDuration"
-              
               className="w-full p-2 border rounded"
               {...register("serviceDuration", { required: true })}
             />
@@ -142,7 +116,6 @@ const ServiceFrom = () => {
             <input
               type="text"
               id="servicePrice"
-             
               className="w-full p-2 border rounded"
               {...register("servicePrice", { required: true })}
             />
@@ -154,7 +127,6 @@ const ServiceFrom = () => {
             </label>
             <textarea
               id="benefits"
-              
               className="w-full p-2 border rounded"
               rows="4"
               {...register("benefits", { required: true })}
@@ -168,7 +140,6 @@ const ServiceFrom = () => {
             <input
               type="text"
               id="warranty"
-              
               className="w-full p-2 border rounded"
               {...register("warranty", { required: true })}
             />
@@ -187,10 +158,7 @@ const ServiceFrom = () => {
             />
           </div>
           <div className="mt-4">
-            <button
-              type="submit"
-              className="w-full rounded-lg primary-btn "
-            >
+            <button type="submit" className="w-full rounded-lg primary-btn ">
               Submit
             </button>
           </div>
@@ -199,6 +167,5 @@ const ServiceFrom = () => {
     </div>
   );
 };
-
 
 export default ServiceFrom;
