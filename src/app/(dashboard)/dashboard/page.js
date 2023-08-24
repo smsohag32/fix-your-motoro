@@ -19,10 +19,18 @@ const OverviewDashboard = () => {
               Welcome to your workshop dashboard. Here, you can manage various
               aspects of your workshop.
             </p>
-            <p>Feel free to customize this dashboard to suit your needs.</p>
+            <p>Manage Your all activities from here.</p>
           </div>
-          <div>
-            
+          <div className="md:flex gap-10 justify-center items-center">
+            {/* workshop card */}
+            <figure>
+              image
+              <figcaption> image name </figcaption>
+            </figure>
+            <div>
+              workshop details workshop details workshop details workshop
+              details
+            </div>
           </div>
         </main>
       </div>
