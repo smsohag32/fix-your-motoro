@@ -72,23 +72,24 @@ const Shops = () => {
               placeholder="Search products"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="border p-2 mb-4 w-full"
+              className="border p-2 mb-4 w-full rounded-md"
             />
             <div>
-              <div>
+              <div className="flex my-2 items-center gap-3">
+                <p>Price range: </p>
                 <input
                   type="number"
                   placeholder="Min Price"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
-                  className="border p-2 mr-2"
+                  className="border p-2 mr-2 rounded-md"
                 />
                 <input
                   type="number"
                   placeholder="Max Price"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
-                  className="border p-2"
+                  className="border p-2 rounded-md"
                 />
               </div>
               <div className="flex my-2 items-center gap-3">
@@ -98,7 +99,7 @@ const Shops = () => {
                   placeholder="Items PerPage"
                   value={itemsPerPage}
                   onChange={(e) => setItemsPerPage(e.target.value)}
-                  className="border p-2 mr-2"
+                  className="border p-2 mr-2 rounded-md"
                 />
               </div>
             </div>
@@ -106,7 +107,6 @@ const Shops = () => {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredShopData.map((item) => (
               <div
-                onClick={() => router.push(`/shops/${item?._id}`)}
                 key={item.id}
                 className="bg-white rounded-lg shadow-md p-5 sm:p-6 relative transition hover:bg-red-50"
               >
@@ -156,8 +156,11 @@ const Shops = () => {
                 >
                   View Details
                 </button> */}
-                  <button onClick={notify} className="primary-btn">
-                    Add to Card
+                  <button
+                    onClick={() => router.push(`/shops/${item?._id}`)}
+                    className="primary-btn rounded-md"
+                  >
+                    Detail
                   </button>
                   <Toaster />
                   <p className="text-gray-700">${item.price.toFixed(2)}</p>
@@ -166,11 +169,11 @@ const Shops = () => {
             ))}
           </div>
 
-          <div className="mt-4 flex justify-center">
+          <div className="mt-4 flex items-center justify-center">
             <button
               onClick={() => setCurrentPage(currentPage - 1)}
               disabled={currentPage === 1}
-              className="mr-2 primary-btn"
+              className="mr-2 primary-btn rounded-md"
             >
               <FaLessThan />
             </button>
@@ -180,7 +183,7 @@ const Shops = () => {
             <button
               onClick={() => setCurrentPage(currentPage + 1)}
               disabled={endIndex >= products.length}
-              className="ml-2 primary-btn"
+              className="ml-2 primary-btn rounded-md"
             >
               <FaGreaterThan />
             </button>
