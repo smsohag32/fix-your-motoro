@@ -1,5 +1,6 @@
 "use client"
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
+import MidSpinner from "@/components/Spinners/MidSpinner";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -56,7 +57,6 @@ const WorkShopDetail = ({ params }) => {
     alert(
       `Booking Information:\nName: ${formData.name}\nEmail: ${formData.email}\nLocation: ${formData.location}\nPhone Number: ${formData.phoneNumber}\nVehicle Number: ${formData.vehicleNumber}\nworkShopId : ${_id}`
     );
-    // alert(infoData);
     console.log(infoData);
     // setShowBookingForm(false);
   };
@@ -68,6 +68,10 @@ const WorkShopDetail = ({ params }) => {
       [name]: value,
     });
   };
+
+   if (loading) {
+     return <MidSpinner />; 
+   }
 
   return (
     <div className="relative mt-36 p-5">
@@ -89,7 +93,7 @@ const WorkShopDetail = ({ params }) => {
           </div>
         </div>
       </div>
-      <p>{products.address}</p>
+      <p>Location: {products.address}</p>
       <p className="my-3  text-slate-500">Workshop Details: {products.description}</p>
 
       {/* Booking Form */}
