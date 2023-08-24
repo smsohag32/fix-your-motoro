@@ -69,7 +69,7 @@ const Nav = () => {
           width={40}
           height={40}
           className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801] animate-spin"
-        /> : <> { uid ? <span onClick={() => router.push("/dashboard")}>
+        /> : <> { uid ? <span onClick={() => router.replace("/dashboard")}>
         <Image
           src={photoURL || userLogo}
           alt=""
@@ -88,14 +88,14 @@ const Nav = () => {
         }
         {user ? (
           <>
-            <button onClick={handleLogOut} className="font-bold rounded-lg cursor-pointer primary-btn">
-              LogOut
+            <button onClick={handleLogOut} className="font-bold cursor-pointer">
+              {loading ? '' : 'Logout'}
             </button>
           </>
         ) : (
           <>
-            <Link className="font-bold rounded-lg primary-btn" href="/login">
-              Login
+            <Link className="font-bold cursor-pointer" href="/login">
+              {loading ? '' : 'Login'}
             </Link>
           </>
         )}
