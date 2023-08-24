@@ -1,6 +1,4 @@
 import DashboardTitle from '@/components/Shared/DashboardTitle/DashboardTitle';
-import PageTitle from '@/components/Shared/PageTitle/PageTitle'
-import React, { Component } from 'react'
 
 const UserService = () =>  {
     return (
@@ -89,4 +87,4 @@ const UserService = () =>  {
     );
   }
 
-export default UserSarvice;
+export default UserService;

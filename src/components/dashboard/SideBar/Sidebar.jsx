@@ -33,21 +33,6 @@ const Sidebar = () => {
           </Disclosure.Button>
           <div className="fixed top-0 z-20 w-1/2 h-screen p-6 duration-200 ease-out delay-150 bg-white -left-96 lg:left-0 lg:w-60 peer-focus:left-0 peer:transition">
             <div className="flex flex-col justify-start item-center">
-<<<<<<< HEAD
-              {/* logo  */}
-              {/* <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer">
-                Virtual Dashboard
-              </h1> */}
-              <Link href="/">
-                <Image
-                  className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"
-                  src="https://i.ibb.co/Tm3vXhj/logoFix.jpg"
-                  alt="logo"
-                  width="350"
-                  height="300"
-                />
-              </Link>
-=======
               <Image
                 className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"
                 src="https://i.ibb.co/Tm3vXhj/logoFix.jpg"
@@ -55,7 +40,6 @@ const Sidebar = () => {
                 width="350"
                 height="300"
               />
->>>>>>> e357189c35771e350632e82d932458d99f1ad59b
               {/* name Dynamic */}
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 border-b border-gray-100 cursor-pointer">
                 FYM
