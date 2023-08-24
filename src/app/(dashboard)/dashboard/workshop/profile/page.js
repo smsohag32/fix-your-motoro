@@ -1,10 +1,10 @@
-import WorkshopProfile from "@/components/dashboard/WorkshopDashboard/WorkshopProfile";
 import React from "react";
+import Profile from "../../profile/page";
 
 const ProfilePage = () => {
   return (
     <div>
-      <WorkshopProfile/>
+      <Profile/>
     </div>
   );
 };
