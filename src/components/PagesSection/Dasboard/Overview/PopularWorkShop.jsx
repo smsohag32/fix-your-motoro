@@ -17,7 +17,7 @@ const PopularWorkShop = () => {
     return (
         <div>
             <TitleDashboard title={'Workshop'}/>
-            <div className=" grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 gap-5  md:grid-cols-3">
               {workshops.slice(0,3).map(item => <WorkshopCard key={item._id} workshopsData={item}/>)}
             </div>
             <div className="">

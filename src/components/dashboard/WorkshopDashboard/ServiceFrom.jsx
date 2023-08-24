@@ -39,8 +39,9 @@ const ServiceFrom = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(workshopData);
-    router.push('https://fya-backend.vercel.app/api/v1/auth/services'); 
+    router.POST('https://fya-backend.vercel.app/api/v1/auth/services'); 
   };
+  
   return (
     <div>
         <DashboardTitle title="Add Service" subTitle="Welcome to the Add Service" />
