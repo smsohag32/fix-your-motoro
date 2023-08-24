@@ -3,7 +3,6 @@ import React from "react";
 import {
     MdOutlineMiscellaneousServices, MdPayments, MdSupportAgent,
 } from "react-icons/md";
-import userLogo from "@/assets/lott/userlogo.png"
 import Link from "next/link";
 import Image from "next/image";
 import useAuth from "@/hooks/useAuth";
