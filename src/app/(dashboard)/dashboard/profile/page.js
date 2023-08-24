@@ -1,3 +1,4 @@
+import Profile from "@/components/dashboard/Profile/Profile";
 import useAuth from "@/hooks/useAuth";
 import Image from "next/image";
 
@@ -54,10 +55,10 @@ const ProfilePage = () => {
         <div>
           <Profile />
         </div>
-      )
-      };
+      )}
+      ;
     </div>
-  )
-}
+  );
+};
 
 export default ProfilePage;
