@@ -12,7 +12,7 @@ const WorkShopDetail = ({ params }) => {
     name: "",
     email: "",
     phoneNumber: "",
-    Location: "",
+    location: "",
     vehicleModel: "",
     workShopId: _id
     // Add more fields as needed
@@ -45,10 +45,20 @@ const WorkShopDetail = ({ params }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const infoData = {
+      name: formData.name,
+      email: formData.email,
+      location: formData.location,
+      phoneNumber: formData.phoneNumber,
+      vehicleNumber: formData.vehicleNumber,
+      workShopId: _id,
+    };
     alert(
-      `Booking Information:\nName: ${formData.name}\nEmail: ${formData.email}\nLocation: ${formData.location}\nPhone Number: ${formData.phoneNumber}\nVehicle Number: ${formData.vehicleModel}\nworkShopId : ${_id}`
+      `Booking Information:\nName: ${formData.name}\nEmail: ${formData.email}\nLocation: ${formData.location}\nPhone Number: ${formData.phoneNumber}\nVehicle Number: ${formData.vehicleNumber}\nworkShopId : ${_id}`
     );
-    setShowBookingForm(false);
+    // alert(infoData);
+    console.log(infoData);
+    // setShowBookingForm(false);
   };
 
   const handleChange = (e) => {
@@ -70,9 +80,9 @@ const WorkShopDetail = ({ params }) => {
           height={288}
         />
         <div>
-          <p>{products.name}</p>
-          <p>Workshop Code: {products.workshopCode}</p>
-          <p>Email: {products.email}</p>
+          <p className="text-2xl mb-2">{products.name}</p>
+          <p className="mb-2">Workshop Code: {products.workshopCode}</p>
+          <p className="mb-2">Email: {products.email}</p>
           <div className="flex mr-2">
             <StarRating rating={products.rating} />
             <p className="ml-1">{products.rating}</p>
@@ -80,18 +90,18 @@ const WorkShopDetail = ({ params }) => {
         </div>
       </div>
       <p>{products.address}</p>
-      <p className="mt-3">Workshop Details: {products.description}</p>
+      <p className="my-3  text-slate-500">Workshop Details: {products.description}</p>
 
       {/* Booking Form */}
       {showBookingForm && (
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-200 bg-opacity-75">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="absolute top-5 left-0 w-full h-full flex items-center justify-center bg-gray-200 bg-opacity-75">
+          <div className="relative bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Booking Information</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 text-sm font-bold "
                 >
                   Name
                 </label>
@@ -105,10 +115,10 @@ const WorkShopDetail = ({ params }) => {
                   required
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-4 ">
                 <label
                   htmlFor="email"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 text-sm font-bold "
                 >
                   Email
                 </label>
@@ -125,7 +135,7 @@ const WorkShopDetail = ({ params }) => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 text-sm font-bold"
                 >
                   Location
                 </label>
@@ -142,7 +152,7 @@ const WorkShopDetail = ({ params }) => {
               <div className="mb-4">
                 <label
                   htmlFor="phoneNumber"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 text-sm font-bold"
                 >
                   Phone Number
                 </label>
@@ -159,15 +169,15 @@ const WorkShopDetail = ({ params }) => {
               <div className="mb-4">
                 <label
                   htmlFor="phoneNumber"
-                  className="block text-gray-700 text-sm font-bold mb-2"
+                  className="block text-gray-700 text-sm font-bold"
                 >
-                  Behical Model
+                  Vehicle Number
                 </label>
                 <input
                   type="tel"
-                  id="vehicleModel"
-                  name="vehicleModel"
-                  value={formData.vehicleModel}
+                  id="vehicleNumber"
+                  name="vehicleNumber"
+                  value={formData.vehicleNumber}
                   onChange={handleChange}
                   className="w-full px-3 py-2 rounded-md border-2 focus:outline-none focus:border-blue-500"
                   required
@@ -176,17 +186,28 @@ const WorkShopDetail = ({ params }) => {
 
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="primary-btn font-bold py-2 px-4 rounded"
               >
                 Submit
               </button>
             </form>
+            <div className=" absolute -top-7 -right-3 mt-4">
+              <button
+                className="bg-red-400 hover:bg-red-600  font-bold py-1 px-2 rounded-full transition-all duration-300 ease-in-out"
+                onClick={() => {
+                  console.log("hello there");
+                  setShowBookingForm(false);
+                }}
+              >
+                X
+              </button>
+            </div>
           </div>
         </div>
       )}
       <button
         onClick={handleBookNow}
-        className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className=" primary-btn  text-white font-bold py-2 px-4 rounded"
       >
         Book Now
       </button>
