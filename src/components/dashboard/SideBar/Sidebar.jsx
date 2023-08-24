@@ -12,9 +12,9 @@ import useAuth from "@/hooks/useAuth";
 
 const Sidebar = () => {
   const { userInfo, cLoading } = useUserInfo();
-  console.log(userInfo);
+  // console.log(userInfo);
 
-  // logout section 
+  // logout section
   const { logout } = useAuth();
   const handleLogOut = async () => {
     await logout();

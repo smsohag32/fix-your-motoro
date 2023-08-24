@@ -1,13 +1,15 @@
+import useAuth from "@/hooks/useAuth";
 import Image from "next/image";
 
 const ProfilePage = () => {
+  const { user } = useAuth();
   return (
     <div className="p-6 bg-white shadow-md rounded-md sm:w-96 mx-auto">
       <h2 className="text-2xl font-semibold mb-4">Profile</h2>
       <div className="mb-4 text-center">
         <Image
           src={user.profileImage}
-          alt={`${user.name}'s Profile`}
+          alt={`${user?.displayName}'s Profile`}
           width={96}
           height={96}
           className=" mx-auto"
@@ -74,4 +76,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage ;
+export default ProfilePage;
