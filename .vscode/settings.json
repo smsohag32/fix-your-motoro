@@ -1,5 +1,6 @@
 {
     "diffEditor.wordWrap": "on",
     "editor.wordWrap": "on",
-    "chat.editor.wordWrap": "on"
+    "chat.editor.wordWrap": "on",
+    "editor.fontSize": 18
 }

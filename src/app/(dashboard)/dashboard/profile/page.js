@@ -1,42 +1,6 @@
-"use client";
 import Image from "next/image";
-import React, { useState } from "react";
 
-const Profile = () => {
-  const [user, setUser] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    profileImage:
-      "https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.webp?b=1&s=170667a&w=0&k=20&c=KZM6TIhdaJAy28BA9sg0Sn-ZRd160F6HytdAKykza-s=",
-  });
-
-  const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
-    name: user.name,
-    email: user.email,
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleSaveClick = () => {
-    // TODO: Update user data in the backend . make an API request here
-
-    setUser({
-      ...user,
-      name: formData.name,
-      email: formData.email,
-    });
-
-    setIsEditing(false);
-  };
-
+const ProfilePage = () => {
   return (
     <div className="p-6 bg-white shadow-md rounded-md sm:w-96 mx-auto">
       <h2 className="text-2xl font-semibold mb-4">Profile</h2>
@@ -109,4 +73,5 @@ const Profile = () => {
     </div>
   );
 };
-export default Profile;
+
+export default ProfilePage ;
