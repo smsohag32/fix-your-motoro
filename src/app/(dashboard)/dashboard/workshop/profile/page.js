@@ -1,11 +1,12 @@
+import WorkshopProfile from "@/components/dashboard/WorkshopDashboard/WorkshopProfile";
 import React from "react";
 
-const Profile = () => {
+const ProfilePage = () => {
   return (
     <div>
-      <p>here is our workshop profile</p>
+      <WorkshopProfile/>
     </div>
   );
 };
 
-export default Profile;
+export default ProfilePage;
