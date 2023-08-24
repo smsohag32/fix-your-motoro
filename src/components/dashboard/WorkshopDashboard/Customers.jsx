@@ -1,11 +1,30 @@
-import React from 'react';
+"use client";
+import TitleDashboard from "@/components/Shared/TitleDashboard/TitleDashboard";
+import useAuth from "@/hooks/useAuth";
+import useWorkshopOrder from "@/hooks/useWorkshopOrders";
+import MidSpinner from "@/components/Spinners/MidSpinner";
+import CustomerCard from "./CustomerCard";
 
 const Customers = () => {
-    return (
-        <div>
-            <h1>This is a Customers</h1>
-        </div>
-    );
+  const { user } = useAuth();
+
+  const { workshopOrders, wOLoading } = useWorkshopOrder(user?.email);
+
+  if (wOLoading) {
+    return <MidSpinner />;
+  }
+
+  return (
+    <div>
+      <TitleDashboard title={"Our Customers"} />
+      <div>
+        {workshopOrders &&
+          workshopOrders.map((order) => (
+            <CustomerCard key={order._id} order={order} />
+          ))}
+      </div>
+    </div>
+  );
 };
 
 export default Customers;
