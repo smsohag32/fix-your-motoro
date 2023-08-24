@@ -1,11 +1,12 @@
+import Communication from "@/components/dashboard/WorkshopDashboard/Communication";
 import React from "react";
 
-const Communication = () => {
+const CommunicationPage = () => {
   return (
     <div>
-      <p>communication from here...</p>
+      <Communication />
     </div>
   );
 };
 
-export default Communication;
+export default CommunicationPage;

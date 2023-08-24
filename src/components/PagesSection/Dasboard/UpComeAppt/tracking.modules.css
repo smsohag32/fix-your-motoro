@@ -1,0 +1,40 @@
+.step-titles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.step-title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.step-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.step-name {
+    font-size: 16px;
+}
+
+.active .step-number,
+.completed .step-number {
+    color: #ee540c;
+    border-color: #ee540c;
+}
+
+.completed .step-name {
+    color: #ee540c;
+}
