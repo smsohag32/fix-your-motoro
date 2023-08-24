@@ -57,19 +57,11 @@ const Page = ({ params }) => {
       }
     );
     const result = await response.json();
-    console.log(result);
-    // try {
-
-    //   // if (response.ok) {
-    //   //   // Notify and reset the form
-    //   //   notify();
-    //   //   reset();
-    //   // } else {
-    //   //   toast.error("Failed to book the service. Please try again later.");
-    //   // }
-    // } catch (error) {
-    //   toast.error("An error occurred. Please try again later.");
-    // }
+    if (result?.bookingDate) {
+      router.replace("/dashboard/user/upcomming_appointment");
+      reset();
+      toast.success("Work order appointment success");
+    }
   };
   if (loading) {
     return <Spinner />;
