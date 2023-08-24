@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
         <div className="relative min-h-screen md:flex">
           <Sidebar />
           <div className="flex-1 md:ml-72 bg-slate-200">
-            <DashboardTopBar/>
-            <div className="p-5">{children}</div>
+            <DashboardTopBar />
+            <div className="">{children}</div>
           </div>
         </div>
       </div>

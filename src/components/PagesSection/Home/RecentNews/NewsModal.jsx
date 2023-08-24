@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import Modal from "react-modal";
+import { Toaster, toast } from "react-hot-toast";
 
 const NewsModal = ({ isOpen, closeModal, article }) => {
   const customStyles = {
@@ -32,6 +33,7 @@ const NewsModal = ({ isOpen, closeModal, article }) => {
       <button onClick={closeModal} className="primary-btn">
         Close
       </button>
+      <Toaster/>
     </Modal>
   );
 };
