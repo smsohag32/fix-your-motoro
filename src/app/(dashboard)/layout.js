@@ -1,4 +1,5 @@
-import Sidebar from "@/components/dashboard/SideBar/Sidebar";
+
+import Sidebar from "@/components/dashboard/Sidebar/Sidebar";
 import PrivateRote from "@/utils/PrivateRote";
 import { Inter } from "next/font/google";
 import { FaSearch } from "react-icons/fa";
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
     <PrivateRote>
       <div className={inter.className}>
         <div className="relative min-h-screen md:flex">
+          
           <Sidebar />
 
           <div className="flex-1 md:ml-40 md:pl-20 bg-slate-200">

@@ -1,12 +1,15 @@
+"use client"
 import React from "react";
-
+import Topbar from "@/components/dashboard/Topbar/Topbar";
 const OverviewDashboard = () => {
   return (
     <div>
       <div className="bg-gray-100 min-h-screen">
         <header className="bg-white shadow-sm p-4">
-          <h1 className="text-2xl font-semibold">Welcome, Workshop Owner!</h1>
+        <div><Topbar /></div>
+      
         </header>
+        
         <main className="p-4">
           <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-semibold mb-4">Dashboard Overview</h2>

@@ -1,19 +1,34 @@
 "use client"
 import Image from "next/image";
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import AuthContext from "@/context/AuthContext";
 
 
 const ProfilePage = () => {
+  const [isEditing, setIsEditing] = useState(false);
   const { user, loading } = useContext(AuthContext);
-  const isEditing = false;
+  const [formData, setFormData] = useState({
+    name: user.displayName || "",
+    email: user.email || "",
+  });
+ 
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+  const handleSaveClick = () => {
+    // Call the profileUpdate function from your context
+    profileUpdate({ displayName: formData.name, email: formData.email });
+
+    // Exit edit mode
+    setIsEditing(false);
+  };
   return (
     <div className="p-6 bg-white shadow-md rounded-md sm:w-96 mx-auto">
       <h2 className="text-2xl font-semibold mb-4">Profile</h2>
       <div className="mb-4 text-center">
         <Image
           src={user.photoURL}
-          alt={`${user.name}'s Profile`}
+          alt={`${user.displayName}'s Profile`}
           width={96}
           height={96}
           className=" mx-auto"
@@ -29,7 +44,7 @@ const ProfilePage = () => {
               type="text"
               name="name"
               placeholder="Name "
-              value={formData.name}
+              value={formData.displayName}
               onChange={handleInputChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             />
@@ -48,7 +63,7 @@ const ProfilePage = () => {
             />
           </div>
           <button
-            // onClick={handleSaveClick}
+            onClick={handleSaveClick}
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 focus:outline-none"
           >
             Save
@@ -69,7 +84,7 @@ const ProfilePage = () => {
             <p>{user.email}</p>
           </div>
           <button
-            // onClick={handleEditClick}
+            onClick={handleEditClick}
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 focus:outline-none"
           >
             Edit Profile
