@@ -4,11 +4,12 @@ import MidSpinner from "@/components/Spinners/MidSpinner";
 import useWorkshops from "@/hooks/useWorkshops";
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import WorkshopCard from "./WorkshopCard";
+import { useRouter } from "next/navigation";
 
 
 const PopularWorkShop = () => {
     const {workshops, wLoading} = useWorkshops();
-    console.log(workshops);
+    const router = useRouter();
 
     if(wLoading) {
         return <MidSpinner/>
@@ -17,11 +18,11 @@ const PopularWorkShop = () => {
     return (
         <div>
             <TitleDashboard title={'Workshop'}/>
-            <div className="grid grid-cols-1 gap-5  md:grid-cols-3">
+            <div className=" grid grid-cols-1 gap-5">
               {workshops.slice(0,3).map(item => <WorkshopCard key={item._id} workshopsData={item}/>)}
             </div>
-            <div className="">
-                <button onClick={() => router.replace(`/workshop/${_id}`)} className="primary-btn">Details</button>
+            <div className="text-end w-full mt-8">
+                <button onClick={() => router.replace(`/workshops`)} className="outline-btn">See more</button>
               </div>
         </div>
     );
