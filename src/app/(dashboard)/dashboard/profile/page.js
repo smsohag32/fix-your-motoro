@@ -1,6 +1,44 @@
 import Image from "next/image";
+import React, { useState } from "react";
 
-const page = () => {
+const Profile = () => {
+  const [user, setUser] = useState({
+    name: "John Doe",
+    email: "john@example.com",
+    profileImage:
+      "https://media.istockphoto.com/id/1388253782/photo/positive-successful-millennial-business-professional-man-head-shot-portrait.webp?b=1&s=170667a&w=0&k=20&c=KZM6TIhdaJAy28BA9sg0Sn-ZRd160F6HytdAKykza-s=",
+  });
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    name: user.name,
+    email: user.email,
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = () => {
+    // TODO: Update user data in the backend . make an API request here
+
+    setUser({
+      ...user,
+      name: formData.name,
+      email: formData.email,
+    });
+
+    setIsEditing(false);
+  };
+
+=========
+const ProfilePage = () => {
+>>>>>>>>> Temporary merge branch 2
   return (
     <div className="p-6 mx-auto bg-white rounded-md shadow-md sm:w-96">
       <h2 className="mb-4 text-2xl font-semibold">Profile</h2>
@@ -74,4 +112,5 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProfilePage ;
+>>>>>>>>> Temporary merge branch 2

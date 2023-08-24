@@ -89,4 +89,4 @@ const UserService = () =>  {
     );
   }
 
-export default UserSarvice;
+export default UserService;

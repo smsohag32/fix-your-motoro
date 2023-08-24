@@ -41,10 +41,9 @@ const LoginFrom = () => {
       .then((result) => {
         const user = result.user;
         saveUser(user).then(data => {
+          router.push("/");
           console.log(data);
         })
-        console.log(user);
-        router.push("/");
       })
       .catch();
   };
