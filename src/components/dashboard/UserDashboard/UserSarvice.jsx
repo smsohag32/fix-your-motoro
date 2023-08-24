@@ -1,4 +1,6 @@
-import DashboardTitle from '@/components/Shared/DashboardTitle/DashboardTitle';
+"use client";
+import DashboardTitle from "@/components/Shared/DashboardTitle/DashboardTitle";
+import React from "react";
 
 const UserService = () =>  {
     return (

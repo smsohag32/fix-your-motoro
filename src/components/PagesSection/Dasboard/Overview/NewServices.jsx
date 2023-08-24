@@ -1,5 +1,5 @@
 
-const Topbar = () => {
+const NewServices = () => {
     return (
         <div>
             
@@ -7,4 +7,4 @@ const Topbar = () => {
     );
 };
 
-export default Topbar;
+export default NewServices;

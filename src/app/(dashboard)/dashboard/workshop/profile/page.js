@@ -3,14 +3,14 @@ import useAuth from "@/hooks/useAuth";
 import Image from "next/image";
 import React from "react";
 
-const Profile = () => {
+const ProfilePage = () => {
   const { user } = useAuth();
   console.log(user);
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white mx-auto p-8  shadow-md">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="p-8 mx-auto bg-white shadow-md">
         <div className="flex justify-center">
-          <div className=" rounded-3xl overflow-hidden">
+          <div className="overflow-hidden rounded-3xl">
             <Image
               src={user?.photoURL}
               alt="User Profile"
@@ -19,7 +19,7 @@ const Profile = () => {
             />
           </div>
         </div>
-        <div className="text-center mt-4">
+        <div className="mt-4 text-center">
           <h1 className="text-2xl font-semibold"> {user?.displayName} </h1>{" "}
           <p>
             {" "}
@@ -33,4 +33,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;
