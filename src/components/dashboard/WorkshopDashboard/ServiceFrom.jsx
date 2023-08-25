@@ -20,7 +20,12 @@ const ServiceFrom = () => {
     benefits: "",
     serviceImage: "",
     warranty: "",
+    customerReviews: "",
+    workshopImage: ""
+
   });
+
+
 
   const addNewClass = (data) => {
     const formData = new FormData();
@@ -41,12 +46,22 @@ const ServiceFrom = () => {
             service_duration: data.serviceDuration,
             service_price: data.servicePrice,
             benefits: data.benefits,
+            customer_reviews: data.customerReviews,
             service_image: imgResponse.data.display_url,
+            workshop_image: imgResponse.data.display_url,
             warranty: data.warranty,
           };
+          axios.post(`https://fya-backend.vercel.app/api/v1/auth/services/$%7Buser?.email}`, newClass)
+            .then(res => {
+              if (res.data.insertedId) {
+
+              }
+
+            })
         }
       });
   };
+
 
   return (
     <div>
@@ -54,8 +69,8 @@ const ServiceFrom = () => {
         title="Add Service"
         subTitle="Welcome to the Add Service"
       />
-      <div className="max-w-lg py-4 mx-auto">
-        <form onSubmit={addNewClass} className="p-6 bg-white rounded shadow">
+      <div className="max-w-xl py-4 mx-auto">
+        <form onSubmit={handleSubmit(addNewClass)} className="p-6 bg-white rounded shadow">
           <h2 className="mb-4 text-2xl font-semibold">Add Workshop Details</h2>
 
           <div className="mb-4">
@@ -122,6 +137,18 @@ const ServiceFrom = () => {
           </div>
 
           <div className="mb-4">
+            <label htmlFor="customerReviews " className="block mb-1 font-medium">
+              Customer Reviews
+            </label>
+            <textarea
+              id="customerReviews"
+              className="w-full p-2 border rounded"
+              rows="4"
+              {...register("customerReviews", { required: true })}
+            />
+          </div>
+
+          <div className="mb-4">
             <label htmlFor="benefits" className="block mb-1 font-medium">
               Benefits
             </label>
@@ -145,18 +172,34 @@ const ServiceFrom = () => {
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="serviceImage" className="block mb-1 font-medium">
-              Service Image
-            </label>
-            <input
-              type="file"
-              id="serviceImage"
-              accept="image/*"
-              className="w-full"
-              {...register("image", { required: true })}
-            />
+          <div className="grid md:grid-cols-2 gap-2">
+            <div className="mb-4">
+              <label htmlFor="serviceImage" className="block mb-1 font-medium">
+                Service Image
+              </label>
+              <input
+                type="file"
+                id="serviceImage"
+                accept="image/*"
+                className="w-full"
+                {...register("image", { required: true })}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="workshopImage" className="block mb-1 font-medium">
+                Workshop Image
+              </label>
+              <input
+                type="file"
+                id="workshopImage"
+                accept="image/*"
+                className="w-full"
+                {...register("image", { required: true })}
+              />
+            </div>
           </div>
+
           <div className="mt-4">
             <button type="submit" className="w-full rounded-lg primary-btn ">
               Submit
