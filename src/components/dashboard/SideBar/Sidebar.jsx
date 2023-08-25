@@ -17,7 +17,7 @@ const Sidebar = () => {
   const { logout } = useAuth();
   const handleLogOut = async () => {
     await logout();
-    router.push("/");
+    router.push("/login");
   };
   return (
     <div>
