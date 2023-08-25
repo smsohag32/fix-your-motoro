@@ -17,7 +17,7 @@ const Nav = () => {
   const { uid, displayName, photoURL } = user || {};
   const handleLogOut = async () => {
     await logout();
-    router.push("/");
+    router.push("/login");
   };
   const [isOpen, setIsOpen] = useState();
 
@@ -72,7 +72,6 @@ const Nav = () => {
           />
         ) : (
           <>
-            {" "}
             {uid ? (
               <span onClick={() => router.replace("/dashboard")}>
                 <Image
@@ -99,7 +98,7 @@ const Nav = () => {
           <>
             <button
               onClick={handleLogOut}
-              className="font-bold w-10 text-center cursor-pointer"
+              className="font-bold md:w-10 text-center cursor-pointer"
             >
               {loading ? "" : "Logout"}
             </button>
@@ -107,7 +106,7 @@ const Nav = () => {
         ) : (
           <>
             <Link
-              className="font-bold w-10 text-center cursor-pointer"
+              className="font-bold md:w-10 text-center cursor-pointer"
               href="/login"
             >
               {loading ? "" : "Login"}

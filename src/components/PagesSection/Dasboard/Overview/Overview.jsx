@@ -29,8 +29,6 @@ const Overview = () => {
       newCar
     );
 
-    console.log(res.data);
-
     if (res.data.insertedId) {
       closeModal();
       reset();

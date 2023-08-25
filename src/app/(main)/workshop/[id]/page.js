@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
 import SingleProductCard from "@/components/PagesSection/WorkShops/SingleProductCard/SingleProductCard";
 import MidSpinner from "@/components/Spinners/MidSpinner";
@@ -14,7 +14,6 @@ const WorkShopDetail = ({ params }) => {
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
   const notify = () => toast("Booking confirmed..");
- 
 
   useEffect(() => {
     setLoading(true);
@@ -38,41 +37,34 @@ const WorkShopDetail = ({ params }) => {
   const handleBookNow = () => {
     setShowBookingForm(true);
   };
-  console.log(product);
-  
-   const onSubmit = async (data) => {
-     const serviceData = {
-       workShop_id: _id,
-       workShop_email: product.email,
-       workShop_code: product.workshopCode,
-       ...data,
-     };
 
-     console.log(serviceData);
-
-     const response = await fetch(
-       "https://fya-backend.vercel.app/api/v1/auth/orders",
-       {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-         },
-         body: JSON.stringify(serviceData),
-       }
-     );
-     const result = await response.json();
-     console.log(result);
-     reset();
-     notify();
-   };
+  const onSubmit = async (data) => {
+    const serviceData = {
+      workShop_id: _id,
+      workShop_email: product.email,
+      workShop_code: product.workshopCode,
+      ...data,
+    };
 
 
+    const response = await fetch(
+      "https://fya-backend.vercel.app/api/v1/auth/orders",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(serviceData),
+      }
+    );
+    const result = await response.json();
+    reset();
+    notify();
+  };
 
-  console.log(product);
-
-   if (loading) {
-     return <MidSpinner />; 
-   }
+  if (loading) {
+    return <MidSpinner />;
+  }
 
   return (
     <div className="relative mt-36 p-5">
@@ -289,7 +281,6 @@ const WorkShopDetail = ({ params }) => {
               <button
                 className="bg-red-400 hover:bg-red-600  font-bold py-1 px-2 rounded-full transition-all duration-300 ease-in-out"
                 onClick={() => {
-                  console.log("hello there");
                   setShowBookingForm(false);
                 }}
               >

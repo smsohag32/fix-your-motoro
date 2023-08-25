@@ -9,7 +9,6 @@ const SingleWorkshop = (props) => {
   const { name, _id, image, phone, email, address, rating } =
     props.workshopsData;
   const router = useRouter();
-  // console.log(props)
   
   return (
     <div onClick={() => router.push(`/workshop/${_id}`)}>

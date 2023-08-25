@@ -19,7 +19,7 @@ const Shops = () => {
   const [maxPrice, setMaxPrice] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage]=useState(6)
+  const [itemsPerPage, setItemsPerPage] = useState(6);
   // const itemsPerPage = 10;
 
   const notify = () => toast("Coming Soon...");
@@ -56,9 +56,6 @@ const Shops = () => {
     .slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
-
-  console.log(products);
-
 
   return (
     <div className="default-container py-12">
