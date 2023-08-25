@@ -51,7 +51,7 @@ const ServiceFrom = () => {
             workshop_image: imgResponse.data.display_url,
             warranty: data.warranty,
           };
-          axios.post(`https://fya-backend.vercel.app/api/v1/auth/services/$%7Buser?.email}`, newClass)
+          axios.post("https://fya-backend.vercel.app/api/v1/auth/services/user.email", newClass)
             .then(res => {
               if (res.data.insertedId) {
 
