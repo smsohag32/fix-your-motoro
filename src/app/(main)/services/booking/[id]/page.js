@@ -2,6 +2,7 @@
 
 import Spinner from "@/components/Spinners/Spinner";
 import useAuth from "@/hooks/useAuth";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -46,30 +47,16 @@ const Page = ({ params }) => {
       ...data,
     };
 
-    // console.log(serviceData)
-
-    const response = await fetch("https://fya-backend.vercel.app/api/v1/auth/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(serviceData),
-      })
-      const result = await response.json();
+    try {
+      const response = await axios.post('https://fya-backend.vercel.app/api/v1/auth/orders', serviceData);
+      const result = response.json();
       console.log(result);
-    // try {
-      
-
-    //   // if (response.ok) {
-    //   //   // Notify and reset the form
-    //   //   notify();
-    //   //   reset();
-    //   // } else {
-    //   //   toast.error("Failed to book the service. Please try again later.");
-    //   // }
-    // } catch (error) {
-    //   toast.error("An error occurred. Please try again later.");
-    // }
+      toast.success('service booked successfully');
+      reset();
+  } catch (error) {
+      console.error('An error occurred:', error);
+      toast.error('service to book the appointment');
+  }
   };
   if (loading) {
     return <Spinner />;
@@ -236,7 +223,7 @@ const Page = ({ params }) => {
             <Toaster />
             <button
               type="button"
-              className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600"
+              className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600 ml-2 md:ml-0"
             >
               Print
             </button>
