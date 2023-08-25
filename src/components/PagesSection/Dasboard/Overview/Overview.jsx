@@ -1,37 +1,88 @@
 "use client";
 
+import AddCarModal from "@/components/Modal/AddCarModal";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 import useAuth from "@/hooks/useAuth";
+import useCars from "@/hooks/useCars";
+import useUserInfo from "@/hooks/useUserInfo";
+import axios from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Overview = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
+  const { carsData, refetch, carLoading } = useCars();
   const { user } = useAuth();
-  const vehicles = [];
+  const { userInfo } = useUserInfo();
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleAddCar = async (data) => {
+    const newCar = {
+      ...data,
+      email: user?.email,
+    };
+    const res = await axios.post(
+      `https://fya-backend.vercel.app/api/v1/auth/cars`,
+      newCar
+    );
+
+    console.log(res.data);
+
+    if (res.data.insertedId) {
+      closeModal();
+      reset();
+      refetch();
+    }
+  };
+
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Welcome, {user.displayName}!</h1>
+      <h1 className="text-2xl font-bold mb-4">Welcome, {user?.displayName}!</h1>
       <section className="bg-white p-4 rounded shadow-md mb-4">
         <h2 className="text-lg font-semibold mb-2">Your Information</h2>
-        <p>Name: {user.displayName}</p>
-        <p>Email: {user.email}</p>
+        <p>Name: {user?.displayName}</p>
+        <p>Email: {user?.email}</p>
       </section>
-      <section className="bg-white p-4 rounded shadow-md mb-4">
-        <h2 className="text-lg font-semibold mb-2">Your Vehicles</h2>
-        <div>
-          {vehicles.length > 0 ? (
-            vehicles.map((item) => (
-              <div key={item._id}>
-                <p>{item.model}</p>
-              </div>
-            ))
-          ) : (
-            <EmptyState
-              message={"You have not added any vehicles"}
-              label={"Add Your Vehicles"}
-              address={"/dashboard/user/myvehicles"}
-            />
-          )}
-        </div>
-      </section>
+      {userInfo?.role ? (
+        ""
+      ) : (
+        <section className="bg-white p-4 rounded shadow-md mb-4">
+          <h2 className="text-lg font-semibold mb-2">Your Vehicles</h2>
+          <div className="min-h-[60vh] md:p-5 p-1">
+            {carsData?.length > 0 ? (
+              carsData?.map((item) => (
+                <div
+                  key={item._id}
+                  className="p-5 mb-4 flex flex-col md:flex-row gap-5 bg-gray-300"
+                >
+                  <p>{item.car_name}</p>
+                  <p>{item.brand}</p>
+                  <p>{item.model}</p>
+                </div>
+              ))
+            ) : (
+              <EmptyState
+                message={"You have not added any vehicles"}
+                label={"Add Your Vehicles"}
+                setIsOpen={setIsOpen}
+                address={" "}
+              />
+            )}
+          </div>
+        </section>
+      )}
+
+      <AddCarModal
+        handleSubmit={handleSubmit}
+        handleAddCar={handleAddCar}
+        closeModal={closeModal}
+        isOpen={isOpen}
+        register={register}
+        userInfo={user?.email}
+      />
     </div>
   );
 };
