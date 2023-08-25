@@ -1,67 +1,29 @@
 "use client";
-import DashboardTitle from "@/components/Shared/DashboardTitle/DashboardTitle";
-import useAuth from "@/hooks/useAuth";
-import axios from "axios";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import DashboardTitle from '@/components/Shared/DashboardTitle/DashboardTitle';
+import { toast } from 'react-hot-toast';
+import useAuth from '@/hooks/useAuth';
+// error
 const ServiceFrom = () => {
-  const { register, handleSubmit } = useForm();
   const { user } = useAuth();
-  const imageHostingApi = `https://api.imgbb.com/1/upload?key=4ef7007f7046a0746df3c9c722fd7459`;
+  const { register, handleSubmit, reset ,   formState: { errors } } = useForm();
 
-  const [workshopData, setWorkshopData] = useState({
-    workshopId: "",
-    serviceName: "",
-    serviceCategory: "",
-    serviceDescription: "",
-    serviceDuration: "",
-    servicePrice: "",
-    benefits: "",
-    serviceImage: "",
-    warranty: "",
-    customerReviews: "",
-    workshopImage: ""
-
-  });
-
-
-
-  const addNewClass = (data) => {
-    const formData = new FormData();
-    formData.append("image", data.image[0]);
-
-    fetch(imageHostingApi, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imgResponse) => {
-        if (imgResponse.success) {
-          const newClass = {
-            workshop_id: data.workshopId,
-            service_name: data.serviceName,
-            service_category: data.serviceCategory,
-            service_description: data.serviceDescription,
-            service_duration: data.serviceDuration,
-            service_price: data.servicePrice,
-            benefits: data.benefits,
-            customer_reviews: data.customerReviews,
-            service_image: imgResponse.data.display_url,
-            workshop_image: imgResponse.data.display_url,
-            warranty: data.warranty,
-          };
-          axios.post(`https://fya-backend.vercel.app/api/v1/auth/services/$%7Buser?.email}`, newClass)
-            .then(res => {
-              if (res.data.insertedId) {
-
-              }
-
-            })
-        }
-      });
+  const onSubmit = async (data) => {
+    const serviceDate = {
+      workshop_email: user.email,
+      ...data
+    }
+    console.log(serviceDate);
+    try {
+      const response = await axios.post(`https://fya-backend.vercel.app/api/v1/auth/services/${user?.email}`, serviceDate);
+      toast.success('Service added successfully');
+      reset();
+    } catch (error) {
+      toast.error('Error adding Service');
+    }
   };
-
 
   return (
     <div>
@@ -69,9 +31,17 @@ const ServiceFrom = () => {
         title="Add Service"
         subTitle="Welcome to the Add Service"
       />
-      <div className="max-w-xl py-4 mx-auto">
-        <form onSubmit={handleSubmit(addNewClass)} className="p-6 bg-white rounded shadow">
-          <h2 className="mb-4 text-2xl font-semibold">Add Workshop Details</h2>
+      <div className="max-w-xl md:my-8 mt-4 mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded shadow">
+          <label htmlFor="title" className="block font-medium mb-1">
+            Title
+          </label>
+          <input
+            type="text"
+            id="title"
+            {...register('title', { required: true })}
+            className="w-full p-2 border rounded"
+          />
 
           <div className="mb-4">
             <label htmlFor="workshopId" className="block mb-1 font-medium">
@@ -79,9 +49,21 @@ const ServiceFrom = () => {
             </label>
             <input
               type="text"
-              id="workshopId"
+              id="workshop_id"
               className="w-full p-2 border rounded"
-              {...register("workshop  Id", { required: true })}
+              {...register("workshop_id", { required: true })}
+            />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="workshopId" className="block mb-1 font-medium">
+              Service Name
+            </label>
+            <input
+              type="text"
+              id="service_name"
+              className="w-full p-2 border rounded"
+              {...register("service_name", { required: true })}
             />
           </div>
 
@@ -91,9 +73,9 @@ const ServiceFrom = () => {
             </label>
             <input
               type="text"
-              id="serviceCategory"
+              id="service_category"
               className="w-full p-2 border rounded"
-              {...register("serviceCategory", { required: true })}
+              {...register("service_category", { required: true })}
             />
           </div>
 
@@ -105,10 +87,10 @@ const ServiceFrom = () => {
               Service Description
             </label>
             <textarea
-              id="serviceDescription"
+              id="service_description"
               className="w-full p-2 border rounded"
               rows="4"
-              {...register("serviceDescription", { required: true })}
+              {...register("service_description", { required: true })}
             />
           </div>
 
@@ -118,9 +100,9 @@ const ServiceFrom = () => {
             </label>
             <input
               type="text"
-              id="serviceDuration"
+              id="service_duration"
               className="w-full p-2 border rounded"
-              {...register("serviceDuration", { required: true })}
+              {...register("service_duration", { required: true })}
             />
           </div>
 
@@ -130,21 +112,9 @@ const ServiceFrom = () => {
             </label>
             <input
               type="text"
-              id="servicePrice"
+              id="service_price"
               className="w-full p-2 border rounded"
-              {...register("servicePrice", { required: true })}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="customerReviews " className="block mb-1 font-medium">
-              Customer Reviews
-            </label>
-            <textarea
-              id="customerReviews"
-              className="w-full p-2 border rounded"
-              rows="4"
-              {...register("customerReviews", { required: true })}
+              {...register("service_price", { required: true })}
             />
           </div>
 
@@ -172,38 +142,36 @@ const ServiceFrom = () => {
             />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-2">
+          <div className='grid md:grid-cols-2 gap-4'>
             <div className="mb-4">
-              <label htmlFor="serviceImage" className="block mb-1 font-medium">
-                Service Image
-              </label>
-              <input
-                type="file"
-                id="serviceImage"
-                accept="image/*"
-                className="w-full"
-                {...register("image", { required: true })}
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="workshopImage" className="block mb-1 font-medium">
+              <label htmlFor="workshopImage" className="block font-medium mb-1">
                 Workshop Image
               </label>
               <input
-                type="file"
-                id="workshopImage"
-                accept="image/*"
-                className="w-full"
-                {...register("image", { required: true })}
+                type="text"
+                id="workshop_image"
+                {...register('workshop_image', { required: true })}
+                className="w-full p-2 border rounded"
               />
+              {errors.workshop_image && <span className="text-red-500">This field is required</span>}
             </div>
-          </div>
 
+            <div className="mb-4">
+              <label htmlFor="serviceImage" className="block font-medium mb-1">
+                Service Image
+              </label>
+              <input
+                type="text"
+                id="service_image"
+                {...register('service_image', { required: true })}
+                className="w-full p-2 border rounded"
+              />
+              {errors.service_image && <span className="text-red-500">This field is required</span>}
+            </div>
+
+          </div>
           <div className="mt-4">
-            <button type="submit" className="w-full rounded-lg primary-btn ">
-              Submit
-            </button>
+            <input type="submit" value="Submit" className="w-full rounded-lg primary-btn " />
           </div>
         </form>
       </div>

@@ -31,7 +31,7 @@ const SingUp = () => {
   return (
     <>
     <Helmet>
-      <title>College | Sing Up</title>
+      <title>FYM | Sing Up</title>
     </Helmet>
     <PageTitle
         title="Our Register"
