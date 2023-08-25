@@ -26,7 +26,7 @@ const ServiceFrom = () => {
   });
 
 
-
+// api 
   const addNewClass = (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
