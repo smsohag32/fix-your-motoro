@@ -12,12 +12,13 @@ import useAuth from "@/hooks/useAuth";
 
 const Sidebar = () => {
   const { userInfo, cLoading } = useUserInfo();
+  // console.log(userInfo);
 
   // logout section
   const { logout } = useAuth();
   const handleLogOut = async () => {
     await logout();
-    router.push("/login");
+    router.push("/");
   };
   return (
     <div>

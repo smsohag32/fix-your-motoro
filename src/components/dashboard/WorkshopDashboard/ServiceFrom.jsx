@@ -1,34 +1,27 @@
 "use client";
-import React from "react";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import DashboardTitle from "@/components/Shared/DashboardTitle/DashboardTitle";
-import { toast } from "react-hot-toast";
-import useAuth from "@/hooks/useAuth";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import DashboardTitle from '@/components/Shared/DashboardTitle/DashboardTitle';
+import { toast } from 'react-hot-toast';
+import useAuth from '@/hooks/useAuth';
 // error
 const ServiceFrom = () => {
   const { user } = useAuth();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset ,   formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
     const serviceDate = {
       workshop_email: user.email,
-      ...data,
-    };
+      ...data
+    }
+    console.log(serviceDate);
     try {
-      const response = await axios.post(
-        `https://fya-backend.vercel.app/api/v1/auth/services/${user?.email}`,
-        serviceDate
-      );
-      toast.success("Service added successfully");
+      const response = await axios.post(`https://fya-backend.vercel.app/api/v1/auth/services/${user?.email}`, serviceDate);
+      toast.success('Service added successfully');
       reset();
     } catch (error) {
-      toast.error("Error adding Service");
+      toast.error('Error adding Service');
     }
   };
 
@@ -39,17 +32,14 @@ const ServiceFrom = () => {
         subTitle="Welcome to the Add Service"
       />
       <div className="max-w-xl md:my-8 mt-4 mx-auto">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="bg-white p-6 rounded shadow"
-        >
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded shadow">
           <label htmlFor="title" className="block font-medium mb-1">
             Title
           </label>
           <input
             type="text"
             id="title"
-            {...register("title", { required: true })}
+            {...register('title', { required: true })}
             className="w-full p-2 border rounded"
           />
 
@@ -152,7 +142,7 @@ const ServiceFrom = () => {
             />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className='grid md:grid-cols-2 gap-4'>
             <div className="mb-4">
               <label htmlFor="workshopImage" className="block font-medium mb-1">
                 Workshop Image
@@ -160,12 +150,10 @@ const ServiceFrom = () => {
               <input
                 type="text"
                 id="workshop_image"
-                {...register("workshop_image", { required: true })}
+                {...register('workshop_image', { required: true })}
                 className="w-full p-2 border rounded"
               />
-              {errors.workshop_image && (
-                <span className="text-red-500">This field is required</span>
-              )}
+              {errors.workshop_image && <span className="text-red-500">This field is required</span>}
             </div>
 
             <div className="mb-4">
@@ -175,20 +163,15 @@ const ServiceFrom = () => {
               <input
                 type="text"
                 id="service_image"
-                {...register("service_image", { required: true })}
+                {...register('service_image', { required: true })}
                 className="w-full p-2 border rounded"
               />
-              {errors.service_image && (
-                <span className="text-red-500">This field is required</span>
-              )}
+              {errors.service_image && <span className="text-red-500">This field is required</span>}
             </div>
+
           </div>
           <div className="mt-4">
-            <input
-              type="submit"
-              value="Submit"
-              className="w-full rounded-lg primary-btn "
-            />
+            <input type="submit" value="Submit" className="w-full rounded-lg primary-btn " />
           </div>
         </form>
       </div>

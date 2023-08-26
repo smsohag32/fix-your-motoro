@@ -42,6 +42,7 @@ const ServicesQueue = () => {
   }, []);
 
   const orderId = orders?.filter((order) => order._id);
+  console.log(servicesData);
   const serviceId = servicesData?.filter((service) => service._id);
 
   const service = orderId === serviceId;
