@@ -48,14 +48,12 @@ const Page = ({ params }) => {
     };
 
     try {
-      const response = await axios.post('https://fya-backend.vercel.app/api/v1/auth/orders', serviceData);
-      const result = response.json();
-      console.log(result);
+      await axios.post('https://fya-backend.vercel.app/api/v1/auth/orders', serviceData);
       toast.success('service booked successfully');
       reset();
   } catch (error) {
       console.error('An error occurred:', error);
-      toast.error('service to book the appointment');
+      toast.error('failed to book the appointment');
   }
   };
   if (loading) {
