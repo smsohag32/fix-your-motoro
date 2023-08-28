@@ -64,14 +64,6 @@ const Overview = () => {
                     <p>{item.brand}</p>
                     <p>{item.model}</p>
                   </div>
-                  <div className="mt-auto">
-                    <button
-                      className="outline-btn "
-                      onClick={() => setIsOpen(true)}
-                    >
-                      Add New
-                    </button>
-                  </div>
                 </div>
               ))
             ) : (
