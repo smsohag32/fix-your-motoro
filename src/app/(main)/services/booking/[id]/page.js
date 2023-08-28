@@ -41,6 +41,8 @@ const Page = ({ params }) => {
       service_id: id,
       workshop_email: service?.workshop_email || "tr.tonmoy0110.trt@gmail.com",
       service_category: service?.service_category,
+      service_image: service?.service_image,
+      service_name: service?.service_name,
       ...data,
     };
 
