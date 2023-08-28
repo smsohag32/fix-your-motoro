@@ -16,7 +16,7 @@ const TopBar = () => {
           <span>
             <AiTwotoneMail />
           </span>
-          support@netcafebd.com
+        fym@gmail.com
         </p>
       </div>
       <div className="primary-bg h-14 flex items-center text-right justify-end">

@@ -16,7 +16,7 @@ const Page = ({ params }) => {
   const notify = () =>
     toast("This Service Has been booked successfully.......");
 
-    const [service, setService] = useState([]);
+  const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
@@ -37,31 +37,39 @@ const Page = ({ params }) => {
     fetchData();
   }, [id]);
 
-  
-
   const onSubmit = async (data) => {
     const serviceData = {
       service_id: id,
-      workshop_email: "tr.tonmoy0110.trt@gmail.com",
+      workshop_email: service?.workshop_email || "tr.tonmoy0110.trt@gmail.com",
       service_category: service?.service_category,
+      service_image: service?.service_image,
+      service_name: service?.service_name,
       ...data,
     };
 
-    try {
-      await axios.post('https://fya-backend.vercel.app/api/v1/auth/orders', serviceData);
-      toast.success('service booked successfully');
+    const response = await fetch(
+      "https://fya-backend.vercel.app/api/v1/auth/orders",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(serviceData),
+      }
+    );
+    const result = await response.json();
+    if (result?.bookingDate) {
+      router.replace("/dashboard/user/upcomming_appointment");
       reset();
-  } catch (error) {
-      console.error('An error occurred:', error);
-      toast.error('failed to book the appointment');
-  }
+      toast.success("Work order appointment success");
+    }
   };
   if (loading) {
     return <Spinner />;
   }
   return (
     <>
-      <div className="mt-32 max-w-4xl mx-auto p-8">
+      <div className="mt-32 default-container">
         <h1 className="text-2xl font-bold mb-4">Work Order Request</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
