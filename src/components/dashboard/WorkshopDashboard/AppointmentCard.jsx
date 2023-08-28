@@ -6,6 +6,8 @@ const AppointCard = (props) => {
     props.order;
   return (
     <div className="bg-white rounded shadow-md">
+      {/* THIS SECTION WILL BE EDITED OR CHANGE......... */}
+
       <div className="duration-500 transform gap-8 border-2 w-full flex h-40 items-center">
         <div className="h-full w-1/2 flex justify-center items-center">
           <p className="items-center">
