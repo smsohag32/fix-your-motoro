@@ -1,23 +1,18 @@
 "use client";
 import AuthProvider from "./AuthProvider";
 import ServicesProvider from "./ServicesProvider";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Create a client
-const queryClient = new QueryClient()
-
+const queryClient = new QueryClient();
 
 const Providers = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <ServicesProvider>{children}</ServicesProvider>
-    </AuthProvider>
+      <AuthProvider>
+        <ServicesProvider>{children}</ServicesProvider>
+      </AuthProvider>
     </QueryClientProvider>
-   
   );
 };
 

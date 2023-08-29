@@ -54,13 +54,23 @@ const Overview = () => {
           <div className="min-h-[60vh] md:p-5 p-1">
             {carsData?.length > 0 ? (
               carsData?.map((item) => (
-                <div
-                  key={item._id}
-                  className="p-5 mb-4 flex flex-col md:flex-row gap-5 bg-gray-300"
-                >
-                  <p>{item.car_name}</p>
-                  <p>{item.brand}</p>
-                  <p>{item.model}</p>
+                <div key={item._id} className="flex flex-col p-5 h-full">
+                  <div
+                    key={item._id}
+                    className="p-5 mb-4 flex flex-col md:flex-row gap-5 bg-gray-300"
+                  >
+                    <p>{item.car_name}</p>
+                    <p>{item.brand}</p>
+                    <p>{item.model}</p>
+                  </div>
+                  <div className="mt-auto">
+                    <button
+                      className="outline-btn "
+                      onClick={() => setIsOpen(true)}
+                    >
+                      Add New
+                    </button>
+                  </div>
                 </div>
               ))
             ) : (
