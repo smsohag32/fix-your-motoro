@@ -67,38 +67,40 @@ const WorkShopDetail = ({ params }) => {
   }
 
   return (
-    <div className="relative mt-36 p-5">
-      <div className="md:w-4/6 lg:w-2/4 mx-auto">
-        <div className="md:flex gap-5">
-          <Image
-            className="object-cover transition-transform duration-500"
-            src={product.image}
-            alt={product.name}
-            width={384}
-            height={288}
-          />
-          <div>
-            <p className="text-2xl mb-2">{product.name}</p>
+    <div className="relative mt-36 p-5 default-container">
+      <div className="">
+        <div className="md:flex md:gap-12 gap-10 items-center">
+          <div className="w-full ">
+            <Image
+              className="w-full md:rounded-lg object-cover transition-transform duration-500"
+              src={product.image}
+              alt={product.name}
+              width={600}
+              height={600}
+            />
+          </div>
+          <div className="w-full">
+            <p className="text-2xl my-2">{product.name}</p>
             <p className="mb-2">Workshop Code: {product.workshopCode}</p>
             <p className="mb-2">Email: {product.email}</p>
+            <p className="my-3">Location: {product.address}</p>
+            <p className="my-3  text-slate-500">
+              Workshop Details: {product.description}
+            </p>
             <div className="flex mr-2">
               <StarRating rating={product.rating} />
               <p className="ml-1">{product.rating}</p>
             </div>
+            <button
+              onClick={handleBookNow}
+              className=" primary-btn text-white font-bold py-2 px-4 rounded my-5"
+            >
+              Book Now
+            </button>
           </div>
         </div>
-        <p>Location: {product.address}</p>
-        <p className="my-3  text-slate-500">
-          Workshop Details: {product.description}
-        </p>
 
-        <button
-          onClick={handleBookNow}
-          className=" primary-btn text-white font-bold py-2 px-4 rounded"
-        >
-          Book Now
-        </button>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-24 ">
           {product.products.map((product, index) => (
             <SingleProductCard key={index} product={product} />
           ))}
@@ -107,7 +109,7 @@ const WorkShopDetail = ({ params }) => {
       {/* Booking Form */}
       {showBookingForm && (
         <div className="absolute -top-7 left-0 w-full h-full flex items-center justify-center bg-gray-200 bg-opacity-75 z-20">
-          <div className="relative bg-white p-6 rounded-lg shadow-lg">
+          <div className="max-w-5xl px-5 mx-auto w-full bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Booking Information</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -123,7 +125,6 @@ const WorkShopDetail = ({ params }) => {
                     id="firstName"
                     name="firstName"
                     className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
-                    placeholder="Jason"
                     required
                     {...register("firstName")}
                   />
@@ -140,7 +141,6 @@ const WorkShopDetail = ({ params }) => {
                     id="lastName"
                     name="lastName"
                     className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
-                    placeholder="Momoa"
                     required
                     {...register("lastName")}
                   />
@@ -230,13 +230,18 @@ const WorkShopDetail = ({ params }) => {
                     <label htmlFor="city" className="block text-sm font-medium">
                       City
                     </label>
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                    <select
+                      className=" mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
                       {...register("city")}
-                    />
+                    >
+                      <option value="dhaka">dhaka</option>
+                      <option value="khulna">khulna</option>
+                      <option value="chittagong">chittagong</option>
+                      <option value="sylhet">sylhet</option>
+                      <option value="barishal">barishal</option>
+                      <option value="rajshahi">rajshahi</option>
+                      <option value="mymensingh">mymensingh</option>
+                    </select>
                   </div>
                   <div>
                     <label
@@ -268,25 +273,53 @@ const WorkShopDetail = ({ params }) => {
                       {...register("postal")}
                     />
                   </div>
+                  <div className="">
+                    <label htmlFor="map" className="block text-sm font-medium">
+                      Map Link
+                    </label>
+                    <input
+                      type="text"
+                      id="map"
+                      name="map"
+                      placeholder="Map link"
+                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                      {...register("map")}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="servicePlace"
+                      className="block text-sm font-medium"
+                    >
+                      City
+                    </label>
+                    <select
+                      className=" mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                      {...register("servicePlace")}
+                    >
+                      <option value="onWorkShop">On WorkShop</option>
+                      <option value="onLocation">On Location</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
-              <div className="md:flex justify-between">
-                <button type="submit" className="mt-4 primary-btn rounded-md">
+              <div className="md:flex justify-between mt-3">
+                <button type="submit" className="primary-btn rounded-md">
                   Submit
+                </button>
+                <Toaster />
+                <button
+                  onClick={() => {
+                    setShowBookingForm(false);
+                  }}
+                  // type="button"
+                  className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600"
+                >
+                  Close
                 </button>
               </div>
             </form>
-            <div className=" absolute -top-7 -right-3 mt-4">
-              <button
-                className="bg-red-400 hover:bg-red-600  font-bold py-1 px-2 rounded-full transition-all duration-300 ease-in-out"
-                onClick={() => {
-                  setShowBookingForm(false);
-                }}
-              >
-                X
-              </button>
-            </div>
           </div>
         </div>
       )}
