@@ -291,7 +291,7 @@ const WorkShopDetail = ({ params }) => {
                       htmlFor="servicePlace"
                       className="block text-sm font-medium"
                     >
-                      City
+                      Service Place
                     </label>
                     <select
                       className=" mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
