@@ -47,11 +47,10 @@ const  AdminLInk = () => {
           <NavLink
             exact={"/dashboard/user/user_service" == "/dashboard"}
             activeClassName={"text-[#f02801]"}
-            href="/dashboard/user/user_history"
+            href="/dashboard/admin/manage_workshop"
           >
             Manage Workshops
           </NavLink>
-          {/* <Link href="/dashboard/user/user_history">Manage Workshops</Link> */}
         </h3>
       </li>
 
