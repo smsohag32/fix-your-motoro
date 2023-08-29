@@ -42,7 +42,6 @@ const ServicesQueue = () => {
   }, []);
 
   const orderId = orders?.filter((order) => order._id);
-  console.log(servicesData);
   const serviceId = servicesData?.filter((service) => service._id);
 
   const service = orderId === serviceId;
@@ -54,8 +53,8 @@ const ServicesQueue = () => {
   } else {
     return (
       <>
-        <div className="mt-20 ">
-          <div className="items-center justify-around mb-5 md:flex">
+        <div className="mt-20  ">
+          <div className="items-center justify-around mb-5 md:flex bg-amber-100 py-2">
             <h2 className="text-xl font-semibold text-slate-800"> Name : </h2>
             <p className="text-xl font-semibold text-slate-800"> Category </p>
             <p className="text-xl font-semibold text-slate-800"> Vehicle </p>
@@ -66,7 +65,7 @@ const ServicesQueue = () => {
               orders?.map((item, idx) => (
                 <div key={idx}>
                   <div>
-                    <div className="items-center justify-around mb-2 md:flex">
+                    <div className="items-center justify-around md:flex px-2 rounded-md border-b-2 border-solid  border-orange-500 py-3 mb-5 ">
                       <h2 className="text-lg font-medium text-slate-600">
                         {service_name}
                       </h2>
@@ -84,12 +83,18 @@ const ServicesQueue = () => {
                 </div>
               ))
             ) : (
-              <h2>No service is available yet</h2>
+              <div className="min-h-screen md:flex justify-center items-center">
+                <h2 className="text-4xl primary-text tracking-wider font-extrabold px-4 py-2 bg-gray-200 rounded-md">
+                  No service is available yet
+                </h2>
+              </div>
             )}
           </div>
-          <div className="min-h-[40vh] border md:flex justify-center items-end">
+          <div className="min-h-[20vh] border md:flex justify-center items-center">
             <Link href="/dashboard/workshop/service_form">
-              <button className="rounded-lg primary-btn">Post a new Service</button>{" "}
+              <button className="rounded-lg primary-btn">
+                Post a new Service
+              </button>{" "}
             </Link>
           </div>
         </div>

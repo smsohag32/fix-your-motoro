@@ -1,11 +1,31 @@
-import React from 'react';
+"use client";
+import TitleDashboard from "@/components/Shared/TitleDashboard/TitleDashboard";
+import useAuth from "@/hooks/useAuth";
+import useWorkshopOrder from "@/hooks/useWorkshopOrders";
+import MidSpinner from "@/components/Spinners/MidSpinner";
+import CustomerCard from "./CustomerCard";
+import CommunicateCard from "./CommunicateCard";
 
 const Communication = () => {
-    return (
-        <div>
-            <h1>This is a Communication</h1>
-        </div>
-    );
+  const { user } = useAuth();
+
+  const { workshopOrders, wOLoading } = useWorkshopOrder(user?.email);
+
+  if (wOLoading) {
+    return <MidSpinner />;
+  }
+
+  return (
+    <div>
+      <TitleDashboard title={"Communicate to our Client"} />
+      <div>
+        {workshopOrders &&
+          workshopOrders.map((order) => (
+            <CommunicateCard key={order._id} order={order} />
+          ))}
+      </div>
+    </div>
+  );
 };
 
 export default Communication;

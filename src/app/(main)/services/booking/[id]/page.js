@@ -15,7 +15,7 @@ const Page = ({ params }) => {
   const notify = () =>
     toast("This Service Has been booked successfully.......");
 
-    const [service, setService] = useState([]);
+  const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
@@ -36,47 +36,39 @@ const Page = ({ params }) => {
     fetchData();
   }, [id]);
 
-  
-
   const onSubmit = async (data) => {
     const serviceData = {
       service_id: id,
-      workshop_email: "tr.tonmoy0110.trt@gmail.com",
+      workshop_email: service?.workshop_email || "tr.tonmoy0110.trt@gmail.com",
       service_category: service?.service_category,
+      service_image: service?.service_image,
+      service_name: service?.service_name,
       ...data,
     };
 
-    // console.log(serviceData)
-
-    const response = await fetch("https://fya-backend.vercel.app/api/v1/auth/orders", {
+    const response = await fetch(
+      "https://fya-backend.vercel.app/api/v1/auth/orders",
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(serviceData),
-      })
-      const result = await response.json();
-      console.log(result);
-    // try {
-      
-
-    //   // if (response.ok) {
-    //   //   // Notify and reset the form
-    //   //   notify();
-    //   //   reset();
-    //   // } else {
-    //   //   toast.error("Failed to book the service. Please try again later.");
-    //   // }
-    // } catch (error) {
-    //   toast.error("An error occurred. Please try again later.");
-    // }
+      }
+    );
+    const result = await response.json();
+    if (result?.bookingDate) {
+      router.replace("/dashboard/user/upcomming_appointment");
+      reset();
+      toast.success("Work order appointment success");
+    }
   };
   if (loading) {
     return <Spinner />;
   }
   return (
     <>
-      <div className="mt-32 max-w-4xl mx-auto p-8">
+      <div className="mt-32 default-container">
         <h1 className="text-2xl font-bold mb-4">Work Order Request</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

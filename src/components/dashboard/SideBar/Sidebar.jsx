@@ -17,7 +17,7 @@ const Sidebar = () => {
   const { logout, user } = useAuth();
   const handleLogOut = async () => {
     await logout();
-    router.push("/");
+    router.push("/login");
   };
 
   console.log(userInfo);
@@ -32,7 +32,7 @@ const Sidebar = () => {
               aria-hidden="true"
             />
           </Disclosure.Button>
-          <div className="fixed top-0 z-20 w-full overflow-y-scroll h-screen p-6 duration-200 ease-out delay-150 bg-white -left-full lg:left-0 lg:w-72 peer-focus:left-0 peer:transition">
+          <div className="fixed top-0 z-20 w-full h-screen p-6 overflow-y-scroll duration-200 ease-out delay-150 bg-white -left-full lg:left-0 lg:w-72 peer-focus:left-0 peer:transition">
             <div className="flex flex-col justify-start item-center">
               <Image
                 className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"

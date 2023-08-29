@@ -9,7 +9,6 @@ import StarRating from "../../Home/SuccessReviews/StarRating";
 const  WorkshopDetails = ({ isOpen, closeModal, workshop }) => {
   const [products, setProducts] = useState([]);
   const [pLoading, setPLoading] = useState(false);
-  console.log(workshop);
   useEffect(() => {
     setPLoading(true);
     const fetchData = async () => {
