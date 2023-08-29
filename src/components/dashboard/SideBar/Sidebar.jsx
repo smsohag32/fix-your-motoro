@@ -9,17 +9,18 @@ import useUserInfo from "@/hooks/useUserInfo";
 import WorkshopAgentLink from "./WorkshopAgentLink";
 import UserLink from "./UserLink";
 import useAuth from "@/hooks/useAuth";
+import AdminLInk from "./AdminLink";
 
 const Sidebar = () => {
   const { userInfo, cLoading } = useUserInfo();
-  // console.log(userInfo);
 
-  // logout section
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const handleLogOut = async () => {
     await logout();
     router.push("/");
   };
+
+  console.log(userInfo);
   return (
     <div>
       {/* Technician side nav */}
@@ -44,9 +45,7 @@ const Sidebar = () => {
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 border-b border-gray-100 cursor-pointer">
                 FYM
               </h1>
-              {userInfo?.result?.role ? <WorkshopAgentLink /> : <UserLink />}
-              {/* <WorkshopAgentLink /> */}
-
+              {userInfo?.user?.role === 'admin' ? <AdminLInk /> : userInfo?.user?.role === 'workshopCenter' ? <WorkshopAgentLink /> : <UserLink />}
               {/* logout btn */}
               <div className="">
                 <div className="my-4 ">
