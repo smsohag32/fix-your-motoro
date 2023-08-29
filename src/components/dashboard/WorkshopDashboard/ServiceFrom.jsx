@@ -3,9 +3,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import DashboardTitle from "@/components/Shared/DashboardTitle/DashboardTitle";
-import { toast } from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
-// error
+import Swal from "sweetalert2";
+
+const imgHostingKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
+
 const ServiceFrom = () => {
   const { user } = useAuth();
   const {
@@ -15,22 +17,88 @@ const ServiceFrom = () => {
     formState: { errors },
   } = useForm();
 
+  const imgHosting = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
+
+
   const onSubmit = async (data) => {
-    const serviceDate = {
-      workshop_email: user.email,
-      ...data,
-    };
-    try {
-      const response = await axios.post(
-        `https://fya-backend.vercel.app/api/v1/auth/services/${user?.email}`,
-        serviceDate
-      );
-      toast.success("Service added successfully");
-      reset();
-    } catch (error) {
-      toast.error("Error adding Service");
+    const imgOne = new FormData();
+    const imgTwo = new FormData();
+    imgOne.append('image', data.workshop_image[0])
+    imgTwo.append('image', data.service_image[0])
+    fetch(imgHosting, {
+      method: "POST",
+      body: imgOne
+    })
+      .then(res => res.json())
+      .then(imgResponse => {
+        if (imgResponse.success) {
+          fetch(imgHosting, {
+            method: "POST",
+            body: imgTwo
+          })
+            .then(response => response.json())
+            .then(imgTwoRes => {
+              if (imgTwoRes.success) {
+                const service = {
+                  workshop_email: user.email,
+                  workshop_image: imgResponse.data.display_url,
+                  service_image: imgTwoRes.data.display_url,
+                  title: data.title,
+                  workshop_id: data.workshop_id,
+                  service_name: data.service_name,
+                  service_category: data.service_category,
+                  service_description: data.service_description,
+                  service_duration: data.service_duration,
+                  service_price: data.service_price,
+                  benefits: data.benefits,
+                  warranty: data.warranty,
+                }
+                // console.log(service)
+                axios.post(`https://fya-backend.vercel.app/api/v1/auth/services/${user.email}`, service)
+                  .then(uploaded => {
+                    Swal.fire({
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Service Added sucessfull',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
+                  })
+              }
+            })
+          //   const newClass = {
+          //     class_name: data.class_name,
+          //     class_image: imgResponse.data.display_url,
+          //     instructor_name: user?.displayName,
+          //     instructor_email: user?.email,
+          //     avilable_seats: parseFloat(data.avilable_seats),
+          //     price: parseFloat(data.price),
+          //     instructor_photo: user?.photoURL
+          //   }
+
+          //   axiosSecure.post("/add-class", newClass)
+          //     .then(res => {
+          //       if (res.data.insertedId) {
+          //         Swal.fire({
+          //           position: 'center',
+          //           icon: 'success',
+          //           title: 'Class Added sucessfull',
+          //           showConfirmButton: false,
+          //           timer: 1500
+          //         })
+
+          //       }
+
+          //     })
+        }
+      })
+
+
+
+   
+   
     }
-  };
+
 
   return (
     <div>
@@ -38,12 +106,12 @@ const ServiceFrom = () => {
         title="Add Service"
         subTitle="Welcome to the Add Service"
       />
-      <div className="max-w-xl md:my-8 mt-4 mx-auto">
+      <div className="max-w-xl mx-auto mt-4 md:my-8">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="bg-white p-6 rounded shadow"
+          className="p-6 bg-white rounded shadow"
         >
-          <label htmlFor="title" className="block font-medium mb-1">
+          <label htmlFor="title" className="block mb-1 font-medium">
             Title
           </label>
           <input
@@ -152,15 +220,15 @@ const ServiceFrom = () => {
             />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid gap-4 md:grid-cols-2">
             <div className="mb-4">
-              <label htmlFor="workshopImage" className="block font-medium mb-1">
+              <label htmlFor="workshopImage" className="block mb-1 font-medium">
                 Workshop Image
               </label>
               <input
-                type="text"
+                type="file"
                 id="workshop_image"
-                {...register("workshop_image", { required: true })}
+                {...register('workshop_image', { required: true })}
                 className="w-full p-2 border rounded"
               />
               {errors.workshop_image && (
@@ -169,13 +237,13 @@ const ServiceFrom = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="serviceImage" className="block font-medium mb-1">
+              <label htmlFor="serviceImage" className="block mb-1 font-medium">
                 Service Image
               </label>
               <input
-                type="text"
+                type="file"
                 id="service_image"
-                {...register("service_image", { required: true })}
+                {...register('service_image', { required: true })}
                 className="w-full p-2 border rounded"
               />
               {errors.service_image && (
