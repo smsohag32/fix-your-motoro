@@ -42,8 +42,8 @@ const Sidebar = () => {
                 height="300"
               />
               {/* name Dynamic */}
-              <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 border-b border-gray-100 cursor-pointer">
-                FYM
+              <h1 className="w-full pb-4 text-base font-bold text-center uppercase text-blue-900 border-b border-gray-100 cursor-pointer">
+                {userInfo?.user?.role ? userInfo?.user?.role : 'FYT'}
               </h1>
               {userInfo?.user?.role === 'admin' ? <AdminLInk /> : userInfo?.user?.role === 'workshopCenter' ? <WorkshopAgentLink /> : <UserLink />}
               {/* logout btn */}
