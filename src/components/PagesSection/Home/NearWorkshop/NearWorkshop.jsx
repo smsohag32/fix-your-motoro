@@ -5,12 +5,13 @@ import React, { useEffect, useState } from "react";
 
 const NearWorkshops = () => {
   const [workshops, setWorkshops] = useState([]);
-  const [loading, setLoading] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch("https://fya-backend-smsohag32.vercel.app/api/v1/auth/workshops");
+        const response = await fetch("https://fya-backend.vercel.app/api/v1/auth/workshops");
         const data = await response.json();
         setWorkshops(data);
         setLoading(false);
