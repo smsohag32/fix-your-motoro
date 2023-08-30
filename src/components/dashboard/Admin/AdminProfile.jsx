@@ -2,7 +2,6 @@
 import UserUpdateProfileModal from "@/components/Modal/userModal/UserUpdateProfileModal";
 import useUserInfo from "@/hooks/useUserInfo";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
 const AdminProfile = () => {
@@ -10,9 +9,9 @@ const AdminProfile = () => {
   const { userInfo, cLoading, refetch } = useUserInfo();
 
   return (
-    <div>
+    <div className="md:mt-12">
       <div className="max-w-screen-lg mx-auto overflow-hidden bg-gray-300 rounded-lg shadow-lg">
-        <div className="bg-[#f02801] py-8 px-6 text-white">
+        <div className="px-6 py-8 text-white bg-blue-500">
           {cLoading ? (
             <p>Loading...</p>
           ) : (
