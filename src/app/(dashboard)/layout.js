@@ -1,5 +1,6 @@
 import Sidebar from "@/components/dashboard/SideBar/Sidebar";
 import DashboardTopBar from "@/components/dashboard/Topbar/DashboardTopBar";
+import SearchProvider from "@/providers/SearchProvider";
 import PrivateRote from "@/utils/PrivateRote";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
@@ -12,6 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <PrivateRote>
+      <SearchProvider>
       <div className={inter.className}>
         <div className="relative min-h-screen md:flex">
           <Sidebar />
@@ -21,6 +23,7 @@ export default function RootLayout({ children }) {
           </div>
         </div>
       </div>
+      </SearchProvider>
     </PrivateRote>
   );
 }
