@@ -6,23 +6,22 @@ import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const customIcon = new Icon({
-  iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
-  //   iconUrl: require("./icons/placeholder.png"),
-  iconSize: [38, 38], // size of the icon
+  iconUrl: "https://i.ibb.co/J5PF1MZ/location.png",
+  iconSize: [50, 50], // size of the icon
 });
 
-const Map = () => {
-  const position = [23.805332718063315, 90.36954993030622];
+const Map = ({position, title}) => {
+  const newPosition = position || [23.805332718063315, 90.36954993030622];
   return (
-    <div className="max-w-md mx-auto">
-      <MapContainer center={position} zoom={90} scrollWheelZoom={false}>
+    <div className="w-full">
+      <MapContainer center={newPosition} zoom={90} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position} icon={customIcon}>
+        <Marker position={newPosition} icon={customIcon}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            {title || ''}
           </Popup>
         </Marker>
       </MapContainer>

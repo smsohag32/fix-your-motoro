@@ -1,6 +1,5 @@
 "use client";
 import WorkshopCard from "@/components/PagesSection/Dasboard/Overview/WorkshopCard";
-import SingleWorkshop from "@/components/PagesSection/WorkShops/SingleWorkShop/SingleWorkshop";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import Map from "@/components/map/Map";
