@@ -2,21 +2,38 @@ import { useForm } from "react-hook-form"
 import Modal from "../Modal"
 import useAuth from "@/hooks/useAuth";
 import Image from "next/image";
+import UploadImage from "@/components/UploadImage/UploadImage";
+import { Toaster, toast } from "react-hot-toast";
+import axios from "axios";
+import useUserInfo from "@/hooks/useUserInfo";
 
 
 
-const UserUpdateProfileModal = ({ isOpen, setIsOpen }) => {
-    const { user } = useAuth();
-    const { register, handleSubmit, reset } = useForm();
-    const onSubmit = (data) => {
-        console.log(data)
-        onCancel();
+
+const UserUpdateProfileModal = ({ isOpen, setIsOpen, refetch }) => {
+    const { user, profileUpdate } = useAuth();
+    const { register, handleSubmit, reset, setValue } = useForm();
+    const onSubmit = async (data) => {
+        try {
+            await axios.put(`https://fya-backend.vercel.app/api/v1/auth/users/${user?.email}`, data);
+            await profileUpdate({
+                displayName: data.name,
+                photoURL: data.image,
+            });
+            refetch();
+            toast.success("profile updated successfully")
+            onCancel();
+        } catch (error) {
+            console.log(error);
+            toast.error("profile not updated.")
+        }
     }
 
     const onCancel = () => {
         reset();
         setIsOpen(false);
     }
+
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="Update Your Profile">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -26,7 +43,9 @@ const UserUpdateProfileModal = ({ isOpen, setIsOpen }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex flex-col">
                         <label htmlFor="name" className="mb-2 font-bold">Name</label>
-                        <input type="text" id="name" className="w-full rounded-md p-2  focus:outline-sky-500 border border-gray-600" placeholder="your name" required {...register("name")} />
+                        <input type="text" id="name" className="w-full rounded-md p-2  focus:outline-sky-500 border border-gray-600"
+                            defaultValue={user?.displayName}
+                            required {...register("name")} />
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="email" className="mb-2 font-bold">Email</label>
@@ -56,15 +75,16 @@ const UserUpdateProfileModal = ({ isOpen, setIsOpen }) => {
                         <input
                             type="file"
                             id="image"
-
+                            onChange={(e) => UploadImage(e, setValue)}
                             className="w-full rounded-md p-1 focus:outline-sky-500 border border-gray-600"
-                        /> 
-                     </div>
+                        />
+                    </div>
                 </div>
                 <div className="flex justify-center gap-4 mt-6">
                     <button onClick={() => onCancel()} type="button" className="delete-btn rounded-lg w-full md:w-auto">Cancel</button>
                     <button type="submit" className="w-full md:w-auto px-3 py-2 text-center transition-all duration-500 font-semibold bg-sky-600 text-white hover:bg-sky-800 rounded-lg">Update</button>
                 </div>
+                <Toaster />
             </form>
         </Modal>
     )
