@@ -87,6 +87,10 @@ const SearchResultPage = () => {
   const [selectedDistrict, setSelectedDistrict] = useState(searchText);
   const [searchData, setSearchData] = useState([])
   console.log(selectedDistrict, searchText);
+
+  useEffect(() =>{
+  },[])
+  
   useEffect(() =>{
     setLoading(true);
     const fetchData = async () => {

@@ -1,3 +1,4 @@
+import Map from "@/components/map/Map";
 
 
 const StepTwo = ({ onNext, order }) => {
@@ -10,7 +11,10 @@ const StepTwo = ({ onNext, order }) => {
       <hr className="w-1/3"/>
         <p className="w-full">On Process</p>
         <hr className="w-1/3"/>
-        <p className="w-full">Sedule Pending</p>
+        <p className="w-full">Sedule {order?.status || 'pending'}</p>
+      </div>
+      <div>
+        <Map title={order?.streetAddress}/>
       </div>
         <div className="text-center w-full mt-auto">
         <button className="primary-btn " onClick={() =>  onNext()}>Back to Details</button>

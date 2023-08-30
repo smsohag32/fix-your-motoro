@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import { Icon } from "leaflet";
 import "leaflet/dist/leaflet.css";
+import MidSpinner from "../Spinners/MidSpinner";
 
 const customIcon = new Icon({
   iconUrl: "https://i.ibb.co/J5PF1MZ/location.png",
@@ -11,10 +12,16 @@ const customIcon = new Icon({
 });
 
 const Map = ({position, title}) => {
-  const newPosition = position || [23.805332718063315, 90.36954993030622];
+  let newPosition;
+ if(position.length > 0){
+    newPosition = position || [23.805332718063315, 90.36954993030622];
+ } else{
+    newPosition = [23.805332718063315, 90.36954993030622]
+ }
+
   return (
     <div className="w-full">
-      <MapContainer center={newPosition} zoom={90} scrollWheelZoom={false}>
+      <MapContainer center={newPosition} zoom={70} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

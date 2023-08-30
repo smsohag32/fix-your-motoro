@@ -1,12 +1,29 @@
 "use client";
+import UserModal from "@/components/Modal/Modal";
+import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 import Map from "@/components/map/Map";
 import { Toaster, toast } from "react-hot-toast";
+import ApprovedModal from "./ApprovedModal";
+import { useState } from "react";
 
 const AppointCard = (props) => {
-  const { service_id, firstName, service_category, bookingDate,streetAddress, vehicle, phone, service_type } =
+  const {_id, service_id, firstName, user_lat, user_lon, service_category, bookingDate,streetAddress, vehicle, phone, service_type } =
     props.order || {};
-    console.log(props.order);
-  return (
+    const lat = parseFloat(user_lat);
+    const lon = parseFloat(user_lon);
+    const postion = [lat, lon]
+    const hasValidPosition = !Number.isNaN(lat) && !Number.isNaN(lon);
+    const [isOpen, setIsOpen] = useState(false);
+
+
+    const handleAproved = () =>{
+
+    }
+
+    const handlePostpon = () => {
+
+    }
+    return (
     <div className="bg-white rounded shadow-md">
       <div className="duration-500 transform gap-8 p-5 border-2 w-full flex-col md:flex-row flex h-full  md:h-60 items-center">
         <div className="h-full w-full flex flex-col justify-center  space-y-3 mb-5">
@@ -49,7 +66,7 @@ const AppointCard = (props) => {
             Postpone
           </button>
           <button
-            onClick={() => toast.error("This service will be taken later")}
+            onClick={() => setIsOpen(true)}
             className="px-3 py-2 text-center transition-all duration-500 font-semibold bg-teal-500 text-white hover:bg-teal-600"
           >
              Approve
@@ -57,9 +74,12 @@ const AppointCard = (props) => {
         </div>
       </div>
       <div className="p-5">
-        <Map title={streetAddress}/>
+       {
+        hasValidPosition ?  <Map title={streetAddress} position={postion}/> : <EmptyState message={'Customer not to share his location'} address={'https://www.google.com/maps'} label={'Visit Map'}/>
+       }
       </div>
       <Toaster />
+       <ApprovedModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };
