@@ -2,6 +2,7 @@
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
 import SingleProductCard from "@/components/PagesSection/WorkShops/SingleProductCard/SingleProductCard";
 import MidSpinner from "@/components/Spinners/MidSpinner";
+import Map from "@/components/map/Map";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,6 +15,9 @@ const WorkShopDetail = ({ params }) => {
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
   const notify = () => toast("Booking confirmed..");
+
+  const lat = "";
+  const lon = "";
 
   useEffect(() => {
     setLoading(true);
@@ -97,6 +101,15 @@ const WorkShopDetail = ({ params }) => {
             >
               Book Now
             </button>
+          </div>
+        </div>
+
+        <div className="md:flex md:gap-12 gap-10 items-center mt-8">
+          <div className="w-full">
+            <p className="text-xl mb-5">Location of: {product.name} </p>
+          </div>
+          <div className="w-full">
+            <Map lat={lat} lon={lon}/>
           </div>
         </div>
 

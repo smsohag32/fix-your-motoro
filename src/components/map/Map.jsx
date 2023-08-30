@@ -11,8 +11,14 @@ const customIcon = new Icon({
   iconSize: [38, 38], // size of the icon
 });
 
-const Map = () => {
-  const position = [23.805332718063315, 90.36954993030622];
+const Map = ({ lat, lon }) => {
+  console.log(lat, lon);
+  
+  const position = [
+    lat !== "" ? parseFloat(lat) : 23.805332718063315,
+    lon !== "" ? parseFloat(lon) : 90.36954993030622,
+  ];
+
   return (
     <div className="max-w-md mx-auto">
       <MapContainer center={position} zoom={90} scrollWheelZoom={false}>
