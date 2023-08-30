@@ -4,16 +4,35 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
 import useAuth from "@/hooks/useAuth";
+import { useContext, useState } from "react";
+import SearchContext from "@/context/SearchContext";
+import { usePathname, useRouter } from "next/navigation";
 
 
 
 const DashboardTopBar = () => {
 const {user } = useAuth();
+  const router =  useRouter();
+  const pathName = usePathname();
+  const {setLoading, setSearchText} = useContext(SearchContext);
+  const [text, setText] = useState('');
+
+   // handle to college search
+   const handleSearch = () => {
+    if (!text) {
+      return;
+    }
+    if(!(pathName === '/dashboard/searchresult')){
+      router.push('/dashboard/searchresult')
+    }
+    setSearchText(text)
+  };
+
 
   return (
     <div className="h-16 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6 hidden md:flex justify-between">
-      <div className="flex-1">
-        <div className="relative">
+      <div className="flex-1 flex gap-5">
+        <div className="relative flex-1">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -35,14 +54,16 @@ const {user } = useAuth();
             type="search"
             id="default-search"
             className="block w-full bg-gray-200 p-2 pl-10 text-sm text-gray-900 outline-none rounded-lg"
+            onChange={(e) => setText(e.target.value)}
             placeholder="Search here..."
           />
         </div>
+          <button onClick={() => handleSearch()} className="primary-btn">search</button>
       </div>
       <div className="flex gap-2 items-center">
         <span>
           <Link
-            href=''
+            href='/dasboard/notification'
             className="relative inline-flex items-center p-3 text-sm font-medium text-center rounded-lg"
           >
             <IoMdNotificationsOutline className=" text-xl" />
