@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import {
+  MdDashboard,
   MdOutlineAnalytics,
   MdOutlineMiscellaneousServices,
 } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import { BiMessageSquareDots, BiListCheck } from "react-icons/bi";
+import { BiMessageSquareDots } from "react-icons/bi";
+import { LuListChecks } from "react-icons/lu";
 import { IoIosPeople } from "react-icons/io";
 import Link from "next/link";
 import NavLink from "@/components/Shared/Header/NavLink";
@@ -29,13 +31,13 @@ function WorkshopAgentLink() {
 
         {/* Appointment section  */}
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-orange-600 group hover:shadow-lg">
-          <BiListCheck className="text-2xl text-gray-600 group-hover:text-white " />
+          <LuListChecks className="text-2xl text-gray-600 group-hover:text-white " />
           <h3 className="text-base font-semibold text-gray-800 group-hover:text-white ">
             <NavLink
               activeClassName={"text-[#f02801]"}
               href="/dashboard/workshop/appointments"
             >
-              Appointments
+              Appointment Plan
             </NavLink>
           </h3>
           {/* Appointment Management: Display a list of upcoming appointments, along with details like service type, vehicle details, and customer contact information. */}
@@ -84,7 +86,12 @@ function WorkshopAgentLink() {
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-orange-600 group hover:shadow-lg">
           <BiMessageSquareDots className="text-2xl text-gray-600 group-hover:text-white " />
           <h3 className="text-base font-semibold text-gray-800 group-hover:text-white ">
-            <Link href="/dashboard/workshop/communication">Communication</Link>
+            <NavLink
+              activeClassName={"text-[#f02801]"}
+              href="/dashboard/workshop/communication"
+            >
+              Communication
+            </NavLink>
           </h3>
           {/* Communication: Send automated updates to customers regarding service progress, delays, or additional repairs that might be needed.   */}
         </li>

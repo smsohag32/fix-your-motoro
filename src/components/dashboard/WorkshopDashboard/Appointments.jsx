@@ -4,6 +4,7 @@ import useAuth from "@/hooks/useAuth";
 import useWorkshopOrder from "@/hooks/useWorkshopOrders";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import AppointCard from "./AppointmentCard";
+import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 
 const Appointments = () => {
   const { user } = useAuth();
@@ -17,12 +18,14 @@ const Appointments = () => {
   return (
     <div>
       <TitleDashboard title={"Manage Appointments"} />
-      <div>
-        {workshopOrders &&
-          workshopOrders.map((order) => (
-            <AppointCard key={order._id} order={order} />
-          ))}
-      </div>
+     <div className="my-10">
+     {
+      workshopOrders?.length > 0 ?
+    workshopOrders.map((order) => (
+      <AppointCard key={order._id} order={order} />
+    )) : <EmptyState label={'Post a Service'} address={'/dashboard/workshop/service_form'} message={'Appointment request not found'}></EmptyState>
+     }
+     </div>
     </div>
   );
 };
