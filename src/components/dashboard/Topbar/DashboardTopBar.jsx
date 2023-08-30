@@ -30,9 +30,15 @@ const {user } = useAuth();
 
 
   return (
+<<<<<<< HEAD
+    <div className="h-16 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6  md:flex justify-between hidden">
+      <div className="flex-1">
+        <div className="relative">
+=======
     <div className="h-16 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6 hidden md:flex justify-between">
       <div className="flex-1 flex gap-5">
         <div className="relative flex-1">
+>>>>>>> 90a44dd2c498d5d62f08fa8fb937297f1c0421e4
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500 dark:text-gray-400"
