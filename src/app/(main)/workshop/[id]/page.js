@@ -2,6 +2,8 @@
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
 import SingleProductCard from "@/components/PagesSection/WorkShops/SingleProductCard/SingleProductCard";
 import MidSpinner from "@/components/Spinners/MidSpinner";
+import useAuth from "@/hooks/useAuth";
+import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -10,6 +12,7 @@ import toast, { Toaster } from "react-hot-toast";
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState([]);
+  const {user} = useAuth();
   const [showBookingForm, setShowBookingForm] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
@@ -19,11 +22,10 @@ const WorkShopDetail = ({ params }) => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `https://fya-backend.vercel.app/api/v1/auth/workshops/${_id}`
         );
-        const data = await response.json();
-        setProduct(data);
+        setProduct(response.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching JSON data:", error);
@@ -41,23 +43,17 @@ const WorkShopDetail = ({ params }) => {
   const onSubmit = async (data) => {
     const serviceData = {
       workShop_id: _id,
-      workShop_email: product.email,
-      workShop_code: product.workshopCode,
+      workshop_email: product.email,
+      email: user?.email,
       ...data,
     };
 
+    console.log(serviceData);
 
-    const response = await fetch(
-      "https://fya-backend.vercel.app/api/v1/auth/orders",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(serviceData),
-      }
-    );
-    const result = await response.json();
+    const response = await axios.post(
+      "https://fya-backend.vercel.app/api/v1/auth/orders", serviceData);
+    setShowBookingForm(false)
+    console.log(response);
     reset();
     notify();
   };
@@ -101,7 +97,7 @@ const WorkShopDetail = ({ params }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-24 ">
-          {product.products.map((product, index) => (
+          {product?.products.map((product, index) => (
             <SingleProductCard key={index} product={product} />
           ))}
         </div>
@@ -109,7 +105,7 @@ const WorkShopDetail = ({ params }) => {
       {/* Booking Form */}
       {showBookingForm && (
         <div className="absolute -top-7 left-0 w-full h-full flex items-center justify-center bg-gray-200 bg-opacity-75 z-20">
-          <div className="max-w-5xl px-5 mx-auto w-full bg-white p-6 rounded-lg shadow-lg">
+          <div className="max-w-5xl  mx-auto w-full bg-white mt-5 md:mt-0 p-6 md:p-12 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Booking Information</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -155,10 +151,9 @@ const WorkShopDetail = ({ params }) => {
                     type="text"
                     id="email"
                     name="email"
+                    value={user?.email}
                     className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
-                    placeholder="jason.momoa@gmail.com"
-                    required
-                    {...register("email")}
+                    placeholder={user?.email}
                   />
                 </div>
                 <div className="col-span-2 sm:col-span-1">
@@ -275,15 +270,28 @@ const WorkShopDetail = ({ params }) => {
                   </div>
                   <div className="">
                     <label htmlFor="map" className="block text-sm font-medium">
-                      Map Link
+                    Latitude  *
                     </label>
                     <input
                       type="text"
                       id="map"
                       name="map"
-                      placeholder="Map link"
+                      placeholder="Type your latitude location"
                       className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
-                      {...register("map")}
+                      {...register("user_lat")}
+                    />
+                  </div>
+                  <div className="">
+                    <label htmlFor="long" className="block text-sm font-medium">
+                    Longitude  *
+                    </label>
+                    <input
+                      type="text"
+                      id="long"
+                      name="long"
+                      placeholder="Type your longitude location"
+                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                      {...register("user_lon")}
                     />
                   </div>
                   <div>
@@ -295,16 +303,16 @@ const WorkShopDetail = ({ params }) => {
                     </label>
                     <select
                       className=" mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
-                      {...register("servicePlace")}
+                      {...register("service_type")}
                     >
-                      <option value="onWorkShop">On WorkShop</option>
-                      <option value="onLocation">On Location</option>
+                      <option value="On Garage">On Garage</option>
+                      <option value="On Spot">On Spot</option>
                     </select>
                   </div>
                 </div>
               </div>
 
-              <div className="md:flex justify-between mt-3">
+              <div className="md:flex justify-between mt-12">
                 <button type="submit" className="primary-btn rounded-md">
                   Submit
                 </button>
