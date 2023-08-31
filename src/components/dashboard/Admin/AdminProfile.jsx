@@ -2,17 +2,16 @@
 import UserUpdateProfileModal from "@/components/Modal/userModal/UserUpdateProfileModal";
 import useUserInfo from "@/hooks/useUserInfo";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
-const UserProfile = () => {
+const AdminProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { userInfo, cLoading, refetch } = useUserInfo();
 
   return (
-    <div>
-      <div className="max-w-screen-lg mx-auto bg-gray-300 rounded-lg shadow-lg overflow-hidden">
-        <div className="bg-blue-500 py-8 px-6 text-white">
+    <div className="md:mt-12">
+      <div className="max-w-screen-lg mx-auto overflow-hidden bg-gray-300 rounded-lg shadow-lg">
+        <div className="px-6 py-8 text-white bg-blue-500">
           {cLoading ? (
             <p>Loading...</p>
           ) : (
@@ -35,45 +34,36 @@ const UserProfile = () => {
           )}
         </div>
         <div className="p-4">
-          <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
+          <h2 className="mb-4 text-xl font-semibold">Profile Information</h2>
           <div className="mb-4">
-            <p className="text-gray-700 mb-2">Phone Number:</p>
+            <p className="mb-2 text-gray-700">Phone Number:</p>
             <p className="text-gray-500">
               {userInfo?.user?.phone}
             </p>
           </div>
           <div className="mb-4">
-            <p className="text-gray-700 mb-2">Address:</p>
+            <p className="mb-2 text-gray-700">Address:</p>
             <p className="text-gray-500">
               {userInfo?.user?.address}
             </p>
           </div>
           <div className="mb-4">
-            <p className="text-gray-700 mb-2">Gender:</p>
+            <p className="mb-2 text-gray-700">Gender:</p>
             <p className="text-gray-500">
               {userInfo?.user?.gender}
             </p>
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="mt-6 bg-white text-blue-500 py-2 px-4 rounded-full w-full hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-300"
+            className="w-full px-4 py-2 mt-6 text-blue-500 bg-white rounded-full hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-300"
           >
             Edit Profile
           </button>
         </div>
       </div>
       <UserUpdateProfileModal refetch={refetch}  isOpen={isOpen} setIsOpen={setIsOpen} />
-
-      <div className="mt-16">
-        <Link
-          className="primary-btn"
-          href={"/dashboard/user/user_profile/center_req"}
-        >
-          Request to add Workshop Center
-        </Link>
-      </div>
     </div>
   );
 };
 
-export default UserProfile;
+export default AdminProfile;

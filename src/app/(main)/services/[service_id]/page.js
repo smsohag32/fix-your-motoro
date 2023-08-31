@@ -70,7 +70,7 @@ const ServicePage = ({ params }) => {
             <p className="mb-12 text-xl font-semibold text-slate-600">
               {service_description}
             </p>
-            <div className="px-8 py-4 bg-orange-100 rounded-md shadow-xl">
+            <div className="px-8 py-4 bg-slate-300 rounded-md shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-2 my-2">
                 <p className="font-mono font-bold text-slate-700 text-2xl">
                   Price:

@@ -4,8 +4,7 @@ import axios from "axios";
 
 const useUserInfo = () => {
   const { user, loading } = useAuth();
-
-  const { data: userInfo, isLoading: cLoading } = useQuery({
+  const { data: userInfo, isLoading: cLoading, refetch } = useQuery({
     queryKey: ["userInfo", user?.email],
     enabled: !loading,
     queryFn: async () => {
@@ -15,7 +14,7 @@ const useUserInfo = () => {
       return res.data;
     },
   });
-  return { userInfo, cLoading };
+  return { userInfo, cLoading, refetch };
 };
 
 export default useUserInfo;
