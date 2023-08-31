@@ -14,15 +14,15 @@ export default function RootLayout({ children }) {
   return (
     <PrivateRote>
       <SearchProvider>
-      <div className={inter.className}>
-        <div className="relative min-h-screen md:flex">
-          <Sidebar />
-          <div className="flex-1 md:ml-72 bg-slate-200">
-            <DashboardTopBar />
-            <div className="p-5">{children}</div>
+        <div className={inter.className}>
+          <div className="relative min-h-screen md:flex">
+            <Sidebar />
+            <div className="flex-1 md:ml-72 bg-slate-100">
+              <DashboardTopBar />
+              <div className="p-5">{children}</div>
+            </div>
           </div>
         </div>
-      </div>
       </SearchProvider>
     </PrivateRote>
   );
