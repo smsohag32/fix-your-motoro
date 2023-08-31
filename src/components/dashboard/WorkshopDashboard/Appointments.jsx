@@ -9,7 +9,7 @@ import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 const Appointments = () => {
   const { user } = useAuth();
 
-  const { workshopOrders, wOLoading } = useWorkshopOrder(user?.email);
+  const { workshopOrders, wOLoading, refetch } = useWorkshopOrder(user?.email);
 
   if (wOLoading) {
     return <MidSpinner />;
@@ -22,7 +22,7 @@ const Appointments = () => {
      {
       workshopOrders?.length > 0 ?
     workshopOrders.map((order) => (
-      <AppointCard key={order._id} order={order} />
+      <AppointCard key={order._id} order={order} refetch={refetch} />
     )) : <EmptyState label={'Post a Service'} address={'/dashboard/workshop/service_form'} message={'Appointment request not found'}></EmptyState>
      }
      </div>

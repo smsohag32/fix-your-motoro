@@ -11,7 +11,7 @@ body {
 }
 
 .default-container {
-  @apply w-full max-w-[2520px] mx-auto md:px-12 sm:px-4 px-5
+  @apply w-full max-w-[1280px] mx-auto px-5
 }
 
 .primary-text {
