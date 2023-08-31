@@ -1,8 +1,10 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 const useWorkshops = () => {
+  const queryClient = useQueryClient();
+
   const { data: workshops, isLoading: wLoading } = useQuery({
     queryKey: ["workshops"],
     queryFn: async () => {
@@ -12,7 +14,13 @@ const useWorkshops = () => {
       return res.data;
     },
   });
-  return { workshops, wLoading };
+
+  const refetchWorkshops = () => {
+    // Manually trigger a refetch of the workshops query
+    queryClient.invalidateQueries(["workshops"]);
+  };
+
+  return { workshops, wLoading, refetchWorkshops };
 };
 
 export default useWorkshops;
