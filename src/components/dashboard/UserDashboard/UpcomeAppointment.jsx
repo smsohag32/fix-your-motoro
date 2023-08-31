@@ -6,6 +6,7 @@ import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import OrderContent from "./OrderContent";
 
 const UpcomeAppointment = () => {
     const {user, loading} = useAuth(); 
@@ -32,7 +33,7 @@ const UpcomeAppointment = () => {
         </div>
             <div className="grid grid-cols-1 gap-10">
                 {
-                    workOrder?.length>  0 ? workOrder.map(order => <Steps key={order._id} order={order}/>) : <EmptyState label={'Book a Appointment'} message={'Upcomming appointment not found'} address={'/services'} />
+                    workOrder?.length>  0 ? workOrder.map(order => <OrderContent key={order?._id} order={order}/>) : <EmptyState label={'Book a Appointment'} message={'Upcomming appointment not found'} address={'/services'} />
                 }
             </div>
         </div>
