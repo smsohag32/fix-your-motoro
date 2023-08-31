@@ -6,7 +6,7 @@ const ComplaintBoxSingleCard = ({ singleCard }) => {
     const { id, userName, userEmail, workshopName, issue, message, date } = singleCard;
 
     return (
-        <div className="p-5 transition-all duration-500 transform rounded-lg cursor-pointer primary-shadow hover:scale-95">
+        <div className="p-5 transition-all duration-500 transform rounded-lg cursor-pointer bg-slate-50 primary-shadow hover:scale-95">
             <h1><span className="font-semibold ">Name</span>: {userName}</h1>
             <h1><span className="font-semibold ">Email</span>: {userEmail}</h1>
             <h1><span className="font-semibold ">Workshop Name</span>: {workshopName}</h1>
