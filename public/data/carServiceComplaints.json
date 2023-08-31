@@ -1,0 +1,93 @@
+[
+    {
+      "id": "1",
+      "userName": "John Doe",
+      "userEmail": "john@example.com",
+      "workshopName": "AutoCare Service Center",
+      "issue": "The brakes are making a squeaking noise.",
+      "message": "I've noticed that my Toyota Camry's brakes are producing a loud squeaking noise whenever I apply them. This issue has been ongoing for a few days now and it's becoming quite concerning.",
+      "date": "August 31, 2023"
+    },
+    {
+      "id": "2",
+      "userName": "Jane Smith",
+      "userEmail": "jane@example.com",
+      "workshopName": "QuickFix Auto",
+      "issue": "The engine is overheating frequently.",
+      "message": "My Honda Civic's engine has been overheating more often than usual. Even during short trips, the temperature gauge rises to high levels, and I'm worried about potential damage to the engine.",
+      "date": "August 30, 2023"
+    },
+    {
+      "id": "3",
+      "userName": "Michael Johnson",
+      "userEmail": "michael@example.com",
+      "workshopName": "CarCare Experts",
+      "issue": "The AC is not cooling effectively.",
+      "message": "I'm facing an issue with the AC in my Ford Mustang. It's blowing air, but it's not cooling the cabin as it should. This is particularly uncomfortable during hot summer days.",
+      "date": "August 29, 2023"
+    },
+    {
+      "id": "4",
+      "userName": "Emily Brown",
+      "userEmail": "emily@example.com",
+      "workshopName": "ProMechanic Garage",
+      "issue": "The suspension feels bumpy and uncomfortable.",
+      "message": "I've noticed that my Chevrolet Silverado's suspension feels unusually bumpy and uncomfortable, especially when driving over rough roads. This has only started recently.",
+      "date": "August 28, 2023"
+    },
+    {
+      "id": "5",
+      "userName": "David Wilson",
+      "userEmail": "david@example.com",
+      "workshopName": "AutoFix Solutions",
+      "issue": "There's a strange rattling noise coming from the rear.",
+      "message": "I've been hearing a rattling noise from the rear of my Nissan Altima. It's particularly noticeable when driving over bumps. Could this be an issue with the suspension?",
+      "date": "August 27, 2023"
+    },
+    {
+      "id": "6",
+      "userName": "Sophia Lee",
+      "userEmail": "sophia@example.com",
+      "workshopName": "Precision Auto Care",
+      "issue": "The dashboard lights are flickering intermittently.",
+      "message": "I've noticed that the lights on my BMW 3 Series' dashboard are flickering randomly. This seems to happen regardless of whether I'm driving or the car is stationary.",
+      "date": "August 26, 2023"
+    },
+    {
+      "id": "7",
+      "userName": "Daniel Martinez",
+      "userEmail": "daniel@example.com",
+      "workshopName": "CarFix Express",
+      "issue": "The steering wheel is vibrating at higher speeds.",
+      "message": "Whenever I drive my Hyundai Sonata at higher speeds, the steering wheel starts to vibrate noticeably. This makes the driving experience uncomfortable and unsafe.",
+      "date": "August 25, 2023"
+    },
+    {
+      "id": "8",
+      "userName": "Olivia Davis",
+      "userEmail": "olivia@example.com",
+      "workshopName": "Mechanic Masters",
+      "issue": "I keep getting logged out of my account unexpectedly.",
+      "message": "I'm facing a strange issue where I'm logged out of my account on the car service platform every time I close the app. This is frustrating, especially when I need to access my vehicle information quickly.",
+      "date": "August 24, 2023"
+    },
+    {
+      "id": "9",
+      "userName": "Liam Johnson",
+      "userEmail": "liam@example.com",
+      "workshopName": "AutoTech Repairs",
+      "issue": "The links on the homepage are broken and lead to 404 pages.",
+      "message": "I've tried clicking on various links on the car service platform's homepage, but they all seem to lead to 404 error pages. This is preventing me from accessing important information.",
+      "date": "August 23, 2023"
+    },
+    {
+      "id": "10",
+      "userName": "Ava Johnson",
+      "userEmail": "ava@example.com",
+      "workshopName": "CarTech Solutions",
+      "issue": "The font size is too small and hard to read on desktop.",
+      "message": "I find the font size on the car service platform's desktop version to be uncomfortably small. It's straining my eyes, and I have to squint to read the text. Could you please consider increasing the font size?",
+      "date": "August 22, 2023"
+    }
+  ]
+  

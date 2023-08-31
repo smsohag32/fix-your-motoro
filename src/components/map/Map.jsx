@@ -11,13 +11,13 @@ const customIcon = new Icon({
   iconSize: [50, 50], // size of the icon
 });
 
-const Map = ({position, title}) => {
+const Map = ({ position, title }) => {
   let newPosition;
- if(position.length > 0){
+  if (position?.length > 0) {
     newPosition = position || [23.805332718063315, 90.36954993030622];
- } else{
+  } else {
     newPosition = [23.805332718063315, 90.36954993030622]
- }
+  }
 
   return (
     <div className="w-full">

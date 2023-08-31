@@ -1,18 +1,17 @@
 
 "use client";
 import React from "react";
-import {
-    MdDashboard, MdPayments, MdSupportAgent,
-} from "react-icons/md";
-import Link from "next/link";
-import { FaHistory, FaUsers } from "react-icons/fa";
+import { MdDashboard} from "react-icons/md";
+import { FaHistory, FaUser, FaUsers } from "react-icons/fa";
 import { BiCreditCard } from "react-icons/bi";
+import { BsFillBoxFill } from "react-icons/bs";
 import NavLink from "@/components/Shared/Header/NavLink";
 
-const  AdminLInk = () => {
+const AdminLInk = () => {
 
   return (
     <ul className="pb-4 my-4 border-b border-gray-100">
+      {/* dashboard section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
         <MdDashboard className="w-8 h-8  group-hover:text-[#f02801]" />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
@@ -66,13 +65,27 @@ const  AdminLInk = () => {
           </NavLink>
         </h3>
       </li>
+
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaUsers className="w-8 h-8  group-hover:text-[#f02801] " />
+        <BsFillBoxFill className="w-8 h-8  group-hover:text-[#f02801] " />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
           <NavLink
-            exact={"/dashboard/comuinity" == "/dashboard"}
+            exact={"/dashboard/admin/complaint_box" == "/dashboard"}
             activeClassName={"text-[#f02801]"}
-            href="/dashboard/admin/profile"
+            href="/dashboard/admin/complaint_box"
+          >
+            Complaint Box
+          </NavLink>
+        </h3>
+      </li>
+
+      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+        <FaUser className="w-8 h-8  group-hover:text-[#f02801] " />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+          <NavLink
+            exact={"/dashboard/admin/admin_profile" == "/dashboard"}
+            activeClassName={"text-[#f02801]"}
+            href="/dashboard/admin/admin_profile"
           >
             Account
           </NavLink>
