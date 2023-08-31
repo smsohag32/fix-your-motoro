@@ -2,7 +2,7 @@ import UserModal from "@/components/Modal/Modal";
 import statusChange from "@/utils/statusChange";
 import { useForm } from "react-hook-form";
 
-const ApprovedModal = ({isOpen, setIsOpen, id }) => {
+const ApprovedModal = ({isOpen, setIsOpen, id, refetch }) => {
 
     const { register, handleSubmit, reset } = useForm();
 
@@ -14,6 +14,7 @@ const ApprovedModal = ({isOpen, setIsOpen, id }) => {
         }
         statusChange({newData, id}).then(data => {
             onCancel();
+            refetch()
             console.log(data);
         }).catch(error => console.log(error))
     }
@@ -45,9 +46,9 @@ const ApprovedModal = ({isOpen, setIsOpen, id }) => {
                     <div className="flex flex-col">
                         <label htmlFor="technicaian" className="mb-2 font-bold">Technicaian</label>
                         <select className="w-full rounded-md p-2  focus:outline-sky-500 border border-gray-600" id="technicaian" {...register("technicaian")}>
-                            <option defaultValue="Male">Rakib Hossain</option>
-                            <option value="Female">Monir Ahmed</option>
-                            <option value="Other">Tomal Khan</option>
+                            <option defaultValue="Rakib Hossain">Rakib Hossain</option>
+                            <option value="Monir Ahmed">Monir Ahmed</option>
+                            <option value="Tomal Khan">Tomal Khan</option>
                         </select>
                     </div>
                 </div>
