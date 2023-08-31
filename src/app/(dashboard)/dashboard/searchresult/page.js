@@ -181,8 +181,6 @@ const SearchResultPage = () => {
                 searchData?.length > 0 ? searchData.map(item => <WorkshopCard key={item?._id} workshopsData={item}/>) : <EmptyState address={'/dashboard/searchresult'} label={'Search again'} message={'No Workshop found'}/>
             }
     </div>
-
-    <Map/>
     </div>
   );
 };
