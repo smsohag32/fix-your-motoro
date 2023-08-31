@@ -1,13 +1,21 @@
 import UserModal from "@/components/Modal/Modal";
+import statusChange from "@/utils/statusChange";
 import { useForm } from "react-hook-form";
 
-const ApprovedModal = ({isOpen, setIsOpen, }) => {
+const ApprovedModal = ({isOpen, setIsOpen, id }) => {
 
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = (data) => {
-        
-        onCancel();
+        console.log(data);
+        const newData = {
+            status: 'approved',
+            ...data
+        }
+        statusChange({newData, id}).then(data => {
+            onCancel();
+            console.log(data);
+        }).catch(error => console.log(error))
     }
 
     const onCancel = () => {

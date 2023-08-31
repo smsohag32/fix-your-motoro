@@ -45,6 +45,7 @@ const WorkShopDetail = ({ params }) => {
       workShop_id: _id,
       workshop_email: product.email,
       email: user?.email,
+      status: 'pending',
       ...data,
     };
 

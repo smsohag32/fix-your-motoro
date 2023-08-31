@@ -40,10 +40,11 @@ const Page = ({ params }) => {
   const onSubmit = async (data) => {
     const serviceData = {
       service_id: id,
-      workshop_email: service?.workshop_email || "tr.tonmoy0110.trt@gmail.com",
+      workshop_email: service?.workshop_email || "sohagsheik32@gmail.com",
       service_category: service?.service_category,
       service_image: service?.service_image,
       service_name: service?.service_name,
+      status: 'pending',
       ...data,
     };
 
