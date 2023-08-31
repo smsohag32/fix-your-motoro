@@ -5,13 +5,7 @@ import React from "react";
 const OverviewDashboard = () => {
   return (
     <div>
-      <div>
         <Overview />
-      </div>
-
-      <div>
-        <PopularWorkShop />
-      </div>
     </div>
   );
 };

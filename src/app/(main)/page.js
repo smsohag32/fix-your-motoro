@@ -7,7 +7,6 @@ import OurExperts from "@/components/PagesSection/Home/OurExperts/OurExperts";
 import OurServices from "@/components/PagesSection/Home/OurServices/OurServices";
 import RecentNews from "@/components/PagesSection/Home/RecentNews/RecentNews";
 import SuccessReviews from "@/components/PagesSection/Home/SuccessReviews/SuccessReviews";
-import Map from "@/components/map/Map";
 
 const HomePage = () => {
   return (
@@ -19,7 +18,6 @@ const HomePage = () => {
       <SuccessReviews />
       <BestProducts />
       <RecentNews />
-      <Map />
       <CarCareTips />
       <GetInTouch />
     </main>

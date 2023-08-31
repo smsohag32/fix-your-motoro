@@ -2,6 +2,7 @@
 
 import Spinner from "@/components/Spinners/Spinner";
 import useAuth from "@/hooks/useAuth";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -228,7 +229,7 @@ const Page = ({ params }) => {
             <Toaster />
             <button
               type="button"
-              className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600"
+              className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600 ml-2 md:ml-0"
             >
               Print
             </button>
