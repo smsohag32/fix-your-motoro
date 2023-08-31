@@ -1,5 +1,8 @@
 "use client"
+
 import UserUpdateProfileModal from "@/components/Modal/userModal/UserUpdateProfileModal";
+import MidSpinner from "@/components/Spinners/MidSpinner";
+import useAuth from "@/hooks/useAuth";
 import useUserInfo from "@/hooks/useUserInfo";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,13 +11,12 @@ import { useState } from "react";
 const UserProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { userInfo, cLoading, refetch } = useUserInfo();
-
   return (
     <div>
       <div className="max-w-screen-lg mx-auto bg-gray-300 rounded-lg shadow-lg overflow-hidden">
-        <div className="bg-blue-500 py-8 px-6 text-white">
+        <div className="bg-blue-400 py-8 px-6 text-white">
           {cLoading ? (
-            <p>Loading...</p>
+            <MidSpinner />
           ) : (
             <>
               <div className="relative w-32 h-32 mx-auto mb-6">
@@ -33,6 +35,7 @@ const UserProfile = () => {
               </p>
             </>
           )}
+
         </div>
         <div className="p-4">
           <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
@@ -62,7 +65,7 @@ const UserProfile = () => {
           </button>
         </div>
       </div>
-      <UserUpdateProfileModal refetch={refetch}  isOpen={isOpen} setIsOpen={setIsOpen} />
+      <UserUpdateProfileModal refetch={refetch} isOpen={isOpen} setIsOpen={setIsOpen} />
 
       <div className="mt-16">
         <Link
