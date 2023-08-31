@@ -13,7 +13,7 @@ const customIcon = new Icon({
 
 const Map = ({position, title}) => {
   let newPosition;
- if(position.length > 0){
+ if(position?.length > 0){
     newPosition = position || [23.805332718063315, 90.36954993030622];
  } else{
     newPosition = [23.805332718063315, 90.36954993030622]

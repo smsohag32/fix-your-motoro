@@ -2,12 +2,9 @@
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
 import SingleProductCard from "@/components/PagesSection/WorkShops/SingleProductCard/SingleProductCard";
 import MidSpinner from "@/components/Spinners/MidSpinner";
-<<<<<<< HEAD
 import Map from "@/components/map/Map";
-=======
 import useAuth from "@/hooks/useAuth";
 import axios from "axios";
->>>>>>> ce74f700b93122131181bec0a192788ff5a50444
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
