@@ -5,7 +5,7 @@ import React from "react";
 
 const ManageWorkShopPage = () => {
   const { workshops, wLoading, refetchWorkshops } = useWorkshops();
-  console.log(workshops);
+  // console.log(workshops);
   
   // confirm function
   const handleConfirm = (workshop) => {
@@ -29,7 +29,6 @@ const ManageWorkShopPage = () => {
       .then((data) => {
         console.log("Workshop status updated successfully:", data);
         refetchWorkshops();
-
       })
       .catch((error) => {
         console.error("Error updating workshop status:", error);
@@ -58,7 +57,6 @@ const ManageWorkShopPage = () => {
       .then((data) => {
         console.log("Workshop status updated successfully:", data);
         refetchWorkshops();
-
       })
       .catch((error) => {
         console.error("Error updating workshop status:", error);
