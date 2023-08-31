@@ -20,7 +20,7 @@ const Sidebar = () => {
     router.push("/login");
   };
 
-  console.log(userInfo);
+  // console.log(userInfo);
   return (
     <div>
       {/* Technician side nav */}
