@@ -70,9 +70,9 @@ const AdminLInk = () => {
         <BsFillBoxFill className="w-8 h-8  group-hover:text-[#f02801] " />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
           <NavLink
-            exact={"/dashboard/comuinity" == "/dashboard"}
+            exact={"/dashboard/admin/complaint_box" == "/dashboard"}
             activeClassName={"text-[#f02801]"}
-            href="/dashboard/user/user_service"
+            href="/dashboard/admin/complaint_box"
           >
             Complaint Box
           </NavLink>
