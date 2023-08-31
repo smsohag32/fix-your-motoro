@@ -20,6 +20,7 @@ const UserUpdateProfileModal = ({ isOpen, setIsOpen, refetch }) => {
                 displayName: data.name,
                 photoURL: data.image,
             });
+            
             refetch();
             toast.success("profile updated successfully")
             onCancel();
