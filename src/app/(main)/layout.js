@@ -1,8 +1,7 @@
 import Header from "@/components/Shared/Header/Header";
-import "../globals.css";
-import { Inter } from "next/font/google";
+
 import Footer from "@/components/Shared/Footer/Footer";
-const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata = {
   title: "FYM",
@@ -12,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <div className={inter.className}>
+      <div>
         <Header />
         <div className="min-h-[67vh]">{children}</div>
         <Footer />

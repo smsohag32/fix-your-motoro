@@ -9,7 +9,7 @@ const CustomerCard = (props) => {
       <div className="duration-500 transform gap-8 border-2 w-full flex h-40 items-center">
         <div className="h-full w-1/2 flex justify-center items-center">
           <p className="items-center">
-            Name :{" "}
+            Name :
             <span className="text-slate-500">
               {firstName} {lastName}
             </span>

@@ -6,7 +6,7 @@ import '@/components/PagesSection/Dasboard/UpComeAppt/tracking.modules.css'
 import StepOne from '@/components/PagesSection/Dasboard/UpComeAppt/StepOne'
 import StepTwo from '@/components/PagesSection/Dasboard/UpComeAppt/StepTwo'
 
-const Steps = ({order}) => {
+const Steps = ({order, wLoading}) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepOneCompleted, setStepOneCompleted] = useState(true);
   const [stepTwoCompleted, setStepTwoCompleted] = useState(false);
@@ -41,7 +41,7 @@ const Steps = ({order}) => {
       title: "Apointment Status",
       completed: stepTwoCompleted,
       component: (
-        <StepTwo
+        <StepTwo 
         order={order}
           onNext={handleStepTwoComplete}
         />
@@ -50,7 +50,7 @@ const Steps = ({order}) => {
   ];
 
   return (
-    <div className="secondary-border p-5">
+    <div className="p-5">
       <div className="step-titles mb-6">
         {steps.map((step, index) => (
           <div
