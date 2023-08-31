@@ -1,5 +1,4 @@
 "use client";
-import UserModal from "@/components/Modal/Modal";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 import Map from "@/components/map/Map";
 import { Toaster, toast } from "react-hot-toast";
@@ -94,7 +93,7 @@ const AppointCard = (props) => {
         )}
       </div>
       <Toaster />
-      <ApprovedModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ApprovedModal id={_id} isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };
