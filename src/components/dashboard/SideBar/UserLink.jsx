@@ -40,22 +40,35 @@ function UserLink() {
         </h3>
       </li>
 
-      {/* Support section  */}
+      {/* History section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaHistory className="w-8 h-8 text-gray-600 group-hover:text-[#f02801]" />
+        <FaHistory className="w-8 h-8  group-hover:text-[#f02801]" />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
-          <Link href="/dashboard/user/user_history">History</Link>
+          <NavLink
+            exact={"/dashboard/user/user_history" == "/dashboard"}
+            activeClassName={"text-[#f02801]"}
+            href="/dashboard/user/user_history"
+          >
+            User History
+          </NavLink>
         </h3>
       </li>
 
       {/*  Payments section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdPayments className="w-8 h-6 text-gray-600 group-hover:text-[#f02801] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801]">
-          <Link href="/dashboard/user/user_payments"> Billing & Payments</Link>
+        <MdPayments className="w-8 h-8  group-hover:text-[#f02801]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+          <NavLink
+            exact={"/dashboard/user/user_payments" == "/dashboard"}
+            activeClassName={"text-[#f02801]"}
+            href="/dashboard/user/user_payments"
+          >
+            Billing & Payments
+          </NavLink>
         </h3>
       </li>
 
+      {/* community section */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
         <FaUsers className="w-8 h-8  group-hover:text-[#f02801] " />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
