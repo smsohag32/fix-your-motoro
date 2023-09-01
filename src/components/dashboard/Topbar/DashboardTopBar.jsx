@@ -73,6 +73,7 @@ const {user } = useAuth();
             </div>
           </Link>
         </span>
+      
         <div className="flex gap-5 items-center ">
           <div className="">
             <Image

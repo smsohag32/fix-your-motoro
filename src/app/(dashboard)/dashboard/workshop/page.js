@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa"; 
 
 const WorkShopPage = () => {
   const [products, setProducts] = useState([]);
@@ -39,25 +39,30 @@ const WorkShopPage = () => {
     },
   ];
 
-  // api data loading
-  useEffect(() => {
-    setLoading(true);
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://fya-backend.vercel.app/api/v1/auth/workshops"
-        );
-        const data = await response.json();
-        setProducts(data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching JSON data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+
+  // api data loading 
+    useEffect(() => {
+      setLoading(true);
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            "https://fya-backend.vercel.app/api/v1/auth/workshops"
+          );
+          const data = await response.json();
+          setProducts(data);
+          setLoading(false);
+        } catch (error) {
+          console.error("Error fetching JSON data:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchData();
+    }, []);
+  // api data console.log
+  console.log(products);
+
+
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);

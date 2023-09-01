@@ -1,4 +1,12 @@
 "use client";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import DashboardTitle from '@/components/Shared/DashboardTitle/DashboardTitle';
+import { toast } from 'react-hot-toast';
+import useAuth from '@/hooks/useAuth';
+// error
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -10,17 +18,26 @@ const imgHostingKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
 
 const ServiceFrom = () => {
   const { user } = useAuth();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset ,   formState: { errors } } = useForm();
 
   const imgHosting = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`
 
 
   const onSubmit = async (data) => {
+    const serviceDate = {
+      workshop_email: user.email,
+      ...data
+    }
+    console.log(serviceDate);
+    try {
+      const response = await axios.post(`https://fya-backend.vercel.app/api/v1/auth/services/${user?.email}`, serviceDate);
+      toast.success('Service added successfully');
+      reset();
+    } catch (error) {
+      toast.error('Error adding Service');
+    }
+  };
+
     const imgOne = new FormData();
     const imgTwo = new FormData();
     imgOne.append('image', data.workshop_image[0])
@@ -83,18 +100,22 @@ const ServiceFrom = () => {
         title="Add Service"
         subTitle="Welcome to the Add Service"
       />
+      <div className="max-w-xl md:my-8 mt-4 mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-6 rounded shadow">
+          <label htmlFor="title" className="block font-medium mb-1">
       <div className="max-w-xl mx-auto mt-4 md:my-8">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="p-6 bg-white rounded shadow"
         >
           <label htmlFor="title" className="block mb-1 font-medium">
+
             Title
           </label>
           <input
             type="text"
             id="title"
-            {...register("title", { required: true })}
+            {...register('title', { required: true })}
             className="w-full p-2 border rounded"
           />
 
@@ -196,8 +217,10 @@ const ServiceFrom = () => {
               {...register("warranty", { required: true })}
             />
           </div>
+          <div className='grid md:grid-cols-2 gap-4'>
 
           <div className="grid gap-4 md:grid-cols-2">
+
             <div className="mb-4">
               <label htmlFor="workshopImage" className="block mb-1 font-medium">
                 Workshop Image
@@ -208,9 +231,7 @@ const ServiceFrom = () => {
                 {...register('workshop_image', { required: true })}
                 className="w-full p-2 border rounded"
               />
-              {errors.workshop_image && (
-                <span className="text-red-500">This field is required</span>
-              )}
+              {errors.workshop_image && <span className="text-red-500">This field is required</span>}
             </div>
 
             <div className="mb-4">
@@ -223,17 +244,12 @@ const ServiceFrom = () => {
                 {...register('service_image', { required: true })}
                 className="w-full p-2 border rounded"
               />
-              {errors.service_image && (
-                <span className="text-red-500">This field is required</span>
-              )}
+              {errors.service_image && <span className="text-red-500">This field is required</span>}
             </div>
+
           </div>
           <div className="mt-4">
-            <input
-              type="submit"
-              value="Submit"
-              className="w-full rounded-lg primary-btn "
-            />
+            <input type="submit" value="Submit" className="w-full rounded-lg primary-btn " />
           </div>
         </form>
       </div>

@@ -48,6 +48,8 @@ const Page = ({ params }) => {
       ...data,
     };
 
+    // console.log(serviceData)
+
     const response = await fetch(
       "https://fya-backend.vercel.app/api/v1/auth/orders",
       {
@@ -70,7 +72,7 @@ const Page = ({ params }) => {
   }
   return (
     <>
-      <div className="mt-32 default-container">
+      <div className="mt-32 max-w-4xl mx-auto p-8">
         <h1 className="text-2xl font-bold mb-4">Work Order Request</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

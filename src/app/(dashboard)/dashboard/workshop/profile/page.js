@@ -5,6 +5,7 @@ import React from "react";
 
 const ProfilePage = () => {
   const { user } = useAuth();
+  console.log(user);
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="p-8 mx-auto bg-white shadow-md">
