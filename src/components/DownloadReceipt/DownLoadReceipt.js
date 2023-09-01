@@ -19,7 +19,7 @@ export async function generateReceiptPDF(service) {
 
 
 
-        Visit Our Website: https://fix-your-motoro.vercel.app/
+        Visit Our website: https://fix-your-motoro.vercel.app
         `;
    
 
