@@ -36,8 +36,8 @@ const SignUpForm = () => {
 
   const { createUser, profileUpdate } = useAuth();
 
-  const onSubmit = async (data, event) => {
-    const { name, email, password, photo } = data;
+  const onSubmit = async (data) => {
+    const { name, email, password, photoURL } = data;
     setError();
     if (data.password !== data.confirmPassword) {
       setError("Your password did not match");
@@ -48,7 +48,7 @@ const SignUpForm = () => {
       const user = await createUser(email, password);
       await profileUpdate({
         displayName: name,
-        photoURL: photo,
+        photoURL: photoURL,
       }).then((result) => {
         saveUser(result?.user).then((data) => {
           router.push("/");

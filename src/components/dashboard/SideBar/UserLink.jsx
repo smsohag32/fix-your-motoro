@@ -2,15 +2,12 @@
 import React from "react";
 import { MdDashboard, MdPayments, MdSupportAgent } from "react-icons/md";
 import Link from "next/link";
-import useAuth from "@/hooks/useAuth";
 import { FaHistory, FaUsers } from "react-icons/fa";
 import { BiCreditCard } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import NavLink from "@/components/Shared/Header/NavLink";
 
 function UserLink() {
-  const { user } = useAuth();
-  const { uid, displayName, photoURL } = user || {};
   return (
     <ul className="pb-4 my-4 border-b border-gray-100">
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
