@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,26 +7,23 @@ import { useContext, useState } from "react";
 import SearchContext from "@/context/SearchContext";
 import { usePathname, useRouter } from "next/navigation";
 
-
-
 const DashboardTopBar = () => {
-const {user } = useAuth();
-  const router =  useRouter();
+  const { user } = useAuth();
+  const router = useRouter();
   const pathName = usePathname();
-  const {setLoading, setSearchText} = useContext(SearchContext);
-  const [text, setText] = useState('');
+  const { setLoading, setSearchText } = useContext(SearchContext);
+  const [text, setText] = useState("");
 
-   // handle to college search
-   const handleSearch = () => {
+  // handle to college search
+  const handleSearch = () => {
     if (!text) {
       return;
     }
-    if(!(pathName === '/dashboard/searchresult')){
-      router.push('/dashboard/searchresult')
+    if (!(pathName === "/dashboard/searchresult")) {
+      router.push("/dashboard/searchresult");
     }
-    setSearchText(text)
+    setSearchText(text);
   };
-
 
   return (
     <div className="h-16 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6 hidden md:flex justify-between">
@@ -58,12 +54,14 @@ const {user } = useAuth();
             placeholder="Search here..."
           />
         </div>
-          <button onClick={() => handleSearch()} className="primary-btn">search</button>
+        <button onClick={() => handleSearch()} className="primary-btn">
+          search
+        </button>
       </div>
       <div className="flex gap-2 items-center">
         <span>
           <Link
-            href='/dasboard/notification'
+            href="/dasboard/notification"
             className="relative inline-flex items-center p-3 text-sm font-medium text-center rounded-lg"
           >
             <IoMdNotificationsOutline className=" text-xl" />
@@ -73,7 +71,6 @@ const {user } = useAuth();
             </div>
           </Link>
         </span>
-      
         <div className="flex gap-5 items-center ">
           <div className="">
             <Image

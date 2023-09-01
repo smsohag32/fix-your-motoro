@@ -47,7 +47,7 @@ const Overview = () => {
         <p>Name: {user?.displayName}</p>
         <p>Email: {user?.email}</p>
       </section>
-      {userInfo?.role ? (
+
       {userInfo?.user?.role ? (
         ""
       ) : (
@@ -97,12 +97,13 @@ const Overview = () => {
       />
 
       <div>
-        {
-          userInfo?.user?.role ? '' : 
+        {userInfo?.user?.role ? (
+          ""
+        ) : (
           <div>
-          <PopularWorkShop />
+            <PopularWorkShop />
           </div>
-        }
+        )}
       </div>
     </div>
   );

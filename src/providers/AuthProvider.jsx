@@ -11,7 +11,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { NextResponse } from "next/server";
 
 const GoogleProvider = new GoogleAuthProvider();
 import { useEffect, useState } from "react";

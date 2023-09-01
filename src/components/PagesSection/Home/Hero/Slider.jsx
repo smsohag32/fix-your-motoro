@@ -46,7 +46,7 @@ const Slider = () => {
                 width: "100%",
                 height: "100%",
               }}
-              className="flex flex-col justify-center w-full h-full text-left transition-all duration-500 ease-linear gap-9 px-10"
+              className="flex flex-col justify-center w-full h-full text-left transition-all duration-500 ease-linear gap-9 px-8"
             >
               <div className="flex flex-col gap-6 font-extrabold text-center">
                 <p className="text-2xl leading-relaxed text-white md:text-4xl">

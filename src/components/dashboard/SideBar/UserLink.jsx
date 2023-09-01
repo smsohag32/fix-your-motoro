@@ -1,6 +1,11 @@
 "use client";
 import React from "react";
-import { MdDashboard, MdPayments, MdSupportAgent } from "react-icons/md";
+import {
+  MdChat,
+  MdDashboard,
+  MdPayments,
+  MdSupportAgent,
+} from "react-icons/md";
 import Link from "next/link";
 import { FaHistory, FaUsers } from "react-icons/fa";
 import { BiCreditCard } from "react-icons/bi";
@@ -78,14 +83,19 @@ function UserLink() {
           </NavLink>
         </h3>
       </li>
-
+      {/* community section */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdSupportAgent className="w-8 h-6 group-hover:text-[#f02801] " />
+        <MdSupportAgent className="w-8 h-8  group-hover:text-[#f02801] " />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
-          <Link href="/dashboard/user/user_support">FAQ & Support</Link>
+          <NavLink
+            exact={"/dashboard/user/user_support" == "/dashboard"}
+            activeClassName={"text-[#f02801]"}
+            href="/dashboard/user/user_support"
+          >
+            FAQ & Support
+          </NavLink>
         </h3>
       </li>
-      {/*  My Vehicles section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
         <AiFillCar className="w-8 h-6 group-hover:text-[#f02801]" />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801]">
@@ -95,9 +105,15 @@ function UserLink() {
 
       {/*  Appointments section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdPayments className="w-8 h-6 text-gray-600 group-hover:text-[#f02801] " />
+        <MdSupportAgent className="w-8 h-8  group-hover:text-[#f02801] " />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
-          <Link href="/dashboard/user/user_profile"> Account </Link>
+          <NavLink
+            exact={"/dashboard/user/user_profile" == "/dashboard"}
+            activeClassName={"text-[#f02801]"}
+            href="/dashboard/user/user_profile"
+          >
+            Account
+          </NavLink>
         </h3>
       </li>
     </ul>

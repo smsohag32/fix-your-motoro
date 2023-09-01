@@ -11,8 +11,6 @@ const UserProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { userInfo, cLoading, refetch } = useUserInfo();
 
-  console.log(userInfo);
-
   return (
     <div>
       <div className="max-w-screen-lg mx-auto bg-gray-300 rounded-lg shadow-lg overflow-hidden">
@@ -38,27 +36,31 @@ const UserProfile = () => {
             </>
           )}
         </div>
-        <div className="p-4">
-          <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
-          <div className="mb-4">
-            <p className="text-gray-700 mb-2">Phone Number:</p>
-            <p className="text-gray-500">{userInfo?.user?.phone}</p>
+        {userInfo?.user?.status ? (
+          ""
+        ) : (
+          <div className="p-4">
+            <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
+            <div className="mb-4">
+              <p className="text-gray-700 mb-2">Phone Number:</p>
+              <p className="text-gray-500">{userInfo?.user?.phone}</p>
+            </div>
+            <div className="mb-4">
+              <p className="text-gray-700 mb-2">Address:</p>
+              <p className="text-gray-500">{userInfo?.user?.address}</p>
+            </div>
+            <div className="mb-4">
+              <p className="text-gray-700 mb-2">Gender:</p>
+              <p className="text-gray-500">{userInfo?.user?.gender}</p>
+            </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="mt-6 bg-white text-blue-500 py-2 px-4 rounded-full w-full hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-300"
+            >
+              Edit Profile
+            </button>
           </div>
-          <div className="mb-4">
-            <p className="text-gray-700 mb-2">Address:</p>
-            <p className="text-gray-500">{userInfo?.user?.address}</p>
-          </div>
-          <div className="mb-4">
-            <p className="text-gray-700 mb-2">Gender:</p>
-            <p className="text-gray-500">{userInfo?.user?.gender}</p>
-          </div>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="mt-6 bg-white text-blue-500 py-2 px-4 rounded-full w-full hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-300"
-          >
-            Edit Profile
-          </button>
-        </div>
+        )}
       </div>
       <UserUpdateProfileModal
         refetch={refetch}
@@ -66,14 +68,18 @@ const UserProfile = () => {
         setIsOpen={setIsOpen}
       />
 
-      <div className="mt-16">
-        <Link
-          className="primary-btn"
-          href={"/dashboard/user/user_profile/center_req"}
-        >
-          Request to add Workshop Center
-        </Link>
-      </div>
+      {userInfo?.user?.role ? (
+        ""
+      ) : (
+        <div className="mt-16">
+          <Link
+            className="primary-btn"
+            href={"/dashboard/user/user_profile/center_req"}
+          >
+            Request to add Workshop Center
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

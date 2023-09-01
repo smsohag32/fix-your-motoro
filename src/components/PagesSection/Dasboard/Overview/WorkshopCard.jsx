@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 const WorkshopCard = (props) => {
   const { name, _id, image, phone, email, address, rating } =
-    props.workshopsData || {}
+    props.workshopsData || {};
   const router = useRouter();
 
   return (

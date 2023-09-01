@@ -1,20 +1,20 @@
-.hero .swiper {
+.hero-slide .swiper {
     width: 100%;
     height: 100vh;
 }
 
-.hero .swiper-slide {
+.hero-slide .swiper-slide {
     background: #fff;
 }
 
-.hero .swiper-slide img {
+.hero-slide .swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.hero .autoplay-progress {
+.hero-slide .autoplay-progress {
     position: absolute;
     right: 16px;
     bottom: 16px;
@@ -28,7 +28,7 @@
     color: white;
 }
 
-.hero .autoplay-progress svg {
+.hero-slide .autoplay-progress svg {
     --progress: 0;
     position: absolute;
     left: 0;
@@ -44,7 +44,7 @@
     transform: rotate(-90deg);
 }
 
-.hero .swiper-button-prev,
+.hero-slide .swiper-button-prev,
 .swiper-button-next {
     color: white;
 }
