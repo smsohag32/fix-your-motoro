@@ -5,7 +5,7 @@ import {
   MdOutlineMiscellaneousServices,
 } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import { BiMessageSquareDots } from "react-icons/bi";
+import { BiMessageAltDetail, BiMessageSquareDots } from "react-icons/bi";
 import Link from "next/link";
 
 function WorkshopAgentLink() {
@@ -66,6 +66,13 @@ function WorkshopAgentLink() {
             <Link href="/dashboard/workshop/communication">Communication</Link>
           </h3>
           {/* Communication: Send automated updates to customers regarding service progress, delays, or additional repairs that might be needed.   */}
+        </li>
+         {/* message button */}
+  <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+  <BiMessageAltDetail className="w-8 h-6 group-hover:text-[#f02801]" />
+  <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] "> 
+                <Link href="/dashboard/workshop/message">Message</Link>
+            </h3>
         </li>
       </ul>
     </>

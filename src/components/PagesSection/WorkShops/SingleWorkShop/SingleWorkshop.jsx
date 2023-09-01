@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import WorkshopDetails from "../WorkshopDetails/WorkshopDetails";
 import StarRating from "../../Home/SuccessReviews/StarRating";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const SingleWorkshop = (props) => {
   const { name, _id, image, phone, email, address, rating } =
@@ -25,7 +26,8 @@ const SingleWorkshop = (props) => {
                 height={288}
               />
               <div className="absolute top-4 left-5 bg-red-500 text-white shadow-emerald-50 rounded-md">
-                <p className="py-2 px-3">{address}</p>
+                <p className="py-2 px-3">{address}</p> 
+                 
               </div>
             </div>
             <div>
@@ -35,7 +37,10 @@ const SingleWorkshop = (props) => {
                 <div className="flex mr-2">
                   <StarRating rating={rating} />
                   <p>{rating}</p>
+                 
                 </div>
+                
+                
               </div>
             </div>
           </div>

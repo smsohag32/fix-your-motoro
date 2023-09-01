@@ -6,6 +6,12 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+// message
+import useAuth from "@/hooks/useAuth";
+import io from "socket.io-client";
+import Chat from "@/components/dashboard/UserDashboard/Chat/Chat";
+
+const socket = io.connect("http://localhost:3001");
 
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);
@@ -14,7 +20,10 @@ const WorkShopDetail = ({ params }) => {
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
   const notify = () => toast("Booking confirmed..");
- 
+//start  message
+const [notification, setNotification] = useState(0);
+const { user } = useAuth();
+// end mesaage
 
   useEffect(() => {
     setLoading(true);
@@ -99,13 +108,32 @@ const WorkShopDetail = ({ params }) => {
         <p className="my-3  text-slate-500">
           Workshop Details: {product.description}
         </p>
-
         <button
           onClick={handleBookNow}
           className=" primary-btn text-white font-bold py-2 px-4 rounded"
         >
           Book Now
         </button>
+        {/* message start */}
+
+      
+      <div className="mt-8">
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <h2 className="text-lg font-semibold mb-3">Chat with Workshop</h2>
+          <Chat
+            socket={socket}
+            username={user?.displayName}
+            room={101}
+            notification={notification}
+            setNotification={setNotification}
+          />
+        </div>
+      </div>
+   
+        {/* message end */}
+
+
+      
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {product.products.map((product, index) => (
             <SingleProductCard key={index} product={product} />

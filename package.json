@@ -35,6 +35,7 @@
     "react-modal": "^3.16.1",
     "react-multistep": "^5.5.9",
     "react-responsive-masonry": "^2.1.7",
+    "react-scroll-to-bottom": "^4.2.0",
     "react-spring": "^9.7.2",
     "react-super-responsive-table": "^5.2.1",
     "react-tabs": "^6.0.2",
