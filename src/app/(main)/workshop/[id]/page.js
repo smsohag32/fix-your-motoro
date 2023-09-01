@@ -2,8 +2,6 @@
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
 import SingleProductCard from "@/components/PagesSection/WorkShops/SingleProductCard/SingleProductCard";
 import MidSpinner from "@/components/Spinners/MidSpinner";
-import Map from "@/components/map/Map";
-import useAuth from "@/hooks/useAuth";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -11,26 +9,18 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 // message
 import useAuth from "@/hooks/useAuth";
-import io from "socket.io-client";
-import Chat from "@/components/dashboard/UserDashboard/Chat/Chat";
-
-const socket = io.connect("http://localhost:3001");
 
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState([]);
-  const {user} = useAuth();
+
   const [showBookingForm, setShowBookingForm] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
   const notify = () => toast("Booking confirmed..");
 //start  message
-const [notification, setNotification] = useState(0);
 const { user } = useAuth();
-// end mesaage
 
-  const lat = "";
-  const lon = "";
 
   useEffect(() => {
     setLoading(true);
@@ -53,33 +43,7 @@ const { user } = useAuth();
   const handleBookNow = () => {
     setShowBookingForm(true);
   };
-  console.log(product);
-  
-   const onSubmit = async (data) => {
-     const serviceData = {
-       workShop_id: _id,
-       workShop_email: product.email,
-       workShop_code: product.workshopCode,
-       ...data,
-     };
 
-     console.log(serviceData);
-
-     const response = await fetch(
-       "https://fya-backend.vercel.app/api/v1/auth/orders",
-       {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-         },
-         body: JSON.stringify(serviceData),
-       }
-     );
-     const result = await response.json();
-     console.log(result);
-     reset();
-     notify();
-   };
   const onSubmit = async (data) => {
     const serviceData = {
       workShop_id: _id,
@@ -89,7 +53,6 @@ const { user } = useAuth();
       ...data,
     };
 
-    console.log(serviceData);
 
     const response = await axios.post(
       "https://fya-backend.vercel.app/api/v1/auth/orders", serviceData);
@@ -149,45 +112,15 @@ const { user } = useAuth();
         >
           Book Now
         </button>
-        {/* message start */}
+     
 
       
-      <div className="mt-8">
-        <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-semibold mb-3">Chat with Workshop</h2>
-          <Chat
-            socket={socket}
-            username={user?.displayName}
-            room={101}
-            notification={notification}
-            setNotification={setNotification}
-          />
-        </div>
-      </div>
-   
-        {/* message end */}
-
-
-      
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {product.products.map((product, index) => (
-
-        <div className="md:flex md:gap-12 gap-10 items-center mt-8">
-          <div className="w-full">
-            <p className="text-xl mb-5">Location of: {product.name} </p>
-          </div>
-          <div className="w-full">
-            <Map lat={lat} lon={lon}/>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-24 ">
+       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-24 ">
           {product?.products.map((product, index) => (
             <SingleProductCard key={index} product={product} />
           ))}
         </div>
-      </div>
-      {/* Booking Form */}
+          
       {showBookingForm && (
         <div className="absolute -top-7 left-0 w-full h-full flex items-center justify-center bg-gray-200 bg-opacity-75 z-20">
           <div className="max-w-5xl  mx-auto w-full bg-white mt-5 md:mt-0 p-6 md:p-12 rounded-lg shadow-lg">
@@ -417,7 +350,6 @@ const { user } = useAuth();
               <button
                 className="bg-red-400 hover:bg-red-600  font-bold py-1 px-2 rounded-full transition-all duration-300 ease-in-out"
                 onClick={() => {
-                  console.log("hello there");
                   setShowBookingForm(false);
                 }}
               >
@@ -428,7 +360,8 @@ const { user } = useAuth();
         </div>
       )}
       <Toaster />
-    </div>
+      </div>
+      </div>
   );
 };
 

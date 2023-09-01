@@ -9,6 +9,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import PopularWorkShop from "./PopularWorkShop";
+import SummeryChart from "@/components/dashboard/Admin/SummeryChart/SummeryChart";
 
 const Overview = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,6 +105,7 @@ const Overview = () => {
             <PopularWorkShop />
           </div>
         )}
+        {userInfo?.user?.role === "admin" && <SummeryChart />}
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 "use client";
 import { generateReceiptPDF } from "@/components/DownloadReceipt/DownLoadReceipt";
-import UserFeedbackModal from "@/components/Modal/userModal/UserFeedBackModal";
+import UserFeedbackModal from "@/components/Modal/userModal/UserFeedbackModal";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const historyData = [
   {

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import Loader from "../Loader/Loader";
+import MidSpinner from "@/components/Spinners/MidSpinner";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 const SummeryChart = () => {
@@ -65,7 +65,7 @@ const SummeryChart = () => {
   };
 
   if (loading) {
-    return <Loader />;
+    return <MidSpinner />;
   }
   return (
     <div className="max-w-2xl mx-auto my-12">

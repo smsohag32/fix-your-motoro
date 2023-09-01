@@ -18,14 +18,19 @@ const Appointments = () => {
   return (
     <div>
       <TitleDashboard title={"Manage Appointments"} />
-     <div className="my-10">
-     {
-      workshopOrders?.length > 0 ?
-    workshopOrders.map((order) => (
-      <AppointCard key={order._id} order={order} refetch={refetch} />
-    )) : <EmptyState label={'Post a Service'} address={'/dashboard/workshop/service_form'} message={'Appointment request not found'}></EmptyState>
-     }
-     </div>
+      <div className="my-10">
+        {workshopOrders?.length > 0 ? (
+          workshopOrders.map((order) => (
+            <AppointCard key={order._id} order={order} refetch={refetch} />
+          ))
+        ) : (
+          <EmptyState
+            label={"Post a Service"}
+            address={"/dashboard/workshop/service_form"}
+            message={"Appointment request not found"}
+          ></EmptyState>
+        )}
+      </div>
     </div>
   );
 };
