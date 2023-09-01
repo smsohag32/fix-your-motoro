@@ -8,7 +8,7 @@ const useAuth = () => {
   if (!isClient && !auth) return {};
 
   if (!auth) {
-    throw new Error("You must warp your ");
+    throw new Error("You must warp your component");
   }
 
   return auth;

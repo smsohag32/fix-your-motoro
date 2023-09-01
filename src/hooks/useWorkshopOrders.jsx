@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const useWorkshopOrder = (email) => {
-  const { data: workshopOrders, isLoading: wOLoading } = useQuery({
+  const { data: workshopOrders, isLoading: wOLoading, refetch } = useQuery({
     queryKey: ["workshops"],
     queryFn: async () => {
       const res = await axios.get(
@@ -11,7 +11,7 @@ const useWorkshopOrder = (email) => {
       return res.data;
     },
   });
-  return { workshopOrders, wOLoading };
+  return { workshopOrders, wOLoading , refetch };
 };
 
 export default useWorkshopOrder;

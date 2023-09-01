@@ -8,6 +8,7 @@ import useUserInfo from "@/hooks/useUserInfo";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import PopularWorkShop from "./PopularWorkShop";
 
 const Overview = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,6 +48,7 @@ const Overview = () => {
         <p>Email: {user?.email}</p>
       </section>
       {userInfo?.role ? (
+      {userInfo?.user?.role ? (
         ""
       ) : (
         <section className="bg-white p-4 rounded shadow-md mb-4">
@@ -93,6 +95,15 @@ const Overview = () => {
         register={register}
         userInfo={user?.email}
       />
+
+      <div>
+        {
+          userInfo?.user?.role ? '' : 
+          <div>
+          <PopularWorkShop />
+          </div>
+        }
+      </div>
     </div>
   );
 };
