@@ -4,7 +4,11 @@ import axios from "axios";
 
 const useUserInfo = () => {
   const { user, loading } = useAuth();
-  const { data: userInfo, isLoading: cLoading, refetch } = useQuery({
+  const {
+    data: userInfo,
+    isLoading: cLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["userInfo", user?.email],
     enabled: !loading,
     queryFn: async () => {
