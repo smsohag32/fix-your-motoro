@@ -27,7 +27,7 @@ const ManageWorkShopPage = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Workshop status updated successfully:", data);
+        // console.log("Workshop status updated successfully:", data);
         refetchWorkshops();
       })
       .catch((error) => {
@@ -55,7 +55,7 @@ const ManageWorkShopPage = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Workshop status updated successfully:", data);
+        // console.log("Workshop status updated successfully:", data);
         refetchWorkshops();
       })
       .catch((error) => {
@@ -74,15 +74,14 @@ const ManageWorkShopPage = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div>
-      <div className="overflow-x-auto">
+    <div className="default-container ">
+      <div className="overflow-x-auto ">
         <table className="table">
           <thead>
             <tr>
               <th>WorkShops </th>
               <th>Status</th>
               <th>Actions</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -114,19 +113,15 @@ const ManageWorkShopPage = () => {
                 <td className="">
                   <button
                     onClick={() => handleConfirm(workshop)}
-                    disabled={
-                      workshop.status === "confirm" ? true : false
-                    }
+                    disabled={workshop.status === "confirm" ? true : false}
                     className="btn btn-outline btn-success btn-xs"
                   >
                     Approve
                   </button>
                   <button
                     onClick={() => handleDisable(workshop)}
-                    disabled={
-                      workshop.status == "disabled" ? true : false
-                    }
-                    className="btn btn-ghost btn-xs"
+                    disabled={workshop.status == "disabled" ? true : false}
+                    className="btn btn-outline btn-success btn-xs"
                   >
                     Disable
                   </button>
