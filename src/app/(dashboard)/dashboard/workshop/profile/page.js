@@ -21,7 +21,7 @@ const ProfilePage = () => {
         <div className="mt-4 text-center">
           <h1 className="text-2xl font-semibold"> {user?.displayName} </h1>{" "}
           <p>
-            {" "}
+      
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit voluptate omnis commodi asperiores consequuntur
             dolorum deserunt distinctio beatae veniam accusamus.{" "}
