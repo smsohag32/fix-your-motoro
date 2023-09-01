@@ -1,10 +1,9 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
-export default function UserModal({isOpen, setIsOpen, title, children}) {
-
+export default function UserModal({ isOpen, setIsOpen, title, children }) {
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   return (
@@ -41,7 +40,7 @@ export default function UserModal({isOpen, setIsOpen, title, children}) {
                   >
                     {title}
                   </Dialog.Title>
-                    {children}
+                  {children}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -49,5 +48,5 @@ export default function UserModal({isOpen, setIsOpen, title, children}) {
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }

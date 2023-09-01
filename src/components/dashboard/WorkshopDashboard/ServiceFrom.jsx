@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 import useAuth from '@/hooks/useAuth';
 // error
 
-import React from "react";
+
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import DashboardTitle from "@/components/Shared/DashboardTitle/DashboardTitle";

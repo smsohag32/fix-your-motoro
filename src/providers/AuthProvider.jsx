@@ -31,7 +31,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const profileUpdate = async (updateUser = {}) => {
-    setLoading(true);
     await updateProfile(auth.currentUser, updateUser);
     setUser((preUser) => ({ ...preUser, ...updateUser }));
   };
@@ -47,7 +46,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (loggedUser) => {
-        setUser(loggedUser)
+      setUser(loggedUser);
       if (loggedUser?.email) {
         axios
           .post("https://fya-backend.vercel.app/api/v1/auth/users/jwt", {

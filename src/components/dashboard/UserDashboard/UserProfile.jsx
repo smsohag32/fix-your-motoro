@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
 import UserUpdateProfileModal from "@/components/Modal/userModal/UserUpdateProfileModal";
 import MidSpinner from "@/components/Spinners/MidSpinner";
-import useAuth from "@/hooks/useAuth";
 import useUserInfo from "@/hooks/useUserInfo";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +10,9 @@ import { useState } from "react";
 const UserProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { userInfo, cLoading, refetch } = useUserInfo();
+
+  console.log(userInfo);
+
   return (
     <div>
       <div className="max-w-screen-lg mx-auto bg-gray-300 rounded-lg shadow-lg overflow-hidden">
@@ -35,27 +37,20 @@ const UserProfile = () => {
               </p>
             </>
           )}
-
         </div>
         <div className="p-4">
           <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
           <div className="mb-4">
             <p className="text-gray-700 mb-2">Phone Number:</p>
-            <p className="text-gray-500">
-              {userInfo?.user?.phone}
-            </p>
+            <p className="text-gray-500">{userInfo?.user?.phone}</p>
           </div>
           <div className="mb-4">
             <p className="text-gray-700 mb-2">Address:</p>
-            <p className="text-gray-500">
-              {userInfo?.user?.address}
-            </p>
+            <p className="text-gray-500">{userInfo?.user?.address}</p>
           </div>
           <div className="mb-4">
             <p className="text-gray-700 mb-2">Gender:</p>
-            <p className="text-gray-500">
-              {userInfo?.user?.gender}
-            </p>
+            <p className="text-gray-500">{userInfo?.user?.gender}</p>
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -65,7 +60,11 @@ const UserProfile = () => {
           </button>
         </div>
       </div>
-      <UserUpdateProfileModal refetch={refetch} isOpen={isOpen} setIsOpen={setIsOpen} />
+      <UserUpdateProfileModal
+        refetch={refetch}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
 
       <div className="mt-16">
         <Link

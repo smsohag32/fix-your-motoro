@@ -34,31 +34,26 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm();
 
-
-  const {createUser , profileUpdate} = useAuth();
- 
-  const onSubmit = async (data , event) => {
-    const {name , email , password , photo} = data;
-    setError()
+  const onSubmit = async (data) => {
+    const { name, email, password, photoURL } = data;
+    setError();
     if (data.password !== data.confirmPassword) {
       setError("Your password did not match");
       return;
     }
 
-    try{
-      const user = await createUser(email , password)
+    try {
+      const user = await createUser(email, password);
       await profileUpdate({
-        displayName: name ,
-        photoURL: photo,
-      })
-      .then((result) => {
-        saveUser(result?.user).then(data => {
+        displayName: name,
+        photoURL: photoURL,
+      }).then((result) => {
+        saveUser(result?.user).then((data) => {
           router.push("/");
-        })
-      })
-    }
-    catch(error) {
-     console.log(error);
+        });
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -93,15 +88,11 @@ const SignUpForm = () => {
         )}
       </div>
 
-  
-
       <div className="form-control">
         <label htmlFor="" className="label">
           <span className="block mb-2 font-bold text-gray-700">Photo URL</span>
         </label>
 
-
-        
         <input
           type="text"
           {...register("photoURL", { required: true })}
@@ -174,14 +165,14 @@ const SignUpForm = () => {
             <input
               type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
-              {...register("confirmPassword",{ required: true })}
+              {...register("confirmPassword", { required: true })}
               name="confirmPassword"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
               placeholder="Confirm Password"
               className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
             />
-          <p className="text-red-600">{error}</p>
+            <p className="text-red-600">{error}</p>
             <button
               type="button"
               onClick={handleToggleConfirmPassword}
