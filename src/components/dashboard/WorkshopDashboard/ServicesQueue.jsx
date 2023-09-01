@@ -38,6 +38,9 @@ const ServicesQueue = () => {
     fetchData();
   }, []);
 
+  const orderId = orders?.filter((order) => order._id);
+  console.log(servicesData);
+  const serviceId = servicesData?.filter((service) => service._id);
   // const orderId = orders?.map((order) => order.service_id);
   // const serviceId = servicesData?.map((service) => service._id);
 

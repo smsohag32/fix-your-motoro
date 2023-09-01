@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import useAuth from "@/hooks/useAuth";
@@ -27,6 +28,7 @@ const LoginFrom = () => {
       await signIn(email, password).then((result) => {
         router.replace("/dashboard");
       });
+      // .catch((err) => console.log(err));
     } catch (error) {}
   };
 
@@ -42,6 +44,9 @@ const LoginFrom = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>FYM | Login</title>
+      </Helmet>
       <PageTitle title="Our Login" subTitle="Our Login page" />
       <div className="py-12 default-container">
         <div className="w-full max-w-xl p-8 py-12 mx-auto rounded-lg shadow bg-gray-50 primary-shadow secondary-border ">

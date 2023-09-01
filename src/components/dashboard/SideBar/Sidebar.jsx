@@ -13,11 +13,12 @@ import AdminLInk from "./AdminLink";
 
 const Sidebar = () => {
   const { userInfo, cLoading } = useUserInfo();
+  // console.log(userInfo);
 
   const { logout, user } = useAuth();
   const handleLogOut = async () => {
     await logout();
-    router.push("/login");
+    router.push("/");
   };
 
   // console.log(userInfo);

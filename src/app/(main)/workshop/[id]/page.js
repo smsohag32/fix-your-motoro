@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
 import SingleProductCard from "@/components/PagesSection/WorkShops/SingleProductCard/SingleProductCard";
 import MidSpinner from "@/components/Spinners/MidSpinner";
@@ -9,6 +9,12 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+// message
+import useAuth from "@/hooks/useAuth";
+import io from "socket.io-client";
+import Chat from "@/components/dashboard/UserDashboard/Chat/Chat";
+
+const socket = io.connect("http://localhost:3001");
 
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);
@@ -18,6 +24,10 @@ const WorkShopDetail = ({ params }) => {
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
   const notify = () => toast("Booking confirmed..");
+//start  message
+const [notification, setNotification] = useState(0);
+const { user } = useAuth();
+// end mesaage
 
   const lat = "";
   const lon = "";
@@ -43,7 +53,33 @@ const WorkShopDetail = ({ params }) => {
   const handleBookNow = () => {
     setShowBookingForm(true);
   };
+  console.log(product);
+  
+   const onSubmit = async (data) => {
+     const serviceData = {
+       workShop_id: _id,
+       workShop_email: product.email,
+       workShop_code: product.workshopCode,
+       ...data,
+     };
 
+     console.log(serviceData);
+
+     const response = await fetch(
+       "https://fya-backend.vercel.app/api/v1/auth/orders",
+       {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify(serviceData),
+       }
+     );
+     const result = await response.json();
+     console.log(result);
+     reset();
+     notify();
+   };
   const onSubmit = async (data) => {
     const serviceData = {
       workShop_id: _id,
@@ -63,9 +99,12 @@ const WorkShopDetail = ({ params }) => {
     notify();
   };
 
-  if (loading) {
-    return <MidSpinner />;
-  }
+
+  console.log(product);
+
+   if (loading) {
+     return <MidSpinner />; 
+   }
 
   return (
     <div className="relative mt-36 p-5 default-container">
@@ -100,6 +139,38 @@ const WorkShopDetail = ({ params }) => {
             </button>
           </div>
         </div>
+        <p>Location: {product.address}</p>
+        <p className="my-3  text-slate-500">
+          Workshop Details: {product.description}
+        </p>
+        <button
+          onClick={handleBookNow}
+          className=" primary-btn text-white font-bold py-2 px-4 rounded"
+        >
+          Book Now
+        </button>
+        {/* message start */}
+
+      
+      <div className="mt-8">
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <h2 className="text-lg font-semibold mb-3">Chat with Workshop</h2>
+          <Chat
+            socket={socket}
+            username={user?.displayName}
+            room={101}
+            notification={notification}
+            setNotification={setNotification}
+          />
+        </div>
+      </div>
+   
+        {/* message end */}
+
+
+      
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {product.products.map((product, index) => (
 
         <div className="md:flex md:gap-12 gap-10 items-center mt-8">
           <div className="w-full">
@@ -342,6 +413,17 @@ const WorkShopDetail = ({ params }) => {
                 </button>
               </div>
             </form>
+            <div className=" absolute -top-7 -right-3 mt-4">
+              <button
+                className="bg-red-400 hover:bg-red-600  font-bold py-1 px-2 rounded-full transition-all duration-300 ease-in-out"
+                onClick={() => {
+                  console.log("hello there");
+                  setShowBookingForm(false);
+                }}
+              >
+                X
+              </button>
+            </div>
           </div>
         </div>
       )}

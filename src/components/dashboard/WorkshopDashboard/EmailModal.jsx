@@ -9,6 +9,7 @@ const EmailModal = ({ isOpen, closeModal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform email sending logic here
+    console.log(`Sending email to: ${email}\nMessage: ${message}`);
     // Clear form fields
     setEmail("");
     setMessage("");
