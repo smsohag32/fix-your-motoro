@@ -39,7 +39,7 @@ const ExpertSection = () => {
 
   const expertLimit = 6;
   return (
-    <div className="default-container mt-20">
+    <div className="mt-20 default-container">
       <SectionTitle
         title={"Our Experts"}
         subTitle={"Ready all time to provide motor servicing"}
@@ -84,13 +84,13 @@ const ExpertSection = () => {
                   />
                 </div>
                 <div>
-                  <h2 className="name-text text-xl font-semibold">{article.name}</h2>
+                  <h2 className="text-xl font-semibold name-text">{article.name}</h2>
                   <h2 className="specialty-text">- {article.specialty} -</h2>
                   <div className="icone">
-                    <FaFacebookSquare className="text-[#f02801] hover:text-[#bb3f26e7] " />
-                    <FaTwitterSquare className="text-[#f02801] hover:text-[#bb3f26e7]" />
-                    <FaInstagramSquare className="text-[#f02801] hover:text-[#bb3f26e7]" />
-                    <FaLinkedin className="text-[#f02801] hover:text-[#bb3f26e7]" />
+                    <FaFacebookSquare className="primary-text " />
+                    <FaTwitterSquare className="primary-text" />
+                    <FaInstagramSquare className="primary-text" />
+                    <FaLinkedin className="primary-text" />
                   </div>
                 </div>
               </div>

@@ -58,7 +58,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <form className="p-5 md:p-7" onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="form-control">
         <label htmlFor="" className="label">
           <span className="block mb-2 font-bold text-gray-700">Name</span>
@@ -68,7 +68,7 @@ const SignUpForm = () => {
           type="name"
           name="name"
           placeholder="Name"
-          className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+          className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
         />
         {errors.name && <span className="text-red-600">Name is required</span>}
       </div>
@@ -81,7 +81,7 @@ const SignUpForm = () => {
           {...register("email", { required: true })}
           name="email"
           placeholder="email"
-          className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+          className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
         />
         {errors.email && (
           <span className="text-red-600">Email is required</span>
@@ -98,14 +98,14 @@ const SignUpForm = () => {
           {...register("photoURL", { required: true })}
           name="photoURL"
           placeholder="Photo URL"
-          className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+          className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
         />
         {errors.photoURL && (
           <span className="text-red-600">Photo URL is required</span>
         )}
       </div>
 
-      <div className="gap-6 mt-4 flex flex-col md:flex-row">
+      <div className="flex flex-col gap-6 mt-4 md:flex-row">
         <div className="md:w-2/4">
           <label htmlFor="password" className="gap-4 text-lg font-bold">
             Password
@@ -124,7 +124,7 @@ const SignUpForm = () => {
               value={password}
               onChange={handlePasswordChange}
               placeholder="Password"
-              className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+              className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
             />
             {errors.password?.type === "required" && (
               <p className="text-red-600">Password is required</p>
@@ -157,7 +157,7 @@ const SignUpForm = () => {
           </div>
         </div>
 
-        <div className="md:w-2/4 w-full">
+        <div className="w-full md:w-2/4">
           <label htmlFor="confirmPassword" className="mb-2 text-lg font-bold">
             Confirm Password
           </label>
@@ -170,7 +170,7 @@ const SignUpForm = () => {
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
               placeholder="Confirm Password"
-              className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+              className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
             />
             <p className="text-red-600">{error}</p>
             <button
@@ -188,7 +188,7 @@ const SignUpForm = () => {
         </div>
       </div>
 
-      <div className="my-4 pt-4">
+      <div className="pt-4 my-4">
         <input
           className="w-full rounded-lg primary-btn"
           type="submit"

@@ -65,7 +65,7 @@ const LoginFrom = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+                className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                 placeholder="name@company.com"
                 required
               />
@@ -85,7 +85,7 @@ const LoginFrom = () => {
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+                    className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                   />
                   <button
                     type="button"

@@ -4,7 +4,7 @@ import "@/app/globals.css";
 
 const ContactFrom = () => {
   return (
-     <div className="min-h-full px-2 py-4 mx-4 rounded-lg shadow-lg md:w-2/4 lg:px-8 shadow-black">
+     <div className="min-h-full px-2 py-4 mx-4 mt-2 rounded-lg shadow-lg md:w-2/4 lg:px-8 shadow-black">
         <form>
           <div>
             <label

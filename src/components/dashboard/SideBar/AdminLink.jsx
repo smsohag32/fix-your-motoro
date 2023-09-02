@@ -13,11 +13,11 @@ const AdminLInk = () => {
     <ul className="pb-4 my-4 border-b border-gray-100">
       {/* dashboard section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdDashboard className="w-8 h-8  group-hover:text-[#f02801]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <MdDashboard className="w-8 h-8  group-hover:text-[#69d94f]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href={"/dashboard"}
           >
             Summary
@@ -27,11 +27,11 @@ const AdminLInk = () => {
 
       {/* add to card section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <BiCreditCard className="w-8 h-8  group-hover:text-[#f02801]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <BiCreditCard className="w-8 h-8  group-hover:text-[#69d94f]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/user/user_service" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/user/upcomming_appointment"
           >
             Manage Users
@@ -41,11 +41,11 @@ const AdminLInk = () => {
 
       {/* Support section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaHistory className="w-8 h-8 text-gray-600 group-hover:text-[#f02801]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <FaHistory className="w-8 h-8 text-gray-600 group-hover:text-[#69d94f]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/user/user_service" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/admin/manage_workshop"
           >
             Manage Workshops
@@ -54,11 +54,11 @@ const AdminLInk = () => {
       </li>
 
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaUsers className="w-8 h-8  group-hover:text-[#f02801] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <FaUsers className="w-8 h-8  group-hover:text-[#69d94f] " />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/comuinity" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/user/user_service"
           >
             Community
@@ -67,11 +67,11 @@ const AdminLInk = () => {
       </li>
 
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <BsFillBoxFill className="w-8 h-8  group-hover:text-[#f02801] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <BsFillBoxFill className="w-8 h-8  group-hover:text-[#69d94f] " />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/admin/complaint_box" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/admin/complaint_box"
           >
             Complaint Box
@@ -80,11 +80,11 @@ const AdminLInk = () => {
       </li>
 
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaUser className="w-8 h-8  group-hover:text-[#f02801] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <FaUser className="w-8 h-8  group-hover:text-[#69d94f] " />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/admin/admin_profile" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/admin/admin_profile"
           >
             Account

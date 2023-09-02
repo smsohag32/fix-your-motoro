@@ -2,7 +2,6 @@
 
 import Spinner from "@/components/Spinners/Spinner";
 import useAuth from "@/hooks/useAuth";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
