@@ -15,10 +15,10 @@ body {
 }
 
 .primary-text {
-  @apply text-[#f02801]
+  @apply text-[#69d94f]
 }
 .primary-bg {
-  @apply bg-[#f02801]
+  @apply bg-[#69d94f]
 }
 
 .secondary-text {
@@ -26,7 +26,7 @@ body {
 }
 
 .primary-btn {
-  @apply px-3 py-2 text-center transition-all duration-500 font-semibold bg-[#f02801] text-white hover:bg-[#ed5233ee]
+  @apply px-3 py-2 text-center transition-all duration-500 font-semibold bg-[#69d94f] text-white hover:bg-[#ed5233ee]
 }
 
 .delete-btn{
@@ -34,18 +34,18 @@ body {
 }
 
 .top-btn{
-  @apply pr-5 md:ps-16 py-2 text-center font-semibold bg-[#f02801] text-white hover:bg-[#bb3f26e7]
+  @apply pr-5 md:ps-16 py-2 text-center font-semibold bg-[#69d94f] text-white hover:bg-[#bb3f26e7]
 }
 
 .outline-btn{
-  @apply px-5 hover:bg-[#f02801] hover:text-white transition-all duration-500 transform py-3 border-[#f02801] border-2 font-bold  tracking-widest
+  @apply px-5 hover:bg-[#69d94f] hover:text-white transition-all duration-500 transform py-3 border-[#69d94f] border-2 font-bold  tracking-widest
 }
 
 .primary-border{
-  @apply border-[#f02801] border-2
+  @apply border-[#69d94f] border-2
 }
 .hover-border{
-  @apply hover:border-[#f02801]
+  @apply hover:border-[#69d94f]
 }
 .secondary-border{
   @apply border-gray-400 border
