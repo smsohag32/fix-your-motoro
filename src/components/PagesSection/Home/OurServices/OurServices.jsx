@@ -1,43 +1,61 @@
 "use client";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import "@/styles/expert.modules.css";
+import MidSpinner from "@/components/Spinners/MidSpinner";
 import OurServiceSingleCart from "./OurServiceSingleCart";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
-const Services = () => {
-  const [service, setService] = useState([]);
 
+const Services = () => {
+  const [servicesData, setServicesData] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const selectOption = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
   useEffect(() => {
-    fetch("/data/service.json")
-      .then((res) => res.json())
-      .then((data) => setService(data))
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-  const expertLimit = 6;
+    setLoading(true);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://fya-backend.vercel.app/api/v1/auth/services`
+        );
+        const data = await response.json();
+        setServicesData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching JSON data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, [selectedOption]);
+  const expertLimit = 3;
   return (
-    <div className="py-12 mt-12 default-container">
+    <>
+       <div className="py-12 mt-12 default-container">
       <SectionTitle
         title="Special Services"
         subTitle="We are provide motor servicing"
       />
-      <div className="pt-8 card-section">
-        {/*json map section*/}
-        {service.slice(0, expertLimit).map((singleCard, index) => (
-          <OurServiceSingleCart
-            key={index}
-            singleCard={singleCard}
-          ></OurServiceSingleCart>
-        ))}
+      {loading ? (
+        <MidSpinner />
+      ) : (
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {servicesData.slice(0, expertLimit).map((service) => (
+            <OurServiceSingleCart
+              key={service.service_id}
+              service={service}
+            ></OurServiceSingleCart>
+          ))}
+        </div>
+      )}
+
       </div>
-      <div className="text-center w-full">
-        <Link className="text-center primary-btn" href="/service">
-          See all
-        </Link>
-      </div>
-    </div>
+    </>
   );
 };
 
