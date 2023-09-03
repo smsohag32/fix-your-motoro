@@ -72,7 +72,7 @@ const Sidebar = () => {
                     <FaHome className="text-2xl text-gray-600 group-hover:text-white " />
                     <h3 className="text-base text-gray-800 fnt-semibold group-hover:text-white">
                       <Link href="/">
-                        <a>Home</a>
+                        Home
                       </Link>
                     </h3>
                   </div>

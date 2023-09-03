@@ -51,7 +51,7 @@ const Blog = () => {
                     height="50"
                     alt="test image"
                   ></Image>
-                  <p>author name</p>
+                  <p>author name: </p>
                 </div>
                 <h3 className="text-lg font-semibold mb-2">
                   The Ultimate Guide to Mastering CSS Grid
