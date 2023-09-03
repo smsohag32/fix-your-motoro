@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiFillPhone, AiTwotoneMail } from "react-icons/ai";
-
+// use
 const TopBar = () => {
   const [text, setText] = useState();
   const handleSearch = () => {
