@@ -5,7 +5,6 @@ import Image from "next/image";
 import UploadImage from "@/components/UploadImage/UploadImage";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
-import useUserInfo from "@/hooks/useUserInfo";
 
 
 

@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa"; 
 
@@ -75,41 +74,41 @@ const WorkShopPage = () => {
   return (
     <div>
       <div>
-        <p className="text-2xl justify-center items-center text-center">
+        <p className="items-center justify-center text-2xl text-center">
           Services
         </p>
 
-        <div className="mt-4 relative">
+        <div className="relative mt-4">
           <input
             type="text"
             placeholder="Search products..."
-            className="px-4 py-2 pl-10 rounded-md border border-gray-300"
+            className="px-4 py-2 pl-10 border border-gray-300 rounded-md"
             value={searchQuery}
             onChange={handleSearchInputChange}
           />
-          <FaSearch className="absolute top-2 left-2 text-gray-400" />
+          <FaSearch className="absolute text-gray-400 top-2 left-2" />
         </div>
 
         <div className="flex flex-col">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+              <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead>
                     <tr>
-                      <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-50">
                         Image
                       </th>
-                      <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-50">
                         Title
                       </th>
-                      <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-50">
                         Description
                       </th>
-                      <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-50">
                         Price
                       </th>
-                      <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-50">
                         Technician
                       </th>
                     </tr>
@@ -118,7 +117,7 @@ const WorkShopPage = () => {
                     {filteredData.map((item) => (
                       <tr key={item.id}>
                         <td className="px-6 py-4 whitespace-no-wrap">
-                          <div className="h-16 w-16">
+                          <div className="w-16 h-16">
                             <Image
                               src={item.image}
                               alt={item.title}
@@ -129,7 +128,7 @@ const WorkShopPage = () => {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap">
-                          <div className="text-sm leading-5 font-medium text-gray-900">
+                          <div className="text-sm font-medium leading-5 text-gray-900">
                             {item.title}
                           </div>
                         </td>
@@ -138,10 +137,10 @@ const WorkShopPage = () => {
                             {item.description}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                        <td className="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap">
                           {item.price}
                         </td>
-                        <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                        <td className="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap">
                           {item.technician}
                         </td>
                       </tr>
