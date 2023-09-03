@@ -2,11 +2,10 @@
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { FaBeer, FaHands, FaHandsHelping, FaRegComment } from "react-icons/fa";
+import { FaRegComment } from "react-icons/fa";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { PiHandsClappingBold } from "react-icons/pi";
-
 
 const Blog = () => {
   const [blog, setBlog] = useState([]);

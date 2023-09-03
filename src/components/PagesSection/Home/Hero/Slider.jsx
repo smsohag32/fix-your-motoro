@@ -40,7 +40,7 @@ const Slider = () => {
           <SwiperSlide key={image.id}>
             <div
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.582), rgba(0, 0, 0, 0.679)),url('${image.image}')`,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.182), rgba(0, 0, 0, 0.279)),url('${image.image}')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 width: "100%",

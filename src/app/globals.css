@@ -34,7 +34,7 @@ body {
 }
 
 .top-btn{
-  @apply pr-5 md:ps-16 py-2 text-center font-semibold bg-[#69d94f] text-white hover:bg-[#379a22]
+  @apply pr-5 md:ps-16 py-2 text-center font-semibold bg-[#379a22] text-white hover:bg-[#379a22]
 }
 
 .outline-btn{
@@ -58,4 +58,8 @@ body {
 
 .leaflet-container{
   @apply w-full h-96 z-10
+}
+
+.primary-input {
+  @apply w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2
 }

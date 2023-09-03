@@ -15,13 +15,13 @@ import NavLink from "@/components/Shared/Header/NavLink";
 
 const Sidebar = () => {
   const { userInfo } = useUserInfo();
-  const router = useRouter()
+  const router = useRouter();
   // console.log(userInfo);
 
   const { logout } = useAuth();
   const handleLogOut = async () => {
     await logout();
-    router.push("/");
+    router.replace("/");
   };
 
   // console.log(userInfo);
@@ -71,13 +71,9 @@ const Sidebar = () => {
                   <div className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 border border-gray-200 rounded-md cursor-pointer hover:bg-[#69d94f] group hover:shadow-lg ">
                     <FaHome className="text-2xl text-gray-600 group-hover:text-white " />
                     <h3 className="text-base text-gray-800 fnt-semibold group-hover:text-white">
-                      <NavLink
-                        exact={"/" == "/"}
-                        activeClassName={"primary-text"}
-                        href="/"
-                      >
-                        Home
-                      </NavLink>
+                      <Link href="/">
+                        <a>Home</a>
+                      </Link>
                     </h3>
                   </div>
                 </div>

@@ -36,16 +36,14 @@ const Nav = () => {
       </div>
       <span className="text-white">
         <Link href="/" className="flex items-center gap-1">
-          <span className="">
-            <Image src={logo} alt="" width={159} height={60} />
-          </span>
+          <span className="">FYA</span>
         </Link>
       </span>
 
       <ul
-        className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
+        className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform text-white absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
           isOpen
-            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
+            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white text-black z-30"
             : "-left-60 top-[64px] overflow-hidden duration-100"
         }`}
       >
