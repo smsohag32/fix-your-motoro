@@ -9,11 +9,13 @@ const queryClient = new QueryClient();
 
 const Providers = ({ children }) => {
   return (
-    <QueryClientProvider client={queryClient}>
-       <AuthProvider>
-        <ServicesProvider>{children}</ServicesProvider>
-      </AuthProvider>
-    </QueryClientProvider>
+    <SearchProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <ServicesProvider>{children}</ServicesProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </SearchProvider>
   );
 };
 
