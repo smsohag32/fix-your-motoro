@@ -11,16 +11,16 @@ const ServiceFilter = ({ selectOption, selectedOption, setIsOpen, isOpen }) => {
   };
 
   return (
-    <div className="relative inline-block text-left z-10">
+    <div className="relative z-10 inline-block text-left">
       <div>
         <button
           type="button"
-          className="inline-flex justify-center w-full px-4 py-2 text-sm text-orange-600 font-semibold bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-600"
+          className="inline-flex justify-center w-full px-4 py-2 text-sm primary-text font-semibold bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
           onClick={toggleDropdown}
         >
           {selectedOption || "Select an option"}
           <svg
-            className="-mr-1 ml-2 h-5 w-5"
+            className="w-5 h-5 ml-2 -mr-1"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -36,7 +36,7 @@ const ServiceFilter = ({ selectOption, selectedOption, setIsOpen, isOpen }) => {
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="absolute right-0 w-56 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
           <div
             className="py-1"
             role="menu"
@@ -46,7 +46,7 @@ const ServiceFilter = ({ selectOption, selectedOption, setIsOpen, isOpen }) => {
             {options.map((option) => (
               <button
                 key={option}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                className="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 role="menuitem"
                 onClick={() => selectOption(option)}
               >

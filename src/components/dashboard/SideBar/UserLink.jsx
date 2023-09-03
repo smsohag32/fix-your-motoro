@@ -16,11 +16,11 @@ function UserLink() {
   return (
     <ul className="pb-4 my-4 border-b border-gray-100">
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdDashboard className="w-8 h-8  group-hover:text-[#f02801]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <MdDashboard className="w-8 h-8  group-hover:text-[#69d94f]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href={"/dashboard"}
           >
             Overview
@@ -30,11 +30,11 @@ function UserLink() {
 
       {/* add to card section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <BiCreditCard className="w-8 h-8  group-hover:text-[#f02801]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <BiCreditCard className="w-8 h-8  group-hover:text-[#69d94f]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/user/user_service" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/user/upcomming_appointment"
           >
             Appointment
@@ -44,11 +44,11 @@ function UserLink() {
 
       {/* History section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaHistory className="w-8 h-8  group-hover:text-[#f02801]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <FaHistory className="w-8 h-8  group-hover:text-[#69d94f]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/user/user_history" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/user/user_history"
           >
             User History
@@ -58,11 +58,11 @@ function UserLink() {
 
       {/*  Payments section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdPayments className="w-8 h-8  group-hover:text-[#f02801]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <MdPayments className="w-8 h-8  group-hover:text-[#69d94f]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/user/user_payments" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/user/user_payments"
           >
             Billing & Payments
@@ -72,11 +72,11 @@ function UserLink() {
 
       {/* community section */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaUsers className="w-8 h-8  group-hover:text-[#f02801] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <FaUsers className="w-8 h-8  group-hover:text-[#69d94f] " />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/comuinity" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/user/user_service"
           >
             Community
@@ -85,11 +85,11 @@ function UserLink() {
       </li>
       {/* community section */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdSupportAgent className="w-8 h-8  group-hover:text-[#f02801] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <MdSupportAgent className="w-8 h-8  group-hover:text-[#69d94f] " />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/user/user_support" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/user/user_support"
           >
             FAQ & Support
@@ -97,19 +97,19 @@ function UserLink() {
         </h3>
       </li>
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <AiFillCar className="w-8 h-6 group-hover:text-[#f02801]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801]">
+        <AiFillCar className="w-8 h-6 group-hover:text-[#69d94f]" />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f]">
           <Link href="/dashboard/user/user_vehicles">My Vehicles</Link>
         </h3>
       </li>
 
       {/*  Appointments section  */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdSupportAgent className="w-8 h-8  group-hover:text-[#f02801] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+        <MdSupportAgent className="w-8 h-8  group-hover:text-[#69d94f] " />
+        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
             exact={"/dashboard/user/user_profile" == "/dashboard"}
-            activeClassName={"text-[#f02801]"}
+            activeClassName={"primary-text"}
             href="/dashboard/user/user_profile"
           >
             Account

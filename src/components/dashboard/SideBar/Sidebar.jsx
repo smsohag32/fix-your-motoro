@@ -10,15 +10,18 @@ import WorkshopAgentLink from "./WorkshopAgentLink";
 import UserLink from "./UserLink";
 import useAuth from "@/hooks/useAuth";
 import AdminLInk from "./AdminLink";
+import { useRouter } from "next/navigation";
+import NavLink from "@/components/Shared/Header/NavLink";
 
 const Sidebar = () => {
-  const { userInfo, cLoading } = useUserInfo();
+  const { userInfo } = useUserInfo();
+  const router = useRouter();
   // console.log(userInfo);
 
-  const { logout, user } = useAuth();
+  const { logout } = useAuth();
   const handleLogOut = async () => {
     await logout();
-    router.push("/");
+    router.replace("/");
   };
 
   // console.log(userInfo);
@@ -43,7 +46,7 @@ const Sidebar = () => {
                 height="300"
               />
               {/* name Dynamic */}
-              <h1 className="w-full pb-4 text-base font-bold text-center uppercase text-blue-900 border-b border-gray-100 cursor-pointer">
+              <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 uppercase border-b border-gray-100 cursor-pointer">
                 {userInfo?.user?.role ? userInfo?.user?.role : "FYT"}
               </h1>
               {userInfo?.user?.role === "admin" ? (
@@ -56,7 +59,7 @@ const Sidebar = () => {
               {/* logout btn */}
               <div className="">
                 <div className="my-4 ">
-                  <div className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 border border-gray-200 rounded-md cursor-pointer hover:bg-orange-600 group hover:shadow-lg">
+                  <div className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 border border-gray-200 rounded-md cursor-pointer hover:bg-[#69d94f] group hover:shadow-lg">
                     <MdOutlineLogout className="text-2xl text-gray-600 group-hover:text-white " />
                     <h3 className="text-base text-gray-800 fnt-semibold group-hover:text-white">
                       <button onClick={handleLogOut}>Logout</button>
@@ -65,10 +68,12 @@ const Sidebar = () => {
                 </div>
                 {/* home btn */}
                 <div className="my-4 ">
-                  <div className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 border border-gray-200 rounded-md cursor-pointer hover:bg-orange-600 group hover:shadow-lg ">
+                  <div className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 border border-gray-200 rounded-md cursor-pointer hover:bg-[#69d94f] group hover:shadow-lg ">
                     <FaHome className="text-2xl text-gray-600 group-hover:text-white " />
                     <h3 className="text-base text-gray-800 fnt-semibold group-hover:text-white">
-                      <Link href="/">Home</Link>
+                      <Link href="/">
+                        <a>Home</a>
+                      </Link>
                     </h3>
                   </div>
                 </div>

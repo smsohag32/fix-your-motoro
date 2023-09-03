@@ -36,16 +36,14 @@ const Nav = () => {
       </div>
       <span className="text-white">
         <Link href="/" className="flex items-center gap-1">
-          <span className="">
-            <Image src={logo} alt="" width={159} height={60} />
-          </span>
+          <span className="">FYA</span>
         </Link>
       </span>
 
       <ul
-        className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform  md:text-black absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
+        className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform text-white absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
           isOpen
-            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white z-30"
+            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white text-black z-30"
             : "-left-60 top-[64px] overflow-hidden duration-100"
         }`}
       >
@@ -53,7 +51,7 @@ const Nav = () => {
           <li key={index}>
             <NavLink
               exact={link.path == "/"}
-              activeClassName={"text-[#f02801]"}
+              activeClassName={"primary-text"}
               href={link.path}
             >
               {link.label}
@@ -68,7 +66,7 @@ const Nav = () => {
             alt=""
             width={40}
             height={40}
-            className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801] animate-spin"
+            className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#69d94f] animate-spin"
           />
         ) : (
           <>
@@ -81,7 +79,7 @@ const Nav = () => {
                   width={40}
                   height={40}
                   title={displayName}
-                  className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
+                  className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#69d94f]"
                 />
               </span>
             ) : (
@@ -90,7 +88,7 @@ const Nav = () => {
                 alt=""
                 width={40}
                 height={40}
-                className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#f02801]"
+                className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#69d94f]"
               />
             )}
           </>
@@ -99,7 +97,7 @@ const Nav = () => {
           <>
             <button
               onClick={handleLogOut}
-              className="font-bold w-10 text-center cursor-pointer"
+              className="w-10 font-bold text-center cursor-pointer"
             >
               {loading ? "" : "Logout"}
             </button>
@@ -107,7 +105,7 @@ const Nav = () => {
         ) : (
           <>
             <Link
-              className="font-bold w-10 text-center cursor-pointer"
+              className="w-10 font-bold text-center cursor-pointer"
               href="/login"
             >
               {loading ? "" : "Login"}

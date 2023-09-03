@@ -61,45 +61,45 @@ const Shops = () => {
 
 
   return (
-    <div className="default-container py-12">
+    <div className="py-12 default-container">
       {loading ? (
         <MidSpinner />
       ) : (
-        <div className=" px-4">
-          <div className=" mb-4">
+        <div className="px-4 ">
+          <div className="mb-4 ">
             <input
               type="text"
               placeholder="Search products"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="border p-2 mb-4 w-full rounded-md"
+              className="w-full p-2 mb-4 border rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
             />
             <div>
-              <div className="flex my-2 items-center gap-3">
+              <div className="flex items-center gap-3 my-2">
                 <p>Price range: </p>
                 <input
                   type="number"
                   placeholder="Min Price"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
-                  className="border p-2 mr-2 rounded-md"
+                  className="border p-2  mr-2 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
                 />
                 <input
                   type="number"
                   placeholder="Max Price"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
-                  className="border p-2 rounded-md"
+                  className="p-2 border rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
                 />
               </div>
-              <div className="flex my-2 items-center gap-3">
+              <div className="flex items-center gap-3 my-2">
                 <p>Product per page: </p>
                 <input
                   type="number"
                   placeholder="Items PerPage"
                   value={itemsPerPage}
                   onChange={(e) => setItemsPerPage(e.target.value)}
-                  className="border p-2 mr-2 rounded-md"
+                  className="p-2 mr-2 border rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
                 />
               </div>
             </div>
@@ -108,9 +108,9 @@ const Shops = () => {
             {filteredShopData.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-lg shadow-md p-5 sm:p-6 relative transition hover:bg-red-50"
+                className="relative p-5 transition bg-white rounded-lg shadow-md sm:p-6 hover:bg-red-50"
               >
-                <div className="aspect-w-3 aspect-h-2 mt-5">
+                <div className="mt-5 aspect-w-3 aspect-h-2">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -119,8 +119,8 @@ const Shops = () => {
                     className="mb-4"
                   />
                 </div>
-                <div className="absolute top-2 right-5 border rounded-full bg-yellow-400">
-                  <p className="text-gray-700 p-1">
+                <div className="absolute bg-yellow-400 border rounded-full top-2 right-5">
+                  <p className="p-1 text-gray-700">
                     {item.discount ? (
                       <span>{item.discountPercentage}%</span>
                     ) : (
@@ -135,7 +135,7 @@ const Shops = () => {
                   </div>
                 </div>
                 <div className="absolute top-2 left-5">
-                  <div className="flex mr-2 items-center justify-center">
+                  <div className="flex items-center justify-center mr-2">
                     <div
                       onClick={() => setLike(!like)}
                       className="flex p-2 text-2xl"
@@ -147,9 +147,9 @@ const Shops = () => {
                     <p className="ml-1">{item.rating.toFixed(1)}</p>
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold my-2">{item.name}</h3>
+                <h3 className="my-2 text-lg font-semibold">{item.name}</h3>
 
-                <div className="flex justify-between items-center my-2">
+                <div className="flex items-center justify-between my-2">
                   {/* <button
                   onClick={() => router.push(`/shops/${item.id}`)}
                   className="primary-btn"
@@ -158,7 +158,7 @@ const Shops = () => {
                 </button> */}
                   <button
                     onClick={() => router.push(`/shops/${item?._id}`)}
-                    className="primary-btn rounded-md"
+                    className="rounded-md primary-btn"
                   >
                     Detail
                   </button>
@@ -169,11 +169,11 @@ const Shops = () => {
             ))}
           </div>
 
-          <div className="mt-4 flex items-center justify-center">
+          <div className="flex items-center justify-center mt-4">
             <button
               onClick={() => setCurrentPage(currentPage - 1)}
               disabled={currentPage === 1}
-              className="mr-2 primary-btn rounded-md"
+              className="mr-2 rounded-md primary-btn"
             >
               <FaLessThan />
             </button>
@@ -183,7 +183,7 @@ const Shops = () => {
             <button
               onClick={() => setCurrentPage(currentPage + 1)}
               disabled={endIndex >= products.length}
-              className="ml-2 primary-btn rounded-md"
+              className="ml-2 rounded-md primary-btn"
             >
               <FaGreaterThan />
             </button>

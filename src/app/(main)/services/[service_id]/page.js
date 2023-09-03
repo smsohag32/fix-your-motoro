@@ -101,14 +101,14 @@ const ServicePage = ({ params }) => {
             </div>
           </div>
         </div>
-        <div className="justify-around p-8 my-12 bg-slate-100 rounded-xl hover:shadow-xl hover:border hover:border-orange-600 md:flex">
+        <div className="justify-around p-8 my-12 bg-slate-100 rounded-xl hover:shadow-xl hover:border hover:border-[#69d94f] md:flex">
           <h2 className="font-mono text-4xl font-bold primary-text ">
             Reviews :
           </h2>
           <div className="">
             {customer_reviews?.map((review, idx) => (
               <p className="py-2 text-xl font-medium text-slate-600" key={idx}>
-                <BiMessageRounded className="mr-4 text-orange-700 md:inline" />{" "}
+                <BiMessageRounded className="mr-4 primary-text md:inline" />{" "}
                 {review}
               </p>
             ))}

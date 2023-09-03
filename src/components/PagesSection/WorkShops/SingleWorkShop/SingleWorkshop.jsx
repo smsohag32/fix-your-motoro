@@ -14,24 +14,24 @@ const SingleWorkshop = (props) => {
   
   return (
     <div onClick={() => router.push(`/workshop/${_id}`)}>
-      <div className="mx-auto  bg-gray-50">
+      <div className="mx-auto bg-gray-50">
         <div>
-          <div className="p-3  cursor-pointer ">
-            <div className="h-80 mt-5 relative">
+          <div className="p-3 cursor-pointer ">
+            <div className="relative mt-5 h-80">
               <Image
-                className="h-full w-full object-cover transition-transform duration-500"
+                className="object-cover w-full h-full transition-transform duration-500"
                 src={image}
                 alt={name}
                 width={384}
                 height={288}
               />
-              <div className="absolute top-4 left-5 bg-red-500 text-white shadow-emerald-50 rounded-md">
-                <p className="py-2 px-3">{address}</p> 
+              <div className="absolute text-white rounded-md top-4 left-5 primary-bg shadow-emerald-50">
+                <p className="px-3 py-2">{address}</p> 
                  
               </div>
             </div>
             <div>
-              <p className="text-xl font-semibold mb-2">{name}</p>
+              <p className="mb-2 text-xl font-semibold">{name}</p>
               <p>{email}</p>
               <div className="">
                 <div className="flex mr-2">

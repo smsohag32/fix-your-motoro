@@ -12,14 +12,14 @@ const GetInTouch = () => {
   };
 
   return (
-    <section className=" mb-12 pb-8 default-container">
-      <div className="text-center mb-12">
+    <section className="pb-8 mb-12  default-container">
+      <div className="mb-12 text-center">
         <SectionTitle
           title="Engage With Us"
           subTitle={"Empowering Your Vehicles with Quality Servicing"}
         />
       </div>
-      <div className="flex flex-col md:flex-row gap-10 md:items-center justify-center md:justify-start">
+      <div className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:justify-start">
         <div className="w-full">
           <div className="h-96 map-container">
             <iframe
@@ -50,7 +50,7 @@ const GetInTouch = () => {
                   name="name"
                   type="name"
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2 "
+                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2 "
                 />
               </div>
             </div>
@@ -67,7 +67,7 @@ const GetInTouch = () => {
                   name="email"
                   type="email"
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                 />
               </div>
             </div>
@@ -83,14 +83,14 @@ const GetInTouch = () => {
               <div className="mt-2">
                 <textarea
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#f02801] px-4 py-2"
+                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                   name="message"
                   rows="4"
                   cols="50"
                 />
               </div>
             </div>
-            <button type="submit" className="primary-btn mt-4">
+            <button type="submit" className="mt-4 primary-btn">
               Send Message
             </button>
           </form>

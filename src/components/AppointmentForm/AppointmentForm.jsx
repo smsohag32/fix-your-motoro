@@ -27,10 +27,10 @@ const AppointmentForm = () => {
                 <title>FYM | Appointment</title>
             </Helmet>
             <PageTitle title="Appointment" subTitle="Appointment page" />
-            <div className="mt-16 max-w-4xl mx-auto p-8">
-                <h1 className="text-2xl font-bold mb-8 text-start md:text-center">Get Appointment For Best Services</h1>
+            <div className="max-w-4xl p-8 mx-auto mt-16">
+                <h1 className="mb-8 text-2xl font-bold text-start md:text-center">Get Appointment For Best Services</h1>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
                         <div className="col-span-2 sm:col-span-1">
                             <label htmlFor="fullName" className="block text-sm font-medium">
                                 Full Name
@@ -39,7 +39,7 @@ const AppointmentForm = () => {
                                 type="text"
                                 id="fullName"
                                 name="fullName"
-                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                                 placeholder="David John"
                                 required
                                 {...register("fullName")}
@@ -53,14 +53,14 @@ const AppointmentForm = () => {
                                 type="text"
                                 id="email"
                                 name="email"
-                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                                 placeholder="john.david@gmail.com"
                                 required
                                 {...register("email")}
                             />
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
                         <div className="col-span-2 sm:col-span-1">
                             <label htmlFor="phone" className="block text-sm font-medium">
                                 Phone Number
@@ -69,7 +69,7 @@ const AppointmentForm = () => {
                                 type="text"
                                 id="phone"
                                 name="phone"
-                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                                 placeholder="+8801............"
                                 required
                                 {...register("phone")}
@@ -83,7 +83,7 @@ const AppointmentForm = () => {
                                 type="text"
                                 id="address"
                                 name="address"
-                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                                 placeholder="7891 Boston Road
                 Brooklyn, NY 11237"
                                 required
@@ -98,7 +98,7 @@ const AppointmentForm = () => {
                                 type="text"
                                 id="vehicle"
                                 name="vehicle"
-                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                                 placeholder="Toyota Land Cruiser Prado - 2020"
                                 required
                                 {...register("vehicle")}
@@ -113,7 +113,7 @@ const AppointmentForm = () => {
                                 type="text"
                                 id="serviceRequest"
                                 name="serviceRequest"
-                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                                 placeholder="Engine Diagnostics"
                                 required
                                 {...register("serviceRequest")}
@@ -131,7 +131,7 @@ const AppointmentForm = () => {
                                 type="date"
                                 id="appointmentDate"
                                 name="appointmentDate"
-                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                                 required
                                 {...register("appointmentDate")}
                             />
@@ -148,7 +148,7 @@ const AppointmentForm = () => {
                                 type="text"
                                 id="comment"
                                 name="comment"
-                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                                className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                                 placeholder='comment'
                                 {...register("comment")}
                             />
@@ -157,8 +157,8 @@ const AppointmentForm = () => {
 
                     {/* ... More form fields */}
 
-                    <div className="md:flex justify-end">
-                        <button type="submit" className="primary-btn rounded-md">
+                    <div className="justify-end md:flex">
+                        <button type="submit" className="rounded-md primary-btn">
                             Get Appointment
                         </button>
                         <Toaster />

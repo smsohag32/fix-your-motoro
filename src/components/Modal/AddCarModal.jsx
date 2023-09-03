@@ -24,7 +24,7 @@ const AddCarModal = ({
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="flex items-center justify-center min-h-full p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -34,10 +34,10 @@ const AddCarModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-gray-300 p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-gray-300 shadow-xl rounded-2xl">
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium text-center leading-6 text-gray-900"
+                  className="text-lg font-medium leading-6 text-center text-gray-900"
                 >
                   Add to your new Car
                 </Dialog.Title>
@@ -47,7 +47,7 @@ const AddCarModal = ({
                       type="text"
                       id="car_name"
                       name="car_name"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-orange-600"
+                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                       placeholder="Enter your car name"
                       required
                       {...register("car_name")}
@@ -58,7 +58,7 @@ const AddCarModal = ({
                       type="text"
                       id="brand"
                       name="brand"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-orange-600"
+                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                       placeholder="Enter car brand"
                       required
                       {...register("brand")}
@@ -69,7 +69,7 @@ const AddCarModal = ({
                       type="text"
                       id="model"
                       name="model"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-orange-600"
+                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-[#69d94f]"
                       placeholder="Enter car model"
                       required
                       {...register("model")}
@@ -78,17 +78,17 @@ const AddCarModal = ({
                   <div className="mt-4">
                     <button
                       type="submit"
-                      className="inline-flex justify-center rounded-md border border-transparent primary-btn"
+                      className="inline-flex justify-center border border-transparent rounded-md primary-btn"
                     >
                       Save Cars
                     </button>
                   </div>
                 </form>
                 <hr className="mt-8 " />
-                <div className="flex mt-2 justify-around">
+                <div className="flex justify-around mt-2">
                   <button
                     type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-transparent px-4 py-2 text-sm font-medium primary-text hover:text-white hover:bg-orange-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                    className="inline-flex justify-center px-4 py-2 text-sm font-medium bg-transparent border border-transparent rounded-md primary-text hover:text-white hover:bg-orange-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                     onClick={closeModal}
                   >
                     Close

@@ -16,7 +16,7 @@ const SingUp = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        saveUser(user).then((data) => {});
+        saveUser(user).then((data) => { });
         router.push("/");
       })
       .catch();
@@ -26,21 +26,20 @@ const SingUp = () => {
     <>
       <PageTitle title="Our Register" subTitle="Our Register page" />
       <div className="my-12 default-container">
-        <div className="flex-col max-w-2xl mx-auto my-8 rounded-lg primary-shadow secondary-border">
+        <div className="flex-col max-w-2xl p-8 mx-auto my-8 rounded-lg primary-shadow secondary-border">
           <RegisterFrom />
-          <div className="text-center ">
-            <button className="flex justify-center w-full gap-2">
-              Already have an account?
-              <Link href="/login" className="font-semibold primary-text">
-                Login
-              </Link>
-            </button>
+          <div className="text-sm font-medium text-gray-600 dark:text-gray-600">
+            Already have an account?
+            <Link href="/login" className="font-semibold primary-text">
+              Login
+            </Link>
           </div>
-          <div onClick={handleGoogleSingIn}>
-            <button className="hover:border-[#f02801] hover:text-[#f02801] p-[10px] mb-8 items-center border rounded-lg text-center justify-center mx-auto flex gap-[6px] mt-[30px]">
-              <FcGoogle className="text-[32px]" />
-              <span>Continue with Google</span>
-            </button>
+          <div
+            onClick={handleGoogleSingIn}
+            className="p-[10px] cursor-pointer border rounded w-full flex justify-center items-center gap-[6px] mt-[33px]"
+          >
+            <FcGoogle className="text-[32px]" />
+            <span>Continue with Google</span>
           </div>
         </div>
       </div>

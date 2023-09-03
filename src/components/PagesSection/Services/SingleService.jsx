@@ -9,7 +9,7 @@ const SingleService = ({ service }) => {
     <div>
       <div className="flex items-center justify-center bg-gray-50">
         <div className="">
-          <div className="group relative  items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+          <div className="relative items-center justify-center overflow-hidden transition-shadow group hover:shadow-xl hover:shadow-black/30">
             <div className="h-72 w-96">
               <Image
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
@@ -28,7 +28,7 @@ const SingleService = ({ service }) => {
                 {service_description}
               </p>
               <Link href={`/services/${_id}`}>
-                <button className="rounded-full bg-white py-2 px-3.5 font-semibold text-sm capitalize text-black  shadow shadow-black/60">
+                <button className="primary-btn">
                   View Details
                 </button>
               </Link>
