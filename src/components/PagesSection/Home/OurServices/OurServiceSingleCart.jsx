@@ -40,7 +40,7 @@ const ServiceSingleCard = ({ service }) => {
               </Link>
             </div>
           </div>
-          <p className="bg-white p-1 block rounded-md absolute top-2 right-2 font-semibold hover:bg-green-300">
+          <p className="secondary-bg text-white p-1 block absolute top-2 right-2 font-medium">
             {service_price}
           </p>
         </div>
