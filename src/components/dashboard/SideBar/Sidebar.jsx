@@ -71,7 +71,9 @@ const Sidebar = () => {
                   <div className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 border border-gray-200 rounded-md cursor-pointer hover:bg-[#69d94f] group hover:shadow-lg ">
                     <FaHome className="text-2xl text-gray-600 group-hover:text-white " />
                     <h3 className="text-base text-gray-800 fnt-semibold group-hover:text-white">
-                      <Link href="/">Home</Link>
+                      <Link href="/">
+                        Home
+                      </Link>
                     </h3>
                   </div>
                 </div>
