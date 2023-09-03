@@ -3,12 +3,17 @@ import Link from "next/link";
 import React from "react";
 
 const SingleService = ({ service }) => {
-  const { service_name, _id, service_image, service_description } =
-    service || {};
+  const {
+    service_name,
+    _id,
+    service_image,
+    service_price,
+    service_description,
+  } = service || {};
   return (
     <div>
       <div className="flex items-center justify-center bg-gray-50">
-        <div className="">
+        <div className="relative">
           <div className="relative items-center justify-center overflow-hidden transition-shadow group hover:shadow-xl hover:shadow-black/30">
             <div className="h-72 w-96">
               <Image
@@ -28,12 +33,13 @@ const SingleService = ({ service }) => {
                 {service_description}
               </p>
               <Link href={`/services/${_id}`}>
-                <button className="primary-btn">
-                  View Details
-                </button>
+                <button className="primary-btn">View Details</button>
               </Link>
             </div>
           </div>
+          <p className="bg-white p-1 block rounded-md absolute top-2 right-2 font-semibold hover:bg-green-300">
+            {service_price}
+          </p>
         </div>
       </div>
     </div>
