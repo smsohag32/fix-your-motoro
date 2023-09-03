@@ -9,7 +9,7 @@ const TopBar = () => {
     console.log("searchin");
   };
   return (
-    <div className="flex justify-between w-full gap-10 ps-4">
+    <div className="flex default-container justify-between w-full gap-10 ps-4">
       <div className="flex items-center justify-end flex-1 text-xs md:text-sm gap-9">
         <div className="flex-1 flex gap-5">
           <div className="relative flex-1">

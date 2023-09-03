@@ -102,19 +102,7 @@ const { user } = useAuth();
             </button>
           </div>
         </div>
-        <p>Location: {product.address}</p>
-        <p className="my-3  text-slate-500">
-          Workshop Details: {product.description}
-        </p>
-        <button
-          onClick={handleBookNow}
-          className=" primary-btn text-white font-bold py-2 px-4 rounded"
-        >
-          Book Now
-        </button>
-     
-
-      
+        
        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-24 ">
           {product?.products.map((product, index) => (
             <SingleProductCard key={index} product={product} />
