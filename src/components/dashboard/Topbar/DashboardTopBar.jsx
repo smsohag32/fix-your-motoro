@@ -7,9 +7,9 @@ import { useContext, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import SearchContext from "@/context/SearchContext";
-import userLogo from "@/assets/userLogo.png";
+
 const DashboardTopBar = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const router = useRouter();
   const pathName = usePathname();
   const { setLoading, setSearchData, setSearchText } =
@@ -43,6 +43,9 @@ const DashboardTopBar = () => {
     }
   };
 
+  if (loading) {
+    return;
+  }
   return (
     <div className="h-16 md:ml-60 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6 hidden md:flex justify-between">
       <div className="flex gap-2 justify-end w-full items-center">
@@ -62,7 +65,7 @@ const DashboardTopBar = () => {
           <Link href="/" className="">
             <Image
               className="w-8 h-8 rounded-full ring-2 ring-white"
-              src={user?.photoURL || userLogo}
+              src={user?.photoURL || ""}
               alt="user"
               width={40}
               height={40}
