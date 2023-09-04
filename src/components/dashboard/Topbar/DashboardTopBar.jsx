@@ -4,25 +4,40 @@ import Image from "next/image";
 import Link from "next/link";
 import useAuth from "@/hooks/useAuth";
 import { useContext, useState } from "react";
-import SearchContext from "@/context/SearchContext";
 import { usePathname, useRouter } from "next/navigation";
+import axios from "axios";
+import SearchContext from "@/context/SearchContext";
 
 const DashboardTopBar = () => {
   const { user } = useAuth();
   const router = useRouter();
   const pathName = usePathname();
-  const { setLoading, setSearchText } = useContext(SearchContext);
+  const { setLoading, setSearchData, setSearchText } =
+    useContext(SearchContext);
   const [text, setText] = useState("");
 
   // handle to college search
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (!text) {
       return;
     }
-    if (!(pathName === "/dashboard/searchresult")) {
-      router.push("/dashboard/searchresult");
-    }
     setSearchText(text);
+    try {
+      const data = await axios(
+        `https://fya-backend.vercel.app/api/v1/auth/workshops/search/division?location=${text}`
+      );
+
+      setSearchData(data.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching JSON data:", error);
+    } finally {
+      setLoading(false);
+    }
+
+    if (!(pathName === "/dashboard/searchresult")) {
+      router.push("/dashboard/search_result");
+    }
   };
 
   return (

@@ -22,7 +22,7 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
       </div>
       <button
         onClick={closeModal}
-        className="text-3xl btn-close  mt-5 "
+        className="mt-5 text-3xl btn-close "
       >
         Close
       </button>

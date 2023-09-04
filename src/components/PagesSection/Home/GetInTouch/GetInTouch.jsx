@@ -12,7 +12,7 @@ const GetInTouch = () => {
   };
 
   return (
-    <section className="pb-8 mb-12  default-container">
+    <section className="pb-8 mb-12 default-container">
       <div className="mb-12 text-center">
         <SectionTitle
           title="Engage With Us"
