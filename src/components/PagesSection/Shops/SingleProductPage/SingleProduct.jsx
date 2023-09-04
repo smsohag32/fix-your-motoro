@@ -2,11 +2,14 @@
 
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import Spinner from "@/components/Spinners/Spinner";
+import useAuth from "@/hooks/useAuth";
+import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 const SingleProduct = ({ id }) => {
+  const {user} = useAuth();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -40,6 +43,37 @@ const SingleProduct = ({ id }) => {
     likes,
     _id,
   } = product || {};
+
+  const handleProductAddToCart = async() => {
+    const cartData = {
+      userName: user?.displayName,
+      userEmail: user?.email,
+      productID: _id,
+      productName: name,
+      productImage: image,
+      description,
+      quantity: 1,
+      price
+    }
+    try {
+      // Check if the product is already in the cart
+      const response = await axios.get(`/api/shop/cart/${_id}`);
+  
+      if (response.status === 200 && response.data && response.data.exists) {
+        toast.warning("Product is already in the cart");
+        return;
+      } else {
+        const addToCartResponse = await axios.post("/api/shop/cart", cartData);
+        if (addToCartResponse.status === 200) {
+          toast.success("Product added to cart successfully");
+        }
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+
+  }
+
   if (loading) {
     return <Spinner />;
   }
@@ -82,7 +116,7 @@ const SingleProduct = ({ id }) => {
               </div>
 
               <button
-                onClick={() => toast("Coming Soon...")}
+                onClick={handleProductAddToCart}
                 className="primary-btn"
               >
                 Add Card
