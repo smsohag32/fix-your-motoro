@@ -6,10 +6,9 @@ const WorkshopsPage = () => {
   return (
     <div className="mt-32 mb-12 default-container">
     <PageTitle
-      title="Popular Workshops"
-      subTitle="Recent motor servicing Workshop"
+      title="Your Roadmap"
+      subTitle=" to Motor Servicing Excellence"
     />
-
         <WorkShops />
     </div>
   );

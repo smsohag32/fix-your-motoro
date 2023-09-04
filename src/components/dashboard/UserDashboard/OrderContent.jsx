@@ -8,6 +8,7 @@ const OrderContent = ({ order }) => {
   const lon = parseFloat(order?.lon);
   const hasValidPosition = !Number.isNaN(lat) && !Number.isNaN(lon);
   const postion = [lat, lon];
+
   return (
     <div className="bg-white border border-gary-400">
       <div className="w-full">

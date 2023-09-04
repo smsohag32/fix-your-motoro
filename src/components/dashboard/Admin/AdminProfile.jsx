@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import UserUpdateProfileModal from "@/components/Modal/userModal/UserUpdateProfileModal";
 import useUserInfo from "@/hooks/useUserInfo";
 import Image from "next/image";
@@ -19,7 +19,7 @@ const AdminProfile = () => {
               <div className="relative w-32 h-32 mx-auto mb-6">
                 <Image
                   className="object-cover rounded-full"
-                  src={userInfo?.user?.image}
+                  src={userInfo?.user?.image || ""}
                   alt="User_profile"
                   layout="fill"
                 />
@@ -37,21 +37,15 @@ const AdminProfile = () => {
           <h2 className="mb-4 text-xl font-semibold">Profile Information</h2>
           <div className="mb-4">
             <p className="mb-2 text-gray-700">Phone Number:</p>
-            <p className="text-gray-500">
-              {userInfo?.user?.phone}
-            </p>
+            <p className="text-gray-500">{userInfo?.user?.phone}</p>
           </div>
           <div className="mb-4">
             <p className="mb-2 text-gray-700">Address:</p>
-            <p className="text-gray-500">
-              {userInfo?.user?.address}
-            </p>
+            <p className="text-gray-500">{userInfo?.user?.address}</p>
           </div>
           <div className="mb-4">
             <p className="mb-2 text-gray-700">Gender:</p>
-            <p className="text-gray-500">
-              {userInfo?.user?.gender}
-            </p>
+            <p className="text-gray-500">{userInfo?.user?.gender}</p>
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -61,7 +55,11 @@ const AdminProfile = () => {
           </button>
         </div>
       </div>
-      <UserUpdateProfileModal refetch={refetch}  isOpen={isOpen} setIsOpen={setIsOpen} />
+      <UserUpdateProfileModal
+        refetch={refetch}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
     </div>
   );
 };
