@@ -6,8 +6,8 @@ const CustomerCard = (props) => {
     props.order;
   return (
     <div className="bg-white rounded shadow-md">
-      <div className="duration-500 transform gap-8 border-2 w-full flex h-40 items-center">
-        <div className="h-full w-1/2 flex justify-center items-center">
+      <div className="flex items-center w-full h-40 gap-8 duration-500 transform border-2">
+        <div className="flex items-center justify-center w-1/2 h-full">
           <p className="items-center">
             Name :
             <span className="text-slate-500">
@@ -15,7 +15,7 @@ const CustomerCard = (props) => {
             </span>
           </p>
         </div>
-        <div className="w-full space-y-3 mb-5">
+        <div className="w-full mb-5 space-y-3">
           <h1 className="text-lg font-semibold opacity-60">
             Contact : <span className="text-slate-500">{phone}</span>
           </h1>
@@ -29,7 +29,7 @@ const CustomerCard = (props) => {
             Booking Date : <span className="text-slate-500">{bookingDate}</span>
           </p>
         </div>
-        <div className="w-full flex justify-center items-center ">
+        <div className="flex items-center justify-center w-full ">
           <button
             onClick={() =>
               toast.success("Functionality will be complete soon..")

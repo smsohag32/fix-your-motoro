@@ -20,7 +20,14 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
         <p>Publish date: {tip.date}</p>
         {/* Add more information */}
       </div>
+<<<<<<< HEAD
+      <button
+        onClick={closeModal}
+        className="mt-5 text-3xl btn-close "
+      >
+=======
       <button onClick={closeModal} className="text-3xl btn-close  mt-5 ">
+>>>>>>> e5f955382bccd2db8b1d2673c3e244148358bdfd
         Close
       </button>
     </Modal>
