@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import UserPaymentsTable from './UserPaymentsTable';
+import UserPaymentsTable from './UserAddToCardTable';
 
-const UserPayments = () => {
+const UserAddToCard = () => {
     const [cart, setcart] = useState([]);
 
     useEffect(() => {
@@ -25,6 +25,7 @@ const UserPayments = () => {
                             <th>Sl</th>
                             <th>Service Name</th>
                             <th>Price</th>
+                            <th>Quantity</th>
                             <th>Payment</th>
                             <th>Delete</th>
                         </tr>
@@ -45,4 +46,4 @@ const UserPayments = () => {
     );
 };
 
-export default UserPayments;
+export default UserAddToCard;

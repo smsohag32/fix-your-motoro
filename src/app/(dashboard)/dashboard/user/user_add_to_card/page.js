@@ -1,11 +1,11 @@
-import UserPayments from '@/components/dashboard/UserDashboard/UserPayments';
+import UserAddToCard from '@/components/dashboard/UserDashboard/UserAddToCard';
 import React from 'react';
 
 const UserPaymentsPage = () => {
     return (
         <div>
             
-            <UserPayments/>
+            <UserAddToCard/>
         </div>
     );
 };

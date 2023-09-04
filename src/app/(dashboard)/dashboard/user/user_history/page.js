@@ -4,6 +4,7 @@ import React from 'react';
 const UserHostoryPage = () => {
     return (
         <div>
+            
            <UserHistory/>
         </div>
     );
