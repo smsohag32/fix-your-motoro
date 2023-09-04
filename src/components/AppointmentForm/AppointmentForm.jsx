@@ -1,13 +1,15 @@
 "use client";
 
-import React from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "react-hot-toast";
 import PageTitle from "../Shared/PageTitle/PageTitle";
 import axios from "axios";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const AppointmentForm = () => {
+  const form = useRef();
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
@@ -21,6 +23,17 @@ const AppointmentForm = () => {
     }
 
     // Send Email to user--------
+    try {
+      const response = await emailjs.sendForm(
+        "service_3kn5ji1",
+        "template_zvkyj0s",
+        form.current,
+        "1leqQsJkGshzPjw2s"
+      );
+      console.log("Email sent successfully!", response);
+    } catch (error) {
+      console.error("Email could not be sent:", error);
+    }
 
     // AppointForm to pdf file----------
   };
@@ -35,7 +48,11 @@ const AppointmentForm = () => {
         <h1 className="mb-8 text-2xl font-bold text-start md:text-center">
           Get Appointment For Best Services
         </h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form
+          ref={form}
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-4"
+        >
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             <div className="col-span-2 sm:col-span-1">
               <label htmlFor="fullName" className="block text-sm font-medium">
