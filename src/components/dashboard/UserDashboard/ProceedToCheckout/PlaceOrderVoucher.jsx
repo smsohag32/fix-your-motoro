@@ -28,7 +28,7 @@ const UserAddToCardTable = () => {
     const totalPayment = itemsTotal + vat;
 
     return (
-        <div className="max-w-3xl mx-auto mt-6">
+        <div className="max-w-3xl p-4 mx-auto mt-6 bg-white divide-gray-200 rounded-md">
             <div className="p-4 mb-6 border-b-2 border-gray-300">
                 <div className="flex justify-between mb-2">
                     <span className="font-bold">Quantity:</span>

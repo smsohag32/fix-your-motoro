@@ -4,11 +4,11 @@ import PlaceOrderVoucher from './PlaceOrderVoucher';
 
 const ProceedToCheckout = () => {
     return (
-        <div className='flex w-full md:mt-16'>
-            <div className='w-4/6'>
+        <div className='flex md:mt-16'>
+            <div className='w-4/6 md:pl-16'>
                 <ProceedToCheckoutFetch/>
             </div>
-            <div className='w-2/6 md:mt-28'>
+            <div className='w-2/6 md:mt-28 md:pr-16'>
                 <PlaceOrderVoucher/>
             </div>
         </div>
