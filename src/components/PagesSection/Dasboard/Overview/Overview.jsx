@@ -31,8 +31,6 @@ const Overview = () => {
       newCar
     );
 
-    console.log(res.data);
-
     if (res.data.insertedId) {
       closeModal();
       reset();
@@ -54,7 +52,7 @@ const Overview = () => {
       ) : (
         <section className="bg-white p-4 rounded shadow-md mb-4">
           <h2 className="text-lg font-semibold mb-2">Your Vehicles</h2>
-          <div className="min-h-[60vh] md:p-5 p-1">
+          <div className="min-h-[40vh] md:p-5 p-1">
             {carsData?.length > 0 ? (
               carsData?.map((item) => (
                 <div key={item._id} className="flex flex-col p-5 h-full">

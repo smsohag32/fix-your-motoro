@@ -1,14 +1,11 @@
-
-"use client";
 import React from "react";
-import { MdDashboard} from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import { FaHistory, FaUser, FaUsers } from "react-icons/fa";
 import { BiCreditCard } from "react-icons/bi";
 import { BsFillBoxFill } from "react-icons/bs";
 import NavLink from "@/components/Shared/Header/NavLink";
 
 const AdminLInk = () => {
-
   return (
     <ul className="pb-4 my-4 border-b border-gray-100">
       {/* dashboard section  */}
@@ -93,6 +90,6 @@ const AdminLInk = () => {
       </li>
     </ul>
   );
-}
+};
 
 export default AdminLInk;

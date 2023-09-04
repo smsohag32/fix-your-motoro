@@ -5,19 +5,24 @@ import "@/styles/expert.modules.css";
 import Link from "next/link";
 
 const ServiceSingleCard = ({ service }) => {
-  const { service_name, _id, service_image, service_description } =
-    service || {};
+  const {
+    service_name,
+    _id,
+    service_price,
+    service_image,
+    service_description,
+  } = service || {};
 
   return (
-   <div>
+    <div>
       <div className="flex items-center justify-center bg-gray-50">
-        <div className="">
+        <div className="relative">
           <div className="relative items-center justify-center overflow-hidden transition-shadow group hover:shadow-xl hover:shadow-black/30">
             <div className="h-72 w-96">
               <Image
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                 src={service_image ? service_image : ""}
-                alt=""
+                alt="service image"
                 width={384}
                 height={288}
               />
@@ -31,12 +36,13 @@ const ServiceSingleCard = ({ service }) => {
                 {service_description}
               </p>
               <Link href={`/services/${_id}`}>
-                <button className="primary-btn">
-                  View Details
-                </button>
+                <button className="primary-btn">View Details</button>
               </Link>
             </div>
           </div>
+          <p className="secondary-bg text-white p-1 block absolute top-2 right-2 font-medium">
+            {service_price}
+          </p>
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ const NewsModal = ({ isOpen, closeModal, article }) => {
           className=""
           width={400}
           height={300}
-          src={article.img}
+          src={article?.img}
           alt="news"
         />
         <p className="mt-4 text-2xl font-bold hover:text-[#f02801]">

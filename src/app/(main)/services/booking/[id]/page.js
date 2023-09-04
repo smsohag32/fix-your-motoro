@@ -6,8 +6,11 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const Page = ({ params }) => {
+  const form = useRef();
   const { id } = params;
   const { user } = useAuth();
   const router = useRouter();
@@ -43,7 +46,7 @@ const Page = ({ params }) => {
       service_category: service?.service_category,
       service_image: service?.service_image,
       service_name: service?.service_name,
-      status: 'pending',
+      status: "pending",
       ...data,
     };
 
@@ -62,10 +65,25 @@ const Page = ({ params }) => {
     const result = await response.json();
     if (result?.bookingDate) {
       router.replace("/dashboard/user/upcomming_appointment");
+      // Send Email to user--------
+      try {
+        const response = await emailjs.sendForm(
+          "service_3kn5ji1",
+          "template_zvkyj0s",
+          form.current,
+          "1leqQsJkGshzPjw2s"
+        );
+        console.log("Email sent successfully!", response);
+      } catch (error) {
+        console.error("Email could not be sent:", error);
+      }
+
+      // AppointForm to pdf file----------
       reset();
-      toast.success("Work order appointment success");
+      toast.success("Your appointment has successfully booked");
     }
   };
+
   if (loading) {
     return <Spinner />;
   }
@@ -73,7 +91,11 @@ const Page = ({ params }) => {
     <>
       <div className="mt-32 max-w-4xl mx-auto p-8">
         <h1 className="text-2xl font-bold mb-4">Work Order Request</h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form
+          ref={form}
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-4"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="col-span-2 sm:col-span-1">
               <label htmlFor="firstName" className="block text-sm font-medium">

@@ -13,7 +13,7 @@ const useCartProducts = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axios.get(
-        `https://fya-backend.vercel.app/api/v1/auth/users/${user?.email}`
+        `https://fya-backend.vercel.app/api/v1/auth/carts/user/${user?.email}`
       );
       return res.data;
     },

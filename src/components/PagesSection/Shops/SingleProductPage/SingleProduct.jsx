@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 const SingleProduct = ({ id }) => {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -44,7 +45,13 @@ const SingleProduct = ({ id }) => {
     _id,
   } = product || {};
 
-  const handleProductAddToCart = async() => {
+  const handleProductAddToCart = async () => {
+    
+    if (isAddedToCart) {
+      toast.error("Product is already in the cart");
+      return;
+    }
+
     const cartData = {
       userName: user?.displayName,
       userEmail: user?.email,
@@ -53,26 +60,25 @@ const SingleProduct = ({ id }) => {
       productImage: image,
       description,
       quantity: 1,
-      price
-    }
-    try {
-      // Check if the product is already in the cart
-      const response = await axios.get(`/api/shop/cart/${_id}`);
-  
-      if (response.status === 200 && response.data && response.data.exists) {
-        toast.warning("Product is already in the cart");
-        return;
-      } else {
-        const addToCartResponse = await axios.post("/api/shop/cart", cartData);
-        if (addToCartResponse.status === 200) {
-          toast.success("Product added to cart successfully");
-        }
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+      price,
+    };
 
-  }
+    axios
+      .post("https://fya-backend.vercel.app/api/v1/auth/carts", cartData)
+      .then((response) => {
+        if (response.status === 200) {
+          setIsAddedToCart(true);
+          toast.success("Product added to cart successfully");
+        } else {
+          // Handle other status codes if needed
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding product to cart:", error);
+        toast.error("Failed to add product to cart");
+      });
+  };
+
 
   if (loading) {
     return <Spinner />;
@@ -117,10 +123,12 @@ const SingleProduct = ({ id }) => {
 
               <button
                 onClick={handleProductAddToCart}
-                className="primary-btn"
+                className={`primary-btn ${isAddedToCart ? "disabled-btn" : ""}`}
+                disabled={isAddedToCart}
               >
-                Add Card
+                {isAddedToCart ? "Added to Cart" : "Add to Cart"}
               </button>
+
             </div>
           </div>
         </div>
