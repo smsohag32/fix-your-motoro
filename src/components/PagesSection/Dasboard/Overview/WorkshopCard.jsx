@@ -14,7 +14,7 @@ const WorkshopCard = (props) => {
           <Image
             className="h-full w-full rounded-sm"
             src={image}
-            alt=""
+            alt="workshop image"
             width={120}
             height={120}
           />

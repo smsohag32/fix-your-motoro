@@ -14,7 +14,7 @@ const SingleService = ({ service }) => {
               <Image
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                 src={service_image ? service_image : ""}
-                alt=""
+                alt="service image"
                 width={384}
                 height={288}
               />
@@ -28,9 +28,7 @@ const SingleService = ({ service }) => {
                 {service_description}
               </p>
               <Link href={`/services/${_id}`}>
-                <button className="primary-btn">
-                  View Details
-                </button>
+                <button className="primary-btn">View Details</button>
               </Link>
             </div>
           </div>

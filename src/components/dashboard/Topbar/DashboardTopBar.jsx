@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import SearchContext from "@/context/SearchContext";
-
+import userLogo from "@/assets/userLogo.png";
 const DashboardTopBar = () => {
   const { user } = useAuth();
   const router = useRouter();
@@ -20,6 +20,9 @@ const DashboardTopBar = () => {
   const handleSearch = async () => {
     if (!text) {
       return;
+    }
+    if (!(pathName === "/dashboard/searchresult")) {
+      router.push("/dashboard/search_result");
     }
     setSearchText(text);
     try {
@@ -41,39 +44,8 @@ const DashboardTopBar = () => {
   };
 
   return (
-    <div className="h-16 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6 hidden md:flex justify-between">
-      <div className="flex-1 flex gap-5">
-        <div className="relative flex-1">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            className="block w-full bg-gray-200 p-2 pl-10 text-sm text-gray-900 outline-none rounded-lg"
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Search here..."
-          />
-        </div>
-        <button onClick={() => handleSearch()} className="primary-btn">
-          search
-        </button>
-      </div>
-      <div className="flex gap-2 items-center">
+    <div className="h-16 md:ml-60 bg-white shadow-sm gap-10 md:gap-16 items-center md:px-12 px-6 hidden md:flex justify-between">
+      <div className="flex gap-2 justify-end w-full items-center">
         <span>
           <Link
             href="/dasboard/notification"
@@ -87,15 +59,15 @@ const DashboardTopBar = () => {
           </Link>
         </span>
         <div className="flex gap-5 items-center ">
-          <div className="">
+          <Link href="/" className="">
             <Image
               className="w-8 h-8 rounded-full ring-2 ring-white"
-              src={user?.photoURL}
+              src={user?.photoURL || userLogo}
               alt="user"
               width={40}
               height={40}
             />
-          </div>
+          </Link>
           <div>
             <p className="font-semibold text-sm">{user?.displayName}</p>
           </div>

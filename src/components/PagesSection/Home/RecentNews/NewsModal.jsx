@@ -7,12 +7,12 @@ import { Toaster, toast } from "react-hot-toast";
 const NewsModal = ({ isOpen, closeModal, article }) => {
   const customStyles = {
     content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
     },
   };
   return (
@@ -23,7 +23,7 @@ const NewsModal = ({ isOpen, closeModal, article }) => {
       style={customStyles}
     >
       <div className="modal-content mt--20">
-        <Image width={290} height={390} src={article.image} alt="news" />
+        <Image width={290} height={390} src={article?.image} alt="news" />
         <h1>Motor Servicing News</h1>
         <h2 className="mb-12 text-3xl">{article.title}</h2>
         <p className="mt-12">News Details: {article.description}</p>
@@ -33,7 +33,7 @@ const NewsModal = ({ isOpen, closeModal, article }) => {
       <button onClick={closeModal} className="primary-btn">
         Close
       </button>
-      <Toaster/>
+      <Toaster />
     </Modal>
   );
 };

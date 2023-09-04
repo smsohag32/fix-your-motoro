@@ -9,7 +9,7 @@ const ServiceSingleCard = ({ service }) => {
     service || {};
 
   return (
-   <div>
+    <div>
       <div className="flex items-center justify-center bg-gray-50">
         <div className="">
           <div className="relative items-center justify-center overflow-hidden transition-shadow group hover:shadow-xl hover:shadow-black/30">
@@ -17,7 +17,7 @@ const ServiceSingleCard = ({ service }) => {
               <Image
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                 src={service_image ? service_image : ""}
-                alt=""
+                alt="service image"
                 width={384}
                 height={288}
               />
@@ -31,9 +31,7 @@ const ServiceSingleCard = ({ service }) => {
                 {service_description}
               </p>
               <Link href={`/services/${_id}`}>
-                <button className="primary-btn">
-                  View Details
-                </button>
+                <button className="primary-btn">View Details</button>
               </Link>
             </div>
           </div>

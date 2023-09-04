@@ -11,7 +11,7 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
         <h1>Car Care Tips</h1>
         <h2 className="mb-12 text-3xl">{tip.title}</h2>
 
-        <Image src={tip.image} width={350} height={350} alt="news" />
+        <Image src={tip?.image} width={350} height={350} alt="news" />
         <p className="mt-12 text-black-800">
           Tips Details: <br />
           {tip.description}
@@ -20,10 +20,7 @@ const NewsModal = ({ isOpen, closeModal, tip }) => {
         <p>Publish date: {tip.date}</p>
         {/* Add more information */}
       </div>
-      <button
-        onClick={closeModal}
-        className="text-3xl btn-close  mt-5 "
-      >
+      <button onClick={closeModal} className="text-3xl btn-close  mt-5 ">
         Close
       </button>
     </Modal>

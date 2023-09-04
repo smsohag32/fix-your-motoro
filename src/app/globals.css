@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 
 body {
@@ -57,7 +55,7 @@ body {
 }
 
 .leaflet-container{
-  @apply w-full h-96 z-10
+  @apply max-w-md mx-auto h-72 z-10
 }
 
 .primary-input {
