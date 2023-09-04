@@ -5,61 +5,63 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-  @apply bg-[#ffff]
+  @apply bg-[#ffff];
 }
 
 .default-container {
-  @apply w-full max-w-[1280px] mx-auto px-5
+  @apply w-full max-w-[1280px] mx-auto px-5;
 }
 
 .primary-text {
-  @apply text-[#69d94f]
+  @apply text-[#69d94f];
 }
 .primary-bg {
-  @apply bg-[#69d94f]
+  @apply bg-[#69d94f];
+}
+
+.secondary-bg {
+  @apply bg-[#379a22];
 }
 
 .secondary-text {
-  @apply text-gray-700 text-5xl font-bold my-8
+  @apply text-gray-700 text-5xl font-bold my-8;
 }
 
 .primary-btn {
-  @apply px-3 py-2 rounded-lg text-center transition-all duration-500 font-semibold bg-[#69d94f] text-white hover:bg-[#379a22]
+  @apply px-3 py-2 rounded-lg text-center transition-all duration-500 font-semibold bg-[#69d94f] text-white hover:bg-[#379a22];
 }
 
-.delete-btn{
-  @apply px-3 py-2 text-center transition-all duration-500 font-semibold bg-red-800 text-white hover:bg-[#379a22] rounded-lg
+.delete-btn {
+  @apply px-3 py-2 text-center transition-all duration-500 font-semibold bg-red-800 text-white hover:bg-[#379a22] rounded-lg;
 }
 
-.top-btn{
-  @apply pr-5 md:ps-16 py-2 text-center font-semibold bg-[#379a22] text-white hover:bg-[#379a22]
+.top-btn {
+  @apply pr-5 md:ps-16 py-2 text-center font-semibold bg-[#379a22] text-white hover:bg-[#379a22];
 }
 
-.outline-btn{
-  @apply px-5 hover:bg-[#69d94f] hover:text-white transition-all duration-500 transform py-3 border-[#69d94f] border-2 font-bold  tracking-widest
+.outline-btn {
+  @apply px-5 hover:bg-[#69d94f] hover:text-white transition-all duration-500 transform py-3 border-[#69d94f] border-2 font-bold  tracking-widest;
 }
 
-.primary-border{
-  @apply border-[#69d94f] border-2
+.primary-border {
+  @apply border-[#69d94f] border-2;
 }
-.hover-border{
-  @apply hover:border-[#69d94f]
+.hover-border {
+  @apply hover:border-[#69d94f];
 }
-.secondary-border{
-  @apply border-gray-400 border
+.secondary-border {
+  @apply border-gray-400 border;
 }
 
-
-.primary-shadow{
+.primary-shadow {
   box-shadow: 0px 4px 6px rgba(240, 40, 1, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
 }
 
-.leaflet-container{
-  @apply w-full h-96 z-10
+.leaflet-container {
+  @apply w-full h-96 z-10;
 }
 
 .primary-input {
-  @apply w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2
+  @apply w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2;
 }
