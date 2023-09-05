@@ -7,7 +7,6 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-// message
 import useAuth from "@/hooks/useAuth";
 
 const WorkShopDetail = ({ params }) => {
@@ -18,8 +17,7 @@ const WorkShopDetail = ({ params }) => {
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
   const notify = () => toast("Booking confirmed..");
-//start  message
-const { user } = useAuth();
+  const { user } = useAuth();
 
 
   useEffect(() => {
@@ -53,7 +51,6 @@ const { user } = useAuth();
       ...data,
     };
 
-
     const response = await axios.post(
       "https://fya-backend.vercel.app/api/v1/auth/orders", serviceData);
     setShowBookingForm(false)
@@ -61,9 +58,6 @@ const { user } = useAuth();
     reset();
     notify();
   };
-
-
-  console.log(product);
 
    if (loading) {
      return <MidSpinner />; 
