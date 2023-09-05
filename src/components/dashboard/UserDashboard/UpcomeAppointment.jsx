@@ -9,6 +9,7 @@ import OrderContent from "./OrderContent";
 
 const UpcomeAppointment = () => {
   const { user, loading } = useAuth();
+
   const { data: workOrder, isLoading: wLoading } = useQuery({
     queryKey: ["workorder"],
     enabled: !loading,
@@ -33,8 +34,8 @@ const UpcomeAppointment = () => {
       </div>
       <div className="grid grid-cols-1 gap-10">
         {workOrder?.length > 0 ? (
-          workOrder.map((order) => (
-            <OrderContent key={order?._id} order={order} />
+          workOrder.map((order, index) => (
+            <OrderContent key={index} order={order} />
           ))
         ) : (
           <EmptyState

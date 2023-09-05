@@ -95,7 +95,7 @@ const CardSlider = ({ items, loading, workshops }) => {
             workshops.map((item) => (
               <SwiperSlide
                 key={item._id}
-                onClick={() => router.push(`/workshops/${item?._id}`)}
+                onClick={() => router.push(`/workshop/${item?._id}`)}
               >
                 <div className="cursor-pointer flex flex-col border border-gray-300 ">
                   <div className="relative">

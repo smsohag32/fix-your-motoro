@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 body {
   @apply bg-[#ffff];
@@ -58,8 +56,8 @@ body {
   box-shadow: 0px 4px 6px rgba(240, 40, 1, 0.1), 0px 1px 1px rgba(0, 0, 0, 0.06);
 }
 
-.leaflet-container {
-  @apply w-full h-96 z-10;
+.leaflet-container{
+  @apply max-w-md mx-auto h-72 z-10
 }
 
 .primary-input {

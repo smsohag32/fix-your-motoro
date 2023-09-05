@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import StarRating from "../../Home/SuccessReviews/StarRating";
 
-const  WorkshopDetails = ({ isOpen, closeModal, workshop }) => {
+const WorkshopDetails = ({ isOpen, closeModal, workshop }) => {
   const [products, setProducts] = useState([]);
   const [pLoading, setPLoading] = useState(false);
   console.log(workshop);
@@ -26,7 +26,8 @@ const  WorkshopDetails = ({ isOpen, closeModal, workshop }) => {
     };
     fetchData();
   }, []);
-  const {name,image,description,email,workshopCode,address,rating } =workshop
+  const { name, image, description, email, workshopCode, address, rating } =
+    workshop;
   return (
     <Modal
       isOpen={isOpen}
@@ -34,22 +35,18 @@ const  WorkshopDetails = ({ isOpen, closeModal, workshop }) => {
       contentLabel="workshop Modal"
     >
       <div className="modal-content mt-20">
-        
-       
-        <Image width={290}height={390} src={image} alt="workshop" />
+        <Image width={290} height={390} src={image} alt="workshop" />
         <h2 className="name-text primary-text mb-12 text-3xl">{name}</h2>
         <p className="mt-12">workshop Details: {description}</p>
         <p className="mt-12">Code: {workshopCode}</p>
         <p>Email: {email}</p>
         <p className="">Address: {address}</p>
-        {/* <p className="">Rating: {rating}</p>
-         */}
-          <div className="">
-                    <div className="flex mr-2">
-                      <StarRating rating={rating} />
-                      <p className="ml-1">{rating}</p>
-                    </div>
-                  </div>
+        <div className="">
+          <div className="flex mr-2">
+            <StarRating rating={rating} />
+            <p className="ml-1">{rating}</p>
+          </div>
+        </div>
       </div>
       <div className="mt-8 pb-8">
         <SectionTitle

@@ -22,7 +22,7 @@ const ServiceSingleCard = ({ service }) => {
               <Image
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
                 src={service_image ? service_image : ""}
-                alt=""
+                alt="service image"
                 width={384}
                 height={288}
               />

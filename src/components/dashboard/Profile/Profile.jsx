@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -110,5 +110,4 @@ const Profile = () => {
   );
 };
 
-export default Profile ;
-
+export default Profile;

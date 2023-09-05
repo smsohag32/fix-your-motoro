@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 
-import '@/components/PagesSection/Dasboard/UpComeAppt/tracking.modules.css'
-import StepOne from '@/components/PagesSection/Dasboard/UpComeAppt/StepOne'
-import StepTwo from '@/components/PagesSection/Dasboard/UpComeAppt/StepTwo'
+import "@/components/PagesSection/Dasboard/UpComeAppt/tracking.modules.css";
+import StepOne from "@/components/PagesSection/Dasboard/UpComeAppt/StepOne";
+import StepTwo from "@/components/PagesSection/Dasboard/UpComeAppt/StepTwo";
 
-const Steps = ({order, wLoading}) => {
+const Steps = ({ order }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [stepOneCompleted, setStepOneCompleted] = useState(true);
   const [stepTwoCompleted, setStepTwoCompleted] = useState(false);
- 
+
   // handle step next step
   const handleNext = () => {
     setCurrentStep((prevStep) => prevStep + 1);
@@ -18,35 +18,26 @@ const Steps = ({order, wLoading}) => {
 
   const handleStepOneComplete = () => {
     setStepTwoCompleted(true);
-    setStepOneCompleted(false)
+    setStepOneCompleted(false);
     handleNext();
   };
   const handleStepTwoComplete = () => {
-    setCurrentStep(0)
+    setCurrentStep(0);
     setStepTwoCompleted(false);
-    setStepOneCompleted(true)
+    setStepOneCompleted(true);
   };
+
   const steps = [
     {
       title: "Appointment Details",
       completed: stepOneCompleted,
-      component: (
-        <StepOne
-          onNext={handleStepOneComplete}
-          order={order}
-        />
-      ),
+      component: <StepOne onNext={handleStepOneComplete} order={order} />,
     },
     {
       title: "Apointment Status",
       completed: stepTwoCompleted,
-      component: (
-        <StepTwo 
-        order={order}
-          onNext={handleStepTwoComplete}
-        />
-      ),
-    }
+      component: <StepTwo order={order} onNext={handleStepTwoComplete} />,
+    },
   ];
 
   return (

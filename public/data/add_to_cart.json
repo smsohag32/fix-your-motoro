@@ -1,0 +1,62 @@
+[
+    {
+        "service_id": "1",
+        "service_name": "Oil Change",
+        "quantity": 1,
+        "service_price": 39.99
+    },
+    {
+        "service_id": "2",
+        "service_name": "Tire Rotation",
+        "quantity": 4,
+        "service_price": 19.99
+    },
+    {
+        "service_id": "3",
+        "service_name": "Brake Inspection",
+        "quantity": 1,
+        "service_price": 49.99
+    },
+    {
+        "service_id": "4",
+        "service_name": "Engine Tune-up",
+        "quantity": 2,
+        "service_price": 89.99
+    },
+    {
+        "service_id": "5",
+        "service_name": "Wheel Alignment",
+        "quantity": 1,
+        "service_price": 59.99
+    },
+    {
+        "service_id": "6",
+        "service_name": "Air Conditioning Service",
+        "quantity": 1,
+        "service_price": 69.99
+    },
+    {
+        "service_id": "7",
+        "service_name": "Transmission Flush",
+        "quantity": 1,
+        "service_price": 79.99
+    },
+    {
+        "service_id": "8",
+        "service_name": "Battery Replacement",
+        "quantity": 1,
+        "service_price": 99.99
+    },
+    {
+        "service_id": "9",
+        "service_name": "Spark Plug Replacement",
+        "quantity": 4,
+        "service_price": 12.99
+    },
+    {
+        "service_id": "10",
+        "service_name": "Headlight Bulb Replacement",
+        "quantity": 2,
+        "service_price": 14.99
+    }
+]
