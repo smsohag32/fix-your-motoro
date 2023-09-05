@@ -28,7 +28,7 @@ const Sidebar = () => {
   return (
     <div>
       {/* Technician side nav */}
-      <div className="">
+      <div className="mt-16">
         <Disclosure as="nav">
           <Disclosure.Button className="absolute inline-flex items-center justify-center p-2 text-gray-800 rounded-md top-4 right-4 peer hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white group">
             <GiHamburgerMenu
@@ -38,14 +38,6 @@ const Sidebar = () => {
           </Disclosure.Button>
           <div className="fixed top-0 z-20 w-full h-screen p-6 overflow-y-scroll duration-200 ease-out delay-150 bg-white -left-full lg:left-0 lg:w-72 peer-focus:left-0 peer:transition">
             <div className="flex flex-col justify-start item-center">
-              <Image
-                className="w-full pb-4 text-base font-bold text-center text-blue-900 cursor-pointer"
-                src="https://i.ibb.co/Tm3vXhj/logoFix.jpg"
-                alt="logo"
-                width="350"
-                height="300"
-              />
-              {/* name Dynamic */}
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 uppercase border-b border-gray-100 cursor-pointer">
                 {userInfo?.user?.role ? userInfo?.user?.role : "FYT"}
               </h1>
@@ -71,9 +63,7 @@ const Sidebar = () => {
                   <div className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 border border-gray-200 rounded-md cursor-pointer hover:bg-[#69d94f] group hover:shadow-lg ">
                     <FaHome className="text-2xl text-gray-600 group-hover:text-white " />
                     <h3 className="text-base text-gray-800 fnt-semibold group-hover:text-white">
-                      <Link href="/">
-                        Home
-                      </Link>
+                      <Link href="/">Home</Link>
                     </h3>
                   </div>
                 </div>
