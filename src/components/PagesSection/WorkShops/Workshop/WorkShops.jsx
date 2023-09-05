@@ -1,30 +1,29 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import WorkshopFilter from "../WorkshopFilter/WorkshopFilter";
 import SingleWorkshop from "../SingleWorkShop/SingleWorkshop";
-import Spinner from "@/components/Spinners/Spinner";
 import SearchContext from "@/context/SearchContext";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 import axios from "axios";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import WorkshopCategory from "./WorkshopCategory";
+import PaginationContent from "./PaginationContent";
 
 const WorkShops = () => {
   const [workshopsData, setWorkshopsData] = useState([]);
-  const [filteredWorkshopsData, setFilteredWorkshopsData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const { searchData, setSearchText, searchText } = useContext(SearchContext);
+  const [loading, setLoading] = useState(true);
+  const { setSearchText, searchText } = useContext(SearchContext);
   const [districtText, setDistrictText] = useState("");
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
-      setLoading(true);
       try {
         const data = await axios(
           `https://fya-backend.vercel.app/api/v1/auth/workshops/search/division?location=${searchText}`
         );
         setWorkshopsData(data.data);
         setLoading(false);
+        setDistrictText("");
       } catch (error) {
         setLoading(false);
         console.error("Error fetching JSON data:", error);
@@ -35,27 +34,22 @@ const WorkShops = () => {
   }, [searchText]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const data = await axios(
-          `https://fya-backend.vercel.app/api/v1/auth/workshops/search/division?location=${districtText}`
-        );
-        setWorkshopsData(data.data);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        console.error("Error fetching JSON data:", error);
-      } finally {
+    if (districtText?.length > 0) {
+      setSearchText(districtText);
+      if (districtText === searchText) {
+        setDistrictText("");
       }
-    };
-    fetchData();
-  }, [districtText]);
+    }
+  }, [districtText, searchText, setSearchText]);
 
   return (
-    <>
+    <div className="min-h-screen">
       <div>
-        <WorkshopCategory setDistrictText={setDistrictText} />
+        <WorkshopCategory
+          setSearchText={setSearchText}
+          setDistrictText={setDistrictText}
+          districtText={districtText}
+        />
       </div>
       {loading ? (
         <MidSpinner />
@@ -73,13 +67,17 @@ const WorkShops = () => {
           ) : (
             <EmptyState
               label={"search again"}
-              address="/workshops"
-              message={"No workshop available"}
+              address="/workshop"
+              message={`No workshop available ${searchText}`}
             ></EmptyState>
           )}
         </div>
       )}
-    </>
+
+      <div className="text-center my-8">
+        <PaginationContent />
+      </div>
+    </div>
   );
 };
 
