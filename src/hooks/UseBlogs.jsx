@@ -5,7 +5,7 @@ import axios from "axios";
 const useBlogs = () => {
   const queryClient = useQueryClient();
 
-  const { data: blogs, isLoading: bLoading } = useQuery({
+  const { data: blogs, refetch, isLoading: bLoading } = useQuery({
     queryKey: ["blogs"],
     queryFn: async () => {
       const res = await axios.get(
@@ -15,12 +15,9 @@ const useBlogs = () => {
     },
   });
 
-  const refetchBlogs = () => {
-    // Manually trigger a refetch of the blogs query
-    queryClient.invalidateQueries(["blogs"]);
-  };
 
-  return { blogs, bLoading, refetchBlogs };
+
+  return { blogs, bLoading, refetch };
 };
 
 export default useBlogs;

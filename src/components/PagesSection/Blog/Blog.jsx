@@ -1,23 +1,52 @@
 "use client";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaRegComment } from "react-icons/fa";
 import { BsArrowRightCircle } from "react-icons/bs";
-import { FiMoreHorizontal } from "react-icons/fi";
 import { PiHandsClappingBold } from "react-icons/pi";
 import useBlogs from "@/hooks/UseBlogs";
 import { useRouter } from "next/navigation";
 import MidSpinner from "@/components/Spinners/MidSpinner";
+import useAuth from "@/hooks/useAuth";
 
 const Blog = () => {
-  const { blogs, bLoading, refetchBlogs } = useBlogs();
-
+  const { blogs, bLoading, refetch } = useBlogs();
+  // console.log(blogs)
   const router = useRouter();
+  const { user } = useAuth();
+  // console.log(user)
 
-  const handleLike = ()=> {
-    console.log("likessssss")
-  }
+  const handleLike = (blog) => {
+    const likeData = {
+      user_photo:user?.photoURL,
+      user_email: user?.email,
+      user_name: user?.displayName,
+    };
+    fetch(`https://fya-backend.vercel.app/api/v1/auth/blogs/like/${blog?._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(likeData),
+    })
+    .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // console.log("Blog's like status updated successfully:", data);
+        refetch();
+      })
+      .catch((error) => {
+        console.error("Error updating workshop status:", error);
+      });
+  };
+
+  const handleComment = (blog) => {
+    console.log("commentssssssss");
+  };
 
    if (bLoading) {
      return (
@@ -70,19 +99,19 @@ const Blog = () => {
                 <p className="my-5">10 min read . {blog.date}</p>
                 <div className=" flex items-center justify-between mb-3">
                   <div className="flex items-center gap-1">
-                    <button className="text-3xl" onClick={handleLike}>
+                    <button className="text-3xl" onClick={() =>handleLike(blog)}>
                       <PiHandsClappingBold />
                     </button>
-                    <p>{blog?.likes}</p>
+                    <span>
+                      {blog?.likes?.length > 0 ? blog?.likes?.length : ""}
+                    </span>
                   </div>
                   <div className=" text-3xl flex items-center gap-3 ">
-                    {/* <CiBookmarkPlus /> */}
-                    <button onClick={() => console.log(`hello${blog?.title}`)}>
+                    <button onClick={() =>handleComment(blog)}>
                       <FaRegComment />
                     </button>
                     <button
-                      className="primary-text "
-                      // className="primary-btn"
+                      className="primary-text"
                       onClick={() => router.push(`/blog/${blog?._id}`)}
                     >
                       <BsArrowRightCircle />
