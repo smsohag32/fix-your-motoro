@@ -8,6 +8,8 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { jsPDF } from "jspdf";
+import "jspdf-autotable";
 
 const Page = ({ params }) => {
   const form = useRef();
@@ -20,6 +22,8 @@ const Page = ({ params }) => {
 
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [bookingData, setBookingData] = useState({});
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -50,6 +54,8 @@ const Page = ({ params }) => {
       ...data,
     };
 
+    setBookingData(serviceData);
+
     // console.log(serviceData)
 
     const response = await fetch(
@@ -78,13 +84,31 @@ const Page = ({ params }) => {
         console.error("Email could not be sent:", error);
       }
 
-      // AppointForm to pdf file----------
-      // Starting Part--------------
+      handlePrint();
 
-      // End Part------------
       reset();
-      toast.success("Your appointment has successfully booked");
+      toast.success("Your appointment has been successfully booked");
     }
+  };
+
+  // Print Your Booking info into PDF Format-------------------
+  const handlePrint = () => {
+    const doc = new jsPDF();
+    console.log("bookingData", bookingData);
+
+    const data = [Object.values(bookingData)];
+
+    const headers = Object.keys(bookingData);
+    console.log("data", data);
+    console.log("headers", headers);
+
+    doc.autoTable({
+      head: [headers],
+      body: data,
+    });
+
+    doc.save("BookingInfo.pdf");
+    toast.success("Your booking information has been downloaded");
   };
 
   if (loading) {
@@ -256,6 +280,7 @@ const Page = ({ params }) => {
             <Toaster />
             <button
               type="button"
+              onClick={handlePrint}
               className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600 ml-2 md:ml-0"
             >
               Print

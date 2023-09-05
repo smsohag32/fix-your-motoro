@@ -17,7 +17,7 @@ function WorkshopAgentLink() {
       <ul className="pb-4 my-4 border-b border-gray-100">
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
           <MdDashboard className="w-8 h-8  group-hover:text-[#69d94f]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
+          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
             <NavLink
               exact={"/dashboard" == "/dashboard"}
               activeClassName={"primary-text"}
@@ -29,7 +29,7 @@ function WorkshopAgentLink() {
         </li>
 
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <LuListChecks className="w-8 h-8  group-hover:text-[#f02801]" />
+          <LuListChecks className="w-8 h-8  group-hover:text-[#69d94f]" />
           <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
             <NavLink
               exact={"/dashboard/workshop/appointments" == "/dashboard"}
