@@ -13,7 +13,9 @@ const SingleProduct = ({ id }) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://fya-backend.vercel.app/api/v1/auth/products/${id}`);
+        const response = await fetch(
+          `https://fya-backend.vercel.app/api/v1/auth/products/${id}`
+        );
         const data = await response.json();
         setProduct(data);
         setLoading(false);
@@ -73,11 +75,11 @@ const SingleProduct = ({ id }) => {
                 </p>
                 <p className="md:pl-10">
                   :
-                  <p className="md:inline md:pl-10">
+                  <span className="md:inline md:pl-10">
                     <span className="bg-gray-400 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
                       {price}
                     </span>
-                  </p>
+                  </span>
                 </p>
               </div>
 

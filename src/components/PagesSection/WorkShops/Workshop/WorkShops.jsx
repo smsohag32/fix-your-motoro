@@ -13,7 +13,9 @@ const WorkShops = () => {
   const [workshopsData, setWorkshopsData] = useState([]);
   const [filteredWorkshopsData, setFilteredWorkshopsData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { searchData, text, searchText } = useContext(SearchContext);
+  const { searchData, setSearchText, searchText } = useContext(SearchContext);
+  const [districtText, setDistrictText] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -32,25 +34,45 @@ const WorkShops = () => {
     fetchData();
   }, [searchText]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const data = await axios(
+          `https://fya-backend.vercel.app/api/v1/auth/workshops/search/division?location=${districtText}`
+        );
+        setWorkshopsData(data.data);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        console.error("Error fetching JSON data:", error);
+      } finally {
+      }
+    };
+    fetchData();
+  }, [districtText]);
+
   return (
     <>
       <div>
-        <WorkshopCategory />
+        <WorkshopCategory setDistrictText={setDistrictText} />
       </div>
       {loading ? (
         <MidSpinner />
       ) : (
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+        <div className="my-8">
           {workshopsData.length > 0 ? (
-            workshopsData.map((workshop) => (
-              <SingleWorkshop
-                key={workshop._id}
-                workshopsData={workshop}
-              ></SingleWorkshop>
-            ))
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+              {workshopsData.map((workshop) => (
+                <SingleWorkshop
+                  key={workshop._id}
+                  workshopsData={workshop}
+                ></SingleWorkshop>
+              ))}
+            </div>
           ) : (
             <EmptyState
-              label={""}
+              label={"search again"}
               address="/workshops"
               message={"No workshop available"}
             ></EmptyState>
