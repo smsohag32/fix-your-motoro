@@ -4,7 +4,6 @@ import React from 'react';
 const UserPaymentsPage = () => {
     return (
         <div>
-            
             <UserAddToCard/>
         </div>
     );

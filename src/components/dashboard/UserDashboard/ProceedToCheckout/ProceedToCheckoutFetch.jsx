@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import UserPaymentsTable from './UserAddToCardTable';
-import Link from 'next/link';
+import ProceedToCheckoutTable from './ProceedToCheckoutTable';
 
-const UserAddToCard = () => {
+const ProceedToCheckoutFetch = () => {
     const [cart, setcart] = useState([]);
 
     useEffect(() => {
@@ -16,9 +15,11 @@ const UserAddToCard = () => {
                 console.error("Error fetching data:", error);
             });
     }, []);
+
+
     return (
-        <div className='md:mt-16'>
-            <table className="mx-auto md:w-3/5">
+        <div className=''>
+            <table className="">
                 <thead>
                     <tr className='text-[20px] text-white primary-bg'>
                         <th className="px-6 py-3 leading-4 tracking-wider text-left ">
@@ -46,24 +47,17 @@ const UserAddToCard = () => {
                 <tbody className="bg-white divide-y divide-gray-200">
                     {
                         cart.map((singleClass, i) => (
-                            <UserPaymentsTable
+                            <ProceedToCheckoutTable
                                 key={singleClass.service_id}
                                 singleClass={singleClass}
                                 i={i}
                             />
                         ))}
                 </tbody>
-                <div className="flex justify-end mt-4">
-                    <Link href="/dashboard/user/user_add_to_card/proceed_to_checkout"
-                        className="primary-btn"
-                    >
-                        PROCEED TO CHECKOUT
-                    </Link>
-                </div>
             </table>
 
         </div>
     );
 };
 
-export default UserAddToCard;
+export default ProceedToCheckoutFetch;
