@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState } from "react";
 import NewsModal from "./NewsModal";
@@ -30,9 +29,8 @@ function RecentNews() {
             className="flex flex-col items-center pb-5 transition-all duration-500 transform cursor-pointer primary-shadow hover:scale-95"
             onClick={() => openModal(article)}
           >
-
             <Image
-              src={article.image}
+              src={article?.image}
               alt="news"
               width={280}
               className="object-cover w-full h-44"

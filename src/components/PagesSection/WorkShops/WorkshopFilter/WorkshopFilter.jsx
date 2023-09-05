@@ -10,12 +10,15 @@ const WorkshopFilter = () => {
   };
 
   return (
-    <div >
-      
+    <div>
       <div className="justify-center">
-      <h1>Search Workshops</h1>
+        <h1>Search Workshops</h1>
         <label htmlFor="location">Select Location:</label>
-        <select id="location" value={selectedLocation} onChange={handleLocationChange}>
+        <select
+          id="location"
+          value={selectedLocation}
+          onChange={handleLocationChange}
+        >
           <option value="">Select</option>
           <option value="Khulna">Khulna</option>
           <option value="Chittagong">Chittagong</option>

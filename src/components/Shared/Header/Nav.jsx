@@ -5,21 +5,20 @@ import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 import navLinkData from "@/utils/data/navLinkData";
 import Image from "next/image";
-import logo from "@/assets/logoFix.jpeg";
 import userLogo from "@/assets/userlogo.png";
-import NavLink from "./NavLink";
 import useAuth from "@/hooks/useAuth";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState();
   const router = useRouter();
   const { user, logout, loading } = useAuth();
-  const { uid, displayName, photoURL } = user || {};
+  const { uid, displayName } = user || {};
+  const pathName = usePathname();
   const handleLogOut = async () => {
     await logout();
     router.push("/");
   };
-  const [isOpen, setIsOpen] = useState();
 
   return (
     <nav className="flex items-center justify-between default-container">
@@ -49,13 +48,14 @@ const Nav = () => {
       >
         {navLinkData.map((link, index) => (
           <li key={index}>
-            <NavLink
-              exact={link.path == "/"}
-              activeClassName={"primary-text"}
+            <Link
+              className={
+                pathName === link?.path ? "primary-text" : "text-white"
+              }
               href={link.path}
             >
               {link.label}
-            </NavLink>
+            </Link>
           </li>
         ))}
       </ul>
@@ -63,29 +63,28 @@ const Nav = () => {
         {loading ? (
           <Image
             src={userLogo}
-            alt=""
+            alt="user logo"
             width={40}
             height={40}
             className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#69d94f] animate-spin"
           />
         ) : (
           <>
-            {" "}
             {uid ? (
-              <span onClick={() => router.replace("/dashboard")}>
+              <Link href="/dashboard">
                 <Image
-                  src={photoURL || userLogo}
-                  alt=""
+                  src={user?.photoURL || userLogo}
+                  alt="user"
                   width={40}
                   height={40}
                   title={displayName}
                   className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#69d94f]"
                 />
-              </span>
+              </Link>
             ) : (
               <Image
                 src={userLogo}
-                alt=""
+                alt="user logo"
                 width={40}
                 height={40}
                 className="cursor-pointer w-10 h-10 p-1 rounded-full ring-2 ring-[#69d94f]"

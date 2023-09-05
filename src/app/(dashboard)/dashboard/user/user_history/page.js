@@ -1,10 +1,11 @@
-import UserPayments from '@/components/dashboard/UserDashboard/UserPayments';
+import UserHistory from '@/components/dashboard/UserDashboard/UserHistory';
 import React from 'react';
 
 const UserHostoryPage = () => {
     return (
         <div>
-            <UserPayments/>
+            
+           <UserHistory/>
         </div>
     );
 };

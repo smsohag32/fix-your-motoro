@@ -11,13 +11,13 @@ const SingleWorkshop = (props) => {
     props.workshopsData;
   const router = useRouter();
   // console.log(props)
-  
+
   return (
     <div onClick={() => router.push(`/workshop/${_id}`)}>
-      <div className="mx-auto bg-gray-50">
+      <div className=" bg-gray-50">
         <div>
           <div className="p-3 cursor-pointer ">
-            <div className="relative mt-5 h-80">
+            <div className="relative mt-5 h-40">
               <Image
                 className="object-cover w-full h-full transition-transform duration-500"
                 src={image}
@@ -26,8 +26,7 @@ const SingleWorkshop = (props) => {
                 height={288}
               />
               <div className="absolute text-white rounded-md top-4 left-5 primary-bg shadow-emerald-50">
-                <p className="px-3 py-2">{address}</p> 
-                 
+                <p className="px-3 py-2">{address}</p>
               </div>
             </div>
             <div>
@@ -37,10 +36,7 @@ const SingleWorkshop = (props) => {
                 <div className="flex mr-2">
                   <StarRating rating={rating} />
                   <p>{rating}</p>
-                 
                 </div>
-                
-                
               </div>
             </div>
           </div>
