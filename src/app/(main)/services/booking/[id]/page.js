@@ -79,6 +79,9 @@ const Page = ({ params }) => {
       }
 
       // AppointForm to pdf file----------
+      // Starting Part--------------
+
+      // End Part------------
       reset();
       toast.success("Your appointment has successfully booked");
     }
