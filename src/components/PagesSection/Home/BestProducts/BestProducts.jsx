@@ -3,14 +3,16 @@ import CardSlider from "@/components/CardsSlider/CardsSlider";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import React, { useEffect, useState } from "react";
 
-const BestProducts = () => {
+const BestProducts = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState([]);
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
       try {
-        const response = await fetch("https://fya-backend.vercel.app/api/v1/auth/products");
+        const response = await fetch(
+          "https://fya-backend.vercel.app/api/v1/auth/products"
+        );
         const data = await response.json();
         setProducts(data);
         setLoading(false);
@@ -25,10 +27,7 @@ const BestProducts = () => {
   return (
     <div className="min-h-[60vh]">
       <div className="default-container">
-        <SectionTitle
-          title="Top-selling products"
-          subTitle="Discover the most sought-after products that keep your vehicles running smoothly."
-        />
+        {children}
         <CardSlider loading={loading} items={products} />
       </div>
     </div>
