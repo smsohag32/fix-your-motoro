@@ -29,6 +29,9 @@ body {
 .primary-btn {
   @apply px-3 py-2 rounded-lg text-center transition-all duration-500 font-semibold bg-[#69d94f] text-white hover:bg-[#379a22];
 }
+.disabled-btn {
+  @apply px-3 py-2 rounded-lg text-center transition-all duration-500 font-semibold bg-red-400 text-white cursor-not-allowed;
+}
 
 .delete-btn {
   @apply px-3 py-2 text-center transition-all duration-500 font-semibold bg-red-800 text-white hover:bg-[#379a22] rounded-lg;
