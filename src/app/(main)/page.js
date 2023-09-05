@@ -7,6 +7,7 @@ import OurExperts from "@/components/PagesSection/Home/OurExperts/OurExperts";
 import OurServices from "@/components/PagesSection/Home/OurServices/OurServices";
 import RecentNews from "@/components/PagesSection/Home/RecentNews/RecentNews";
 import SuccessReviews from "@/components/PagesSection/Home/SuccessReviews/SuccessReviews";
+import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
 const HomePage = () => {
   return (
@@ -16,7 +17,12 @@ const HomePage = () => {
       <OurExperts />
       <OurServices />
       <SuccessReviews />
-      <BestProducts />
+      <BestProducts>
+        <SectionTitle
+          title="Top-selling products"
+          subTitle="Discover the most sought-after products that keep your vehicles running smoothly."
+        />
+      </BestProducts>
       <RecentNews />
       <CarCareTips />
       <GetInTouch />

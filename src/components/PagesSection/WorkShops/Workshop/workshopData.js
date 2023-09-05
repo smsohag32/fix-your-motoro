@@ -20,7 +20,7 @@ const divisionDistricts = {
     "Chandpur",
     "Chattogram",
     "Cumilla",
-    "Cox's Bazar",
+    "Coxs Bazar",
     "Feni",
     "Khagrachari",
     "Lakshmipur",
@@ -63,6 +63,5 @@ const divisionDistricts = {
   ],
   Mymensingh: ["Jamalpur", "Mymensingh", "Netrokona", "Sherpur"],
 };
-
 
 export default divisionDistricts;

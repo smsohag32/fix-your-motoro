@@ -9,27 +9,16 @@ import { useContext, useState } from "react";
 const SearchBar = () => {
   const router = useRouter();
   const pathName = usePathname();
-  const { setLoading, setSearchData, setSearchText } =
-    useContext(SearchContext);
+  const { setLoading, setSearchText } = useContext(SearchContext);
   const [text, setText] = useState("");
 
   // handle to college search
   const handleSearch = async () => {
+    setLoading(true);
     if (!(pathName === "/workshop")) {
       router.push("/workshop");
     }
     setSearchText(text);
-    // try {
-    //   const data = await axios(
-    //     `https://fya-backend.vercel.app/api/v1/auth/workshops/search/division?location=${text}`
-    //   );
-    //   setSearchData(data.data);
-    //   setLoading(false);
-    // } catch (error) {
-    //   console.error("Error fetching JSON data:", error);
-    // } finally {
-    //   setLoading(false);
-    // }
   };
 
   return (
