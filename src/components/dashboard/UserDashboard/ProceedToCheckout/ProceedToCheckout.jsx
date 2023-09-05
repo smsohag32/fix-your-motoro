@@ -16,3 +16,5 @@ const ProceedToCheckout = () => {
 };
 
 export default ProceedToCheckout;
+
+
