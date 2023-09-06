@@ -1,4 +1,5 @@
 "use client";
+import MidSpinner from "@/components/Spinners/MidSpinner";
 import useWorkshops from "@/hooks/useWorkshops";
 import Image from "next/image";
 import React from "react";
@@ -69,7 +70,7 @@ const ManageWorkShop = () => {
   };
 
   if (wLoading) {
-    return <div>Loading...</div>;
+    return <MidSpinner />;
   }
   return (
     <div className="default-container ">

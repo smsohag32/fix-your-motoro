@@ -1,13 +1,13 @@
 "use client";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import Image from "next/image";
-import { FaRegComment } from "react-icons/fa";
 import { BsArrowRightCircle } from "react-icons/bs";
 import { PiHandsClappingBold } from "react-icons/pi";
 import useBlogs from "@/hooks/UseBlogs";
 import { useRouter } from "next/navigation";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
+import { FaRegComment } from "react-icons/fa";
 
 const Blog = () => {
   const { blogs, bLoading, refetch } = useBlogs();
@@ -45,10 +45,6 @@ const Blog = () => {
       .catch((error) => {
         console.error("Error updating workshop status:", error);
       });
-  };
-
-  const handleComment = (blog) => {
-    console.log("commentssssssss");
   };
 
   if (bLoading) {
@@ -113,9 +109,7 @@ const Blog = () => {
                     </span>
                   </div>
                   <div className=" text-3xl flex items-center gap-3 ">
-                    <button onClick={() => handleComment(blog)}>
-                      <FaRegComment />
-                    </button>
+                    
                     <button
                       className="primary-text"
                       onClick={() => router.push(`/blog/${blog?._id}`)}
