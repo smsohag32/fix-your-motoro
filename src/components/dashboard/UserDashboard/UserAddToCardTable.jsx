@@ -1,57 +1,64 @@
-
+// UserAddToCardTable.js
 import axios from 'axios';
 import React, { useState } from 'react';
 import { MdDeleteOutline } from 'react-icons/md';
 
-const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds, onProductSelect }) => {
+const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds, onProductSelect, onQuantityChange }) => {
   const { userName, userEmail, productID, productName, price, _id } = singleCartProduct;
+  console.log(userName)
   const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(price); // Initialize with the product's initial price as a string
+
+  // Function to update the total price based on quantity
+  const updateTotalPrice = (newQuantity) => {
+    const updatedTotalPrice = price * newQuantity;
+    setTotalPrice(updatedTotalPrice.toFixed(2)); // Convert to a string with two decimal places
+    return updatedTotalPrice.toFixed(2); // Return a string
+  };
 
   // Function to increase the quantity
-const increaseQuantity = () => {
-  setQuantity(quantity + 1);
-  // Calculate the total price based on the updated quantity
-  const updatedTotalPrice = price * (quantity + 1);
-  // Call the onProductSelect function passed from the parent component
-  onProductSelect(_id, true, {
-    ...singleCartProduct,
-    quantity: quantity + 1,
-    totalPrice: updatedTotalPrice.toFixed(2),
-  });
-};
+  const increaseQuantity = () => {
+    if (quantity < 10) {
+      const newQuantity = quantity + 1;
+      setQuantity(newQuantity);
+      const updatedTotalPrice = updateTotalPrice(newQuantity);
+      onProductSelect(_id, true, {
+        ...singleCartProduct,
+        quantity: newQuantity,
+        totalPrice: updatedTotalPrice,
+      });
+      onQuantityChange(_id, newQuantity); // Notify the parent component of quantity change
+    }
+  };
 
-// Function to decrease the quantity, with a minimum of 1
-const decreaseQuantity = () => {
-  if (quantity > 1) {
-    setQuantity(quantity - 1);
-    // Calculate the total price based on the updated quantity
-    const updatedTotalPrice = price * (quantity - 1);
-    // Call the onProductSelect function passed from the parent component
-    onProductSelect(_id, true, {
-      ...singleCartProduct,
-      quantity: quantity - 1,
-      totalPrice: updatedTotalPrice.toFixed(2),
-    });
-  }
-};
+  // Function to decrease the quantity, with a minimum of 1
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      const updatedTotalPrice = updateTotalPrice(newQuantity);
+      onProductSelect(_id, true, {
+        ...singleCartProduct,
+        quantity: newQuantity,
+        totalPrice: updatedTotalPrice,
+      });
+      onQuantityChange(_id, newQuantity); // Notify the parent component of quantity change
+    }
+  };
 
-  // Calculate total price
-  const totalPrice = price * quantity;
-
-  // Function to handle checkbox selection
   const handleCheckboxChange = (productId, isSelected) => {
     // Calculate the total price based on the current quantity
     const updatedTotalPrice = price * quantity;
-  
-    // Call the onProductSelect function passed from the parent component
+
+    // Call the onProductSelect function with the updated values
     onProductSelect(productId, isSelected, {
       ...singleCartProduct,
       quantity: quantity,
-      totalPrice: updatedTotalPrice,
-    }); // Pass the product data including quantity and total price
+      totalPrice: updatedTotalPrice.toFixed(2),
+    });
   };
 
-  // remove product from cart
+  // Remove product from cart
   const handleRemove = async (id) => {
     try {
       await axios.delete(`https://fya-backend.vercel.app/api/v1/auth/carts/${id}`);
@@ -89,7 +96,7 @@ const decreaseQuantity = () => {
           </button>
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-no-wrap">{totalPrice.toFixed(2)}</td>
+      <td className="px-6 py-4 whitespace-no-wrap">{totalPrice}</td>
       <td className="px-6 py-4 whitespace-no-wrap">
         <button
           onClick={() => handleRemove(_id)}
@@ -103,5 +110,3 @@ const decreaseQuantity = () => {
 };
 
 export default UserAddToCardTable;
-
-
