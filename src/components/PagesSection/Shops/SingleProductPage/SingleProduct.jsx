@@ -11,7 +11,6 @@ const SingleProduct = ({ id }) => {
   const { user } = useAuth();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isProductSaved, setIsProductSaved] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,31 +58,12 @@ const SingleProduct = ({ id }) => {
     };
 
     try {
-      // Check if the product is already saved in the cart
-      const checkResponse = await axios.get(
-        `https://fya-backend.vercel.app/api/v1/auth/carts?userEmail=${user?.email}&productID=${_id}`
-      );
-
-      if (checkResponse.data.length > 0) {
-        // Product already saved in the cart
-        setIsProductSaved(true);
-        toast.success("Product already in cart");
-      } else {
-        // Product not in cart, add it
-        const response = await axios.post(`https://fya-backend.vercel.app/api/v1/auth/carts/${user?.email}`, cartData);
-
-        if (response.status === 200) {
-          setIsProductSaved(true);
-          toast.success("Product added to cart successfully");
-        } else {
-          setIsProductSaved(false);
-          // Handle other status codes if needed
-        }
+      const response = await axios.post(`https://fya-backend.vercel.app/api/v1/auth/carts/${user?.email}`, cartData);
+      if(response.data == "add product successfully"){
+        toast.success("product added to cart successfully")
       }
     } catch (error) {
-      console.error("Error adding product to cart:", error);
-      setIsProductSaved(false);
-      toast.error("Failed to add product to cart");
+      console.log(error)
     }
   };
 
@@ -132,9 +112,8 @@ const SingleProduct = ({ id }) => {
               <button
                 onClick={handleProductAddToCart}
                 className={`primary-btn`}
-                disabled={isProductSaved}
               >
-                {isProductSaved ? "Product Saved" : "Add to Cart"}
+                Add to Cart
               </button>
 
             </div>
