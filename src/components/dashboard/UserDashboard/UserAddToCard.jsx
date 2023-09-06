@@ -77,7 +77,15 @@ const {setCartData} = useContext(CartContext)
   const sendSelectedProductsToCheckout = () => {
     // Check if there are selected products
     if (selectedProducts.length > 0) {
-      setCartData(selectedProducts)
+      // setCartData(selectedProducts)
+      
+      const cartData = localStorage.getItem("product");
+      if(cartData){
+        localStorage.removeItem("product")
+        localStorage.setItem("product", JSON.stringify(selectedProducts))
+      }else{
+        localStorage.setItem("product", JSON.stringify(selectedProducts))
+      }
       router.push("/dashboard/user/user_add_to_card/checkout");
       
     } else {
