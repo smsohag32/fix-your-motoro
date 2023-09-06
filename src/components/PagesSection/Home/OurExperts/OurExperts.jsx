@@ -1,5 +1,4 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "@/styles/expert.modules.css";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
@@ -55,16 +54,16 @@ const ExpertSection = () => {
           modules={[Autoplay]}
           className="mt-8 mySwiper"
         >
-          {workshopMechanics?.map((article) => (
+          {workshopMechanics?.map((article, index) => (
             <SwiperSlide key={article.id}>
               <div className="cursor-pointer card-box ">
                 <div>
                   <Image
                     className="w-full h-60"
-                    src={article.img}
-                    alt="img"
+                    src={article?.img}
+                    alt={index}
                     width="300"
-                    height="300"
+                    height="240"
                   />
                 </div>
                 <div>
@@ -73,15 +72,15 @@ const ExpertSection = () => {
                   </h2>
                   <h2 className="specialty-text">- {article.specialty} -</h2>
                   <div className="icone">
-                    <FaFacebookSquare className="primary-text " />
-                    <FaTwitterSquare className="primary-text" />
-                    <FaInstagramSquare className="primary-text" />
-                    <FaLinkedin className="primary-text" />
+                    <FaFacebookSquare className="text-blue-500 " />
+                    <FaTwitterSquare className="text-blue-500" />
+                    <FaInstagramSquare className="text-blue-500" />
+                    <FaLinkedin className="text-blue-500" />
                   </div>
                 </div>
                 <div className="flex justify-center md:justify-end items-center p-2">
                   <Link href={`/expert/${article._id}`}>
-                    <AiOutlineArrowRight className="primary-text text-4xl bg-red-200 p-1 rounded-full" />{" "}
+                    <AiOutlineArrowRight className="primary-text font-bold text-2xl  rounded-full" />{" "}
                   </Link>
                 </div>
               </div>
@@ -89,11 +88,6 @@ const ExpertSection = () => {
           ))}
         </Swiper>
       )}
-      {/* <NewsModal
-        isOpen={selectedArticle !== null}
-        closeModal={closeModal}
-        article={selectedArticle || {}}
-      /> */}
     </div>
   );
 };

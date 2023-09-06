@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import "@/app/globals.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -57,7 +56,7 @@ const CardSlider = ({ items, loading, workshops }) => {
                       }
                       alt="img"
                       width="300"
-                      height="300"
+                      height="192"
                     />
                   </div>
                   <div className="px-5 pt-2">
@@ -92,7 +91,7 @@ const CardSlider = ({ items, loading, workshops }) => {
             ))}
 
           {workshops &&
-            workshops.map((item) => (
+            workshops.map((item, index) => (
               <SwiperSlide
                 key={item._id}
                 onClick={() => router.push(`/workshop/${item?._id}`)}
@@ -106,7 +105,7 @@ const CardSlider = ({ items, loading, workshops }) => {
                         item?.service_image ||
                         item?.product?.image
                       }
-                      alt="img"
+                      alt={index}
                       width="300"
                       height="300"
                     />

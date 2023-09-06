@@ -12,7 +12,6 @@ const UserFeedbackModal = ({ isOpen, setIsOpen }) => {
 
   const onSubmit = async (data) => {
     // Handle form submission with feedback, rating, and other data
-    console.log(data);
   };
 
   const onCancel = () => {

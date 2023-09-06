@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import "@/styles/about.modules.css";
 import { Toaster, toast } from "react-hot-toast";
@@ -37,7 +36,7 @@ const GetInTouch = () => {
           </div>
         </div>
         <div className="w-full">
-          <form onSubmit={handleMessage} className="max-w-md mx-auto">
+          <form onSubmit={() => handleMessage()} className="max-w-md mx-auto">
             <div>
               <label
                 htmlFor="name"
