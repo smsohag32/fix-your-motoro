@@ -6,7 +6,7 @@ import React from "react";
 const ManageWorkShopPage = () => {
   const { workshops, wLoading, refetchWorkshops } = useWorkshops();
   // console.log(workshops);
-  
+
   // confirm function
   const handleConfirm = (workshop) => {
     const newStatus = "confirm";
@@ -35,7 +35,7 @@ const ManageWorkShopPage = () => {
       });
   };
 
-// Disable function
+  // Disable function
   const handleDisable = (workshop) => {
     const newStatus = "disabled";
     const requestBody = JSON.stringify({ status: newStatus });
@@ -62,13 +62,11 @@ const ManageWorkShopPage = () => {
         console.error("Error updating workshop status:", error);
       });
   };
-  
+
   // delete function
   const handleDelete = () => {
     alert("handle delete");
   };
-    
-  
 
   if (wLoading) {
     return <div>Loading...</div>;
@@ -92,7 +90,7 @@ const ManageWorkShopPage = () => {
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <Image
-                          src={workshop.image}
+                          src={workshop.image || ""}
                           alt="Description of the image"
                           width={300}
                           height={200}
