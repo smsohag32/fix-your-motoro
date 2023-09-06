@@ -37,7 +37,7 @@ const GetInTouch = () => {
           </div>
         </div>
         <div className="w-full">
-          <form onSubmit={handleMessage} className="max-w-md mx-auto">
+          <form onSubmit={() => handleMessage()} className="max-w-md mx-auto">
             <div>
               <label
                 htmlFor="name"
