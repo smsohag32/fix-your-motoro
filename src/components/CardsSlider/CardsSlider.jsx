@@ -97,10 +97,10 @@ const CardSlider = ({ items, loading, workshops }) => {
                 key={item._id}
                 onClick={() => router.push(`/workshop/${item?._id}`)}
               >
-                <div className="cursor-pointer flex flex-col border border-gray-300 ">
-                  <div className="relative">
+                <div className="cursor-pointer h-80 flex flex-col border border-gray-300 ">
+                  <div className="relative overflow-hidden">
                     <Image
-                      className="w-full hover:scale-105 duration-500 transform transition-all h-48"
+                      className="w-full hover:scale-105 duration-500 transform transition-all  h-48"
                       src={
                         item?.image ||
                         item?.service_image ||
@@ -111,7 +111,7 @@ const CardSlider = ({ items, loading, workshops }) => {
                       height="300"
                     />
                   </div>
-                  <div className="px-5 pt-2">
+                  <div className="px-5 mt-auto flex flex-col pt-2">
                     <h2 className=" font-semibold">{item.name}</h2>
                     {item.address && (
                       <div className="absolute top-2 right-5 text-white rounded-full primary-bg">
@@ -120,7 +120,7 @@ const CardSlider = ({ items, loading, workshops }) => {
                         </p>
                       </div>
                     )}
-                    <div className="pb-4">
+                    <div className="pb-4 mt-auto">
                       <div className="flex mr-2">
                         <StarRating rating={item?.rating} />
                         <p className="ml-1">{item?.rating}</p>

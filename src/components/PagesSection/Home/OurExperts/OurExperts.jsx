@@ -10,41 +10,25 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import MidSpinner from "@/components/Spinners/MidSpinner";
+import useExperts from "@/hooks/useExpert";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import Link from "next/link";
 
 const ExpertSection = () => {
-  const [ourExpert, setOurExpert] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [selectedArticle, setSelectedArticle] = useState(null);
+  const { workshopMechanics, wOLoading, refetch } = useExperts();
 
-  
-  useEffect(() => {
-    setLoading(true);
-    fetch("/data/expert.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setOurExpert(data)
-        setLoading(false)
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
-  const expertLimit = 6;
   return (
     <div className="mt-20 default-container">
       <SectionTitle
         title={"Our Experts"}
         subTitle={"Ready all time to provide motor servicing"}
       />
-      {loading ? (
+      {wOLoading ? (
         <MidSpinner />
       ) : (
         <Swiper
@@ -71,7 +55,7 @@ const ExpertSection = () => {
           modules={[Autoplay]}
           className="mt-8 mySwiper"
         >
-          {ourExpert.slice(0, expertLimit).map((article) => (
+          {workshopMechanics?.map((article) => (
             <SwiperSlide key={article.id}>
               <div className="cursor-pointer card-box ">
                 <div>
@@ -84,7 +68,9 @@ const ExpertSection = () => {
                   />
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold name-text">{article.name}</h2>
+                  <h2 className="text-xl font-semibold name-text">
+                    {article.name}
+                  </h2>
                   <h2 className="specialty-text">- {article.specialty} -</h2>
                   <div className="icone">
                     <FaFacebookSquare className="primary-text " />
@@ -92,6 +78,11 @@ const ExpertSection = () => {
                     <FaInstagramSquare className="primary-text" />
                     <FaLinkedin className="primary-text" />
                   </div>
+                </div>
+                <div className="flex justify-center md:justify-end items-center p-2">
+                  <Link href={`/expert/${article._id}`}>
+                    <AiOutlineArrowRight className="primary-text text-4xl bg-red-200 p-1 rounded-full" />{" "}
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>

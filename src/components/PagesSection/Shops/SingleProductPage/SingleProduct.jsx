@@ -1,25 +1,30 @@
 "use client";
-
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import Spinner from "@/components/Spinners/Spinner";
+import useAuth from "@/hooks/useAuth";
+import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 const SingleProduct = ({ id }) => {
+  const { user } = useAuth();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isProductSaved, setIsProductSaved] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://fya-backend.vercel.app/api/v1/auth/products/${id}`);
+        const response = await fetch(
+          `https://fya-backend.vercel.app/api/v1/auth/products/${id}`
+        );
         const data = await response.json();
         setProduct(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching JSON data:", error);
-      } finally {
         setLoading(false);
       }
     };
@@ -40,9 +45,52 @@ const SingleProduct = ({ id }) => {
     likes,
     _id,
   } = product || {};
+
+  const handleProductAddToCart = async () => {
+    const cartData = {
+      userName: user?.displayName,
+      userEmail: user?.email,
+      productID: _id,
+      productName: name,
+      productImage: image,
+      description,
+      quantity: 1,
+      price,
+    };
+
+    try {
+      // Check if the product is already saved in the cart
+      const checkResponse = await axios.get(
+        `https://fya-backend.vercel.app/api/v1/auth/carts?userEmail=${user?.email}&productID=${_id}`
+      );
+
+      if (checkResponse.data.length > 0) {
+        // Product already saved in the cart
+        setIsProductSaved(true);
+        toast.success("Product already in cart");
+      } else {
+        // Product not in cart, add it
+        const response = await axios.post(`https://fya-backend.vercel.app/api/v1/auth/carts/${user?.email}`, cartData);
+
+        if (response.status === 200) {
+          setIsProductSaved(true);
+          toast.success("Product added to cart successfully");
+        } else {
+          setIsProductSaved(false);
+          // Handle other status codes if needed
+        }
+      }
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      setIsProductSaved(false);
+      toast.error("Failed to add product to cart");
+    }
+  };
+
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <div className="">
       <PageTitle title={name} subTitle={""}></PageTitle>
@@ -73,20 +121,22 @@ const SingleProduct = ({ id }) => {
                 </p>
                 <p className="md:pl-10">
                   :
-                  <p className="md:inline md:pl-10">
+                  <span className="md:inline md:pl-10">
                     <span className="bg-gray-400 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
                       {price}
                     </span>
-                  </p>
+                  </span>
                 </p>
               </div>
 
               <button
-                onClick={() => toast("Coming Soon...")}
-                className="primary-btn"
+                onClick={handleProductAddToCart}
+                className={`primary-btn`}
+                disabled={isProductSaved}
               >
-                Add Card
+                {isProductSaved ? "Product Saved" : "Add to Cart"}
               </button>
+
             </div>
           </div>
         </div>

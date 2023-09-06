@@ -9,6 +9,7 @@ import {
 import { BiMessageSquareDots } from "react-icons/bi";
 import { LuListChecks } from "react-icons/lu";
 import { IoIosPeople } from "react-icons/io";
+import { BsTools } from "react-icons/bs";
 import NavLink from "@/components/Shared/Header/NavLink";
 
 function WorkshopAgentLink() {
@@ -44,11 +45,11 @@ function WorkshopAgentLink() {
           <IoIosPeople className="w-8 h-8  group-hover:text-[#69d94f]" />
           <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
             <NavLink
-              exact={"/dashboard/workshop/customers" == "/dashboard"}
+              exact={"/dashboard/workshop/reviews" == "/dashboard"}
               activeClassName={"primary-text"}
-              href={"/dashboard/workshop/customers"}
+              href={"/dashboard/workshop/reviews"}
             >
-              Customer
+              Reviews
             </NavLink>
           </h3>
         </li>
@@ -65,29 +66,20 @@ function WorkshopAgentLink() {
           </h3>
         </li>
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <MdOutlineAnalytics className="w-8 h-8  group-hover:text-[#69d94f]" />
+          <BsTools className="w-8 h-8  group-hover:text-[#69d94f]" />
           <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
             <NavLink
-              exact={"/dashboard/workshop/assignments" == "/dashboard"}
+              exact={"/dashboard/workshop/mechanics" == "/dashboard"}
               activeClassName={"primary-text"}
-              href={"/dashboard/workshop/assignments"}
+              href={"/dashboard/workshop/mechanics"}
             >
-              Technician Task
+              Mechanics
             </NavLink>
           </h3>
         </li>
 
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
           <BiMessageSquareDots className="w-8 h-8  group-hover:text-[#69d94f]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-            <NavLink
-              exact={"/dashboard/workshop/communication" == "/dashboard"}
-              activeClassName={"primary-text"}
-              href={"/dashboard/workshop/communication"}
-            >
-              Communication
-            </NavLink>
-          </h3>
         </li>
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
           <MdAccountCircle className="w-8 h-8  group-hover:text-[#69d94f]" />

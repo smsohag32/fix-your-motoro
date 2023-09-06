@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 const SearchProvider = ({ children }) => {
   const [searchText, setSearchText] = useState("");
-  const [searchData, setSearchData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   return (
@@ -14,8 +13,6 @@ const SearchProvider = ({ children }) => {
         setSearchText,
         loading,
         setLoading,
-        searchData,
-        setSearchData,
       }}
     >
       {children}
