@@ -41,12 +41,6 @@ const ServicesQueue = () => {
   const orderId = orders?.filter((order) => order._id);
   console.log(servicesData);
   const serviceId = servicesData?.filter((service) => service._id);
-  // const orderId = orders?.map((order) => order.service_id);
-  // const serviceId = servicesData?.map((service) => service._id);
-
-  // const service = orderId === serviceId;
-
-  // const { service_name } = service;
 
   if (loading) {
     return <MidSpinner />;
@@ -56,42 +50,7 @@ const ServicesQueue = () => {
         <div className="mt-20  ">
           <div>
             {orders ? (
-              orders?.map((order) => (
-                <div key={order._id}>
-                  <div className="bg-white rounded shadow-md">
-                    <div className="duration-500 transform gap-8 border-2 w-full flex h-40 items-center">
-                      <div className="h-full w-1/2 flex justify-center items-center">
-                        <p className="items-center">
-                          Name :
-                          <span className="text-slate-500">
-                            {order.firstName} {order.lastName}
-                          </span>
-                        </p>
-                      </div>
-                      <div className="w-full space-y-3 mb-5">
-                        <p className="">
-                          Email :
-                          <span className="text-slate-500">{order.email}</span>
-                        </p>
-                        <p className="">
-                          Vehicle :
-                          <span className="text-slate-500">
-                            {order.vehicle}
-                          </span>
-                        </p>
-                      </div>
-                      <div className="w-full flex justify-center items-center ">
-                        <p className="">
-                          Booking Date :
-                          <span className="text-slate-500">
-                            {order.bookingDate}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))
+              orders?.map((order) => <div key={order._id}></div>)
             ) : (
               <p> NO Services Available yet </p>
             )}
