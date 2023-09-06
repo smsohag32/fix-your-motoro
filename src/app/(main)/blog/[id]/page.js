@@ -20,9 +20,7 @@ const BlogDetailPage = ({ params }) => {
     },
   });
  
-
   const handleCommentSubmit = async() => {
-    
     const commentData = {
       user_name: user?.displayName,
       email: user?.email,

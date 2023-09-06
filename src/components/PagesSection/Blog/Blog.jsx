@@ -18,18 +18,21 @@ const Blog = () => {
 
   const handleLike = (blog) => {
     const likeData = {
-      user_photo:user?.photoURL,
+      user_photo: user?.photoURL,
       user_email: user?.email,
       user_name: user?.displayName,
     };
-    fetch(`https://fya-backend.vercel.app/api/v1/auth/blogs/like/${blog?._id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(likeData),
-    })
-    .then((response) => {
+    fetch(
+      `https://fya-backend.vercel.app/api/v1/auth/blogs/like/${blog?._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(likeData),
+      }
+    )
+      .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -48,17 +51,17 @@ const Blog = () => {
     console.log("commentssssssss");
   };
 
-   if (bLoading) {
-     return (
-       <div className="mt-32 default-container">
-         <MidSpinner />
-       </div>
-     );
-   }
+  if (bLoading) {
+    return (
+      <div className="mt-32 default-container">
+        <MidSpinner />
+      </div>
+    );
+  }
 
-   if (!blogs || blogs.length === 0) {
-     return <p className="mt-32 default-container">No blog posts available.</p>;
-   }
+  if (!blogs || blogs.length === 0) {
+    return <p className="mt-32 default-container">No blog posts available.</p>;
+  }
 
   return (
     <div className="my-32 default-container ">
@@ -99,7 +102,10 @@ const Blog = () => {
                 <p className="my-5">10 min read . {blog.date}</p>
                 <div className=" flex items-center justify-between mb-3">
                   <div className="flex items-center gap-1">
-                    <button className="text-3xl" onClick={() =>handleLike(blog)}>
+                    <button
+                      className="text-3xl"
+                      onClick={() => handleLike(blog)}
+                    >
                       <PiHandsClappingBold />
                     </button>
                     <span>
@@ -107,7 +113,7 @@ const Blog = () => {
                     </span>
                   </div>
                   <div className=" text-3xl flex items-center gap-3 ">
-                    <button onClick={() =>handleComment(blog)}>
+                    <button onClick={() => handleComment(blog)}>
                       <FaRegComment />
                     </button>
                     <button
