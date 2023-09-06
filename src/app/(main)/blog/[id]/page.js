@@ -6,18 +6,11 @@ import useAuth from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 
 const BlogDetailPage = ({ params }) => {
-  
-  const [loading, setLoading] = useState([]);
   const [comment, setComment] = useState('');
   const { user } = useAuth();
 
-  // console.log(blog);
-// `https://fya-backend.vercel.app/api/v1/auth/blogs/${params.id}`;
   const {
-    data: blog,
-    refetch,
-    isLoading: bLoading,
-  } = useQuery({
+    data: blog, refetch, isLoading: bLoading} = useQuery({
     queryKey: ["blog"],
     queryFn: async () => {
       const res = await axios.get(
@@ -40,8 +33,8 @@ const BlogDetailPage = ({ params }) => {
       `https://fya-backend.vercel.app/api/v1/auth/blogs/comment/${blog?._id}`,commentData
     );
     if (response.data.message) {
-      refetch();
       setComment("");
+      refetch();
     }
   };
    if (bLoading) {

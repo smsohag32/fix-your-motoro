@@ -14,9 +14,6 @@ const useBlogs = () => {
       return res.data;
     },
   });
-
-
-
   return { blogs, bLoading, refetch };
 };
 
