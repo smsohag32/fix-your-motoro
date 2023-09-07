@@ -26,9 +26,8 @@ const LoginFrom = () => {
     const password = form.password.value;
     try {
       await signIn(email, password).then((result) => {
-        router.replace("/dashboard");
+        router.replace("/");
       });
-      // .catch((err) => console.log(err));
     } catch (error) {}
   };
 
@@ -37,7 +36,7 @@ const LoginFrom = () => {
       .then((result) => {
         const user = result.user;
         saveUser(user).then((data) => {});
-        router.push("/dashboard");
+        router.push("/");
       })
       .catch();
   };
