@@ -64,7 +64,7 @@ const PlaceOrderVoucher = ({ cartData }) => {
       address: userInfo?.user?.address,
     };
     console.log('Placing Order with Data:', orderData);
-    const response = await axios.post("http://localhost:5000/user/cart/product/order_api", orderData);
+    const response = await axios.post("https://yoga-mindfulness-server.vercel.app/user/cart/product/order_api", orderData);
     console.log(response);
     window.location.replace(response.data.url)
   };
