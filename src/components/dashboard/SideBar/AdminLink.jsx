@@ -11,7 +11,6 @@ const AdminLInk = () => {
 
   return (
     <ul className="pb-4 my-4 border-b border-gray-100">
-      {/* dashboard section  */}
       <Link
         className={pathName === "/dashboard" ? "primary-text" : ""}
         href={"/dashboard"}

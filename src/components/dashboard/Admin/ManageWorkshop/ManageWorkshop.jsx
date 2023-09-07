@@ -45,8 +45,27 @@ const ManageWorkshop = () => {
     }
   };
 
-  const handleDelete = () => {
-    alert("handle delete");
+  const handleDelete = (workshop) => {
+    const url = `https://fya-backend.vercel.app/api/v1/auth/workshops/${workshop?._id}`;
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `Do you want to delete ${workshop?.name}`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const res = axios.delete(url);
+          Swal.fire("Deleted!", "Workshop is deleted done");
+          refetch();
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

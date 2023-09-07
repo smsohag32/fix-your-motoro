@@ -11,7 +11,7 @@ const ManageUsers = () => {
 
   const handleMakeAdmin = async (user) => {
     const newRole = "admin";
-    const apiUrl = `https://fya-backend.vercel.app/api/v1/auth/users/role/${user._id}`;
+    const apiUrl = `https://fya-backend.vercel.app/api/v1/auth/users/role/${user?.email}`;
     try {
       await axios.patch(apiUrl, { role: newRole });
       Swal.fire({
@@ -29,7 +29,7 @@ const ManageUsers = () => {
 
   const handleMakeWorkshopCenter = async (user) => {
     const newRole = "workshopCenter";
-    const apiUrl = `https://fya-backend.vercel.app/api/v1/auth/users/role/${user._id}`;
+    const apiUrl = `https://fya-backend.vercel.app/api/v1/auth/users/role/${user?.email}`;
     try {
       await axios.patch(apiUrl, { role: newRole });
       Swal.fire({
@@ -45,8 +45,27 @@ const ManageUsers = () => {
     }
   };
 
-  const handleDelete = () => {
-    alert("handle delete");
+  const handleDelete = (email) => {
+    const url = `https://fya-backend.vercel.app/api/v1/auth/users/${email}`;
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `Do you want to delete ${email}`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const res = axios.delete(url);
+          Swal.fire("Deleted!", "User is deleted done");
+          refetch();
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -132,7 +151,7 @@ const ManageUsers = () => {
                         Make Workshop Center
                       </button>
                       <button
-                        onClick={() => handleDelete(user)}
+                        onClick={() => handleDelete(user?.email)}
                         className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-md"
                       >
                         Delete
