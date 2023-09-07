@@ -3,45 +3,45 @@ import React from "react";
 import Image from "next/image";
 import Swal from "sweetalert2";
 import axios from "axios";
-import useWorkshops from "@/hooks/useWorkshops";
 import Spinner from "@/components/Spinners/Spinner";
+import useAllUsers from "@/hooks/useAllUsers";
 
-const ManageWorkshop = () => {
-  const { workshops, wLoading, refetch } = useWorkshops();
+const ManageUsers = () => {
+  const { users, uLoading, refetch } = useAllUsers();
 
-  const handleConfirm = async (workshop) => {
-    const newStatus = "confirm";
-    const apiUrl = `https://fya-backend.vercel.app/api/v1/auth/workshops/status/${workshop._id}`;
+  const handleMakeAdmin = async (user) => {
+    const newRole = "admin";
+    const apiUrl = `https://fya-backend.vercel.app/api/v1/auth/users/role/${user._id}`;
     try {
-      await axios.patch(apiUrl, { status: newStatus });
+      await axios.patch(apiUrl, { role: newRole });
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Workshop Approved",
+        title: "User is now an Admin",
         showConfirmButton: false,
         timer: 1500,
       });
       refetch();
     } catch (error) {
-      console.error("Error confirming workshop:", error);
+      console.error("Error making user an admin:", error);
     }
   };
 
-  const handleDisable = async (workshop) => {
-    const newStatus = "disabled";
-    const apiUrl = `https://fya-backend.vercel.app/api/v1/auth/workshops/status/${workshop._id}`;
+  const handleMakeWorkshopCenter = async (user) => {
+    const newRole = "workshopCenter";
+    const apiUrl = `https://fya-backend.vercel.app/api/v1/auth/users/role/${user._id}`;
     try {
-      await axios.patch(apiUrl, { status: newStatus });
+      await axios.patch(apiUrl, { role: newRole });
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Workshop Disabled",
+        title: "User is now a Workshop Center",
         showConfirmButton: false,
         timer: 1500,
       });
       refetch();
     } catch (error) {
-      console.error("Error disabling workshop:", error);
+      console.error("Error making user a workshop center:", error);
     }
   };
 
@@ -53,9 +53,9 @@ const ManageWorkshop = () => {
     <div className="min-h-screen px-5 md:px-8 bg-gray-100 py-8">
       <div className="container mx-auto">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-          Manage Workshops
+          Manage Users
         </h2>
-        {wLoading ? (
+        {uLoading ? (
           <Spinner />
         ) : (
           <div className="overflow-x-auto">
@@ -63,10 +63,10 @@ const ManageWorkshop = () => {
               <thead>
                 <tr>
                   <th className="px-6 py-3 border-b border-gray-300 text-left text-sm leading-5 tracking-wider">
-                    Workshops
+                    Users
                   </th>
                   <th className="px-6 py-3 border-b border-gray-300 text-left text-sm leading-5 tracking-wider">
-                    Status
+                    Role
                   </th>
                   <th className="px-6 py-3 border-b border-gray-300 text-left text-sm leading-5 tracking-wider">
                     Actions
@@ -74,23 +74,23 @@ const ManageWorkshop = () => {
                 </tr>
               </thead>
               <tbody>
-                {workshops.map((workshop) => (
-                  <tr key={workshop._id}>
+                {users.map((user) => (
+                  <tr key={user._id}>
                     <td className="px-6 py-4 whitespace-no-wrap">
                       <div className="flex items-center space-x-3">
                         <div className="w-20 overflow-hidden flex items-center h-20">
                           <Image
-                            src={workshop.image || ""}
-                            alt="Workshop Image"
+                            src={user.image || ""}
+                            alt="User Image"
                             width={80}
                             height={80}
                             className="object-cover"
                           />
                         </div>
                         <div>
-                          <div className="font-bold">{workshop.name}</div>
+                          <div className="font-bold">{user.name}</div>
                           <div className="text-sm text-gray-600">
-                            {workshop.location}
+                            {user.email}
                           </div>
                         </div>
                       </div>
@@ -98,43 +98,41 @@ const ManageWorkshop = () => {
                     <td className="px-6 py-4 whitespace-no-wrap">
                       <span
                         className={`px-2 py-1 text-xs text-white rounded-full ${
-                          workshop?.status === "confirm"
+                          user?.role === "admin"
                             ? "bg-blue-500"
-                            : workshop?.status === "pending"
+                            : user?.role === "workshopCenter"
                             ? "bg-green-400"
-                            : workshop?.status === "disabled"
-                            ? "bg-orange-500"
                             : ""
                         }`}
                       >
-                        {workshop.status}
+                        {user.role}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-no-wrap space-x-2">
                       <button
-                        onClick={() => handleConfirm(workshop)}
-                        disabled={workshop.status === "confirm"}
+                        onClick={() => handleMakeAdmin(user)}
+                        disabled={user.role === "admin"}
                         className={`${
-                          workshop.status === "confirm"
+                          user.role === "admin"
                             ? "bg-gray-400 text-gray-700 cursor-not-allowed"
                             : "bg-green-500 hover:bg-green-600"
                         } text-white font-semibold px-4 py-2 rounded-md`}
                       >
-                        Approve
+                        Make Admin
                       </button>
                       <button
-                        onClick={() => handleDisable(workshop)}
-                        disabled={workshop.status === "disabled"}
+                        onClick={() => handleMakeWorkshopCenter(user)}
+                        disabled={user.role === "workshopCenter"}
                         className={`${
-                          workshop.status === "disabled"
+                          user.role === "workshopCenter"
                             ? "bg-gray-400 text-gray-700 cursor-not-allowed"
                             : "bg-yellow-500 hover:bg-yellow-600"
                         } text-white font-semibold px-4 py-2 rounded-md`}
                       >
-                        Disable
+                        Make Workshop Center
                       </button>
                       <button
-                        onClick={() => handleDelete(workshop)}
+                        onClick={() => handleDelete(user)}
                         className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-md"
                       >
                         Delete
@@ -151,4 +149,4 @@ const ManageWorkshop = () => {
   );
 };
 
-export default ManageWorkshop;
+export default ManageUsers;

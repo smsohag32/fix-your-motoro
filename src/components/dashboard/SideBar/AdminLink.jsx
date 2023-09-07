@@ -65,9 +65,9 @@ const AdminLInk = () => {
       </Link>
       <Link
         className={
-          pathName === "/dashboard/admin/admin_profile" ? "primary-text" : ""
+          pathName === "/dashboard/admin/profile" ? "primary-text" : ""
         }
-        href={"/dashboard/admin/admin_profile"}
+        href={"/dashboard/admin/profile"}
       >
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
           <FaUser className="w-8 h-8  group-hover:text-[#69d94f]" />
