@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import "@/styles/about.modules.css";
 import { Toaster, toast } from "react-hot-toast";

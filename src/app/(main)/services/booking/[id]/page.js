@@ -7,8 +7,10 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import useAuth from "@/hooks/useAuth";
 
 const Page = ({ params }) => {
+  const { user } = useAuth();
   const form = useRef();
   const { id } = params;
   const router = useRouter();
@@ -16,6 +18,8 @@ const Page = ({ params }) => {
 
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [bookingData, setBookingData] = useState({});
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -43,10 +47,13 @@ const Page = ({ params }) => {
       service_image: service?.service_image,
       service_name: service?.service_name,
       status: "pending",
+
       ...data,
     };
 
-    // console.log(serviceData)
+    setBookingData(serviceData);
+
+    console.log(data);
 
     const response = await fetch(
       "https://fya-backend.vercel.app/api/v1/auth/orders",
@@ -60,8 +67,8 @@ const Page = ({ params }) => {
     );
     const result = await response.json();
     if (result?.bookingDate) {
-      router.replace("/dashboard/user/upcomming_appointment");
-      // Send Email to user--------
+      router.replace("/dashboard/user/appointments");
+      // Send Email to user--------ing_
       try {
         const response = await emailjs.sendForm(
           "service_3kn5ji1",
@@ -74,11 +81,12 @@ const Page = ({ params }) => {
         console.error("Email could not be sent:", error);
       }
 
-      // AppointForm to pdf file----------
       reset();
-      toast.success("Your appointment has successfully booked");
+      toast.success("Your appointment has been successfully booked");
     }
   };
+
+  // Print Your Booking info into PDF Format-------------------
 
   if (loading) {
     return <Spinner />;
@@ -131,6 +139,7 @@ const Page = ({ params }) => {
                 type="text"
                 id="email"
                 name="email"
+                value={user?.email}
                 className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
                 placeholder="jason.momoa@gmail.com"
                 required
@@ -235,6 +244,32 @@ const Page = ({ params }) => {
                   name="postal"
                   className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
                   {...register("postal")}
+                />
+              </div>
+              <div className="">
+                <label htmlFor="map" className="block text-sm font-medium">
+                  Latitude *
+                </label>
+                <input
+                  type="text"
+                  id="map"
+                  name="map"
+                  placeholder="Type your latitude location"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                  {...register("user_lat")}
+                />
+              </div>
+              <div className="">
+                <label htmlFor="long" className="block text-sm font-medium">
+                  Longitude *
+                </label>
+                <input
+                  type="text"
+                  id="long"
+                  name="long"
+                  placeholder="Type your longitude location"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                  {...register("user_lon")}
                 />
               </div>
             </div>
