@@ -1,25 +1,29 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import Link from "next/link";
-import loadServices from "@/utils/data/fetchData/loadServices";
-import useWorkshopOrder from "@/hooks/useWorkshopOrders";
+import useWorkshopServices from "@/hooks/useWorkshopServices";
 
 const ServicesQueue = () => {
-  const [loading, setLoading] = useState(false);
+  const { workshopServices, wOLoading } = useWorkshopServices();
+  console.log(workshopServices);
 
-  const email = "sohagsheik32@gmail.com";
-  const { workshopOrders, wOLoading } = useWorkshopOrder(email);
-
-  if (loading) {
+  if (wOLoading) {
     return <MidSpinner />;
   } else {
     return (
       <>
         <div className="mt-20  ">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {workshopOrders ? (
-              workshopOrders?.map((order) => (
+          <div className="py-10 border md:flex justify-center items-center">
+            <Link href="/dashboard/workshop/service_form">
+              <button className="rounded-lg primary-btn">
+                Post a new Service
+              </button>{" "}
+            </Link>
+          </div>
+
+          {workshopServices.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {workshopServices?.map((order) => (
                 <div
                   className="p-5 border-2 border-red-500 bg-slate-100 m-1 space-y-5 "
                   key={order._id}
@@ -46,22 +50,15 @@ const ServicesQueue = () => {
                     Booking Date : {order.bookingDate}
                   </p>
                 </div>
-              ))
-            ) : (
-              <div className="min-h-screen flex justify-center items-center">
-                <p className="text-2xl text-center font-bol primary-text">
-                  NO Services Available yet
-                </p>
-              </div>
-            )}
-          </div>
-          <div className="min-h-[20vh] border md:flex justify-center items-center">
-            <Link href="/dashboard/workshop/service_form">
-              <button className="rounded-lg primary-btn">
-                Post a new Service
-              </button>{" "}
-            </Link>
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="min-h-[40vh] flex justify-center items-center">
+              <p className="text-2xl text-center font-bol primary-text px-4 py-2 bg-slate-100 border rounded-md">
+                NO Services Available yet
+              </p>
+            </div>
+          )}
         </div>
       </>
     );

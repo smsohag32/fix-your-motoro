@@ -1,18 +1,16 @@
 "use client"
 
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import UserAddToCardTable from "./UserAddToCardTable";
 import useAuth from "@/hooks/useAuth";
 import useCartProducts from "@/hooks/useCartProducts";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import { useRouter } from "next/navigation";
-import CartContext from "@/context/CartContext";
 
 const UserAddToCard = () => {
   const router = useRouter();
   const { cartProducts, cartLoading, refetch } = useCartProducts();
   const { user } = useAuth();
-const {setCartData} = useContext(CartContext)
   // State to track selected product IDs and their data
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectAllChecked, setSelectAllChecked] = useState(false);
@@ -41,7 +39,7 @@ const {setCartData} = useContext(CartContext)
   const handleSelectAllChange = (isChecked) => {
     // Update the selectAllChecked state
     setSelectAllChecked(isChecked);
-  
+
     if (isChecked) {
       // If "Select All" is checked, select all products
       const updatedSelectedProducts = cartProducts.map((product) => ({
@@ -77,17 +75,15 @@ const {setCartData} = useContext(CartContext)
   const sendSelectedProductsToCheckout = () => {
     // Check if there are selected products
     if (selectedProducts.length > 0) {
-      // setCartData(selectedProducts)
-      
       const cartData = localStorage.getItem("product");
-      if(cartData){
+      if (cartData) {
         localStorage.removeItem("product")
         localStorage.setItem("product", JSON.stringify(selectedProducts))
-      }else{
+      } else {
         localStorage.setItem("product", JSON.stringify(selectedProducts))
       }
       router.push("/dashboard/user/user_add_to_card/checkout");
-      
+
     } else {
       // Handle the case where no products are selected
       console.log("No products selected.");
@@ -97,11 +93,12 @@ const {setCartData} = useContext(CartContext)
 
   return (
     <div className="md:mt-16">
-      <table className="mx-auto md:w-3/5">
+      <h1 className="text-start md:text-center text-2xl mb-3">Your Products On Cart</h1>
+      <table className="mx-auto">
         <thead>
           <tr className="text-[18px] text-white primary-bg">
             <th className="px-6 py-3 leading-4 tracking-wider text-left ">
-              <div className="flex items-center justify-center gap-[2px]">
+              <div className="flex items-center justify-center gap-1">
                 <input
                   type="checkbox"
                   checked={selectAllChecked}
@@ -110,8 +107,11 @@ const {setCartData} = useContext(CartContext)
                 <label>All</label>
               </div>
             </th>
-            <th className="px-6 py-3 leading-4 tracking-wider text-left">
-              Service Name
+            <th className="px-6 py-3 leading-4 tracking-wider text-center">
+              Product Name
+            </th>
+            <th className="px-6 py-3">
+              Image
             </th>
             <th className="px-6 py-3 leading-4 tracking-wider text-left">
               Price
@@ -119,18 +119,18 @@ const {setCartData} = useContext(CartContext)
             <th className="px-6 py-3 leading-4 tracking-wider text-left">
               Quantity
             </th>
-            <th className="px-6 py-3 leading-4 tracking-wider text-left">
+            <th className="px-6 py-3 leading-4 tracking-wider text-center">
               Total Price
             </th>
-            <th className="px-6 py-3 leading-4 tracking-wider text-left">
-              Delete
+            <th className="px-6 py-3 leading-4 tracking-wider text-start">
+              Remove
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-gray-200 w-full">
           {cartLoading ? (
             <tr>
-              <td colSpan="6">
+              <td colSpan="7">
                 <MidSpinner />
               </td>
             </tr>
@@ -150,13 +150,15 @@ const {setCartData} = useContext(CartContext)
         </tbody>
       </table>
       <div className="mx-auto md:w-3/5 mt-4">
-        <button
-          className={`${selectedProducts.length > 0 ? "primary-btn" : "disabled-btn"
-            }`}
-          onClick={sendSelectedProductsToCheckout} 
-        >
-          PROCEED TO CHECKOUT
-        </button>
+        {!cartLoading && (
+          <button
+            className={`${selectedProducts.length > 0 ? "primary-btn" : "disabled-btn"
+              }`}
+            onClick={sendSelectedProductsToCheckout}
+          >
+            PROCEED TO CHECKOUT
+          </button>
+        )}
       </div>
     </div>
   );

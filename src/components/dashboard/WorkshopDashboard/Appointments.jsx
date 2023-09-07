@@ -17,9 +17,9 @@ const Appointments = () => {
   }
 
   return (
-    <div className="mt-40">
+    <div className="">
       <TitleDashboard title={"Manage Appointments"} />
-      <div className="my-10">
+      <div className="my-10 grid gap-10">
         {workshopOrders?.length > 0 ? (
           workshopOrders.map((order) => (
             <AppointCard key={order._id} order={order} refetch={refetch} />

@@ -11,10 +11,9 @@ import UserLink from "./UserLink";
 import useAuth from "@/hooks/useAuth";
 import AdminLInk from "./AdminLink";
 import { useRouter } from "next/navigation";
-import NavLink from "@/components/Shared/Header/NavLink";
 
 const Sidebar = () => {
-  const { userInfo } = useUserInfo();
+  const { userInfo, cLoading } = useUserInfo();
   const router = useRouter();
   // console.log(userInfo);
 
@@ -24,7 +23,6 @@ const Sidebar = () => {
     router.replace("/");
   };
 
-  // console.log(userInfo);
   return (
     <div>
       {/* Technician side nav */}
@@ -41,12 +39,18 @@ const Sidebar = () => {
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 uppercase border-b border-gray-100 cursor-pointer">
                 {userInfo?.user?.role ? userInfo?.user?.role : "FYT"}
               </h1>
-              {userInfo?.user?.role === "admin" ? (
-                <AdminLInk />
-              ) : userInfo?.user?.role === "workshopCenter" ? (
-                <WorkshopAgentLink />
+              {cLoading ? (
+                ""
               ) : (
-                <UserLink />
+                <>
+                  {userInfo?.user?.role === "admin" ? (
+                    <AdminLInk />
+                  ) : userInfo?.user?.role === "workshopCenter" ? (
+                    <WorkshopAgentLink />
+                  ) : (
+                    <UserLink />
+                  )}
+                </>
               )}
               {/* logout btn */}
               <div className="">

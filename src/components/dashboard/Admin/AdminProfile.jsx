@@ -1,5 +1,6 @@
 "use client";
 import UserUpdateProfileModal from "@/components/Modal/userModal/UserUpdateProfileModal";
+import MidSpinner from "@/components/Spinners/MidSpinner";
 import useUserInfo from "@/hooks/useUserInfo";
 import Image from "next/image";
 import { useState } from "react";
@@ -13,7 +14,7 @@ const AdminProfile = () => {
       <div className="max-w-screen-lg mx-auto overflow-hidden bg-gray-300 rounded-lg shadow-lg">
         <div className="px-6 py-8 text-white bg-blue-500">
           {cLoading ? (
-            <p>Loading...</p>
+            <MidSpinner />
           ) : (
             <>
               <div className="relative w-32 h-32 mx-auto mb-6">

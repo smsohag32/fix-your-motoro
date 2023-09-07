@@ -1,24 +1,20 @@
 "use client";
 
 import Spinner from "@/components/Spinners/Spinner";
-import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { jsPDF } from "jspdf";
-import "jspdf-autotable";
+import useAuth from "@/hooks/useAuth";
 
 const Page = ({ params }) => {
+  const { user } = useAuth();
   const form = useRef();
   const { id } = params;
-  const { user } = useAuth();
   const router = useRouter();
   const { register, handleSubmit, reset } = useForm();
-  const notify = () =>
-    toast("This Service Has been booked successfully.......");
 
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -51,12 +47,13 @@ const Page = ({ params }) => {
       service_image: service?.service_image,
       service_name: service?.service_name,
       status: "pending",
+
       ...data,
     };
 
     setBookingData(serviceData);
 
-    // console.log(serviceData)
+    console.log(data);
 
     const response = await fetch(
       "https://fya-backend.vercel.app/api/v1/auth/orders",
@@ -70,8 +67,8 @@ const Page = ({ params }) => {
     );
     const result = await response.json();
     if (result?.bookingDate) {
-      router.replace("/dashboard/user/upcomming_appointment");
-      // Send Email to user--------
+      router.replace("/dashboard/user/appointments");
+      // Send Email to user--------ing_
       try {
         const response = await emailjs.sendForm(
           "service_3kn5ji1",
@@ -84,32 +81,12 @@ const Page = ({ params }) => {
         console.error("Email could not be sent:", error);
       }
 
-      handlePrint();
-
       reset();
       toast.success("Your appointment has been successfully booked");
     }
   };
 
   // Print Your Booking info into PDF Format-------------------
-  const handlePrint = () => {
-    const doc = new jsPDF();
-    console.log("bookingData", bookingData);
-
-    const data = [Object.values(bookingData)];
-
-    const headers = Object.keys(bookingData);
-    console.log("data", data);
-    console.log("headers", headers);
-
-    doc.autoTable({
-      head: [headers],
-      body: data,
-    });
-
-    doc.save("BookingInfo.pdf");
-    toast.success("Your booking information has been downloaded");
-  };
 
   if (loading) {
     return <Spinner />;
@@ -162,6 +139,7 @@ const Page = ({ params }) => {
                 type="text"
                 id="email"
                 name="email"
+                value={user?.email}
                 className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
                 placeholder="jason.momoa@gmail.com"
                 required
@@ -268,6 +246,32 @@ const Page = ({ params }) => {
                   {...register("postal")}
                 />
               </div>
+              <div className="">
+                <label htmlFor="map" className="block text-sm font-medium">
+                  Latitude *
+                </label>
+                <input
+                  type="text"
+                  id="map"
+                  name="map"
+                  placeholder="Type your latitude location"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                  {...register("user_lat")}
+                />
+              </div>
+              <div className="">
+                <label htmlFor="long" className="block text-sm font-medium">
+                  Longitude *
+                </label>
+                <input
+                  type="text"
+                  id="long"
+                  name="long"
+                  placeholder="Type your longitude location"
+                  className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                  {...register("user_lon")}
+                />
+              </div>
             </div>
           </div>
 
@@ -280,7 +284,6 @@ const Page = ({ params }) => {
             <Toaster />
             <button
               type="button"
-              onClick={handlePrint}
               className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600 ml-2 md:ml-0"
             >
               Print

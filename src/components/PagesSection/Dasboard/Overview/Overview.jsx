@@ -8,16 +8,16 @@ import useUserInfo from "@/hooks/useUserInfo";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import PopularWorkShop from "./PopularWorkShop";
-import SummeryChart from "@/components/dashboard/Admin/SummeryChart/SummeryChart";
-import WorkshopOverview from "@/components/dashboard/WorkshopDashboard/WorkshopOverview";
+import Spinner from "@/components/Spinners/Spinner";
+import AdminSummary from "./AdminSummary/AdminSummary";
+import WorkshopSummary from "./WorkshopSummary/WorkshopSummary";
 
 const Overview = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const { carsData, refetch, carLoading } = useCars();
-  const { user } = useAuth();
-  const { userInfo } = useUserInfo();
+  const { user, loading } = useAuth();
+  const { userInfo, cLoading } = useUserInfo();
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -39,52 +39,62 @@ const Overview = () => {
     }
   };
 
+  if (loading || cLoading) {
+    return <Spinner />;
+  }
   return (
-    <div>
+    <div className="py-24">
       <h1 className="text-2xl font-bold mb-4">Welcome, {user?.displayName}!</h1>
       <section className="bg-white p-4 rounded shadow-md mb-4">
-        <h2 className="text-lg font-semibold mb-2">Your Information</h2>
+        <h2 className="text-lg font-semibold mb-2">Dashboard</h2>
         <p>Name: {user?.displayName}</p>
         <p>Email: {user?.email}</p>
       </section>
-
-      {userInfo?.user?.role ? (
+      {cLoading ? (
         ""
       ) : (
-        <section className="bg-white p-4 rounded shadow-md mb-4">
-          <h2 className="text-lg font-semibold mb-2">Your Vehicles</h2>
-          <div className="min-h-[40vh] md:p-5 p-1">
-            {carsData?.length > 0 ? (
-              carsData?.map((item) => (
-                <div key={item._id} className="flex flex-col p-5 h-full">
-                  <div
-                    key={item._id}
-                    className="p-5 mb-4 flex flex-col md:flex-row gap-5 bg-gray-300"
-                  >
-                    <p>{item.car_name}</p>
-                    <p>{item.brand}</p>
-                    <p>{item.model}</p>
-                  </div>
-                  <div className="mt-auto">
-                    <button
-                      className="outline-btn "
-                      onClick={() => setIsOpen(true)}
-                    >
-                      Add New
-                    </button>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <EmptyState
-                message={"You have not added any vehicles"}
-                label={"Add Your Vehicles"}
-                setIsOpen={setIsOpen}
-                address={" "}
-              />
-            )}
-          </div>
-        </section>
+        <>
+          {userInfo?.user?.role === "admin" ? (
+            <AdminSummary />
+          ) : userInfo?.user?.role === "workshopCenter" ? (
+            <WorkshopSummary />
+          ) : (
+            <section className="bg-white p-4 rounded shadow-md mb-4">
+              <h2 className="text-lg font-semibold mb-2">Your Vehicles</h2>
+              <div className="min-h-[40vh] md:p-5 p-1">
+                {carsData?.length > 0 ? (
+                  carsData?.map((item) => (
+                    <div key={item._id} className="flex flex-col p-5 h-full">
+                      <div
+                        key={item._id}
+                        className="p-5 mb-4 flex flex-col md:flex-row gap-5 bg-gray-300"
+                      >
+                        <p>{item.car_name}</p>
+                        <p>{item.brand}</p>
+                        <p>{item.model}</p>
+                      </div>
+                      <div className="mt-auto">
+                        <button
+                          className="outline-btn "
+                          onClick={() => setIsOpen(true)}
+                        >
+                          Add New
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <EmptyState
+                    message={"You have not added any vehicles"}
+                    label={"Add Your Vehicles"}
+                    setIsOpen={setIsOpen}
+                    address={" "}
+                  />
+                )}
+              </div>
+            </section>
+          )}
+        </>
       )}
 
       <AddCarModal
@@ -95,18 +105,6 @@ const Overview = () => {
         register={register}
         userInfo={user?.email}
       />
-
-      <div>
-        {userInfo?.user?.role ? (
-          ""
-        ) : (
-          <div>
-            <PopularWorkShop />
-          </div>
-        )}
-        {userInfo?.user?.role === "admin" && <SummeryChart />}
-        {userInfo?.user?.role === "workshopCenter" && <WorkshopOverview />}
-      </div>
     </div>
   );
 };

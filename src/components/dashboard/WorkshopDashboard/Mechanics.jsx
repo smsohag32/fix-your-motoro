@@ -1,15 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import MechanicCard from "./MechanicCard";
-import useAuth from "@/hooks/useAuth";
 import useWorkshopMechanic from "@/hooks/useWorkshopMechanic";
 import Spinner from "@/components/Spinners/Spinner";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 
 const Mechanics = () => {
-  const user = useAuth();
-  const email = user?.email;
-  const { workshopMechanics, wOLoading } = useWorkshopMechanic(email);
+  const { workshopMechanics, wOLoading } = useWorkshopMechanic();
 
   if (wOLoading) {
     return <Spinner />;
