@@ -54,7 +54,7 @@ const ServiceFrom = () => {
                 // console.log(service)
                 axios
                   .post(
-                    `https://fya-backend.vercel.app/api/v1/auth/services/${user.email}`,
+                    `https://fya-backend.vercel.app/api/v1/auth/services/${user?.email}`,
                     service
                   )
                   .then((uploaded) => {
