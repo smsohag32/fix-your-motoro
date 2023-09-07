@@ -50,12 +50,15 @@ const WorkShopDetail = ({ params }) => {
       ...data,
     };
 
-    const response = await axios.post(
-      "https://fya-backend.vercel.app/api/v1/auth/orders", serviceData);
-    setShowBookingForm(false)
-    console.log(response);
+    const response = await axios.post("https://fya-backend.vercel.app/api/v1/auth/orders", serviceData);
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Appointment booking success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     reset();
-    notify();
   };
 
    if (loading) {
