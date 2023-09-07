@@ -5,19 +5,16 @@ import MidSpinner from "@/components/Spinners/MidSpinner";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { set, useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import { useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
 import UserModal from "@/components/Modal/Modal";
 
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState([]);
-
-  const [showBookingForm, setShowBookingForm] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
-  const notify = () => toast("Booking confirmed..");
+
   const { user } = useAuth();
 
   const [ isOpen, setIsOpen ] = useState(false);
@@ -57,7 +54,8 @@ const WorkShopDetail = ({ params }) => {
         title: "Appointment booking success",
         showConfirmButton: false,
         timer: 1500,
-      });
+    });
+    setIsOpen(false);
     reset();
   };
 
@@ -319,7 +317,6 @@ const WorkShopDetail = ({ params }) => {
                 <button type="submit" className="primary-btn rounded-md">
                   Submit
                 </button>
-                <Toaster />
                 <button
                   onClick={() => setIsOpen(false)}
       
@@ -332,7 +329,6 @@ const WorkShopDetail = ({ params }) => {
           </div>
         </div>
       </UserModal>
-       <Toaster />
       </div>
   );
 };
