@@ -8,8 +8,6 @@ import useUserInfo from "@/hooks/useUserInfo";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import PopularWorkShop from "./PopularWorkShop";
-import SummeryChart from "@/components/dashboard/Admin/SummeryChart/SummeryChart";
 import Spinner from "@/components/Spinners/Spinner";
 import AdminSummary from "./AdminSummary/AdminSummary";
 import WorkshopSummary from "./WorkshopSummary/WorkshopSummary";

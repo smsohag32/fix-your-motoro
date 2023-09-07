@@ -28,8 +28,8 @@ const UpcomeAppointment = () => {
   return (
     <div>
       <div className="my-5">
-        <h1 className="md:text-2xl text-xl font-semibold opacity-75">
-          Up Comming Appointment
+        <h1 className="md:text-2xl text-xl font-semibold opacity-80">
+          Appointment Inventroy
         </h1>
       </div>
       <div className="grid grid-cols-1 gap-10">
