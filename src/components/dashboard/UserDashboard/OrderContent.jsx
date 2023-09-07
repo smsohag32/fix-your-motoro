@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
-import Steps from "@/components/PagesSection/Dashboard/UpComeAppt/Steps";
+import Steps from "@/components/PagesSection/Dasboard/UpComeAppt/Steps";
 
 const Map = dynamic(() => import("@/components/map/Map"), { ssr: false });
 

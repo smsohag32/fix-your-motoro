@@ -29,7 +29,7 @@ const StepOne = ({ onNext, order }) => {
           </p>
         </div>
 
-        <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-medium leading-6 text-gray-900">
             Full name
           </dt>
@@ -37,14 +37,14 @@ const StepOne = ({ onNext, order }) => {
             {firstName} {lastName}
           </dd>
         </div>
-        <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-medium leading-6 text-gray-900">Email</dt>
           <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
             {" "}
             {email}
           </dd>
         </div>
-        <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-medium leading-6 text-gray-900">
             Phone Number
           </dt>
@@ -52,7 +52,7 @@ const StepOne = ({ onNext, order }) => {
             {phone}
           </dd>
         </div>
-        <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-medium leading-6 text-gray-900">
             Address
           </dt>
@@ -60,7 +60,7 @@ const StepOne = ({ onNext, order }) => {
             {state}
           </dd>
         </div>
-        <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-medium leading-6 text-gray-900">
             Service
           </dt>
@@ -68,7 +68,7 @@ const StepOne = ({ onNext, order }) => {
             {service_category}
           </dd>
         </div>
-        <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-medium leading-6 text-gray-900">
             Vehicle
           </dt>
@@ -76,7 +76,7 @@ const StepOne = ({ onNext, order }) => {
             {vehicle}
           </dd>
         </div>
-        <div className="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <div className="px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt className="text-sm font-medium leading-6 text-gray-900">
             Workshop Email
           </dt>
