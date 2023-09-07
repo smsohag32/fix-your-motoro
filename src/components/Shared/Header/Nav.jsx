@@ -8,6 +8,7 @@ import Image from "next/image";
 import userLogo from "@/assets/userlogo.png";
 import useAuth from "@/hooks/useAuth";
 import { usePathname, useRouter } from "next/navigation";
+import { MdClose } from "react-icons/md";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState();
@@ -25,11 +26,11 @@ const Nav = () => {
       <div className="md:hidden">
         {isOpen ? (
           <span onClick={() => setIsOpen(false)}>
-            <GrClose className="text-2xl font-bold duration-200 cursor-pointer" />
+            <MdClose className="text-2xl text-white font-bold duration-200 cursor-pointer" />
           </span>
         ) : (
           <span onClick={() => setIsOpen(true)}>
-            <CiMenuFries className="text-2xl font-bold duration-200 cursor-pointer"></CiMenuFries>
+            <CiMenuFries className="text-2xl font-bold text-white duration-200 cursor-pointer"></CiMenuFries>
           </span>
         )}
       </div>
@@ -42,7 +43,7 @@ const Nav = () => {
       <ul
         className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform text-white absolute md:static gap-[1.5rem] md:border-none md:flex-row ${
           isOpen
-            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-white text-black z-30"
+            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-black text-white z-30"
             : "-left-60 top-[64px] overflow-hidden duration-100"
         }`}
       >

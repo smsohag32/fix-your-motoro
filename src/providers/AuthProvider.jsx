@@ -33,6 +33,12 @@ const AuthProvider = ({ children }) => {
     await updateProfile(auth.currentUser, updateUser);
     setUser((preUser) => ({ ...preUser, ...updateUser }));
   };
+  const updateUserInfo = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
   const googleLogin = () => {
     setLoading(true);
     return signInWithPopup(auth, GoogleProvider);
@@ -74,6 +80,7 @@ const AuthProvider = ({ children }) => {
     profileUpdate,
     googleLogin,
     logout,
+    updateUserInfo,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
