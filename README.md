@@ -1,6 +1,6 @@
 # Fix Your Motoro - Web Portal for Motor Servicing
 
-![Fix Your Motoro Live Link](https://fix-your-motoro.vercel.app/)
+[Fix Your Motoro Live Link](https://fix-your-motoro.vercel.app/)
 
 ## Table of Contents
 
