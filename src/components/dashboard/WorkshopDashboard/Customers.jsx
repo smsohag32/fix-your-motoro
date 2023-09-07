@@ -8,7 +8,7 @@ import CustomerCard from "./CustomerCard";
 const Customers = () => {
   const { user } = useAuth();
 
-  const { workshopOrders, wOLoading } = useWorkshopOrder(user?.email);
+  const { workshopOrders, wOLoading } = useWorkshopOrder();
 
   if (wOLoading) {
     return <MidSpinner />;

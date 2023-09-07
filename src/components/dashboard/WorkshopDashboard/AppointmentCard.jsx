@@ -1,17 +1,15 @@
 "use client";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
-import Map from "@/components/map/Map";
 import { Toaster, toast } from "react-hot-toast";
 import ApprovedModal from "./ApprovedModal";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+const Map = dynamic(() => import("@/components/map/Map"), { ssr: false });
 const AppointCard = ({ order, refetch }) => {
   const {
     _id,
     service_id,
     firstName,
-    user_lat,
-    user_lon,
     service_category,
     bookingDate,
     streetAddress,
@@ -20,14 +18,21 @@ const AppointCard = ({ order, refetch }) => {
     status,
     service_type,
   } = order || {};
-  const lat = parseFloat(user_lat);
-  const lon = parseFloat(user_lon);
-  const postion = [lat, lon];
-  const hasValidPosition = !Number.isNaN(lat) && !Number.isNaN(lon);
   const [isOpen, setIsOpen] = useState(false);
+  const [hasValidPosition, setHasValidPosition] = useState(false);
+  const [position, setPosition] = useState([0, 0]); // Default position
 
+  useEffect(() => {
+    const lat = parseFloat(order?.user_lat);
+    const lon = parseFloat(order?.user_lon);
+
+    if (!Number.isNaN(lat) && !Number.isNaN(lon)) {
+      setPosition([lat, lon]);
+      setHasValidPosition(true);
+    }
+  }, [order]);
   return (
-    <div className="bg-white rounded shadow-md">
+    <div className="bg-white rounded border border-green-300">
       <div className="duration-500 transform gap-8 p-5 border-2 w-full flex-col md:flex-row flex h-full  md:h-60 items-center">
         <div className="h-full w-full flex flex-col justify-center  space-y-3 mb-5">
           <p className="items-center">
@@ -84,9 +89,9 @@ const AppointCard = ({ order, refetch }) => {
           </button>
         </div>
       </div>
-      <div className="p-5">
+      <div className="">
         {hasValidPosition ? (
-          <Map title={"Location"} position={postion} />
+          <Map title={streetAddress} position={position} />
         ) : (
           <EmptyState
             message={"Customer not to share his location"}
