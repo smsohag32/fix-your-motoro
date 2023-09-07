@@ -1,11 +1,12 @@
 "use client"
 import React from 'react';
+import checkout from '@/utils/checkout';
 
 const PlaceOrderVoucher = ({ cartData }) => {
   let totalQuantity = 0;
   let totalPrice = 0;
-  const vatRate = 0.1; 
-  const shippingFee = 50; 
+  const vatRate = 0.1;
+  const shippingFee = 50;
 
   const itemDetails = [];
 
@@ -82,7 +83,7 @@ const PlaceOrderVoucher = ({ cartData }) => {
         </div>
       </div>
       <div className="flex justify-center">
-        <button onClick={handlePlaceOrder} className="primary-btn">PLACE ORDER</button>
+        <button onClick={() => { checkout({lineItems:[{price:"price_1NndUVH7crSwWufmiZfUMlhk" , quantity: 1}]}) }} className="primary-btn">PLACE ORDER</button>
       </div>
     </div>
   );
