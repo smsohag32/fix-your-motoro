@@ -2,22 +2,22 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const useWorkshops = () => {
+const useAllUsers = () => {
   const {
-    data: workshops,
-    isLoading: wLoading,
+    data: users,
+    isLoading: uLoading,
     refetch,
   } = useQuery({
-    queryKey: ["workshops"],
+    queryKey: ["users"],
     queryFn: async () => {
       const res = await axios.get(
-        `https://fya-backend.vercel.app/api/v1/auth/workshops`
+        `https://fya-backend.vercel.app/api/v1/auth/users`
       );
       return res.data;
     },
   });
 
-  return { workshops, wLoading, refetch };
+  return { users, uLoading, refetch };
 };
 
-export default useWorkshops;
+export default useAllUsers;

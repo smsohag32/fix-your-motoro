@@ -56,19 +56,6 @@ const ServiceFilter = ({ selectOption, selectedOption, setIsOpen, isOpen }) => {
           </div>
         </div>
       )}
-
-      {/* Display the filtered services */}
-      {/* {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          {filteredServices.map((service) => (
-            <div key={service.id}>
-              <p> {service.service_name} </p>
-            </div>
-          ))}
-        </div>
-      )} */}
     </div>
   );
 };

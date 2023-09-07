@@ -1,93 +1,80 @@
-import React from "react";
+"use client";
 import { MdDashboard } from "react-icons/md";
 import { FaHistory, FaUser, FaUsers } from "react-icons/fa";
 import { BiCreditCard } from "react-icons/bi";
 import { BsFillBoxFill } from "react-icons/bs";
-import NavLink from "@/components/Shared/Header/NavLink";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const AdminLInk = () => {
+  const pathName = usePathname();
+
   return (
     <ul className="pb-4 my-4 border-b border-gray-100">
-      {/* dashboard section  */}
-      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <MdDashboard className="w-8 h-8  group-hover:text-[#69d94f]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-          <NavLink
-            exact={"/dashboard" == "/dashboard"}
-            activeClassName={"primary-text"}
-            href={"/dashboard"}
-          >
+      <Link
+        className={pathName === "/dashboard" ? "primary-text" : ""}
+        href={"/dashboard"}
+      >
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+          <MdDashboard className="w-8 h-8  group-hover:text-[#69d94f]" />
+          <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
             Summary
-          </NavLink>
-        </h3>
-      </li>
-
-      {/* add to card section  */}
-      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <BiCreditCard className="w-8 h-8  group-hover:text-[#69d94f]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-          <NavLink
-            exact={"/dashboard/user/user_service" == "/dashboard"}
-            activeClassName={"primary-text"}
-            href="/dashboard/user/upcomming_appointment"
-          >
+          </h3>
+        </li>
+      </Link>
+      <Link
+        className={
+          pathName === "/dashboard/admin/manage_user" ? "primary-text" : ""
+        }
+        href={"/dashboard/admin/manage_user"}
+      >
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+          <FaUsers className="w-8 h-8  group-hover:text-[#69d94f]" />
+          <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
             Manage Users
-          </NavLink>
-        </h3>
-      </li>
-
-      {/* Support section  */}
-      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaHistory className="w-8 h-8 text-gray-600 group-hover:text-[#69d94f]" />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-          <NavLink
-            exact={"/dashboard/user/user_service" == "/dashboard"}
-            activeClassName={"primary-text"}
-            href="/dashboard/admin/manage_workshop"
-          >
+          </h3>
+        </li>
+      </Link>
+      <Link
+        className={
+          pathName === "/dashboard/admin/manage_workshop" ? "primary-text" : ""
+        }
+        href={"/dashboard/admin/manage_workshop"}
+      >
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+          <BiCreditCard className="w-8 h-8  group-hover:text-[#69d94f]" />
+          <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
             Manage Workshops
-          </NavLink>
-        </h3>
-      </li>
+          </h3>
+        </li>
+      </Link>
 
-      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaUsers className="w-8 h-8  group-hover:text-[#69d94f] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-          <NavLink
-            exact={"/dashboard/comuinity" == "/dashboard"}
-            activeClassName={"primary-text"}
-            href="/dashboard/user/user_service"
-          >
-            Community
-          </NavLink>
-        </h3>
-      </li>
-
-      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <BsFillBoxFill className="w-8 h-8  group-hover:text-[#69d94f] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-          <NavLink
-            exact={"/dashboard/admin/complaint_box" == "/dashboard"}
-            activeClassName={"primary-text"}
-            href="/dashboard/admin/complaint_box"
-          >
+      <Link
+        className={
+          pathName === "/dashboard/admin/complaint_box" ? "primary-text" : ""
+        }
+        href={"/dashboard/admin/complaint_box"}
+      >
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+          <BsFillBoxFill className="w-8 h-8  group-hover:text-[#69d94f]" />
+          <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
             Complaint Box
-          </NavLink>
-        </h3>
-      </li>
-
-      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-        <FaUser className="w-8 h-8  group-hover:text-[#69d94f] " />
-        <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-          <NavLink
-            exact={"/dashboard/admin/admin_profile" == "/dashboard"}
-            activeClassName={"primary-text"}
-            href="/dashboard/admin/admin_profile"
-          >
+          </h3>
+        </li>
+      </Link>
+      <Link
+        className={
+          pathName === "/dashboard/admin/profile" ? "primary-text" : ""
+        }
+        href={"/dashboard/admin/profile"}
+      >
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+          <FaUser className="w-8 h-8  group-hover:text-[#69d94f]" />
+          <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
             Account
-          </NavLink>
-        </h3>
-      </li>
+          </h3>
+        </li>
+      </Link>
     </ul>
   );
 };

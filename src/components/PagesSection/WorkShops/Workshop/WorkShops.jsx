@@ -51,7 +51,6 @@ const WorkShops = () => {
     setCurrentPage(e);
   };
 
-  console.log(workshopsData);
   return (
     <div className="min-h-screen">
       <div>

@@ -1,7 +1,6 @@
 "use client";
 
 import Spinner from "@/components/Spinners/Spinner";
-import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -12,11 +11,8 @@ import emailjs from "@emailjs/browser";
 const Page = ({ params }) => {
   const form = useRef();
   const { id } = params;
-  const { user } = useAuth();
   const router = useRouter();
   const { register, handleSubmit, reset } = useForm();
-  const notify = () =>
-    toast("This Service Has been booked successfully.......");
 
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);

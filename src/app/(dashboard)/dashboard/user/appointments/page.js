@@ -1,6 +1,6 @@
 import UpcomeAppointment from "@/components/dashboard/UserDashboard/UpcomeAppointment";
 
-const UpcommingAppointment = () => {
+const UpAppointmentPage = () => {
     return (
         <>
             <UpcomeAppointment/>
@@ -8,4 +8,4 @@ const UpcommingAppointment = () => {
     );
 };
 
-export default UpcommingAppointment;
+export default UpAppointmentPage;

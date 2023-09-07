@@ -1,14 +1,12 @@
 "use client";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import "@/styles/expert.modules.css";
-import ComplaintBoxSingleCard from "./ComplaintBoxSingleCard";
+import { useEffect, useState } from "react";
+import ComplaintCard from "./ComplainCard";
 
 const ComplaintBox = () => {
-  const [complaint, setComplaint] = useState([]);
+  const [complaints, setComplaint] = useState([]);
 
   useEffect(() => {
-    fetch("/data/carServiceComplaints.json")
+    fetch("/data/complaint.json")
       .then((res) => res.json())
       .then((data) => setComplaint(data))
       .catch((error) => {
@@ -16,17 +14,16 @@ const ComplaintBox = () => {
       });
   }, []);
   return (
-    <div className=" default-container">
-      {/* dashboard title section */}
-
-      <div className="pt-8 card-section">
-        {/*json map section*/}
-        {complaint.map((singleCard, index) => (
-          <ComplaintBoxSingleCard
-            key={index}
-            singleCard={singleCard}
-          ></ComplaintBoxSingleCard>
-        ))}
+    <div className="bg-gray-100 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          Customer Complaints
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {complaints.map((complaint, index) => (
+            <ComplaintCard key={index} complaint={complaint} />
+          ))}
+        </div>
       </div>
     </div>
   );
