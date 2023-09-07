@@ -8,15 +8,16 @@ import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 
 const Appointments = () => {
   const { user } = useAuth();
+  const email = "sohagsheik32@gmail.com";
 
-  const { workshopOrders, wOLoading, refetch } = useWorkshopOrder(user?.email);
+  const { workshopOrders, wOLoading, refetch } = useWorkshopOrder(email);
 
   if (wOLoading) {
     return <MidSpinner />;
   }
 
   return (
-    <div>
+    <div className="mt-40">
       <TitleDashboard title={"Manage Appointments"} />
       <div className="my-10">
         {workshopOrders?.length > 0 ? (

@@ -79,9 +79,6 @@ function WorkshopAgentLink() {
         </li>
 
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <BiMessageSquareDots className="w-8 h-8  group-hover:text-[#69d94f]" />
-        </li>
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
           <MdAccountCircle className="w-8 h-8  group-hover:text-[#69d94f]" />
           <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
             <NavLink

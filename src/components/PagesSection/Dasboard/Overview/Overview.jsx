@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import PopularWorkShop from "./PopularWorkShop";
 import SummeryChart from "@/components/dashboard/Admin/SummeryChart/SummeryChart";
+import WorkshopOverview from "@/components/dashboard/WorkshopDashboard/WorkshopOverview";
 
 const Overview = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,6 +105,7 @@ const Overview = () => {
           </div>
         )}
         {userInfo?.user?.role === "admin" && <SummeryChart />}
+        {/* {userInfo?.user?.role === "workshopCenter" && <WorkshopOverview />} */}
       </div>
     </div>
   );

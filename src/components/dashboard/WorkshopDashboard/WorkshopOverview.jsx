@@ -5,11 +5,14 @@ import React from "react";
 
 const WorkshopOverview = () => {
   const user = useAuth();
-  const { overviewData } = useWorkshopMechanic(user?.email);
+  const email = "sohagsheik32@gmail.com";
+  const overviewData = useWorkshopMechanic(email);
+  console.log(overviewData);
+  const dataArray = Object.entries(overviewData);
 
   return (
     <div>
-      {Object.entries(overviewData).map((data, idx) => (
+      {Object.entries(dataArray).map((data, idx) => (
         <div key={idx}>
           <div>
             <p> {data.totalWorkOrder} </p>

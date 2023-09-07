@@ -54,16 +54,16 @@ const ExpertSection = () => {
           modules={[Autoplay]}
           className="mt-8 mySwiper"
         >
-          {workshopMechanics?.map((article, index) => (
+          {workshopMechanics?.map((article) => (
             <SwiperSlide key={article.id}>
               <div className="cursor-pointer card-box ">
                 <div>
                   <Image
                     className="w-full h-60"
-                    src={article?.img}
-                    alt={index}
+                    src={article.img}
+                    alt="img"
                     width="300"
-                    height="240"
+                    height="300"
                   />
                 </div>
                 <div>
@@ -80,7 +80,7 @@ const ExpertSection = () => {
                 </div>
                 <div className="flex justify-center md:justify-end items-center p-2">
                   <Link href={`/expert/${article._id}`}>
-                    <AiOutlineArrowRight className="primary-text font-bold text-2xl  rounded-full" />{" "}
+                    <AiOutlineArrowRight className="primary-text text-2xl p-1  rounded-full" />
                   </Link>
                 </div>
               </div>

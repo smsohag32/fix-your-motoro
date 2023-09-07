@@ -5,7 +5,7 @@ import { Toaster, toast } from "react-hot-toast";
 import ApprovedModal from "./ApprovedModal";
 import { useState } from "react";
 
-const AppointCard = ({order,refetch}) => {
+const AppointCard = ({ order, refetch }) => {
   const {
     _id,
     service_id,
@@ -66,22 +66,24 @@ const AppointCard = ({order,refetch}) => {
           </p>
         </div>
         <div className="w-full flex justify-center items-center ">
-          {
-            status === 'approved' ? '' : <button
-            onClick={() =>
-              toast.success("This order has been approved successfully")
-            }
-            className="primary-btn mr-3"
-          >
-            Postpone
-          </button>
-          }
+          {status === "approved" ? (
+            ""
+          ) : (
+            <button
+              onClick={() =>
+                toast.success("This order has been approved successfully")
+              }
+              className="primary-btn mr-3"
+            >
+              Postpone
+            </button>
+          )}
           <button
-            disabled={status === 'approved'}
+            disabled={status === "approved"}
             onClick={() => setIsOpen(true)}
-            className="px-3 py-2 text-center transition-all duration-500 font-semibold bg-teal-500 text-white hover:bg-teal-600"
+            className="px-3 py-2 text-center transition-all duration-500 font-semibold bg-teal-500 text-white rounded-md hover:bg-teal-600"
           >
-            {status === 'approved' ? 'Approved done' : 'Approve'}
+            {status === "approved" ? "Approved done" : "Approve"}
           </button>
         </div>
       </div>
@@ -97,7 +99,12 @@ const AppointCard = ({order,refetch}) => {
         )}
       </div>
       <Toaster />
-      <ApprovedModal refetch={refetch} id={_id} isOpen={isOpen} setIsOpen={setIsOpen} />
+      <ApprovedModal
+        refetch={refetch}
+        id={_id}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
     </div>
   );
 };
