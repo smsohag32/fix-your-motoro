@@ -1,6 +1,5 @@
 import Sidebar from "@/components/dashboard/SideBar/Sidebar";
 import DashboardTopBar from "@/components/dashboard/Topbar/DashboardTopBar";
-import PrivateRote from "@/utils/PrivateRote";
 
 export const metadata = {
   title: "FYM",
