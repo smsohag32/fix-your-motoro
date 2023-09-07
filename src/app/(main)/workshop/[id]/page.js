@@ -5,9 +5,10 @@ import MidSpinner from "@/components/Spinners/MidSpinner";
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
+import UserModal from "@/components/Modal/Modal";
 
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);
@@ -19,6 +20,7 @@ const WorkShopDetail = ({ params }) => {
   const notify = () => toast("Booking confirmed..");
   const { user } = useAuth();
 
+  const [ isOpen, setIsOpen ] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -38,9 +40,6 @@ const WorkShopDetail = ({ params }) => {
     fetchData();
   }, [_id]);
 
-  const handleBookNow = () => {
-    setShowBookingForm(true);
-  };
 
   const onSubmit = async (data) => {
     const serviceData = {
@@ -64,7 +63,7 @@ const WorkShopDetail = ({ params }) => {
    }
 
   return (
-    <div className="relative mt-36 p-5 default-container">
+    <div className=" mt-40 mb-24 p-5 default-container">
       <div className="">
         <div className="md:flex md:gap-12 gap-10 items-center">
           <div className="w-full ">
@@ -89,10 +88,10 @@ const WorkShopDetail = ({ params }) => {
               <p className="ml-1">{product.rating}</p>
             </div>
             <button
-              onClick={handleBookNow}
+              onClick={() => setIsOpen(true)}
               className=" primary-btn text-white font-bold py-2 px-4 rounded my-5"
             >
-              Book Now
+              Book Appointment
             </button>
           </div>
         </div>
@@ -102,9 +101,10 @@ const WorkShopDetail = ({ params }) => {
             <SingleProductCard key={index} product={product} />
           ))}
         </div>
-          
-      {showBookingForm && (
-        <div className="absolute -top-7 left-0 w-full h-full flex items-center justify-center bg-gray-200 bg-opacity-75 z-20">
+      </div>
+
+      <UserModal isOpen={isOpen} setIsOpen={setIsOpen} title={'Booking Request form'}>
+          <div className=" h-full w-full flex items-center justify-center bg-gray-200 bg-opacity-75 z-20">
           <div className="max-w-5xl  mx-auto w-full bg-white mt-5 md:mt-0 p-6 md:p-12 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Booking Information</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="">
@@ -318,31 +318,18 @@ const WorkShopDetail = ({ params }) => {
                 </button>
                 <Toaster />
                 <button
-                  onClick={() => {
-                    setShowBookingForm(false);
-                  }}
-                  // type="button"
+                  onClick={() => setIsOpen(false)}
+      
                   className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600"
                 >
                   Close
                 </button>
               </div>
             </form>
-            <div className=" absolute -top-7 -right-3 mt-4">
-              <button
-                className="bg-red-400 hover:bg-red-600  font-bold py-1 px-2 rounded-full transition-all duration-300 ease-in-out"
-                onClick={() => {
-                  setShowBookingForm(false);
-                }}
-              >
-                X
-              </button>
-            </div>
           </div>
         </div>
-      )}
-      <Toaster />
-      </div>
+      </UserModal>
+       <Toaster />
       </div>
   );
 };
