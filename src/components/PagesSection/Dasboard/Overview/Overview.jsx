@@ -105,7 +105,7 @@ const Overview = () => {
           </div>
         )}
         {userInfo?.user?.role === "admin" && <SummeryChart />}
-        {/* {userInfo?.user?.role === "workshopCenter" && <WorkshopOverview />} */}
+        {userInfo?.user?.role === "workshopCenter" && <WorkshopOverview />}
       </div>
     </div>
   );

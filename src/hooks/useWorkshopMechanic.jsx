@@ -10,7 +10,7 @@ const useWorkshopMechanic = (email) => {
     queryKey: ["mechanics"],
     queryFn: async () => {
       const res = await axios.get(
-        `https://fya-backend.vercel.app/api/v1/auth/mechanics/workshop/${email}`
+        `https://fya-backend.vercel.app/api/v1/auth/workshop/summary/${email}`
       );
       return res.data;
     },
