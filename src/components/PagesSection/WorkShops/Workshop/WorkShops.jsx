@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import SingleWorkshop from "../SingleWorkShop/SingleWorkshop";
 import SearchContext from "@/context/SearchContext";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
-import axios from "axios";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import WorkshopCategory from "./WorkshopCategory";
 import PaginationContent from "./PaginationContent";
