@@ -2,7 +2,6 @@
 import useCars from "@/hooks/useCars";
 import Spinner from "@/components/Spinners/Spinner";
 import VehicleCard from "./VehicleCard";
-import useCars from "@/hooks/useCars";
 
 const UserVehicles = () => {
   const { carsData, carLoading, refetch } = useCars();
