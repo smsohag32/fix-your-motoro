@@ -1,3 +1,4 @@
+"use client";
 import Spinner from "@/components/Spinners/Spinner";
 import VehicleCard from "./VehicleCard";
 import useCars from "@/hooks/useCars";
