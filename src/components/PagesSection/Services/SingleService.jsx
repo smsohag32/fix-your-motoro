@@ -37,7 +37,7 @@ const SingleService = ({ service }) => {
               </Link>
             </div>
           </div>
-          <p className="p-3 block absolute top-2 right-2 font-semibold hover:bg-green-300">
+          <p className="p-3 bg-white block absolute top-2 right-2 font-semibold hover:bg-green-300">
             {service_price}
           </p>
         </div>

@@ -1,5 +1,4 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "@/styles/expert.modules.css";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
@@ -15,24 +14,12 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import MidSpinner from "@/components/Spinners/MidSpinner";
+import useExperts from "@/hooks/useExpert";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import Link from "next/link";
 
 const ExpertSection = () => {
-  const [ourExpert, setOurExpert] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    fetch("/data/expert.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setOurExpert(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+  const { workshopMechanics, wOLoading, refetch } = useExperts();
 
   return (
     <div className="mt-20 default-container">
@@ -40,7 +27,7 @@ const ExpertSection = () => {
         title={"Our Experts"}
         subTitle={"Ready all time to provide motor servicing"}
       />
-      {loading ? (
+      {wOLoading ? (
         <MidSpinner />
       ) : (
         <Swiper
@@ -67,16 +54,16 @@ const ExpertSection = () => {
           modules={[Autoplay]}
           className="mt-8 mySwiper"
         >
-          {ourExpert.map((article, index) => (
+          {workshopMechanics?.map((article) => (
             <SwiperSlide key={article.id}>
               <div className="cursor-pointer card-box ">
                 <div>
                   <Image
                     className="w-full h-60"
-                    src={article?.img}
-                    alt={index}
+                    src={article.img}
+                    alt="img"
                     width="300"
-                    height="240"
+                    height="300"
                   />
                 </div>
                 <div>
@@ -85,22 +72,22 @@ const ExpertSection = () => {
                   </h2>
                   <h2 className="specialty-text">- {article.specialty} -</h2>
                   <div className="icone">
-                    <FaFacebookSquare className="primary-text " />
-                    <FaTwitterSquare className="primary-text" />
-                    <FaInstagramSquare className="primary-text" />
-                    <FaLinkedin className="primary-text" />
+                    <FaFacebookSquare className="text-blue-500 " />
+                    <FaTwitterSquare className="text-blue-500" />
+                    <FaInstagramSquare className="text-blue-500" />
+                    <FaLinkedin className="text-blue-500" />
                   </div>
+                </div>
+                <div className="flex justify-center md:justify-end items-center p-2">
+                  <Link href={`/expert/${article._id}`}>
+                    <AiOutlineArrowRight className="primary-text text-2xl p-1  rounded-full" />
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       )}
-      {/* <NewsModal
-        isOpen={selectedArticle !== null}
-        closeModal={closeModal}
-        article={selectedArticle || {}}
-      /> */}
     </div>
   );
 };

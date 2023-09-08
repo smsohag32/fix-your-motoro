@@ -1,0 +1,37 @@
+[
+  {
+    "name": "John Smith",
+    "rating": 5,
+    "date": "2023-08-15",
+    "image": "https://i.ibb.co/G2RnRf7/download.jpg",
+    "content": "I had the pleasure of working with this professional, and I must say I am highly impressed. Their expertise and attention to detail were evident throughout the entire process. I would highly recommend their services to anyone looking for top-notch quality."
+  },
+  {
+    "name": "Jane Doe",
+    "rating": 4.5,
+    "date": "2023-08-10",
+    "image": "https://i.ibb.co/vL41PCP/360-F-200902415-G4e-Z9-Ok3-Ypd4-SZZKjc8nq-Jy-FVp1e-OD6-V.jpg",
+    "content": "I recently engaged with this professional, and I'm extremely pleased with the level of service I received. They were responsive, knowledgeable, and delivered results beyond my expectations. The only reason I'm not giving them a perfect 5 stars is because there's always room for improvement, but they come pretty close!"
+  },
+  {
+    "name": "David Johnson",
+    "rating": 5,
+    "date": "2023-08-05",
+    "image": "https://i.ibb.co/tBrrbpM/depositphotos-200339404-stock-photo-portrait-young-attractive-guy-glasses.webp",
+    "content": "I had a complex project that required a true expert, and I found it in this professional. Their outstanding expertise and dedication to my project were evident from day one. They went above and beyond to ensure the success of the project, and I couldn't be happier with the results."
+  },
+  {
+    "name": "Sarah Wilson",
+    "rating": 4,
+    "date": "2023-07-28",
+    "image": "https://i.ibb.co/zZC4ZqB/istockphoto-1413765605-170667a.webp",
+    "content": "I hired this professional for a time-sensitive project, and they delivered with promptness and professionalism. While the quality of their work was good, there were a few minor issues that needed addressing. However, their overall performance was commendable, and I would consider working with them again."
+  },
+  {
+    "name": "Michael Brown",
+    "rating": 4.5,
+    "date": "2023-07-20",
+    "image": "https://i.ibb.co/GcqKFVW/istockphoto-1247693979-612x612.jpg",
+    "content": "Working with this professional was a pleasure due to their great communication skills. They kept me informed at every stage of the project and were always open to feedback. The final results were excellent, and I would recommend them for any project requiring clear and effective communication."
+  }
+]
