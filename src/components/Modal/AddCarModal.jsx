@@ -7,6 +7,7 @@ const AddCarModal = ({
   isOpen,
   register,
   handleSubmit,
+  refetch
 }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -79,6 +80,7 @@ const AddCarModal = ({
                     <button
                       type="submit"
                       className="inline-flex justify-center border border-transparent rounded-md primary-btn"
+                      onClick={refetch}
                     >
                       Save Cars
                     </button>
