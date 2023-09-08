@@ -1,5 +1,4 @@
 "use client";
-
 import AddCarModal from "@/components/Modal/AddCarModal";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 import useAuth from "@/hooks/useAuth";
@@ -11,6 +10,8 @@ import { useForm } from "react-hook-form";
 import Spinner from "@/components/Spinners/Spinner";
 import AdminSummary from "./AdminSummary/AdminSummary";
 import WorkshopSummary from "./WorkshopSummary/WorkshopSummary";
+import UserDashboardStats from "./UserSummary/UserDashboardStats";
+import UserSummary from "./UserSummary/UserSummary";
 
 const Overview = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +60,9 @@ const Overview = () => {
           ) : userInfo?.user?.role === "workshopCenter" ? (
             <WorkshopSummary />
           ) : (
-            <section className="bg-white p-4 rounded shadow-md mb-4">
+            <>
+            <UserSummary/>
+            <section className="bg-white mt-4 p-4 rounded shadow-md mb-4">
               <h2 className="text-lg font-semibold mb-2">Your Vehicles</h2>
               <div className="min-h-[40vh] md:p-5 p-1">
                 {carsData?.length > 0 ? (
@@ -73,14 +76,6 @@ const Overview = () => {
                         <p>{item.brand}</p>
                         <p>{item.model}</p>
                       </div>
-                      <div className="mt-auto">
-                        <button
-                          className="outline-btn "
-                          onClick={() => setIsOpen(true)}
-                        >
-                          Add New
-                        </button>
-                      </div>
                     </div>
                   ))
                 ) : (
@@ -92,7 +87,18 @@ const Overview = () => {
                   />
                 )}
               </div>
+              {userInfo?.user?.role !== "admin" && userInfo?.user?.role !== "workshopCenter" && (
+                <div className="pl-6 md:pl-10 ">
+                <button
+                  className="outline-btn"
+                  onClick={() => setIsOpen(true)}
+                >
+                  Add New
+                </button>
+              </div>
+              )}
             </section>
+            </>
           )}
         </>
       )}
@@ -104,9 +110,11 @@ const Overview = () => {
         isOpen={isOpen}
         register={register}
         userInfo={user?.email}
+        refetch={refetch}
       />
     </div>
   );
 };
 
 export default Overview;
+

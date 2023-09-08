@@ -1,13 +1,13 @@
 "use client";
+import useCars from "@/hooks/useCars";
 import Spinner from "@/components/Spinners/Spinner";
 import VehicleCard from "./VehicleCard";
-import useCars from "@/hooks/useCars";
 
 const UserVehicles = () => {
   const { carsData, carLoading, refetch } = useCars();
 
   return (
-    <div className="min-h-screen p-5 md:p-8 bg-gray-100">
+    <div className="min-h-screen p-5 mt-10 md:p-8 bg-gray-100">
       <div className="container mx-auto">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Vehicle Inventory
