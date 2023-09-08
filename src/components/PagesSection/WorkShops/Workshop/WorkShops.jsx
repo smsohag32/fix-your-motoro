@@ -14,7 +14,7 @@ const WorkShops = () => {
   const [loading, setLoading] = useState(true);
   const { setSearchText, searchText } = useContext(SearchContext);
   const [districtText, setDistrictText] = useState("");
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
