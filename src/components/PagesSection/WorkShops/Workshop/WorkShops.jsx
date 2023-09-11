@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import SingleWorkshop from "../SingleWorkShop/SingleWorkshop";
 import SearchContext from "@/context/SearchContext";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
-import axios from "axios";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import WorkshopCategory from "./WorkshopCategory";
 import PaginationContent from "./PaginationContent";
@@ -14,7 +13,7 @@ const WorkShops = () => {
   const [loading, setLoading] = useState(true);
   const { setSearchText, searchText } = useContext(SearchContext);
   const [districtText, setDistrictText] = useState("");
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
@@ -51,7 +50,6 @@ const WorkShops = () => {
     setCurrentPage(e);
   };
 
-  console.log(workshopsData);
   return (
     <div className="min-h-screen">
       <div>

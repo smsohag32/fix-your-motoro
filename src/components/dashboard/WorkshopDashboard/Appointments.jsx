@@ -8,17 +8,18 @@ import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 
 const Appointments = () => {
   const { user } = useAuth();
+  const email = "sohagsheik32@gmail.com";
 
-  const { workshopOrders, wOLoading, refetch } = useWorkshopOrder(user?.email);
+  const { workshopOrders, wOLoading, refetch } = useWorkshopOrder(email);
 
   if (wOLoading) {
     return <MidSpinner />;
   }
 
   return (
-    <div>
+    <div className="">
       <TitleDashboard title={"Manage Appointments"} />
-      <div className="my-10">
+      <div className="my-10 grid gap-10">
         {workshopOrders?.length > 0 ? (
           workshopOrders.map((order) => (
             <AppointCard key={order._id} order={order} refetch={refetch} />

@@ -34,7 +34,7 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm();
 
-  const { createUser, profileUpdate } = useAuth();
+  const { createUser, updateUserInfo } = useAuth();
 
   const onSubmit = async (data) => {
     const { name, email, password, photoURL } = data;
@@ -46,11 +46,8 @@ const SignUpForm = () => {
 
     try {
       const user = await createUser(email, password);
-      await profileUpdate({
-        displayName: name,
-        photoURL: photoURL,
-      }).then((result) => {
-        saveUser(result?.user).then((data) => {
+      await updateUserInfo(name, photoURL).then((result) => {
+        saveUser(user?.user).then((data) => {
           router.push("/");
         });
       });

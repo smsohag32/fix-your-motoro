@@ -1,106 +1,108 @@
 "use client";
-import React from "react";
 import {
   MdAccountCircle,
   MdDashboard,
-  MdOutlineAnalytics,
   MdOutlineMiscellaneousServices,
 } from "react-icons/md";
-import { BiMessageSquareDots } from "react-icons/bi";
 import { LuListChecks } from "react-icons/lu";
 import { IoIosPeople } from "react-icons/io";
-import NavLink from "@/components/Shared/Header/NavLink";
+import { BsTools } from "react-icons/bs";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 function WorkshopAgentLink() {
+  const pathName = usePathname();
   return (
     <>
       <ul className="pb-4 my-4 border-b border-gray-100">
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <MdDashboard className="w-8 h-8  group-hover:text-[#69d94f]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#f02801] ">
-            <NavLink
-              exact={"/dashboard" == "/dashboard"}
-              activeClassName={"primary-text"}
-              href={"/dashboard"}
-            >
+        <Link
+          className={pathName === "/dashboard" ? "primary-text" : ""}
+          href={"/dashboard"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <MdDashboard className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
               Overview
-            </NavLink>
-          </h3>
-        </li>
-
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <LuListChecks className="w-8 h-8  group-hover:text-[#f02801]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-            <NavLink
-              exact={"/dashboard/workshop/appointments" == "/dashboard"}
-              activeClassName={"primary-text"}
-              href={"/dashboard/workshop/appointments"}
-            >
+            </h3>
+          </li>
+        </Link>
+        <Link
+          className={
+            pathName === "/dashboard/workshop/appointments"
+              ? "primary-text"
+              : ""
+          }
+          href={"/dashboard/workshop/appointments"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <LuListChecks className="w-8 h-8  hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold  hover:text-[#69d94f] ">
               Appointment Plan
-            </NavLink>
-          </h3>
-        </li>
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <IoIosPeople className="w-8 h-8  group-hover:text-[#69d94f]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-            <NavLink
-              exact={"/dashboard/workshop/customers" == "/dashboard"}
-              activeClassName={"primary-text"}
-              href={"/dashboard/workshop/customers"}
-            >
-              Customer
-            </NavLink>
-          </h3>
-        </li>
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <MdOutlineMiscellaneousServices className="w-8 h-8  group-hover:text-[#69d94f]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-            <NavLink
-              exact={"/dashboard/workshop/services" == "/dashboard"}
-              activeClassName={"primary-text"}
-              href={"/dashboard/workshop/services"}
-            >
+            </h3>
+          </li>
+        </Link>
+        <Link
+          className={
+            pathName === "/dashboard/workshop/customers" ? "primary-text" : ""
+          }
+          href={"/dashboard/workshop/customers"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <IoIosPeople className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
+              Customers
+            </h3>
+          </li>
+        </Link>
+        <Link
+          className={
+            pathName === "/dashboard/workshop/reviews" ? "primary-text" : ""
+          }
+          href={"/dashboard/workshop/reviews"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <IoIosPeople className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
+              Reviews
+            </h3>
+          </li>
+        </Link>
+        <Link
+          exact={"/dashboard/workshop/services" == "/dashboard"}
+          activeClassName={"primary-text"}
+          href={"/dashboard/workshop/services"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <MdOutlineMiscellaneousServices className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
               Services Queue
-            </NavLink>
-          </h3>
-        </li>
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <MdOutlineAnalytics className="w-8 h-8  group-hover:text-[#69d94f]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-            <NavLink
-              exact={"/dashboard/workshop/assignments" == "/dashboard"}
-              activeClassName={"primary-text"}
-              href={"/dashboard/workshop/assignments"}
-            >
-              Technician Task
-            </NavLink>
-          </h3>
-        </li>
-
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <BiMessageSquareDots className="w-8 h-8  group-hover:text-[#69d94f]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-            <NavLink
-              exact={"/dashboard/workshop/communication" == "/dashboard"}
-              activeClassName={"primary-text"}
-              href={"/dashboard/workshop/communication"}
-            >
-              Communication
-            </NavLink>
-          </h3>
-        </li>
-        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-          <MdAccountCircle className="w-8 h-8  group-hover:text-[#69d94f]" />
-          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
-            <NavLink
-              exact={"/dashboard/workshop/profile" == "/dashboard"}
-              activeClassName={"primary-text"}
-              href={"/dashboard/workshop/profile"}
-            >
+            </h3>
+          </li>
+        </Link>
+        <Link
+          exact={"/dashboard/workshop/mechanics" == "/dashboard"}
+          activeClassName={"primary-text"}
+          href={"/dashboard/workshop/mechanics"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <BsTools className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
+              Mechanics
+            </h3>
+          </li>
+        </Link>
+        <Link
+          exact={"/dashboard/workshop/profile" == "/dashboard"}
+          activeClassName={"primary-text"}
+          href={"/dashboard/workshop/profile"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <MdAccountCircle className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
               Account
-            </NavLink>
-          </h3>
-        </li>
+            </h3>
+          </li>
+        </Link>
       </ul>
     </>
   );

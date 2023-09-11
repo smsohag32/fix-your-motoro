@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import StarRating from "@/components/PagesSection/Home/SuccessReviews/StarRating";
 import SingleProductCard from "@/components/PagesSection/WorkShops/SingleProductCard/SingleProductCard";
 import MidSpinner from "@/components/Spinners/MidSpinner";
@@ -6,19 +6,19 @@ import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
 import useAuth from "@/hooks/useAuth";
+import UserModal from "@/components/Modal/Modal";
+import Swal from "sweetalert2";
 
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState([]);
-
-  const [showBookingForm, setShowBookingForm] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
-  const notify = () => toast("Booking confirmed..");
+
   const { user } = useAuth();
 
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -38,33 +38,36 @@ const WorkShopDetail = ({ params }) => {
     fetchData();
   }, [_id]);
 
-  const handleBookNow = () => {
-    setShowBookingForm(true);
-  };
-
   const onSubmit = async (data) => {
     const serviceData = {
       workShop_id: _id,
       workshop_email: product.email,
       email: user?.email,
-      status: 'pending',
+      status: "pending",
       ...data,
     };
 
     const response = await axios.post(
-      "https://fya-backend.vercel.app/api/v1/auth/orders", serviceData);
-    setShowBookingForm(false)
-    console.log(response);
+      "https://fya-backend.vercel.app/api/v1/auth/orders",
+      serviceData
+    );
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Appointment booking success",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setIsOpen(false);
     reset();
-    notify();
   };
 
-   if (loading) {
-     return <MidSpinner />; 
-   }
+  if (loading) {
+    return <MidSpinner />;
+  }
 
   return (
-    <div className="relative mt-36 p-5 default-container">
+    <div className=" mt-40 mb-24 p-5 default-container">
       <div className="">
         <div className="md:flex md:gap-12 gap-10 items-center">
           <div className="w-full ">
@@ -89,22 +92,27 @@ const WorkShopDetail = ({ params }) => {
               <p className="ml-1">{product.rating}</p>
             </div>
             <button
-              onClick={handleBookNow}
+              onClick={() => setIsOpen(true)}
               className=" primary-btn text-white font-bold py-2 px-4 rounded my-5"
             >
-              Book Now
+              Book Appointment
             </button>
           </div>
         </div>
-        
-       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-24 ">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-24 ">
           {product?.products.map((product, index) => (
             <SingleProductCard key={index} product={product} />
           ))}
         </div>
-          
-      {showBookingForm && (
-        <div className="absolute -top-7 left-0 w-full h-full flex items-center justify-center bg-gray-200 bg-opacity-75 z-20">
+      </div>
+
+      <UserModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        title={"Booking Request form"}
+      >
+        <div className=" h-full w-full flex items-center justify-center bg-gray-200 bg-opacity-75 z-20">
           <div className="max-w-5xl  mx-auto w-full bg-white mt-5 md:mt-0 p-6 md:p-12 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Booking Information</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="">
@@ -270,7 +278,7 @@ const WorkShopDetail = ({ params }) => {
                   </div>
                   <div className="">
                     <label htmlFor="map" className="block text-sm font-medium">
-                    Latitude  *
+                      Latitude *
                     </label>
                     <input
                       type="text"
@@ -283,7 +291,7 @@ const WorkShopDetail = ({ params }) => {
                   </div>
                   <div className="">
                     <label htmlFor="long" className="block text-sm font-medium">
-                    Longitude  *
+                      Longitude *
                     </label>
                     <input
                       type="text"
@@ -316,34 +324,18 @@ const WorkShopDetail = ({ params }) => {
                 <button type="submit" className="primary-btn rounded-md">
                   Submit
                 </button>
-                <Toaster />
                 <button
-                  onClick={() => {
-                    setShowBookingForm(false);
-                  }}
-                  // type="button"
+                  onClick={() => setIsOpen(false)}
                   className="bg-blue-500 text-white px-4 font-semibold tracking-wider py-2 rounded-md hover:bg-blue-600"
                 >
                   Close
                 </button>
               </div>
             </form>
-            <div className=" absolute -top-7 -right-3 mt-4">
-              <button
-                className="bg-red-400 hover:bg-red-600  font-bold py-1 px-2 rounded-full transition-all duration-300 ease-in-out"
-                onClick={() => {
-                  setShowBookingForm(false);
-                }}
-              >
-                X
-              </button>
-            </div>
           </div>
         </div>
-      )}
-      <Toaster />
-      </div>
-      </div>
+      </UserModal>
+    </div>
   );
 };
 

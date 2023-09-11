@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserSupport = () => {
     return (
-        <div>
+        <div className='mt-16'>
              <h1>This is support page </h1>
         </div>
     );

@@ -1,22 +1,32 @@
-import Steps from "@/components/PagesSection/Dasboard/UpComeAppt/Steps";
+import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
-import Map from "@/components/map/Map";
-import React from "react";
-// dsd
+import Steps from "@/components/PagesSection/Dasboard/UpComeAppt/Steps";
+
+const Map = dynamic(() => import("@/components/map/Map"), { ssr: false });
+
 const OrderContent = ({ order }) => {
-  const lat = parseFloat(order?.lat);
-  const lon = parseFloat(order?.lon);
-  const hasValidPosition = !Number.isNaN(lat) && !Number.isNaN(lon);
-  const postion = [lat, lon];
+  const [hasValidPosition, setHasValidPosition] = useState(false);
+  const [position, setPosition] = useState([0, 0]); // Default position
+
+  useEffect(() => {
+    const lat = parseFloat(order?.lat);
+    const lon = parseFloat(order?.lon);
+
+    if (!Number.isNaN(lat) && !Number.isNaN(lon)) {
+      setPosition([lat, lon]);
+      setHasValidPosition(true);
+    }
+  }, [order]);
 
   return (
-    <div className="bg-white border border-gary-400">
+    <div className="bg-white border border-gray-400">
       <div className="w-full">
         {hasValidPosition ? (
-          <Map title={"Workshop"} position={postion} />
+          <Map position={position} title="Workshop Location" />
         ) : (
           <EmptyState
-            message={"Workshop map not share"}
+            message={"Workshop map not shared"}
             address={"https://www.google.com/maps"}
             label={"Visit Map"}
           />

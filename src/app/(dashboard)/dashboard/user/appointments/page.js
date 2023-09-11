@@ -1,11 +1,11 @@
 import UpcomeAppointment from "@/components/dashboard/UserDashboard/UpcomeAppointment";
 
-const UpcommingAppointment = () => {
+const UpAppointmentPage = () => {
     return (
-        <>
+        <div className="my-24">
             <UpcomeAppointment/>
-        </>
+        </div>
     );
 };
 
-export default UpcommingAppointment;
+export default UpAppointmentPage;
