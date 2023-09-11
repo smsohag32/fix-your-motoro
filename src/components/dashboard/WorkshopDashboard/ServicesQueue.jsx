@@ -45,28 +45,22 @@ const ServicesQueue = () => {
                       Service Name : {order.service_name}
                     </h4>
                     <p className="text-md text-slate-500">
-                      {" "}
-                      Description : {order.service_description}{" "}
+                      Description : {order.service_description}
                     </p>
                     <p className="text-md text-slate-500">
-                      {" "}
-                      Category : {order.service_category}{" "}
+                      Category : {order.service_category}
                     </p>
                     <p className="text-md text-slate-500">
-                      {" "}
-                      Service Duration : {order.service_duration}{" "}
+                      Service Duration : {order.service_duration}
                     </p>
                     <p className="text-md text-slate-500">
-                      {" "}
-                      Cost : {order.service_price}{" "}
+                      Cost : {order.service_price}
                     </p>
                     <p className="text-md text-slate-500">
-                      {" "}
-                      Benefits : {order.benefits}{" "}
+                      Benefits : {order.benefits}
                     </p>
                     <p className="text-md text-slate-500">
-                      {" "}
-                      Warranty : {order.warranty}{" "}
+                      Warranty : {order.warranty}
                     </p>
                   </div>
                   <div className="flex md:justify-between items-center">
