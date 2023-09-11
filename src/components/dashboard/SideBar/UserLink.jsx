@@ -2,7 +2,7 @@ import React from "react";
 import { MdDashboard, MdPayments, MdSupportAgent } from "react-icons/md";
 import Link from "next/link";
 import { FaHistory, FaUsers } from "react-icons/fa";
-import { BiCreditCard } from "react-icons/bi";
+import { BiCreditCard, BiMessageAltDetail } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import NavLink from "@/components/Shared/Header/NavLink";
 
@@ -78,6 +78,20 @@ function UserLink() {
         </h3>
       </li>
       {/* community section */}
+        {/* chat section */}
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+                <BiMessageAltDetail className="w-8 h-8  group-hover:text-[#69d94f]" />
+                <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f]  "> 
+                <NavLink
+            exact={"/dashboard/user/user_chat" == "/dashboard"}
+            activeClassName={"primary-text"}
+            href="/dashboard/user/user_chat"
+          >
+            Message
+          </NavLink>
+          {/* <Link href="/dashboard/user/user_chat">Message</Link> */}
+            </h3>
+        </li>
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
         <MdSupportAgent className="w-8 h-8  group-hover:text-[#69d94f] " />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
