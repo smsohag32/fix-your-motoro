@@ -1,4 +1,5 @@
 import ManageWorkShop from "@/components/dashboard/Admin/ManageWorkShop/ManageWorkShop";
+import Image from "next/image";
 
 const ManageWorkShopPage = () => {
   const { workshops, wLoading, refetchWorkshops } = useWorkshops();

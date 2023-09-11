@@ -66,7 +66,6 @@ const Blog = () => {
         subTitle="Stay up to date with new technologies"
       />
       <div className="">
-        <div className="max-w-4xl mx-auto ">
           <div className="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
             {blogs.map((blog) => (
               <div
@@ -121,7 +120,6 @@ const Blog = () => {
               </div>
             ))}
           </div>
-        </div>
       </div>
     </div>
   );
