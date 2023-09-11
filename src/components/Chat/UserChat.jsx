@@ -6,6 +6,8 @@ import useWorkshops from "@/hooks/useWorkshops";
 import useAuth from "@/hooks/useAuth";
 const socket = io.connect("https://steep-mountainous-avatar.glitch.me");
 
+// socket io server deploy app link: https://glitch.com/edit/#!/steep-mountainous-avatar
+// socket io server deploy live link: https://steep-mountainous-avatar.glitch.me
 
 function UserChat() {
   const [notification, setNotification] = useState(0);
