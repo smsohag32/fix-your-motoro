@@ -3,7 +3,7 @@ import React from "react";
 
 const BlogsPage = () => {
   return (
-    <div>
+    <div className="default-container">
       <Blog />
     </div>
   );

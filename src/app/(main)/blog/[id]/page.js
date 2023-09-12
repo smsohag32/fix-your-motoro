@@ -4,20 +4,15 @@ import axios from "axios";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import { FaRegComment } from "react-icons/fa";
+import { PiHandsClappingBold } from "react-icons/pi";
 
 const BlogDetailPage = ({ params }) => {
-  
-  const [loading, setLoading] = useState([]);
   const [comment, setComment] = useState('');
   const { user } = useAuth();
 
-  // console.log(blog);
-// `https://fya-backend.vercel.app/api/v1/auth/blogs/${params.id}`;
   const {
-    data: blog,
-    refetch,
-    isLoading: bLoading,
-  } = useQuery({
+    data: blog, refetch, isLoading: bLoading} = useQuery({
     queryKey: ["blog"],
     queryFn: async () => {
       const res = await axios.get(
@@ -27,9 +22,7 @@ const BlogDetailPage = ({ params }) => {
     },
   });
  
-
   const handleCommentSubmit = async() => {
-    
     const commentData = {
       user_name: user?.displayName,
       email: user?.email,
@@ -40,8 +33,8 @@ const BlogDetailPage = ({ params }) => {
       `https://fya-backend.vercel.app/api/v1/auth/blogs/comment/${blog?._id}`,commentData
     );
     if (response.data.message) {
-      refetch();
       setComment("");
+      refetch();
     }
   };
    if (bLoading) {
@@ -53,10 +46,10 @@ const BlogDetailPage = ({ params }) => {
         <h1 className="text-2xl font-bold mb-4">{blog.title}</h1>
         <p className="text-gray-500 mb-2">{blog.date}</p>
         <p className="prose">{blog?.content}</p>
-        <div className="my-5">
+        <div className="mt-5">
           <p>Comments</p>
           {blog.comments.map((com) => (
-            <div key={com.index} className="bg-slate-400 my-5 p-3">
+            <div key={com.index} className="bg-slate-200 rounded-xl my-5 p-3">
               <h1>{com.name}</h1>
               <p>{com.comment}</p>
             </div>
@@ -64,7 +57,7 @@ const BlogDetailPage = ({ params }) => {
         </div>
         <div>
           <p>Add a comment</p>
-          <div className="p-5">
+          <div className="py-5">
             <textarea
               rows="4"
               cols="50"
@@ -76,7 +69,7 @@ const BlogDetailPage = ({ params }) => {
             <button
               type="submit"
               onClick={handleCommentSubmit}
-              className="bg-blue-500 block text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="block primary-btn"
             >
               Add Comment
             </button>

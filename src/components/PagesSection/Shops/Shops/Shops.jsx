@@ -57,7 +57,7 @@ const Shops = () => {
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
-  console.log(products);
+  // console.log(products);
 
 
   return (
