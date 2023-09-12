@@ -14,7 +14,7 @@ const WorkshopMessage = () => {
       
       <div className="mt-8">
       <div className="bg-white rounded-lg shadow-md p-4">
-        <h2 className="text-lg font-semibold mb-3">Chat with Workshop</h2>
+        <h2 className="text-lg font-semibold mb-3">Chat For Workshop and Client</h2>
         <Chat
           socket={socket}
           username={user?.displayName}

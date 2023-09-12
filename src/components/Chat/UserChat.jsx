@@ -18,7 +18,7 @@ function UserChat() {
      
     <div className="mt-8">
     <div className="bg-white rounded-lg shadow-md p-4">
-      <h2 className="text-lg font-semibold mb-3">Chat</h2>
+      <h2 className="text-lg font-semibold mb-3">Chat Group For Admin and Users</h2>
       <Chat
         socket={socket}
         username={user?.displayName}

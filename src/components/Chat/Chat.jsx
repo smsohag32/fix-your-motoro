@@ -58,7 +58,7 @@ function Chat({ socket, username, room, notification, setNotification }) {
       <div className="bg-white rounded-lg shadow-lg w-96">
         <div className="bg-gradient-to-r from-green-500 to-green-900 p-4 rounded-t-lg">
           <p className="text-xl text-white font-semibold">FYM Chat</p>
-          {notification || (
+          {notification ||(
             <span className="text-white">{notification} new message</span>
           )}
         </div>
