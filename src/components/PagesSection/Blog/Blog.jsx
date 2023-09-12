@@ -1,13 +1,13 @@
 "use client";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import Image from "next/image";
-import { FaRegComment } from "react-icons/fa";
 import { BsArrowRightCircle } from "react-icons/bs";
 import { PiHandsClappingBold } from "react-icons/pi";
 import useBlogs from "@/hooks/UseBlogs";
 import { useRouter } from "next/navigation";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
+import { FaRegComment } from "react-icons/fa";
 
 const Blog = () => {
   const { blogs, bLoading, refetch } = useBlogs();
@@ -18,18 +18,21 @@ const Blog = () => {
 
   const handleLike = (blog) => {
     const likeData = {
-      user_photo:user?.photoURL,
+      user_photo: user?.photoURL,
       user_email: user?.email,
       user_name: user?.displayName,
     };
-    fetch(`https://fya-backend.vercel.app/api/v1/auth/blogs/like/${blog?._id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(likeData),
-    })
-    .then((response) => {
+    fetch(
+      `https://fya-backend.vercel.app/api/v1/auth/blogs/like/${blog?._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(likeData),
+      }
+    )
+      .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -44,31 +47,26 @@ const Blog = () => {
       });
   };
 
-  const handleComment = (blog) => {
-    console.log("commentssssssss");
-  };
+  if (bLoading) {
+    return (
+      <div className="mt-32 default-container">
+        <MidSpinner />
+      </div>
+    );
+  }
 
-   if (bLoading) {
-     return (
-       <div className="mt-32 default-container">
-         <MidSpinner />
-       </div>
-     );
-   }
-
-   if (!blogs || blogs.length === 0) {
-     return <p className="mt-32 default-container">No blog posts available.</p>;
-   }
+  if (!blogs || blogs.length === 0) {
+    return <p className="mt-32 default-container">No blog posts available.</p>;
+  }
 
   return (
-    <div className="my-32 default-container ">
+    <div className="default-container ">
       <PageTitle
         title="Latest Blog Posts"
         subTitle="Stay up to date with new technologies"
       />
       <div className="">
-        <div className="max-w-4xl mx-auto ">
-          <div className="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {blogs.map((blog) => (
               <div
                 key={blog.id}
@@ -99,7 +97,10 @@ const Blog = () => {
                 <p className="my-5">10 min read . {blog.date}</p>
                 <div className=" flex items-center justify-between mb-3">
                   <div className="flex items-center gap-1">
-                    <button className="text-3xl" onClick={() =>handleLike(blog)}>
+                    <button
+                      className="text-3xl"
+                      onClick={() => handleLike(blog)}
+                    >
                       <PiHandsClappingBold />
                     </button>
                     <span>
@@ -107,9 +108,7 @@ const Blog = () => {
                     </span>
                   </div>
                   <div className=" text-3xl flex items-center gap-3 ">
-                    <button onClick={() =>handleComment(blog)}>
-                      <FaRegComment />
-                    </button>
+                    
                     <button
                       className="primary-text"
                       onClick={() => router.push(`/blog/${blog?._id}`)}
@@ -121,7 +120,6 @@ const Blog = () => {
               </div>
             ))}
           </div>
-        </div>
       </div>
     </div>
   );
