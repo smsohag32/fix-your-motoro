@@ -5,7 +5,11 @@ import axios from "axios";
 const useBlogs = () => {
   const queryClient = useQueryClient();
 
-  const { data: blogs, refetch, isLoading: bLoading } = useQuery({
+  const {
+    data: blogs,
+    refetch,
+    isLoading: bLoading,
+  } = useQuery({
     queryKey: ["blogs"],
     queryFn: async () => {
       const res = await axios.get(
@@ -14,8 +18,6 @@ const useBlogs = () => {
       return res.data;
     },
   });
-
-
 
   return { blogs, bLoading, refetch };
 };
