@@ -26,14 +26,17 @@ const Sidebar = () => {
   return (
     <div>
       {/* Technician side nav */}
-      <div className="mt-16">
+      <div>
         <Disclosure as="nav">
-          <Disclosure.Button className="absolute inline-flex items-center justify-center p-2 text-gray-800 rounded-md top-4 right-4 peer hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white group">
+          <Disclosure.Button className="absolute inline-flex items-center justify-center p-2 text-gray-800 rounded-md top-3 right-4 bg-slate-200 peer hover:bg-gray-900 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white group">
             <GiHamburgerMenu
               className="block w-6 h-6 md:hidden"
               aria-hidden="true"
             />
           </Disclosure.Button>
+          <div className="h-16 md:hidden border border-b-green-600 flex items-center pl-7">
+            <p className="font-bold text-green-500 text-2xl">FYM</p>
+          </div>
           <div className="fixed top-0 z-20 w-full h-screen p-6 overflow-y-scroll duration-200 ease-out delay-150 bg-white -left-full lg:left-0 lg:w-72 peer-focus:left-0 peer:transition">
             <div className="flex flex-col justify-start item-center">
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 uppercase border-b border-gray-100 cursor-pointer">
