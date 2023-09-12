@@ -67,7 +67,7 @@ const WorkShopDetail = ({ params }) => {
   }
 
   return (
-    <div className=" mt-40 mb-24 p-5 default-container">
+    <div className="md:mt-16 mb-24 p-5 default-container">
       <div className="">
         <div className="md:flex md:gap-12 gap-10 items-center">
           <div className="w-full ">
