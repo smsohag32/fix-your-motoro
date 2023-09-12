@@ -1,11 +1,12 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 
 function Chat({ socket, username, room, notification, setNotification }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const [conversation, setConversation] = useState([]);
+  const messageContainerRef = useRef(null);
 
   const sendMessage = async () => {
     setNotification(0);
@@ -14,7 +15,10 @@ function Chat({ socket, username, room, notification, setNotification }) {
         room: room,
         author: username,
         message: currentMessage,
-        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
       };
 
       await socket.emit("send_message", messageData);
@@ -29,7 +33,13 @@ function Chat({ socket, username, room, notification, setNotification }) {
       setMessageList((list) => [...list, data]);
 
       if (data.author !== username) {
-        setNotification((notify) => {return  notify+1});
+        setNotification((notify) => notify + 1);
+      }
+
+      // Scroll to the bottom of the message container when a new message is received.
+      if (messageContainerRef.current) {
+        messageContainerRef.current.scrollTop =
+          messageContainerRef.current.scrollHeight;
       }
     });
 
@@ -53,7 +63,10 @@ function Chat({ socket, username, room, notification, setNotification }) {
           )}
         </div>
         <div className="flex-grow p-4">
-          <ScrollToBottom className="overflow-y-auto max-h-96">
+          <ScrollToBottom
+            className="overflow-y-auto max-h-96"
+            ref={messageContainerRef}
+          >
             {conversation.map((messageContent, index) => (
               <div
                 className={`flex ${
