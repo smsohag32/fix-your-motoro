@@ -1,12 +1,11 @@
-import UserVehicles from '@/components/dashboard/UserDashboard/UserVehicles';
-import React from 'react';
+import UserVehicles from "@/components/dashboard/UserDashboard/UserVehicles";
 
 const UserVehiclesPage = () => {
-    return (
-        <div>
-            <UserVehicles/>
-        </div>
-    );
+  return (
+    <div>
+      <UserVehicles />
+    </div>
+  );
 };
 
 export default UserVehiclesPage;

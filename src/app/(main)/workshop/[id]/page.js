@@ -9,10 +9,16 @@ import { useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
 import UserModal from "@/components/Modal/Modal";
 import Swal from "sweetalert2";
+import Chat from "@/components/Chat/Chat";
+import io from "socket.io-client";
+const socket = io.connect("https://steep-mountainous-avatar.glitch.me");
+
 
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState([]);
+
+  const [notification, setNotification] = useState(0);
   const { register, handleSubmit, reset } = useForm();
   const _id = params.id;
 
@@ -99,6 +105,23 @@ const WorkShopDetail = ({ params }) => {
             </button>
           </div>
         </div>
+ {/* message start */}
+
+      
+ <div className="mt-8">
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <h2 className="text-lg font-semibold mb-3">Chat For Workshop and Client</h2>
+          <Chat
+            socket={socket}
+            username={user?.displayName}
+            room={101}
+            notification={notification}
+            setNotification={setNotification}
+          />
+        </div>
+      </div>
+   
+        {/* message end */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-24 ">
           {product?.products.map((product, index) => (
