@@ -1,6 +1,6 @@
 const PageTitle = ({ title, subTitle }) => {
   return (
-    <div className="flex mb-5 items-center text-end justify-center w-full min-h-[20vh]">
+    <div className="flex mb-5 items-center text-center md:text-end justify-center w-full min-h-[20vh]">
       <div className="default-container flex flex-col gap-2">
         <h1 className="text-5xl font-bold tracking-widest opacity-80">
           {title}
