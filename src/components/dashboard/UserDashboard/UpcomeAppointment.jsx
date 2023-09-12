@@ -27,11 +27,9 @@ const UpcomeAppointment = () => {
 
   return (
     <div>
-      <div className="my-5">
-        <h1 className="md:text-2xl text-xl font-semibold opacity-80">
-          Appointment Inventroy
-        </h1>
-      </div>
+      <h1 className="md:text-2xl text-xl font-semibold opacity-80">
+        Appointment Inventory
+      </h1>
       <div className="grid grid-cols-1 gap-10">
         {workOrder?.length > 0 ? (
           workOrder.map((order, index) => (

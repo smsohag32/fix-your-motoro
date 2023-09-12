@@ -44,7 +44,7 @@ const Overview = () => {
     return <Spinner />;
   }
   return (
-    <div className="py-24">
+    <div className="md:mt-16">
       <h1 className="text-2xl font-bold mb-4">Welcome, {user?.displayName}!</h1>
       <section className="bg-white p-4 rounded shadow-md mb-4">
         <h2 className="text-lg font-semibold mb-2">Dashboard</h2>

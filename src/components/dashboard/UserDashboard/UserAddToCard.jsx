@@ -94,6 +94,7 @@ const UserAddToCard = () => {
   return (
     <div className="md:mt-16">
       <h1 className="text-start md:text-center text-2xl mb-3">Your Products On Cart</h1>
+      <div className="relative overflow-x-auto">
       <table className="mx-auto">
         <thead>
           <tr className="text-[18px] text-white primary-bg">
@@ -143,12 +144,13 @@ const UserAddToCard = () => {
                 refetch={refetch}
                 selectedProductIds={selectedProducts.map((product) => product.id)}
                 onProductSelect={handleProductSelect}
-                onQuantityChange={handleQuantityChange} // Pass the function to handle quantity change
+                onQuantityChange={handleQuantityChange}
               />
             ))
           )}
         </tbody>
       </table>
+      </div>
       <div className="mx-auto md:w-3/5 mt-4">
         {!cartLoading && (
           <button

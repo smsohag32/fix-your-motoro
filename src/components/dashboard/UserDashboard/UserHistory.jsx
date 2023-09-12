@@ -59,7 +59,7 @@ const UserHistory = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 mt-16">
+    <div className="container mx-auto p-4 md:mt-16">
       <h1 className="text-2xl font-semibold mb-4">User Service History</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
