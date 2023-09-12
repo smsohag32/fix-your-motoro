@@ -60,13 +60,13 @@ const Blog = () => {
   }
 
   return (
-    <div className="my-32 default-container ">
+    <div className="default-container ">
       <PageTitle
         title="Latest Blog Posts"
         subTitle="Stay up to date with new technologies"
       />
       <div className="">
-          <div className="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {blogs.map((blog) => (
               <div
                 key={blog.id}
