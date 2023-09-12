@@ -10,7 +10,6 @@ import { useForm } from "react-hook-form";
 import Spinner from "@/components/Spinners/Spinner";
 import AdminSummary from "./AdminSummary/AdminSummary";
 import WorkshopSummary from "./WorkshopSummary/WorkshopSummary";
-import UserDashboardStats from "./UserSummary/UserDashboardStats";
 import UserSummary from "./UserSummary/UserSummary";
 
 const Overview = () => {
