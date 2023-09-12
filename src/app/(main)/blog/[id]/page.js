@@ -47,7 +47,7 @@ const BlogDetailPage = ({ params }) => {
     return <MidSpinner />;
   }
   return (
-    <div className="my-36 default-container">
+    <div className="my-5 default-container">
       <PageTitle title="Read Our Blog" />
       <div>
         <h1 className="text-2xl font-bold mb-4">{blog.title}</h1>
