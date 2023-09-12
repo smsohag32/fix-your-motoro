@@ -107,6 +107,7 @@ const Blog = () => {
                         <div className=" flex items-center justify-between mb-3">
                           <div className="flex items-center gap-1">
                             <button
+                              // make react conditional
                               className="text-3xl"
                               onClick={() => handleLike(blog)}
                             >
