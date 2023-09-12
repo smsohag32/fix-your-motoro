@@ -9,6 +9,7 @@ import { IoIosPeople } from "react-icons/io";
 import { BsTools } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { BiMessageAltDetail } from "react-icons/bi";
 
 function WorkshopAgentLink() {
   const pathName = usePathname();
@@ -67,6 +68,7 @@ function WorkshopAgentLink() {
             </h3>
           </li>
         </Link>
+        
         <Link
           exact={"/dashboard/workshop/services" == "/dashboard"}
           activeClassName={"primary-text"}
@@ -102,7 +104,23 @@ function WorkshopAgentLink() {
               Account
             </h3>
           </li>
+          </Link>
+           {/* message section */}
+
+          <Link
+            // exact={"/dashboard/workshop/message" == "/dashboard"}
+            activeClassName={"primary-text"}
+            href={"/dashboard/workshop/message"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <BiMessageAltDetail className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] "> 
+              Message
+           
+            </h3>
+        </li>
         </Link>
+
       </ul>
     </>
   );
