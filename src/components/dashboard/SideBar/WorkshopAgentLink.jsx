@@ -70,8 +70,9 @@ function WorkshopAgentLink() {
         </Link>
         
         <Link
-          exact={"/dashboard/workshop/services" == "/dashboard"}
-          activeClassName={"primary-text"}
+          className={
+            pathName === "/dashboard/workshop/services" ? "primary-text" : ""
+          }
           href={"/dashboard/workshop/services"}
         >
           <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
@@ -82,8 +83,9 @@ function WorkshopAgentLink() {
           </li>
         </Link>
         <Link
-          exact={"/dashboard/workshop/mechanics" == "/dashboard"}
-          activeClassName={"primary-text"}
+          className={
+            pathName === "/dashboard/workshop/mechanics" ? "primary-text" : ""
+          }
           href={"/dashboard/workshop/mechanics"}
         >
           <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
@@ -94,8 +96,9 @@ function WorkshopAgentLink() {
           </li>
         </Link>
         <Link
-          exact={"/dashboard/workshop/profile" == "/dashboard"}
-          activeClassName={"primary-text"}
+          className={
+            pathName === "/dashboard/workshop/profile" ? "primary-text" : ""
+          }
           href={"/dashboard/workshop/profile"}
         >
           <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
