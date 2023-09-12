@@ -74,12 +74,12 @@ const SingleProduct = ({ id }) => {
   return (
     <div className="">
       <PageTitle title={name} subTitle={""}></PageTitle>
-      <div className="default-container py-12">
+      <div className="default-container pb-8">
         {/* Service Area */}
         <div className="lg:flex justify-between gap-10">
           <figure>
             <Image
-              className="rounded-lg shadow-md"
+              className="rounded-lg border  shadow-md"
               src={image ? image : ""}
               alt={name}
               width={850}
@@ -87,35 +87,39 @@ const SingleProduct = ({ id }) => {
             />
             <figcaption className="text-sm font-thin">{name}</figcaption>
           </figure>
-          <div>
-            <h3 className="text-4xl text-slate-950 font-extrabold tracking-wide mt-6 mb-2">
-              {name}
-            </h3>
-            <p className="text-slate-600 text-xl font-semibold mb-12">
-              {description}
-            </p>
-            <div className="bg-gray-300 px-8 py-4 rounded-md shadow-xl">
-              <div className="md:flex items-center text-xl my-2">
-                <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
-                  Price:
-                </p>
-                <p className="md:pl-10">
-                  :
-                  <span className="md:inline md:pl-10">
-                    <span className="bg-gray-400 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
-                      {price}
+          <div className="flex flex-col justify-center ">
+            <div>
+              <h3 className="text-4xl text-slate-950 font-extrabold tracking-wide mt-4 md:mt-0 mb-2">
+                {name}
+              </h3>
+              <p className="text-slate-600 text-xl font-semibold mb-5">
+                {description}
+              </p>
+              <p className="text-slate-600 text-xl font-bold mb-3">
+                Stock: {stock}
+              </p>
+              <div className="bg-gray-300 px-8 py-4 rounded-md shadow-xl">
+                <div className="md:flex items-center text-xl my-2">
+                  <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
+                    Price:
+                  </p>
+                  <p className="md:pl-10">
+                    
+                    <span className="md:inline md:pl-10">
+                      <span className="bg-gray-400 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
+                        ${price}
+                      </span>
                     </span>
-                  </span>
-                </p>
+                  </p>
+                </div>
+
+                <button
+                  onClick={handleProductAddToCart}
+                  className={`primary-btn`}
+                >
+                  Add to Cart
+                </button>
               </div>
-
-              <button
-                onClick={handleProductAddToCart}
-                className={`primary-btn`}
-              >
-                Add to Cart
-              </button>
-
             </div>
           </div>
         </div>

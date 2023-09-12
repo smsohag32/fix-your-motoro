@@ -39,8 +39,8 @@ const BlogDetailPage = ({ params }) => {
       commentData
     );
     if (response.data.message) {
-      refetch();
       setComment("");
+      refetch();
     }
   };
   if (bLoading) {
@@ -55,7 +55,7 @@ const BlogDetailPage = ({ params }) => {
         <p className="prose">{blog?.content}</p>
         <div>
           <p>Add a comment</p>
-          <div className="p-5">
+          <div className="py-5">
             <textarea
               rows="4"
               cols="50"
@@ -67,7 +67,7 @@ const BlogDetailPage = ({ params }) => {
             <button
               type="submit"
               onClick={handleCommentSubmit}
-              className="bg-blue-500 block text-white px-4 py-2 rounded hover:bg-blue-600"
+              className="block primary-btn"
             >
               Add Comment
             </button>

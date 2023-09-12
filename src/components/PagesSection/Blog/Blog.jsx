@@ -1,13 +1,13 @@
 "use client";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import Image from "next/image";
-import { FaRegComment } from "react-icons/fa";
 import { LiaHandPointRightSolid } from "react-icons/lia";
 import { AiOutlineHeart } from "react-icons/ai";
 import useBlogs from "@/hooks/UseBlogs";
 import { useRouter } from "next/navigation";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
+import { FaRegComment } from "react-icons/fa";
 
 const Blog = () => {
   const { blogs, bLoading, refetch } = useBlogs();
@@ -47,9 +47,13 @@ const Blog = () => {
       });
   };
 
-  const handleComment = (blog) => {
-    console.log("commentssssssss");
-  };
+  if (bLoading) {
+    return (
+      <div className="mt-32 default-container">
+        <MidSpinner />
+      </div>
+    );
+  }
 
   if (bLoading) {
     return (
@@ -64,7 +68,7 @@ const Blog = () => {
   }
 
   return (
-    <div className="my-32 default-container ">
+    <div className="default-container ">
       <PageTitle
         title="Latest Blog Posts"
         subTitle="Stay up to date with new technologies"

@@ -12,7 +12,7 @@ const UserProfile = () => {
   const { userInfo, cLoading, refetch } = useUserInfo();
 
   return (
-    <div className="mt-32">
+    <div className="md:mt-16">
       <div className="max-w-screen-lg mx-auto bg-gray-300 rounded-lg shadow-lg overflow-hidden">
         <div className="bg-blue-400 py-8 px-6 text-white">
           {cLoading ? (

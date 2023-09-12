@@ -1,10 +1,7 @@
-"use client";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const useBlogs = () => {
-  const queryClient = useQueryClient();
-
   const {
     data: blogs,
     refetch,
@@ -18,7 +15,6 @@ const useBlogs = () => {
       return res.data;
     },
   });
-
   return { blogs, bLoading, refetch };
 };
 

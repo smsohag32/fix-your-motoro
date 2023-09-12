@@ -16,7 +16,6 @@ const useWorkshops = () => {
       return res.data;
     },
   });
-
   return { workshops, wLoading, refetch };
 };
 

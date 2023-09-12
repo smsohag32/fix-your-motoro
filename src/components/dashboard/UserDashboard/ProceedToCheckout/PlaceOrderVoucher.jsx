@@ -60,8 +60,6 @@ const PlaceOrderVoucher = ({ cartData }) => {
       customerName: userInfo?.user?.name || user?.displayName,
       customerEmail: userInfo?.user?.email || user?.email,
       customerImage: userInfo?.user?.image || user?.displayURL,
-      phone: userInfo?.user?.phone,
-      address: userInfo?.user?.address,
     };
     console.log('Placing Order with Data:', orderData);
     const response = await axios.post("https://yoga-mindfulness-server.vercel.app/user/cart/product/order_api", orderData);

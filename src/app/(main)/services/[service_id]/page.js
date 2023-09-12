@@ -102,7 +102,7 @@ const ServicePage = ({ params }) => {
   };
 
   return (
-    <div className="mt-32 default-container">
+    <div className="default-container">
       <PageTitle
         title={service_name}
         subTitle={service_description}

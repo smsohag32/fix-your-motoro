@@ -57,7 +57,7 @@ const Shops = () => {
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
-  console.log(products);
+  // console.log(products);
 
 
   return (
@@ -75,21 +75,22 @@ const Shops = () => {
               className="w-full p-2 mb-4 border rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
             />
             <div>
-              <div className="flex items-center gap-3 my-2">
-                <p>Price range: </p>
+              <div className="flex flex-col md:flex-row gap-3 md:items-center w-full">
+                <p className="">Price range: </p>
+
                 <input
                   type="number"
                   placeholder="Min Price"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
-                  className="border p-2  mr-2 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
+                  className="border p-2 rounded-md   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
                 />
                 <input
                   type="number"
                   placeholder="Max Price"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
-                  className="p-2 border rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
+                  className="p-2 border rounded-md   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#69d94f]"
                 />
               </div>
               <div className="flex items-center gap-3 my-2">
