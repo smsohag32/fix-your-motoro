@@ -7,7 +7,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="">
+    <>
       <PageTitle
         title="About Us"
         subTitle="Welcome to the Future of Car Care"
@@ -110,7 +110,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
