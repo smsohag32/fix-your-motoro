@@ -4,7 +4,7 @@ import TopBar from "./TopBar";
 
 const Header = () => {
   return (
-    <div className="fixed left-0 right-0 top-0 z-50">
+    <div className="sticky left-0 right-0 top-0 z-50">
       <div className="md:h-12 h-auto w-full flex bg-gray-100 items-center duration-500 transition-all">
         <TopBar />
       </div>
