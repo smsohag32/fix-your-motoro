@@ -13,7 +13,7 @@ function Notification() {
   const [conversation, setConversation] = useState([]);
   const messageContainerRef = useRef(null);
   const room = 500;
-  const username = 'all';
+  const username = 'Adm';
 
   // Function to get the conversation messages from the server
   const getConversation = () => {
@@ -63,23 +63,23 @@ function Notification() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white rounded-lg shadow-lg w-96">
+ 
+      <div className="mt-12 bg-white rounded-lg shadow-lg w-full h-full max-w-screen-md">
         <div className="bg-gradient-to-r from-green-500 to-green-900 p-4 rounded-t-lg">
-          <p className="text-xl text-white font-semibold">Notification for you from FYM</p>
+          <p className="text-xl text-white font-semibold">Notification for you from FYM Admin</p>
         </div>
         <div className="flex-grow p-4">
-          <ScrollToBottom className="overflow-y-auto max-h-96" ref={messageContainerRef}>
+          <ScrollToBottom  className="overflow-y-auto max-h-[70vh]"  ref={messageContainerRef}>
             {conversation.map((messageContent, index) => (
               <div
                 className={`flex ${
-                  username === messageContent.author ? 'justify-end' : 'justify-start'
+                  username === messageContent.author ? 'justify-start' : 'justify-start'
                 } mb-2`}
                 key={index}
               >
                 <div
                   className={`p-2 rounded ${
-                    username === messageContent.author ? 'bg-blue-100 text-right' : 'bg-gray-100 text-left'
+                    username === messageContent.author ? 'bg-green-300 text-right' : 'bg-gray-300 text-left'
                   }`}
                 >
                   <div className="text-gray-600 text-xs mb-1">
@@ -92,7 +92,7 @@ function Notification() {
           </ScrollToBottom>
         </div>
       </div>
-    </div>
+    
   );
 }
 
