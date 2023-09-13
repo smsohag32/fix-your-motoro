@@ -11,7 +11,7 @@ const Reviews = () => {
     return <Spinner />;
   }
   return (
-    <div className="mt-32">
+    <div className="md:my-16">
       <div>
         {reviews && reviews.length > 0 ? (
           reviews.map((review, idx) => (

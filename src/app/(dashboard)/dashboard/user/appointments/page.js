@@ -2,7 +2,7 @@ import UpcomeAppointment from "@/components/dashboard/UserDashboard/UpcomeAppoin
 
 const UpAppointmentPage = () => {
     return (
-        <div className="my-24">
+        <div className="md:my-16">
             <UpcomeAppointment/>
         </div>
     );

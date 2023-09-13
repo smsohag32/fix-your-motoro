@@ -41,7 +41,7 @@ const Sidebar = () => {
           <div className="fixed top-0 z-20 w-full h-screen p-6 overflow-y-scroll duration-200 ease-out delay-150 bg-white -left-full lg:left-0 lg:w-72 peer-focus:left-0 peer:transition">
             <div className="flex flex-col justify-start item-center">
               <h1 className="w-full pb-4 text-base font-bold text-center text-blue-900 uppercase border-b border-gray-100 cursor-pointer">
-                {userInfo?.user?.role ? userInfo?.user?.role : "FYT"}
+                {userInfo?.user?.role ? userInfo?.user?.role : "FYM"}
               </h1>
               {cLoading ? (
                 ""
