@@ -13,7 +13,7 @@ const Mechanics = () => {
   }
 
   return (
-    <div className="px-2 mt-20">
+    <div className="px-2 md:my-16">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {workshopMechanics && workshopMechanics.length > 0 ? (
           workshopMechanics?.map((mechanic) => (
@@ -24,7 +24,7 @@ const Mechanics = () => {
             <div className="w-full">
               <EmptyState
                 label={"Post a new Mechanic"}
-                address={"/dashboard/workshop/service_form"}
+                address={"/dashboard/workshop/mechanic_form"}
                 message={"No Mechanics Found For Your Workshop"}
               ></EmptyState>
             </div>

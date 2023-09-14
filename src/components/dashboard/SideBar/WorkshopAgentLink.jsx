@@ -7,8 +7,10 @@ import {
 import { LuListChecks } from "react-icons/lu";
 import { IoIosPeople } from "react-icons/io";
 import { BsTools } from "react-icons/bs";
+import { MdOutlineReviews } from "react-icons/md";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { BiMessageAltDetail } from "react-icons/bi";
 
 function WorkshopAgentLink() {
   const pathName = usePathname();
@@ -61,15 +63,17 @@ function WorkshopAgentLink() {
           href={"/dashboard/workshop/reviews"}
         >
           <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-            <IoIosPeople className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <MdOutlineReviews className="w-8 h-8  group-hover:text-[#69d94f]" />
             <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
               Reviews
             </h3>
           </li>
         </Link>
+
         <Link
-          exact={"/dashboard/workshop/services" == "/dashboard"}
-          activeClassName={"primary-text"}
+          className={
+            pathName === "/dashboard/workshop/services" ? "primary-text" : ""
+          }
           href={"/dashboard/workshop/services"}
         >
           <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
@@ -80,8 +84,9 @@ function WorkshopAgentLink() {
           </li>
         </Link>
         <Link
-          exact={"/dashboard/workshop/mechanics" == "/dashboard"}
-          activeClassName={"primary-text"}
+          className={
+            pathName === "/dashboard/workshop/mechanics" ? "primary-text" : ""
+          }
           href={"/dashboard/workshop/mechanics"}
         >
           <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
@@ -92,14 +97,29 @@ function WorkshopAgentLink() {
           </li>
         </Link>
         <Link
-          exact={"/dashboard/workshop/profile" == "/dashboard"}
-          activeClassName={"primary-text"}
+          className={
+            pathName === "/dashboard/workshop/profile" ? "primary-text" : ""
+          }
           href={"/dashboard/workshop/profile"}
         >
           <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
             <MdAccountCircle className="w-8 h-8  group-hover:text-[#69d94f]" />
             <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
               Account
+            </h3>
+          </li>
+        </Link>
+        {/* message section */}
+        <Link
+          className={
+            pathName === "/dashboard/workshop/message" ? "primary-text" : ""
+          }
+          href={"/dashboard/workshop/message"}
+        >
+          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+            <BiMessageAltDetail className="w-8 h-8  group-hover:text-[#69d94f]" />
+            <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
+              Message
             </h3>
           </li>
         </Link>

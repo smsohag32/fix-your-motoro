@@ -6,7 +6,7 @@ const CustomerCard = (props) => {
     props.order;
   return (
     <div className="bg-white rounded shadow-md">
-      <div className="flex items-center w-full h-40 gap-8 duration-500 transform border-2">
+      <div className="flex items-center w-full gap-8 duration-500 transform border-2 p-4">
         <div className="flex items-center justify-center w-1/2 h-full">
           <p className="items-center">
             Name :

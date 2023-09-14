@@ -10,7 +10,7 @@ const ContactMain = () => {
             title="Contact Us"
             subTitle="Choice our Contact"
         />
-      <div className="grid my-8 md:grid-cols-2">
+      <div className="grid my-8 md:grid-cols-2 gap-5">
         <Contact />
         <ContactFrom />
       </div>

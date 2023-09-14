@@ -102,16 +102,16 @@ const ServicePage = ({ params }) => {
   };
 
   return (
-    <div className="mt-32 default-container">
+    <div className="default-container">
       <PageTitle
         title={service_name}
         subTitle={service_description}
       ></PageTitle>
       <div>
-        <div className="justify-between gap-10 lg:flex">
+        <div className="justify-between gap-10 lg:flex mt-8 md:mt-16">
           <figure>
             <Image
-              className="rounded-lg shadow-md"
+              className="rounded-lg shadow-md object-contain"
               src={service_image}
               alt={service_name}
               width={850}
@@ -122,13 +122,13 @@ const ServicePage = ({ params }) => {
             </figcaption>
           </figure>
           <div>
-            <h3 className="mt-6 mb-2 text-4xl font-extrabold tracking-wide text-slate-950">
+            <h3 className="mt-6 md:mt-0 mb-2 text-4xl font-extrabold tracking-wide text-slate-950">
               {service_name}
             </h3>
             <p className="mb-12 text-xl font-semibold text-slate-600">
               {service_description}
             </p>
-            <div className="px-8 py-4 bg-slate-300 rounded-md shadow-xl">
+            <div className="px-8 py-2 bg-slate-300 rounded-md shadow-xl">
               <div className="grid grid-cols-1 md:grid-cols-2 my-2">
                 <p className="font-mono font-bold text-slate-700 text-2xl">
                   Price:

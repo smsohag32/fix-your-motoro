@@ -4,7 +4,7 @@ import React from "react";
 
 const UserService = () =>  {
     return (
-      <>
+      <div className="md:mt-16">
         <DashboardTitle title="Our Service" subTitle="Welcome to the Service" />
         <div className="relative mt-10 overflow-x-auto">
           <table className="md:w-[80%] w-full mx-auto text-sm text-left text-gray-500 dark:text-gray-400">
@@ -85,7 +85,7 @@ const UserService = () =>  {
             </tbody>
           </table>
         </div>
-      </>
+      </div>
     );
   }
 

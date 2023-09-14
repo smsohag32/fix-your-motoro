@@ -54,7 +54,7 @@ const ServiceFrom = () => {
                 // console.log(service)
                 axios
                   .post(
-                    `https://fya-backend.vercel.app/api/v1/auth/services/${user.email}`,
+                    `https://fya-backend.vercel.app/api/v1/auth/services/${user?.email}`,
                     service
                   )
                   .then((uploaded) => {
@@ -84,15 +84,17 @@ const ServiceFrom = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="p-6 bg-white rounded shadow"
         >
-          <label htmlFor="title" className="block mb-1 font-medium">
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            {...register("title", { required: true })}
-            className="w-full p-2 border rounded"
-          />
+          <div>
+            <label htmlFor="title" className="block mb-1 font-medium">
+              Title
+            </label>
+            <input
+              type="text"
+              id="title"
+              {...register("title", { required: true })}
+              className="w-full p-2 border rounded"
+            />
+          </div>
 
           <div className="mb-4">
             <label htmlFor="workshopId" className="block mb-1 font-medium">

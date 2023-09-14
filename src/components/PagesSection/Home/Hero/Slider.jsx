@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "@/styles/hero.modules.css";
 import imageData from "@/utils/data/imageData";
+import Link from "next/link";
 // import required modules
 
 const Slider = () => {
@@ -58,11 +59,11 @@ const Slider = () => {
                 <p className="text-2xl leading-relaxed text-white  md:3xl">
                   {image.nextLine}
                 </p>
-                <div className="">
-                  <button className="text-white outline-btn">
+                <Link href={"/services"}>
+                  <button  className="text-white outline-btn">
                     Choice Services
                   </button>
-                </div>
+                </Link>
               </div>
             </div>
           </SwiperSlide>

@@ -68,7 +68,7 @@ const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds,
   };
 
   return (
-    <tr className="">
+    <tr>
       <td className="px-6 py-4 whitespace-no-wrap">
         <input
           type="checkbox"
