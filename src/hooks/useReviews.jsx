@@ -5,7 +5,9 @@ const useReviews = () => {
   const { data: reviews, isLoading: rLoading } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const res = await axios.get(`/data/reviews.json`);
+      const res = await axios.get(
+        `https://fya-backend.vercel.app/api/v1/auth/reviews/`
+      );
       return res.data;
     },
   });
