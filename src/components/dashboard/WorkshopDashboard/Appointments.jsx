@@ -17,7 +17,7 @@ const Appointments = () => {
   }
 
   return (
-    <div className="">
+    <div>
       <TitleDashboard title={"Manage Appointments"} />
       <div className="my-10 grid gap-10">
         {workshopOrders?.length > 0 ? (

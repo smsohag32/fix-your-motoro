@@ -1,7 +1,7 @@
 import Appointments from '@/components/dashboard/WorkshopDashboard/Appointments';
 const AppointmentPage = () => {
     return (
-        <div className='my-24'>
+        <div className='md:my-16'>
             <Appointments/>
         </div>
     );
