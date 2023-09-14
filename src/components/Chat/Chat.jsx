@@ -8,29 +8,13 @@ function Chat({ socket, username, room, notification, setNotification }) {
   const [conversation, setConversation] = useState([]);
   const messageContainerRef = useRef(null);
 
-  const sendMessage = async () => {
-    setNotification(0);
-    if (currentMessage !== "") {
-      const messageData = {
-        room: room,
-        author: username,
-        message: currentMessage,
-        time: new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      };
-
-      await socket.emit("send_message", messageData);
-      setMessageList((list) => [...list, messageData]);
-      setCurrentMessage("");
-      socket.emit("get_conversation", room);
-    }
-  };
-
   useEffect(() => {
+    // Join the chat room when the component mounts
+    socket.emit("join_room", room);
+
     socket.on("receive_message", (data) => {
-      setMessageList((list) => [...list, data]);
+      // Add the received message to the conversation
+      setConversation((prevConversation) => [...prevConversation, data]);
 
       if (data.author !== username) {
         setNotification((notify) => notify + 1);
@@ -51,14 +35,40 @@ function Chat({ socket, username, room, notification, setNotification }) {
       socket.off("receive_message");
       socket.off("previous_conversation");
     };
+<<<<<<< HEAD
   }, [socket, username, setNotification]);
+=======
+  }, [socket, username, room]);
+
+  const sendMessage = async () => {
+    setNotification(0);
+    if (currentMessage !== "") {
+      const messageData = {
+        room: room,
+        author: username,
+        message: currentMessage,
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+
+      await socket.emit("send_message", messageData);
+
+      // Add the sent message to the conversation
+      setConversation((prevConversation) => [...prevConversation, messageData]);
+
+      setCurrentMessage("");
+    }
+  };
+>>>>>>> 7f7cf834db91f43d334b905f3a9f46f7b1f36de9
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="bg-white rounded-lg shadow-lg w-96">
         <div className="bg-gradient-to-r from-green-500 to-green-900 p-4 rounded-t-lg">
           <p className="text-xl text-white font-semibold">FYM Chat</p>
-          {notification ||(
+          {notification || (
             <span className="text-white">{notification} new message</span>
           )}
         </div>
@@ -118,3 +128,4 @@ function Chat({ socket, username, room, notification, setNotification }) {
 }
 
 export default Chat;
+
