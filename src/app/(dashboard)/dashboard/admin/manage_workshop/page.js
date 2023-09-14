@@ -3,7 +3,7 @@ import ManageWorkshop from "@/components/dashboard/Admin/ManageWorkshop/ManageWo
 const ManageWorkshopPage = () => {
   return (
     <div className="md:my-16">
-      <ManageWorkshop/>
+      <ManageWorkshop />
     </div>
   );
 };
