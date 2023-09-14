@@ -4,15 +4,20 @@ import axios from "axios";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import { FaRegComment } from "react-icons/fa";
-import { PiHandsClappingBold } from "react-icons/pi";
+import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 
 const BlogDetailPage = ({ params }) => {
-  const [comment, setComment] = useState('');
+  const [loading, setLoading] = useState([]);
+  const [comment, setComment] = useState("");
   const { user } = useAuth();
 
+  // console.log(blog);
+  // `https://fya-backend.vercel.app/api/v1/auth/blogs/${params.id}`;
   const {
-    data: blog, refetch, isLoading: bLoading} = useQuery({
+    data: blog,
+    refetch,
+    isLoading: bLoading,
+  } = useQuery({
     queryKey: ["blog"],
     queryFn: async () => {
       const res = await axios.get(
@@ -21,8 +26,8 @@ const BlogDetailPage = ({ params }) => {
       return res.data;
     },
   });
- 
-  const handleCommentSubmit = async() => {
+
+  const handleCommentSubmit = async () => {
     const commentData = {
       user_name: user?.displayName,
       email: user?.email,
@@ -30,31 +35,24 @@ const BlogDetailPage = ({ params }) => {
       comment: comment,
     };
     const response = await axios.patch(
-      `https://fya-backend.vercel.app/api/v1/auth/blogs/comment/${blog?._id}`,commentData
+      `https://fya-backend.vercel.app/api/v1/auth/blogs/comment/${blog?._id}`,
+      commentData
     );
     if (response.data.message) {
       setComment("");
       refetch();
     }
   };
-   if (bLoading) {
-     return <MidSpinner />;
-   }
+  if (bLoading) {
+    return <MidSpinner />;
+  }
   return (
-    <div className="my-36 default-container">
+    <div className="my-5 default-container">
+      <PageTitle title="Read Our Blog" />
       <div>
         <h1 className="text-2xl font-bold mb-4">{blog.title}</h1>
         <p className="text-gray-500 mb-2">{blog.date}</p>
         <p className="prose">{blog?.content}</p>
-        <div className="mt-5">
-          <p>Comments</p>
-          {blog.comments.map((com) => (
-            <div key={com.index} className="bg-slate-200 rounded-xl my-5 p-3">
-              <h1>{com.name}</h1>
-              <p>{com.comment}</p>
-            </div>
-          ))}
-        </div>
         <div>
           <p>Add a comment</p>
           <div className="py-5">
@@ -74,6 +72,20 @@ const BlogDetailPage = ({ params }) => {
               Add Comment
             </button>
           </div>
+        </div>
+        <div className="my-5">
+          <p>Comments</p>
+          {blog.comments.map((com) => (
+            <div
+              key={com.index}
+              className="bg-slate-50 primary-shadow my-5 p-3"
+            >
+              <h1 className="text-lg font-medium mb-2">
+                {com.name ? com.name : com.user_name}
+              </h1>
+              <p className="text-md text-slate-500">{com.comment}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

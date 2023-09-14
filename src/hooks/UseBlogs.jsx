@@ -2,8 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const useBlogs = () => {
-
-  const { data: blogs, refetch, isLoading: bLoading } = useQuery({
+  const {
+    data: blogs,
+    refetch,
+    isLoading: bLoading,
+  } = useQuery({
     queryKey: ["blogs"],
     queryFn: async () => {
       const res = await axios.get(

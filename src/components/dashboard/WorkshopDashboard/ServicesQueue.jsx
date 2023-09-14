@@ -2,6 +2,7 @@
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import Link from "next/link";
 import useWorkshopServices from "@/hooks/useWorkshopServices";
+import Image from "next/image";
 
 const ServicesQueue = () => {
   const { workshopServices, wOLoading } = useWorkshopServices();
@@ -25,30 +26,54 @@ const ServicesQueue = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {workshopServices?.map((order) => (
                 <div
-                  className="p-5 border-2 border-red-500 bg-slate-100 m-1 space-y-5 "
+                  className="p-3 border-2 rounded-md shadow-lg bg-slate-100 m-1 space-y-5 "
                   key={order._id}
                 >
-                  <h4 className="font-semibold text-lg mb-3">
-                    Customer Name : {order.firstName} {order.lastName}
-                  </h4>
-                  <p className="text-md font-medium text-slate-600">
-                    Email : {order.email}
-                  </p>
-                  <p className="text-md font-medium text-slate-600 mb-1">
-                    Contact No : {order.phone}
-                  </p>
-                  <p className="text-md font-medium mb-1 text-slate-600">
-                    Address : {order.streetAddress}
-                  </p>
-                  <p className="text-md font-medium primary-text text-slate-600">
-                    Vehicle: {order.vehicle}
-                  </p>
-                  <p className="text-md font-medium primary-text text-slate-600">
-                    Service Category : {order.service_category}
-                  </p>
-                  <p className="text-md font-medium text-slate-600">
-                    Booking Date : {order.bookingDate}
-                  </p>
+                  <figure>
+                    <Image
+                      src={order.service_image}
+                      alt={order.service_name}
+                      width={350}
+                      height={280}
+                    />
+                    <figcaption className="text-sm font-thin">
+                      {order.service_name}
+                    </figcaption>
+                  </figure>
+                  <div>
+                    <h4 className="text-lg font-medium">
+                      Service Name : {order.service_name}
+                    </h4>
+                    <p className="text-md text-slate-500">
+                      Description : {order.service_description}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Category : {order.service_category}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Service Duration : {order.service_duration}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Cost : {order.service_price}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Benefits : {order.benefits}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Warranty : {order.warranty}
+                    </p>
+                  </div>
+                  <div className="flex md:justify-between items-center">
+                    <h2> Workshop Image </h2>
+                    <figure>
+                      <Image
+                        src={order.workshop_image}
+                        alt="Workshop Picture"
+                        width={80}
+                        height={50}
+                      />
+                    </figure>
+                  </div>
                 </div>
               ))}
             </div>

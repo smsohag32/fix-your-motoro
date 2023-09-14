@@ -2,7 +2,7 @@ import ComplaintBox from "@/components/dashboard/Admin/ComplaintBox";
 
 const ComplaintBoxPage = () => {
   return (
-    <div className="my-24">
+    <div className="md:my-16">
         <ComplaintBox/>
     </div>
   );
