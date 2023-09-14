@@ -35,9 +35,6 @@ function Chat({ socket, username, room, notification, setNotification }) {
       socket.off("receive_message");
       socket.off("previous_conversation");
     };
-<<<<<<< HEAD
-  }, [socket, username, setNotification]);
-=======
   }, [socket, username, room]);
 
   const sendMessage = async () => {
@@ -61,7 +58,6 @@ function Chat({ socket, username, room, notification, setNotification }) {
       setCurrentMessage("");
     }
   };
->>>>>>> 7f7cf834db91f43d334b905f3a9f46f7b1f36de9
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
