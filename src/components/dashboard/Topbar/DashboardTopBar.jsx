@@ -51,7 +51,7 @@ const DashboardTopBar = () => {
       <div className="flex gap-2 justify-end w-full items-center">
         <span>
           <Link
-            href="/dasboard/notification"
+            href="/dashboard/notification"
             className="relative inline-flex items-center p-3 text-sm font-medium text-center rounded-lg"
           >
             <IoMdNotificationsOutline className=" text-xl" />
