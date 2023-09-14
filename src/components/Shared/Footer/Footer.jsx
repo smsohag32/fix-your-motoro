@@ -1,4 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import logo from "@/assets/website-logo.png"
 import {
   AiFillFacebook,
   AiFillLinkedin,
@@ -10,7 +13,7 @@ const Footer = () => {
     <footer className="text-white bg-gray-900">
       <div className="py-8 text-center  default-container md:text-left lg:flex lg:justify-between">
         <div className="mb-4 lg:w-1/3">
-          <h2 className="mb-4 text-2xl font-semibold">Head Office</h2>
+          <Image src={logo} alt="logo" height={120} width={120} />
           <p className="text-sm">123 Street, City</p>
           <p className="text-sm">Email: info@fixyourmotornow.com</p>
           <p className="text-sm">Phone: (123) 456-7890</p>
@@ -19,41 +22,41 @@ const Footer = () => {
           <h2 className="mb-4 text-2xl font-semibold">Quick Services</h2>
           <ul className="space-y-2">
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/services" className="hover:text-gray-300">
                 Engine Diagnostics
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/services" className="hover:text-gray-300">
                 Oil Changes
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/services" className="hover:text-gray-300">
                 Brake Repairs
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/services" className="hover:text-gray-300">
                 Transmission
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-gray-300">
+              <Link href="/services" className="hover:text-gray-300">
                 Electrical
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
         <div className="lg:w-1/3">
           <h2 className="mb-2 text-2xl font-semibold">Follow Us</h2>
           <div className="flex justify-center space-x-4 text-xl md:justify-start">
-            <AiOutlineTwitter className="cursor-pointer" />
-            <AiFillFacebook className="cursor-pointer" />
-            <AiFillLinkedin className="cursor-pointer" />
-            <AiFillYoutube className="cursor-pointer" />
+            <Link href={"https://fix-your-motoro.vercel.app/"}><AiOutlineTwitter className="cursor-pointer" /></Link>
+            <Link href={"https://fix-your-motoro.vercel.app/"}><AiFillFacebook className="cursor-pointer" /></Link>
+            <Link href={"https://fix-your-motoro.vercel.app/"}><AiFillLinkedin className="cursor-pointer" /></Link>
+            <Link href={"https://fix-your-motoro.vercel.app/"}><AiFillYoutube className="cursor-pointer" /></Link>
           </div>
-          <div className="mt-4">
+          {/* <div className="mt-4">
             <h2 className="mb-2 text-2xl font-semibold">
               Subscribe to Newsletter
             </h2>
@@ -70,7 +73,7 @@ const Footer = () => {
                 Subscribe
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="pb-10 mt-6 text-sm text-center text-gray-400 default-container">

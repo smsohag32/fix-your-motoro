@@ -22,7 +22,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="flex-1 flex gap-5">
+    <div className="flex-1 flex ">
       <div className="relative flex-1">
         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
@@ -46,7 +46,7 @@ const SearchBar = () => {
           id="default-search"
           className="block w-full b pl-10 border border-[#379a22] focus:outline-none focus:border-[#379a22] pr-4 py-2"
           onChange={(e) => setText(e.target.value)}
-          placeholder="Search here to services..."
+          placeholder="Search workshop By location..."
         />
       </div>
       <button

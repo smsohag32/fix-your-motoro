@@ -65,7 +65,7 @@ function UserLink() {
       </li>
 
       {/* community section */}
-      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+      {/* <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
         <FaUsers className="w-8 h-8  group-hover:text-[#69d94f] " />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
@@ -76,7 +76,7 @@ function UserLink() {
             Community
           </NavLink>
         </h3>
-      </li>
+      </li> */}
       {/* community section */}
         {/* chat section */}
         <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
@@ -92,7 +92,7 @@ function UserLink() {
           {/* <Link href="/dashboard/user/user_chat">Message</Link> */}
             </h3>
         </li>
-      <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+      {/* <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
         <MdSupportAgent className="w-8 h-8  group-hover:text-[#69d94f] " />
         <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
           <NavLink
@@ -103,7 +103,7 @@ function UserLink() {
             FAQ & Support
           </NavLink>
         </h3>
-      </li>
+      </li> */}
 
       {/* My vehicles */}
       <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
