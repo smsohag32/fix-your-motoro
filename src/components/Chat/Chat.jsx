@@ -51,7 +51,7 @@ function Chat({ socket, username, room, notification, setNotification }) {
       socket.off("receive_message");
       socket.off("previous_conversation");
     };
-  }, [socket, username]);
+  }, [socket, username, setNotification]);
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
