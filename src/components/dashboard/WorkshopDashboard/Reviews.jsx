@@ -17,7 +17,7 @@ const Reviews = () => {
           reviews.map((review, idx) => (
             <div key={idx}>
               <div className="bg-white p-4 m-4 rounded-lg shadow-md">
-                <div className="flex items-center mb-2">
+                <div className="md:flex items-center mb-2">
                   <Image
                     src={review.image}
                     alt={review.name}
@@ -31,7 +31,7 @@ const Reviews = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <div className="text-yellow-400">
+                  <div className="text-yellow-400 flex">
                     {/* You can use rating to display stars */}
                     {Array.from({ length: review.rating }, (_, index) => (
                       <svg
