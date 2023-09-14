@@ -13,7 +13,7 @@ const useWorkshopMechanic = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axios.get(
-        `https://fya-backend.vercel.app/api/v1/auth/workshop/summary/${user?.email}`
+        `https://fya-backend.vercel.app/api/v1/auth/mechanics/workshop/${user?.email}`
       );
       return res.data;
     },

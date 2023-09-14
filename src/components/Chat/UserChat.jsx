@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
@@ -15,19 +15,20 @@ function UserChat() {
   const { workshops } = useWorkshops();
 
   return (
-     
     <div className="mt-8">
-    <div className="bg-white rounded-lg shadow-md p-4">
-      <h2 className="text-lg font-semibold mb-3">Chat Group For Admin and Users</h2>
-      <Chat
-        socket={socket}
-        username={user?.displayName}
-        room={100}
-        notification={notification}
-        setNotification={setNotification}
-      />
+      <div className="bg-white rounded-lg shadow-md p-4">
+        <h2 className="text-lg font-semibold mb-3">
+          Chat Group For Admin and Users
+        </h2>
+        <Chat
+          socket={socket}
+          username={user?.displayName}
+          room={100}
+          notification={notification}
+          setNotification={setNotification}
+        />
+      </div>
     </div>
-  </div>
   );
 }
 

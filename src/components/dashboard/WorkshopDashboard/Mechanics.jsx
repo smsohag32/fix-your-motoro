@@ -24,7 +24,7 @@ const Mechanics = () => {
             <div className="w-full">
               <EmptyState
                 label={"Post a new Mechanic"}
-                address={"/dashboard/workshop/service_form"}
+                address={"/dashboard/workshop/mechanic_form"}
                 message={"No Mechanics Found For Your Workshop"}
               ></EmptyState>
             </div>
