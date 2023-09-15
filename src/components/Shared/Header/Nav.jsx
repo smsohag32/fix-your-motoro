@@ -6,6 +6,7 @@ import Link from "next/link";
 import navLinkData from "@/utils/data/navLinkData";
 import Image from "next/image";
 import userLogo from "@/assets/userlogo.png";
+import logo from "@/assets/main-logo.png"
 import useAuth from "@/hooks/useAuth";
 import { usePathname, useRouter } from "next/navigation";
 import { MdClose } from "react-icons/md";
@@ -36,7 +37,7 @@ const Nav = () => {
       </div>
       <span className="text-white">
         <Link href="/" className="flex items-center gap-1">
-          <span className="">FYA</span>
+          <Image src={logo} alt="logo" width={80} height={80}/>
         </Link>
       </span>
 

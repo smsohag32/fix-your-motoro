@@ -54,7 +54,7 @@ function NotificationDisplay({ socket, username, room, notification, setNotifica
       socket.off('receive_message');
       socket.off('previous_conversation');
     };
-  }, [socket, username, room]);
+  }, [username, room, socket]);
 
   return (
     <div className=" w-screen h-screen items-center justify-center bg-gray-100">
