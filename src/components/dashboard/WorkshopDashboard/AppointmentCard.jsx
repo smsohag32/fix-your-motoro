@@ -68,18 +68,7 @@ const AppointCard = ({ order, refetch }) => {
           </p>
         </div>
         <div className="w-full flex justify-center items-center ">
-          {status === "approved" ? (
-            ""
-          ) : (
-            <button
-              onClick={() =>
-                toast.success("This order has been approved successfully")
-              }
-              className="primary-btn mr-3"
-            >
-              Postpone
-            </button>
-          )}
+          {status === "approved" ? "" : ""}
           <button
             disabled={status === "approved"}
             onClick={() => setIsOpen(true)}
