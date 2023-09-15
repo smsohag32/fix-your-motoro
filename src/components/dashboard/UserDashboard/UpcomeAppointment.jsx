@@ -27,7 +27,7 @@ const UpcomeAppointment = () => {
 
   return (
     <div>
-      <h1 className="md:text-2xl text-xl font-semibold opacity-80">
+      <h1 className="md:text-2xl text-xl font-semibold opacity-80 mb-4">
         Appointment Inventory
       </h1>
       <div className="grid grid-cols-1 gap-10">

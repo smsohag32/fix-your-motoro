@@ -59,11 +59,11 @@ const Slider = () => {
                 <p className="text-2xl leading-relaxed text-white  md:3xl">
                   {image.nextLine}
                 </p>
-                <div className="">
-                  <Link href={"/services"} className="text-white outline-btn">
+                <Link href={"/services"}>
+                  <button  className="text-white outline-btn">
                     Choice Services
-                  </Link>
-                </div>
+                  </button>
+                </Link>
               </div>
             </div>
           </SwiperSlide>
