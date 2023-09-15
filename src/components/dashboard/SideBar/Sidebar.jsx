@@ -12,6 +12,7 @@ import UserLink from "./UserLink";
 import useAuth from "@/hooks/useAuth";
 import AdminLInk from "./AdminLink";
 import { useRouter } from "next/navigation";
+import logo from "@/assets/dashboard-logo.png"
 
 const Sidebar = () => {
   const { userInfo, cLoading } = useUserInfo();
@@ -36,7 +37,7 @@ const Sidebar = () => {
             />
           </Disclosure.Button>
           <div className="h-16 md:hidden border border-b-green-600 flex items-center pl-7">
-            <p className="font-bold text-green-500 text-2xl">FYM</p>
+            <Image src={logo} alt="logo" height={80} width={80} className="object-contain" />
           </div>
           <div className="fixed top-0 z-20 w-full h-screen p-6 overflow-y-scroll duration-200 ease-out delay-150 bg-white -left-full lg:left-0 lg:w-72 peer-focus:left-0 peer:transition">
             <div className="flex flex-col justify-start item-center">
