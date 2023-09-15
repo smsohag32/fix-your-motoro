@@ -101,7 +101,7 @@ const LoginFrom = () => {
               type="submit"
               value="Login"
             />
-            <div className="text-sm font-medium text-gray-600 dark:text-gray-600">
+            <div className="text-sm font-medium text-gray-600 ">
               Not registered?{" "}
               <Link href="/register" className="font-semibold primary-text">
                 Create account

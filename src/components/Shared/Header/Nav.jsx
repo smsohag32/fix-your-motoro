@@ -8,7 +8,9 @@ import userLogo from "@/assets/userlogo.png";
 import useAuth from "@/hooks/useAuth";
 import { usePathname, useRouter } from "next/navigation";
 import { MdClose } from "react-icons/md";
+
 import logo from "@/assets/logo.png";
+
 const Nav = () => {
   const [isOpen, setIsOpen] = useState();
   const router = useRouter();
