@@ -10,6 +10,7 @@ const SuccessReviews = () => {
   if (rLoading) {
     return <Spinner />;
   }
+  // review dynamically added
 
   return (
     <div className="bg-gray-50">
