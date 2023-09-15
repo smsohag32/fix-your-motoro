@@ -78,6 +78,7 @@ const SingleProduct = ({ id }) => {
         {/* Service Area */}
         <div className="lg:flex justify-between gap-10">
           <figure>
+            {/* img tag */}
             <Image
               className="rounded-lg border  shadow-md"
               src={image ? image : ""}
