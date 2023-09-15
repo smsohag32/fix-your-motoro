@@ -1,32 +1,15 @@
-import React from "react";
+"use client";
 import StarRating from "./StarRating";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
-
-const reviews = [
-  {
-    id: 1,
-    name: "John Doe",
-    rating: 5,
-    reviewText:
-      "Great service! The staff was friendly and fixed my car quickly. Highly recommended.",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    rating: 4,
-    reviewText:
-      "I had a good experience at Fix Your Motoro. The service was efficient, and they explained everything clearly.",
-  },
-  {
-    id: 4,
-    name: "Emily Brown",
-    rating: 5,
-    reviewText:
-      "Absolutely satisfied with their service. Quick response, professional staff, and reasonable prices.",
-  },
-];
+import Spinner from "@/components/Spinners/Spinner";
+import useReviews from "@/hooks/useReviews";
 
 const SuccessReviews = () => {
+  const { reviews, rLoading } = useReviews();
+  if (rLoading) {
+    return <Spinner />;
+  }
+
   return (
     <div className="bg-gray-50">
       <div className="py-12 default-container">
@@ -36,14 +19,14 @@ const SuccessReviews = () => {
         />
         <div className="container">
           <div className="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
-            {reviews.map((review) => (
+            {reviews?.slice(0, 3).map((review) => (
               <div
                 key={review.id}
                 className="bg-white duration-500 hover:scale-x-105 primary-shadow hover-border border-gray-200 border cursor-pointer p-4 rounded-lg"
               >
-                <p className="text-lg font-semibold">{review.name}</p>
+                <p className="text-lg font-semibold">{review.user_name}</p>
                 <StarRating rating={review.rating} />
-                <p className="mt-2 text-gray-700">{review.reviewText}</p>
+                <p className="mt-2 text-gray-700">{review.review}</p>
               </div>
             ))}
           </div>
