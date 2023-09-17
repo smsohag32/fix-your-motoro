@@ -10,7 +10,7 @@ import { Toaster, toast } from "react-hot-toast";
 
 const GetInTouch = () => {
   useEffect(() => {
-    AOS.init({    });
+    AOS.init({ offset: 300 , duration: 700});
   }, []);
   
   const form = useRef();

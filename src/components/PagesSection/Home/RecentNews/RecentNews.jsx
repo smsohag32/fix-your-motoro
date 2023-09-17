@@ -8,7 +8,7 @@ import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import Image from "next/image";
 function RecentNews() {
   useEffect(() => {
-    AOS.init({    });
+    AOS.init({ offset: 300 , duration: 700});
   }, []);
 
   const articles = newsData.articles; // Access the articles array
