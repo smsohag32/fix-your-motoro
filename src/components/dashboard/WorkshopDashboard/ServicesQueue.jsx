@@ -1,108 +1,89 @@
 "use client";
-import workshopServices from "@/utils/data/fetchData/workshopServices";
-import React, { useEffect, useState } from "react";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import Link from "next/link";
-import loadServices from "@/utils/data/fetchData/loadServices";
+import useWorkshopServices from "@/hooks/useWorkshopServices";
+import Image from "next/image";
 
 const ServicesQueue = () => {
-  const [orders, setOrders] = useState([]);
-  const [servicesData, setServicesData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { workshopServices, wOLoading } = useWorkshopServices();
+  console.log(workshopServices);
 
-  useEffect(() => {
-    const email = "tr.tonmoy0110.trt@gmail.com";
-
-    const fetchData = async () => {
-      setLoading(true);
-      const data = await workshopServices(email);
-      if (data) {
-        setOrders(data);
-      }
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const data = await loadServices();
-      if (data) {
-        setServicesData(data);
-      }
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  const orderId = orders?.filter((order) => order._id);
-  console.log(servicesData);
-  const serviceId = servicesData?.filter((service) => service._id);
-  // const orderId = orders?.map((order) => order.service_id);
-  // const serviceId = servicesData?.map((service) => service._id);
-
-  // const service = orderId === serviceId;
-
-  // const { service_name } = service;
-
-  if (loading) {
+  if (wOLoading) {
     return <MidSpinner />;
   } else {
     return (
       <>
         <div className="mt-20  ">
-          <div>
-            {orders ? (
-              orders?.map((order) => (
-                <div key={order._id}>
-                  <div className="bg-white rounded shadow-md">
-                    <div className="duration-500 transform gap-8 border-2 w-full flex h-40 items-center">
-                      <div className="h-full w-1/2 flex justify-center items-center">
-                        <p className="items-center">
-                          Name :
-                          <span className="text-slate-500">
-                            {order.firstName} {order.lastName}
-                          </span>
-                        </p>
-                      </div>
-                      <div className="w-full space-y-3 mb-5">
-                        <p className="">
-                          Email :
-                          <span className="text-slate-500">{order.email}</span>
-                        </p>
-                        <p className="">
-                          Vehicle :
-                          <span className="text-slate-500">
-                            {order.vehicle}
-                          </span>
-                        </p>
-                      </div>
-                      <div className="w-full flex justify-center items-center ">
-                        <p className="">
-                          Booking Date :
-                          <span className="text-slate-500">
-                            {order.bookingDate}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p> NO Services Available yet </p>
-            )}
-          </div>
-          <div className="min-h-[20vh] border md:flex justify-center items-center">
+          <div className="py-10 border md:flex justify-center items-center">
             <Link href="/dashboard/workshop/service_form">
               <button className="rounded-lg primary-btn">
                 Post a new Service
               </button>{" "}
             </Link>
           </div>
+
+          {workshopServices.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {workshopServices?.map((order) => (
+                <div
+                  className="p-3 border-2 rounded-md shadow-lg bg-slate-100 m-1 space-y-5 "
+                  key={order._id}
+                >
+                  <figure>
+                    <Image
+                      src={order.service_image}
+                      alt={order.service_name}
+                      width={350}
+                      height={280}
+                    />
+                    <figcaption className="text-sm font-thin">
+                      {order.service_name}
+                    </figcaption>
+                  </figure>
+                  <div>
+                    <h4 className="text-lg font-medium">
+                      Service Name : {order.service_name}
+                    </h4>
+                    <p className="text-md text-slate-500">
+                      Description : {order.service_description}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Category : {order.service_category}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Service Duration : {order.service_duration}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Cost : {order.service_price}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Benefits : {order.benefits}
+                    </p>
+                    <p className="text-md text-slate-500">
+                      Warranty : {order.warranty}
+                    </p>
+                  </div>
+                  <div className="flex md:justify-between items-center">
+                    <h2> Workshop Image </h2>
+                    <figure>
+                      <Image
+                        src={order.workshop_image}
+                        alt="Workshop Picture"
+                        width={80}
+                        height={50}
+                      />
+                    </figure>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="min-h-[40vh] flex justify-center items-center">
+              <p className="text-2xl text-center font-bol primary-text px-4 py-2 bg-slate-100 border rounded-md">
+                NO Services Available yet
+              </p>
+            </div>
+          )}
         </div>
       </>
     );

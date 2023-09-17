@@ -6,9 +6,7 @@ import MidSpinner from "@/components/Spinners/MidSpinner";
 import CustomerCard from "./CustomerCard";
 
 const Customers = () => {
-  const { user } = useAuth();
-
-  const { workshopOrders, wOLoading } = useWorkshopOrder(user?.email);
+  const { workshopOrders, wOLoading } = useWorkshopOrder();
 
   if (wOLoading) {
     return <MidSpinner />;
@@ -17,12 +15,19 @@ const Customers = () => {
   return (
     <div>
       <TitleDashboard title={"Our Customers"} />
-      <div>
-        {workshopOrders &&
-          workshopOrders.map((order) => (
+      {workshopOrders.length > 0 ? (
+        <div>
+          {workshopOrders.map((order) => (
             <CustomerCard key={order._id} order={order} />
           ))}
-      </div>
+        </div>
+      ) : (
+        <div className="min-h-[40vh] flex justify-center items-center">
+          <p className="text-2xl text-center font-bol primary-text px-4 py-2 bg-slate-100 border rounded-md">
+            No Customers Founded
+          </p>
+        </div>
+      )}
     </div>
   );
 };

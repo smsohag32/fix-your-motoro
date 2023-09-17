@@ -1,9 +1,9 @@
-import React from 'react';
+import ManageUsers from '@/components/dashboard/Admin/ManageUsers/ManageUsers';
 
 const ManageUserPage = () => {
     return (
-        <div>
-            <p>Manage user</p>
+        <div className='md:my-16'>
+            <ManageUsers/>
         </div>
     );
 };

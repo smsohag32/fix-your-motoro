@@ -15,7 +15,7 @@ const WorkshopCategory = ({ setDistrictText, setSearchText, districtText }) => {
     <div className="md:px-5 mb-10">
       <button
         onClick={() => handleAll()}
-        className="border border-gray-300 text-sm px-2 py-1"
+        className="border border-green-300 text-sm p-3"
       >
         All workshop
       </button>

@@ -1,13 +1,31 @@
 "use client";
-import React from "react";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import "@/styles/about.modules.css";
 import { Toaster, toast } from "react-hot-toast";
 
 const GetInTouch = () => {
+  const form = useRef();
   const handleMessage = (e) => {
     e.preventDefault();
-    toast.success("message send success");
+    // Send Email ---------------
+    emailjs
+      .sendForm(
+        "service_9w3lzbp",
+        "template_iqzhlvs",
+        form.current,
+        "1leqQsJkGshzPjw2s"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.error(error.text);
+        }
+      );
+    toast.success("Your message has been sent successfully");
     e.target.reset();
   };
 
@@ -37,7 +55,11 @@ const GetInTouch = () => {
           </div>
         </div>
         <div className="w-full">
-          <form onSubmit={() => handleMessage()} className="max-w-md mx-auto">
+          <form
+            ref={form}
+            onSubmit={handleMessage}
+            className="max-w-md mx-auto"
+          >
             <div>
               <label
                 htmlFor="name"

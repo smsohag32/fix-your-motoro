@@ -1,19 +1,18 @@
-// UserAddToCardTable.js
 import axios from 'axios';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { MdDeleteOutline } from 'react-icons/md';
 
 const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds, onProductSelect, onQuantityChange }) => {
-  const { userName, userEmail, productID, productName, price, _id } = singleCartProduct;
-  console.log(userName)
+  const { userName, userEmail, productID, productImage, productName, price, _id } = singleCartProduct;
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(price); // Initialize with the product's initial price as a string
 
   // Function to update the total price based on quantity
   const updateTotalPrice = (newQuantity) => {
     const updatedTotalPrice = price * newQuantity;
-    setTotalPrice(updatedTotalPrice.toFixed(2)); // Convert to a string with two decimal places
-    return updatedTotalPrice.toFixed(2); // Return a string
+    setTotalPrice(updatedTotalPrice.toFixed(2));
+    return updatedTotalPrice.toFixed(2);
   };
 
   // Function to increase the quantity
@@ -27,7 +26,7 @@ const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds,
         quantity: newQuantity,
         totalPrice: updatedTotalPrice,
       });
-      onQuantityChange(_id, newQuantity); // Notify the parent component of quantity change
+      onQuantityChange(_id, newQuantity);
     }
   };
 
@@ -42,7 +41,7 @@ const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds,
         quantity: newQuantity,
         totalPrice: updatedTotalPrice,
       });
-      onQuantityChange(_id, newQuantity); // Notify the parent component of quantity change
+      onQuantityChange(_id, newQuantity);
     }
   };
 
@@ -69,7 +68,7 @@ const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds,
   };
 
   return (
-    <tr className="">
+    <tr>
       <td className="px-6 py-4 whitespace-no-wrap">
         <input
           type="checkbox"
@@ -77,8 +76,11 @@ const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds,
           onChange={(e) => handleCheckboxChange(_id, e.target.checked)}
         />
       </td>
-      <td className="px-6 py-4 whitespace-no-wrap">{productName}</td>
-      <td className="px-6 py-4 whitespace-no-wrap">{price}</td>
+      <td className="px-6 py-4 whitespace-no-wrap text-center">{productName}</td>
+      <td className="relative transform transition-transform duration-300 hover:scale-110 hover:z-10">
+        <Image src={productImage} alt='productImage' height={90} width={90}/>
+      </td>
+      <td className="px-6 py-4 whitespace-no-wrap text-center">{price}</td>
       <td className="px-6 py-4 whitespace-no-wrap">
         <div className="flex items-center">
           <button
@@ -96,8 +98,8 @@ const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds,
           </button>
         </div>
       </td>
-      <td className="px-6 py-4 whitespace-no-wrap">{totalPrice}</td>
-      <td className="px-6 py-4 whitespace-no-wrap">
+      <td className="px-6 py-4 whitespace-no-wrap text-center">{totalPrice}</td>
+      <td className="px-6 py-4 whitespace-no-wrap text-center">
         <button
           onClick={() => handleRemove(_id)}
           className="p-1 text-2xl text-white bg-red-600 rounded-md hover:bg-red-900"

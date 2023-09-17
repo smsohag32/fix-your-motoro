@@ -1,9 +1,8 @@
 import ComplaintBox from "@/components/dashboard/Admin/ComplaintBox";
-import React from "react";
 
 const ComplaintBoxPage = () => {
   return (
-    <div>
+    <div className="md:my-16">
         <ComplaintBox/>
     </div>
   );

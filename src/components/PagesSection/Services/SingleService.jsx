@@ -26,10 +26,10 @@ const SingleService = ({ service }) => {
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
             <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-4 pb-12 text-center transition-all duration-500 group-hover:translate-y-0">
-              <h1 className="font-serif text-3xl font-bold text-white">
+              <h1 className="font-serif text-xl md:text-3xl font-bold text-white">
                 {service_name}
               </h1>
-              <p className="mb-3 text-lg italic text-white transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+              <p className="mb-3 text-base md:text-lg italic text-white transition-opacity duration-300 opacity-0 group-hover:opacity-100">
                 {service_description}
               </p>
               <Link href={`/services/${_id}`}>
@@ -37,7 +37,7 @@ const SingleService = ({ service }) => {
               </Link>
             </div>
           </div>
-          <p className="p-3 block absolute top-2 right-2 font-semibold hover:bg-green-300">
+          <p className="p-3 bg-white block absolute top-2 right-2 font-semibold hover:bg-green-300">
             {service_price}
           </p>
         </div>

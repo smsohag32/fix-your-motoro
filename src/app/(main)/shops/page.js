@@ -4,7 +4,7 @@ import React from "react";
 
 const ShopsPage = () => {
   return (
-    <div className="mt-28 default-container">
+    <div className="default-container">
       <PageTitle
         title="Search as you need"
         subTitle="We care about your journey"

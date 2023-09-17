@@ -9,7 +9,7 @@ import CommunicateCard from "./CommunicateCard";
 const Communication = () => {
   const { user } = useAuth();
 
-  const { workshopOrders, wOLoading } = useWorkshopOrder(user?.email);
+  const { workshopOrders, wOLoading } = useWorkshopOrder();
 
   if (wOLoading) {
     return <MidSpinner />;

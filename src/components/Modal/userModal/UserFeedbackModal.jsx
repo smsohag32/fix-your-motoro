@@ -1,17 +1,46 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
-import { FaStar } from "react-icons/fa"; // Import the star icon
-import { Toaster } from "react-hot-toast";
+import { FaStar } from "react-icons/fa";
 import UserModal from "../Modal";
+import axios from "axios";
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
-const UserFeedbackModal = ({ isOpen, setIsOpen }) => {
+const UserFeedbackModal = ({ isOpen, setIsOpen, entry }) => {
   const { user, profileUpdate } = useAuth();
   const { register, handleSubmit, reset, setValue } = useForm();
   const [rating, setRating] = useState(0);
 
   const onSubmit = async (data) => {
     // Handle form submission with feedback, rating, and other data
+    const reviewData = {
+      user_name: user?.displayName,
+      user_email: user?.email,
+      workshop_email: entry?.workshop_email || "fya6@gmail.com",
+      review: data.feedback,
+      rating: data.rating,
+      user_img: user?.photoURL,
+      workshop_name: entry?.workshop_name || "fya",
+    }
+
+    const response = await axios.post("https://fya-backend.vercel.app/api/v1/auth/reviews", reviewData)
+    if(response.status === 200){
+      reset();
+      setIsOpen(false);
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Feedback sent successfully',
+      });
+      
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to send feedback',
+      });
+    }
   };
 
   const onCancel = () => {
@@ -83,7 +112,6 @@ const UserFeedbackModal = ({ isOpen, setIsOpen }) => {
           </button>
         </div>
       </form>
-      <Toaster />
     </UserModal>
   );
 };

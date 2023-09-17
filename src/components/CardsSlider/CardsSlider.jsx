@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -97,9 +98,9 @@ const CardSlider = ({ items, loading, workshops }) => {
                 onClick={() => router.push(`/workshop/${item?._id}`)}
               >
                 <div className="cursor-pointer h-80 flex flex-col border border-gray-300 ">
-                  <div className="relative">
+                  <div className="relative overflow-hidden">
                     <Image
-                      className="w-full hover:scale-105 duration-500 transform transition-all h-48"
+                      className="w-full hover:scale-105 duration-500 transform transition-all  h-48"
                       src={
                         item?.image ||
                         item?.service_image ||

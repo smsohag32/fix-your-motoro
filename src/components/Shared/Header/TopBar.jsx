@@ -4,8 +4,8 @@ import SearchBar from "./SearchBar";
 
 const TopBar = () => {
   return (
-    <div className="flex default-container justify-between w-full gap-10 ps-4">
-      <div className="flex items-center justify-end flex-1 text-xs md:text-sm gap-9">
+    <div className="hidden md:flex default-container  justify-between w-full gap-10 ps-4">
+      <div className="flex py-3 md:py-0 flex-col md:flex-row items-center justify-end flex-1 text-xs md:text-sm gap-2 md:gap-9">
         <SearchBar />
         <p className="flex items-center text-black">
           <span>

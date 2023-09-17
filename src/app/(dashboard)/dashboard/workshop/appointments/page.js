@@ -1,9 +1,7 @@
 import Appointments from '@/components/dashboard/WorkshopDashboard/Appointments';
-import React from 'react';
-
 const AppointmentPage = () => {
     return (
-        <div>
+        <div className='md:my-16'>
             <Appointments/>
         </div>
     );
