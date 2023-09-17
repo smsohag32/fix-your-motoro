@@ -1,4 +1,7 @@
 "use client";
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
@@ -6,6 +9,10 @@ import "@/styles/about.modules.css";
 import { Toaster, toast } from "react-hot-toast";
 
 const GetInTouch = () => {
+  useEffect(() => {
+    AOS.init({    });
+  }, []);
+  
   const form = useRef();
   const handleMessage = (e) => {
     e.preventDefault();
@@ -37,7 +44,7 @@ const GetInTouch = () => {
           subTitle={"Empowering Your Vehicles with Quality Servicing"}
         />
       </div>
-      <div className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:justify-start">
+      <div data-aos="fade-down-right" className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:justify-start">
         <div className="w-full">
           <div className="h-96 map-container">
             <iframe

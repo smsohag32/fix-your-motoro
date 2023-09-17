@@ -1,10 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import NewsModal from "./NewsModal";
 import newsData from "./news.json"; // Import the JSON data
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import Image from "next/image";
 function RecentNews() {
+  useEffect(() => {
+    AOS.init({    });
+  }, []);
+
   const articles = newsData.articles; // Access the articles array
   const [selectedArticle, setSelectedArticle] = useState(null);
 
@@ -22,7 +28,7 @@ function RecentNews() {
         title="Special News"
         subTitle="Recent motor servicing news and blogs"
       />
-      <div className="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
+      <div data-aos="fade-up-left" className="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
         {articles.map((article) => (
           <div
             key={article.id}

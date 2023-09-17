@@ -1,5 +1,7 @@
 "use client";
-
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -9,10 +11,18 @@ import StarRating from "../PagesSection/Home/SuccessReviews/StarRating";
 import MidSpinner from "../Spinners/MidSpinner";
 import { useRouter } from "next/navigation";
 
+
 const CardSlider = ({ items, loading, workshops }) => {
+  // use aos 
+  useEffect(() => {
+    AOS.init({});
+  }, []);
+  
   const router = useRouter();
+
+
   return (
-    <div className="default-container">
+    <div data-aos="fade-up-right" className="default-container">
       {loading ? (
         <MidSpinner />
       ) : (
@@ -46,7 +56,7 @@ const CardSlider = ({ items, loading, workshops }) => {
                 key={item._id}
                 onClick={() => router.push(`/shops/${item?._id}`)}
               >
-                <div className="cursor-pointer border border-gray-300 ">
+                <div className="border border-gray-300 cursor-pointer ">
                   <div className="relative">
                     <Image
                       className="w-full h-48"
@@ -63,8 +73,8 @@ const CardSlider = ({ items, loading, workshops }) => {
                   <div className="px-5 pt-2">
                     <h2 className="primary-text">{item.name}</h2>
                     {item.discount && (
-                      <div className="absolute top-2 right-5 text-white rounded-full primary-bg">
-                        <p className=" p-1">
+                      <div className="absolute text-white rounded-full top-2 right-5 primary-bg">
+                        <p className="p-1 ">
                           {item.discount ? (
                             <span>{item.discountPercentage}%</span>
                           ) : (
@@ -79,9 +89,9 @@ const CardSlider = ({ items, loading, workshops }) => {
                         <p className="ml-1">{item?.rating.toFixed(1)}</p>
                       </div>
                     </div>
-                    <h3 className="text-lg font-semibold my-2">{item.name}</h3>
+                    <h3 className="my-2 text-lg font-semibold">{item.name}</h3>
 
-                    <div className="flex justify-between items-center my-2">
+                    <div className="flex items-center justify-between my-2">
                       <p className="text-gray-700 opacity-90">
                         ${item.price.toFixed(2)}
                       </p>
@@ -97,10 +107,10 @@ const CardSlider = ({ items, loading, workshops }) => {
                 key={item._id}
                 onClick={() => router.push(`/workshop/${item?._id}`)}
               >
-                <div className="cursor-pointer h-80 flex flex-col border border-gray-300 ">
+                <div className="flex flex-col border border-gray-300 cursor-pointer h-80 ">
                   <div className="relative overflow-hidden">
                     <Image
-                      className="w-full hover:scale-105 duration-500 transform transition-all  h-48"
+                      className="w-full h-48 transition-all duration-500 transform hover:scale-105"
                       src={
                         item?.image ||
                         item?.service_image ||
@@ -111,11 +121,11 @@ const CardSlider = ({ items, loading, workshops }) => {
                       height="300"
                     />
                   </div>
-                  <div className="px-5 mt-auto flex flex-col pt-2">
-                    <h2 className=" font-semibold">{item.name}</h2>
+                  <div className="flex flex-col px-5 pt-2 mt-auto">
+                    <h2 className="font-semibold ">{item.name}</h2>
                     {item.address && (
-                      <div className="absolute top-2 right-5 text-white rounded-full primary-bg">
-                        <p className=" p-1">
+                      <div className="absolute text-white rounded-full top-2 right-5 primary-bg">
+                        <p className="p-1 ">
                           {item.address ? <span>{item.address}</span> : ""}
                         </p>
                       </div>
