@@ -18,7 +18,7 @@ const Services = () => {
     setIsOpen(false);
   };
   useEffect(() => {
-    AOS.init({});
+    AOS.init({ offset: 300 , duration: 700});
     setLoading(true);
     const fetchData = async () => {
       try {

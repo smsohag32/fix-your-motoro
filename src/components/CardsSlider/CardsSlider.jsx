@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 const CardSlider = ({ items, loading, workshops }) => {
   // use aos 
   useEffect(() => {
-    AOS.init({});
+    AOS.init({ offset: 300 , duration: 700});
   }, []);
   
   const router = useRouter();

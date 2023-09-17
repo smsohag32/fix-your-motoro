@@ -12,7 +12,7 @@ import Image from "next/image";
 
 const SuccessReviews = () => {
   useEffect(() => {
-    AOS.init({    });
+    AOS.init({ offset: 300 , duration: 700});
   }, []);
   
   const { reviews, rLoading } = useReviews();

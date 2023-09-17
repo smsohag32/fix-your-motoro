@@ -23,7 +23,7 @@ import Link from "next/link";
 const ExpertSection = () => {
    // use aos 
    useEffect(() => {
-    AOS.init({});
+    AOS.init({ offset: 300 , duration: 700});
   }, []);
   
   const { workshopMechanics, wOLoading, refetch } = useExperts();
