@@ -33,7 +33,7 @@ const WorkshopRequest = () => {
       setIsLoading(false);
     }
   }
-  return <div className="">
+  return <div className="md:mt-16">
     <h1 className="text-2xl font-bold text-start md:text-center">Request to add Workshop</h1>
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="my-6">
@@ -177,7 +177,7 @@ const WorkshopRequest = () => {
           
         </div>
         <div className="md:flex justify-end mt-6">
-          <button type="submit" className="bg-blue-500 p-2 text-white hover:bg-blue-700 rounded-md w-full md:w-1/4">
+          <button type="submit" className="primary-bg p-2 text-white hover:secondary-bg rounded-md w-full md:w-1/4">
             {isLoading ? "Requesting...": "Request"}
           </button>
           <Toaster />
