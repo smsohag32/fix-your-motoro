@@ -3,13 +3,23 @@ import useAuth from '@/hooks/useAuth';
 import useUserInfo from '@/hooks/useUserInfo';
 import axios from 'axios';
 import React from 'react';
+import checkout from '@/utils/checkout';
 
 const PlaceOrderVoucher = ({ cartData }) => {
+<<<<<<< HEAD
+  let totalQuantity = 0;
+  let totalPrice = 0;
+  const vatRate = 0.1;
+  const shippingFee = 50;
+
+  const itemDetails = [];
+=======
   
   const { userInfo } = useUserInfo();
   const {user} = useAuth();
   const vatRate = 0.1;
   const shippingFee = 50;
+>>>>>>> a183858bf739ccdb2d31928ee4fafd02722540b4
 
   // Calculate total quantity, total price, and collect item details
   let totalQuantity = 0;
@@ -102,7 +112,7 @@ const PlaceOrderVoucher = ({ cartData }) => {
         </div>
       </div>
       <div className="flex justify-center">
-        <button onClick={handlePlaceOrder} className="primary-btn">PLACE ORDER</button>
+        <button onClick={() => { checkout({lineItems:[{price:"price_1NndUVH7crSwWufmiZfUMlhk" , quantity: 1}]}) }} className="primary-btn">PLACE ORDER</button>
       </div>
     </div>
   );
