@@ -3,6 +3,7 @@ import CardSlider from "@/components/CardsSlider/CardsSlider";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import React, { useEffect, useState } from "react";
 
+
 const NearWorkshops = () => {
   const [workshops, setWorkshops] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -25,12 +26,12 @@ const NearWorkshops = () => {
   }, []);
   return (
     <div className="min-h-[60vh]">
-      <div className="default-container mb-10 ">
+      <div className="mb-10 default-container ">
         <SectionTitle
           title="Servicing Workshops"
           subTitle="Trust in our experienced technicians to provide top-notch maintenance and repairs for your vehicles"
         />
-        <CardSlider workshops={workshops} loading={loading} />
+        <CardSlider  workshops={workshops} loading={loading} />
       </div>
     </div>
   );

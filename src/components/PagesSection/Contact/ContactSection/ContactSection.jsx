@@ -1,32 +1,19 @@
-import { FaPhoneAlt, FaHome } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 
 const ContactSection = () => {
   return (
-    <div className="mx-auto  md:w-2/4 px-5">
-      <h1 className="font-semibold uppercase text-slate-500 ">contact us</h1>
-      <h1 className="mt-4 text-3xl font-semibold ">Get In Touch</h1>
-      <p className="mt-6 text-gray-800">
-        Have some big idea or brand to develop and need help? Then reach out wed
-        love to hear about your project and provide help
-      </p>
-      <div className="grid justify-center gap-2 mx-auto mt-10 md:gap-8 md:grid-cols-3">
-        <div className="mx-auto text-center">
-          <FaHome className="mx-auto text-7xl primary-text" />
-          <p className="text-2xl">Address:</p>
-          <p className="text-center">123 Street, City</p>
-        </div>
-
-        <div className="text-center">
-          <FaPhoneAlt className="mx-auto mb-4 text-6xl primary-text" />
-          <p className="text-2xl">Phone:</p>
-          <p className="text-center">(123) 456-7890</p>
-        </div>
-
-        <div className="text-center">
-          <MdOutlineMail className="mx-auto text-7xl primary-text" />
-          <p className="text-2xl">Email:</p>
-          <p className="text-center">info@fixyourmotornow.com</p>
+    <div className="px-5 mx-auto md:w-2/4 md:mt-24">
+      <div>
+        <h1 className="text-5xl font-semibold">Let's chat. <br />
+          Tell me about your <br />
+          Service.</h1>
+        <p className="mt-4 font-semibold text-slate-400">Let's create something together</p>
+      </div>
+      <div className="flex items-center w-6/12 gap-6 p-2 mt-6 rounded-md md:ml-12 bg-slate-100">
+        <MdOutlineMail className="p-2 text-5xl bg-gray-200 rounded-md" />
+        <div>
+          <p className="font-semibold">Mail me at</p>
+          <p className="font-semibold primary-text">fym@gmail.com</p>
         </div>
       </div>
     </div>
