@@ -1,9 +1,9 @@
-import ManageWorkshop from "@/components/dashboard/Admin/ManageWorkshop/ManageWorkshop";
+import ManageWorkShop from "@/components/dashboard/Admin/ManageWorkShop/ManageWorkshop";
 
 const ManageWorkshopPage = () => {
   return (
     <div className="md:my-16">
-      <ManageWorkshop/>
+      <ManageWorkShop/>
     </div>
   );
 };
