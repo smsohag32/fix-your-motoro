@@ -66,7 +66,7 @@ const ManageWorkShop = () => {
 
   // delete function
   const handleDelete = () => {
-    alert("handle delete");
+    alert("delete");
   };
 
   return (
