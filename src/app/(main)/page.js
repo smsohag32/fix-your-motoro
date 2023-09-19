@@ -1,3 +1,4 @@
+'use client'
 import BestProducts from "@/components/PagesSection/Home/BestProducts/BestProducts";
 import GetInTouch from "@/components/PagesSection/Home/GetInTouch/GetInTouch";
 import Hero from "@/components/PagesSection/Home/Hero/Hero";
@@ -7,10 +8,13 @@ import OurServices from "@/components/PagesSection/Home/OurServices/OurServices"
 import RecentNews from "@/components/PagesSection/Home/RecentNews/RecentNews";
 import SuccessReviews from "@/components/PagesSection/Home/SuccessReviews/SuccessReviews";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
+import { useTheme } from "@/context/ThemeContext";
 
 const HomePage = () => {
+  const { isDarkMode } = useTheme();
+  const themeClass = isDarkMode ? 'dark-mode' : 'light-mode';
   return (
-    <main>
+    <main className={themeClass}>
       <Hero />
       <NearWorkshop />
       <OurExperts />

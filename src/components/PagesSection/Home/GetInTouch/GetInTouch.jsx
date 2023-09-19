@@ -40,7 +40,7 @@ const GetInTouch = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-900"
+                className="block text-sm font-medium "
               >
                 Name
               </label>
@@ -49,7 +49,7 @@ const GetInTouch = () => {
                   name="name"
                   type="name"
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2 "
+                  className="w-full border border-gray-300 text-black focus:outline-none focus:border-[#69d94f] px-4 py-2 "
                 />
               </div>
             </div>
@@ -57,7 +57,7 @@ const GetInTouch = () => {
             <div className="mt-4">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 "
               >
                 Email address
               </label>
@@ -66,7 +66,7 @@ const GetInTouch = () => {
                   name="email"
                   type="email"
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
+                  className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                 />
               </div>
             </div>
@@ -74,7 +74,7 @@ const GetInTouch = () => {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 "
                 >
                   Message
                 </label>
@@ -82,7 +82,7 @@ const GetInTouch = () => {
               <div className="mt-2">
                 <textarea
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
+                  className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                   name="message"
                   rows="4"
                   cols="50"

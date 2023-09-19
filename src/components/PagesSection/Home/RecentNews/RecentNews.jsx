@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import NewsModal from "./NewsModal";
-import newsData from "./news.json"; // Import the JSON data
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import Image from "next/image";
 import MidSpinner from "@/components/Spinners/MidSpinner";
@@ -21,8 +20,6 @@ function RecentNews() {
 
 //blog for news start
 const { blogs, bLoading, refetch } = useBlogs();
-// console.log(blogs)
-// const router = useRouter();
 const { user } = useAuth();
 // console.log(user)
 
