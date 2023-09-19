@@ -8,7 +8,7 @@ function NotificationDisplay({ socket, username, room, notification, setNotifica
   const messageContainerRef = useRef(null);
 
   const sendMessage = async () => {
-    setNotification(0);
+    // setNotification(0);
     if (currentMessage !== '') {
       const messageData = {
         room: room,

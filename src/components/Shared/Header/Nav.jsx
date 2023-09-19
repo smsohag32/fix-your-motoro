@@ -36,7 +36,7 @@ const Nav = () => {
       </div>
       <span className="text-white">
         <Link href="/" className="flex items-center gap-1">
-          <span className="">FYA</span>
+          <span className="">FYM</span>
         </Link>
       </span>
 
