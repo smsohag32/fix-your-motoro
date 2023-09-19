@@ -7,18 +7,6 @@ const TopBar = () => {
     <div className="hidden md:flex default-container  justify-between w-full gap-10 ps-4">
       <div className="flex py-3 md:py-0 flex-col md:flex-row items-center justify-end flex-1 text-xs md:text-sm gap-2 md:gap-9">
         <SearchBar />
-        <p className="flex items-center text-black">
-          <span>
-            <AiFillPhone />
-          </span>
-          +88095342563
-        </p>
-        <p className="flex items-center gap-3 text-black">
-          <span>
-            <AiTwotoneMail />
-          </span>
-          fym@gmail.com
-        </p>
       </div>
       <div className="flex items-center justify-end text-right primary-bg h-14">
         <Link href="/appointment">
