@@ -1,15 +1,16 @@
-"use client";
-import useAuth from "@/hooks/useAuth";
-import useUserInfo from "@/hooks/useUserInfo";
-import axios from "axios";
-import React from "react";
+
+"use client"
+import useAuth from '@/hooks/useAuth';
+import useUserInfo from '@/hooks/useUserInfo';
+import axios from 'axios';
+import React from 'react';
 
 const PlaceOrderVoucher = ({ cartData }) => {
+  
   const { userInfo } = useUserInfo();
   const { user } = useAuth();
   const vatRate = 0.1;
   const shippingFee = 50;
-
   // Calculate total quantity, total price, and collect item details
   let totalQuantity = 0;
   let totalPrice = 0;

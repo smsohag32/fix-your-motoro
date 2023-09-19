@@ -4,8 +4,6 @@ import { useState, useRef, useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 const socket = io.connect("https://steep-mountainous-avatar.glitch.me");
 
-// socket io server deploy app link: https://glitch.com/edit/#!/steep-mountainous-avatar
-// socket io server deploy live link: https://steep-mountainous-avatar.glitch.me
 
 function Notification() {
   const [currentMessage, setCurrentMessage] = useState("");
