@@ -72,9 +72,9 @@ const AppointCard = ({ order, refetch }) => {
           <button
             disabled={status === "approved"}
             onClick={() => setIsOpen(true)}
-            className="px-3 py-2 text-center transition-all duration-500 font-semibold bg-teal-500 text-white rounded-md hover:bg-teal-600"
+            className="primary-btn"
           >
-            {status === "approved" ? "Approved done" : "Approve"}
+            {status === "approved" ? "Running" : "Accept"}
           </button>
         </div>
       </div>
