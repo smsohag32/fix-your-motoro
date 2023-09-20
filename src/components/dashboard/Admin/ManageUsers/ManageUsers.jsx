@@ -45,7 +45,7 @@ const ManageUsers = () => {
     }
   };
 
-  const handleDelete = (email) => {
+  const handleDelete = async (email) => {
     const url = `https://fya-backend.vercel.app/api/v1/auth/users/${email}`;
     try {
       Swal.fire({
@@ -58,9 +58,12 @@ const ManageUsers = () => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          const res = axios.delete(url);
-          Swal.fire("Deleted!", "User is deleted done");
-          refetch();
+          axios.delete(url).then((res) => {
+            if (res.data) {
+              Swal.fire("Deleted!", "User is deleted done");
+              refetch();
+            }
+          });
         }
       });
     } catch (error) {

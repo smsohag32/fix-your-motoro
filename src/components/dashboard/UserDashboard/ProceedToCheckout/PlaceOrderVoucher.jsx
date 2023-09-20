@@ -1,12 +1,11 @@
-
-"use client"
-import PaymentCashierModal from '@/components/Modal/userModal/PaymentCashierModal';
-import useAuth from '@/hooks/useAuth';
-import useUserInfo from '@/hooks/useUserInfo';
-import axios from 'axios';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+"use client";
+import PaymentCashierModal from "@/components/Modal/userModal/PaymentCashierModal";
+import useAuth from "@/hooks/useAuth";
+import useUserInfo from "@/hooks/useUserInfo";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const PlaceOrderVoucher = ({ cartData }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,7 +68,10 @@ const PlaceOrderVoucher = ({ cartData }) => {
       ...orderData,
       paymentWith: "sllCommerze",
     };
-    const response = await axios.post("https://yoga-mindfulness-server.vercel.app/user/cart/product/order_api", paymentData);
+    const response = await axios.post(
+      "https://fya-backend.vercel.app/api/v1/auth/initiate-payment",
+      paymentData
+    );
     console.log(response);
     window.location.replace(response.data.url);
   };
@@ -77,18 +79,19 @@ const PlaceOrderVoucher = ({ cartData }) => {
     const paymentData = {
       ...orderData,
       paymentWith: "cash on delivery",
-      paidStatus: "unpaid"
+      paidStatus: "unpaid",
     };
-    const response = await axios.post("https://yoga-mindfulness-server.vercel.app/user/cart/product/cash_on_delivery", paymentData);
+    const response = await axios.post(
+      "https://yoga-mindfulness-server.vercel.app/user/cart/product/cash_on_delivery",
+      paymentData
+    );
     if (response.data.success === true) {
-      toast.success("Order Submitted successfully")
-      router.push("/dashboard/user/user_add_to_card")
+      toast.success("Order Submitted successfully");
+      router.push("/dashboard/user/user_add_to_card");
       setIsOpen(false);
-
-    }else{
-      toast.error("Order Submitted failed")
+    } else {
+      toast.error("Order Submitted failed");
     }
-
   };
 
   return (
@@ -129,7 +132,9 @@ const PlaceOrderVoucher = ({ cartData }) => {
         </div>
       </div>
       <div className="flex justify-center">
-        <button onClick={() => setIsOpen(!isOpen)} className="primary-btn">PLACE ORDER</button>
+        <button onClick={() => setIsOpen(!isOpen)} className="primary-btn">
+          PLACE ORDER
+        </button>
       </div>
       <PaymentCashierModal
         PaymentWithSLLCommerze={PaymentWithSLLCommerze}
@@ -142,7 +147,7 @@ const PlaceOrderVoucher = ({ cartData }) => {
         totalQuantity={totalQuantity}
         totalPrice={totalPrice}
       />
-      <Toaster/>
+      <Toaster />
     </div>
   );
 };
