@@ -1,8 +1,7 @@
-
 import NotificationAdmin from "@/components/dashboard/Admin/NotificationAdmin/NotificationAdmin";
 const Notification = () => {
   return (
-    <div >
+    <div>
       <NotificationAdmin />
     </div>
   );

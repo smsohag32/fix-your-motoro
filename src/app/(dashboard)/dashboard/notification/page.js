@@ -1,8 +1,9 @@
-import NotificationD from "@/components/dashboard/UserDashboard/Notification";
+import NotificationDisplay from "@/components/dashboard/Admin/NotificationAdmin/NotificationDisplay";
+
 const Notification = () => {
   return (
     <div >
-      <NotificationD />
+      <NotificationDisplay />
     </div>
   );
 };
