@@ -6,7 +6,7 @@ import DashboardTitle from "@/components/Shared/DashboardTitle/DashboardTitle";
 import useAuth from "@/hooks/useAuth";
 import Swal from "sweetalert2";
 
-const ServiceFrom = () => {
+const MechanicForm = () => {
   const { user } = useAuth();
   const {
     register,
@@ -18,49 +18,50 @@ const ServiceFrom = () => {
   const imgHostingKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
   const imgHosting = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
 
-  const onSubmit = async (data) => {
-    const imgTwo = new FormData();
-    const workshopImage = user?.photoURL;
-    imgTwo.append("image", data.mechanic_image[0]);
+  // const onSubmit = async (data) => {
+  //   const imgTwo = new FormData();
+  //   imgTwo.append("image", data.mechanic_image[0]);
 
-    fetch(imgHosting, {
-      method: "POST",
-      body: imgTwo,
-    })
-      .then((response) => response.json())
-      .then((imgTwoRes) => {
-        if (imgTwoRes.success) {
-          const service = {
-            workshop_email: user?.email,
-            workshop_image: workshopImage,
-            mechanic_name: data.mechanic_name,
-            mechanic_image: imgTwoRes.data.display_url,
-            service_category: data.service_category,
-            service_description: data.service_description,
-            service_duration: data.service_duration,
-            service_price: data.service_price,
-            benefits: data.benefits,
-            warranty: data.warranty,
-          };
+  //   fetch(imgHosting, {
+  //     method: "POST",
+  //     body: imgTwo,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((imgTwoRes) => {
+  //       if (imgTwoRes.success) {
+  //         const mechanic = {
+  //           workshop_email: user?.email,
+  //           img: imgTwoRes.data.display_url,
+  //           name: data.mechanic_name,
+  //           email: data.email,
+  //           phone: data.phone,
+  //           specialty: data.specialty,
+  //           experience: data.experience,
+  //           location: data.location,
+  //           about: data.mechanic_bio,
+  //         };
 
-          axios
-            .post(
-              `https://fya-backend.vercel.app/api/v1/auth/mechanics/workshop`,
-              service
-            )
-            .then(() => {
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "New Mechanic Has been added successfully",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              reset();
-            });
-        }
-      });
-  };
+  //         console.log(mechanic);
+
+  //         axios
+  //           .post(
+  //             `https://fya-backend.vercel.app/api/v1/auth/mechanics`,
+  //             mechanic
+  //           )
+  //           .then(() => {
+  //             Swal.fire({
+  //               position: "center",
+  //               icon: "success",
+  //               title: "New Mechanic has been added successfully",
+  //               showConfirmButton: false,
+  //               timer: 1500,
+  //             });
+  //             router.push("/dashboard/workshop/mechanics");
+  //             reset();
+  //           });
+  //       }
+  //     });
+  // };
 
   return (
     <div>
@@ -82,6 +83,30 @@ const ServiceFrom = () => {
               placeholder="John Doe"
               id="mechanicName"
               {...register("mechanic_name", { required: true })}
+              className="w-full p-2 border rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block mb-1 font-medium">
+              Email
+            </label>
+            <input
+              type="text"
+              placeholder="xyz@gmail.com"
+              id="email"
+              {...register("email", { required: true })}
+              className="w-full p-2 border rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="phone" className="block mb-1 font-medium">
+              Phone Number
+            </label>
+            <input
+              type="text"
+              placeholder="+1122....."
+              id="phone"
+              {...register("phone", { required: true })}
               className="w-full p-2 border rounded"
             />
           </div>
@@ -126,18 +151,15 @@ const ServiceFrom = () => {
           </div>
 
           <div className="mb-4">
-            <label
-              htmlFor="serviceDescription"
-              className="block mb-1 font-medium"
-            >
+            <label htmlFor="mechanicBio" className="block mb-1 font-medium">
               Mechanic Short Bio
             </label>
             <textarea
               placeholder="say something about the new mechanic"
-              id="service_description"
+              id="mechanic_bio"
               className="w-full p-2 border rounded"
               rows="3"
-              {...register("service_description", { required: true })}
+              {...register("mechanic_bio", { required: true })}
             />
           </div>
 
@@ -152,7 +174,7 @@ const ServiceFrom = () => {
                 {...register("mechanic_image", { required: true })}
                 className="w-full p-2 border rounded"
               />
-              {errors.service_image && (
+              {errors.mechanic_image && (
                 <span className="text-red-500">This field is required</span>
               )}
             </div>
@@ -170,4 +192,4 @@ const ServiceFrom = () => {
   );
 };
 
-export default ServiceFrom;
+export default MechanicForm;

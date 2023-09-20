@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
 import { FaRegComment } from "react-icons/fa";
+import { useState } from "react";
 
 const Blog = () => {
   const { blogs, bLoading, refetch } = useBlogs();
@@ -39,7 +40,6 @@ const Blog = () => {
         return response.json();
       })
       .then((data) => {
-        // console.log("Blog's like status updated successfully:", data);
         refetch();
       })
       .catch((error) => {
@@ -55,16 +55,12 @@ const Blog = () => {
     );
   }
 
-  if (bLoading) {
-    return (
-      <div className="mt-32 default-container">
-        <MidSpinner />
-      </div>
-    );
-  }
-
   if (!blogs || blogs.length === 0) {
-    return <p className="mt-32 default-container">No blog posts available.</p>;
+    return (
+      <p className="mt-32 text-center text-3xl font-bold text-blue-500  default-container">
+        No blog posts available.
+      </p>
+    );
   }
 
   return (
@@ -99,7 +95,9 @@ const Blog = () => {
                       <h2 className="text-lg font-semibold mb-3">
                         {blog.title}
                       </h2>
-                      <p className="text-slate-600"> {blog.content} </p>
+                      <p className="text-slate-600">
+                        {blog.content.slice(0, 350)}....
+                      </p>
                     </div>
                     <div className="lg:flex justify-between mt-3">
                       <h4> {blog.date} </h4>
@@ -108,7 +106,8 @@ const Blog = () => {
                           <div className="flex items-center gap-1">
                             <button
                               // make react conditional
-                              className="text-3xl"
+                              className={`text-3xl
+                                `}
                               onClick={() => handleLike(blog)}
                             >
                               <AiOutlineHeart />
