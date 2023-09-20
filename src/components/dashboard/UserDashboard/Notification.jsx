@@ -5,39 +5,29 @@ import io from 'socket.io-client';
 
 const socket = io('http://localhost:3001'); // Replace with your server URL
 
-function Notification({ username, room }) {
+function Notification() {
+  const [currentMessage, setCurrentMessage] = useState("");
   const [conversation, setConversation] = useState([]);
   const messageContainerRef = useRef(null);
-
+const username = "Admin_FYM";
+const room = 500;
   useEffect(() => {
-    // Function to fetch and update conversation from the server
-    const fetchConversation = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/conversation/${room}`);
-        if (response.ok) {
-          const data = await response.json();
-          setConversation(data);
-          scrollToBottom();
-        }
-      } catch (error) {
-        console.error('Error fetching conversation:', error);
-      }
-    };
+    socket.emit("join_room", { room });
 
-    socket.emit('join_room', { room });
-    fetchConversation(); // Fetch initial conversation
+    socket.on("previous_conversation", (data) => {
+      setConversation(data);
+      scrollToBottom();
+    });
 
-    socket.on('receive_message', (data) => {
+    socket.on("receive_message", (data) => {
+      // Update the conversation with the new message
       setConversation((prevConversation) => [...prevConversation, data]);
       scrollToBottom();
     });
 
-    // Use a timer to periodically fetch new messages (e.g., every 5 seconds)
-    const refreshInterval = setInterval(fetchConversation, 5000);
-
     return () => {
-      socket.off('receive_message');
-      clearInterval(refreshInterval); // Clear the timer when component unmounts
+      socket.off("previous_conversation");
+      socket.off("receive_message");
     };
   }, [room]);
 
@@ -49,49 +39,44 @@ function Notification({ username, room }) {
   };
 
 
-
   return (
- 
-      <div className="mt-12 bg-white rounded-lg shadow-lg w-full h-full max-w-screen-md">
-        <div className="bg-gradient-to-r from-green-500 to-green-900 p-4 rounded-t-lg">
-          <p className="text-xl text-white font-semibold">Notification for you from FYM Admin</p>
-        </div>
-        <div className="flex-grow p-4">
-        <ScrollToBottom
-         className="flex-grow overflow-y-auto bg-white p-4"
-         ref={messageContainerRef}
-       >
-         {conversation.map((message, index) => (
-           <div
-             className={`flex ${
-               username === message.user
-                 ? "justify-end"
-                 : "justify-start"
-             } mb-2`}
-             key={index}
-           >
-             <div
-               className={`p-2 rounded ${
-                 username === message.user
-                   ? "bg-blue-100 text-right"
-                   : "bg-gray-100 text-left"
-               }`}
-             >
-               <div className="text-gray-600 text-xs mb-1">
-                 {message.time}
-               </div>
-               <div className="text-gray-600 text-xs mb-1">
-                 {message.user}
-               </div>
-               <div className="text-gray-800">{message.text}</div>
-             </div>
-           </div>
-         ))}
-       </ScrollToBottom>
-        </div>
+    <div className="mt-12 bg-white rounded-lg shadow-lg w-full h-screen max-w-screen-md">
+      <div className="bg-gradient-to-r from-green-500 to-green-900 p-4 rounded-t-lg">
+        <p className="text-xl text-white font-semibold">
+          Notification for you from FYM Admin
+        </p>
       </div>
-    
-  );
+      <div className="flex-grow p-4">
+        <ScrollToBottom
+          className="flex-grow overflow-y-auto bg-white p-4"
+          ref={messageContainerRef}
+        >
+          {conversation.map((message, index) => (
+            <div
+              className={`mb-2 p-2 rounded-lg ${
+                username === message.user
+                  ? "bg-green-700 hover:bg-green-500 text-left"
+                  : "bg-green-600 hover:bg-green-400 text-left"
+              }`}
+              key={index}
+            >
+              <div className="text-sm text-white mb-1">
+                #{index + 1}
+              </div>
+              <div className="text-white text-xs mb-1">
+                {message.time}
+              </div>
+              <div className="text-white text-xs mb-1">
+                {message.user}
+              </div>
+              <div className="text-white">{message.text}</div>
+            </div>
+          ))}
+        </ScrollToBottom>
+      </div>
+    </div>
+
+);
 }
 
 export default Notification;

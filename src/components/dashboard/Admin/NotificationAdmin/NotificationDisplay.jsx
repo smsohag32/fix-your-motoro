@@ -6,39 +6,28 @@ import io from 'socket.io-client';
 const socket = io('http://localhost:3001'); // Replace with your server URL
 
 function NotificationDisplay({ username, room }) {
-  const [currentMessage, setCurrentMessage] = useState('');
+
+  const [currentMessage, setCurrentMessage] = useState("");
   const [conversation, setConversation] = useState([]);
   const messageContainerRef = useRef(null);
 
   useEffect(() => {
-    // Function to fetch and update conversation from the server
-    const fetchConversation = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/conversation/${room}`);
-        if (response.ok) {
-          const data = await response.json();
-          setConversation(data);
-          scrollToBottom();
-        }
-      } catch (error) {
-        console.error('Error fetching conversation:', error);
-      }
-    };
+    socket.emit("join_room", { room });
 
-    socket.emit('join_room', { room });
-    fetchConversation(); // Fetch initial conversation
+    socket.on("previous_conversation", (data) => {
+      setConversation(data);
+      scrollToBottom();
+    });
 
-    socket.on('receive_message', (data) => {
+    socket.on("receive_message", (data) => {
+      // Update the conversation with the new message
       setConversation((prevConversation) => [...prevConversation, data]);
       scrollToBottom();
     });
 
-    // Use a timer to periodically fetch new messages (e.g., every 5 seconds)
-    const refreshInterval = setInterval(fetchConversation, 5000);
-
     return () => {
-      socket.off('receive_message');
-      clearInterval(refreshInterval); // Clear the timer when component unmounts
+      socket.off("previous_conversation");
+      socket.off("receive_message");
     };
   }, [room]);
 
@@ -50,27 +39,30 @@ function NotificationDisplay({ username, room }) {
   };
 
   const sendMessage = () => {
-    if (currentMessage.trim() !== '') {   
-       const currentDate = new Date().toLocaleDateString(); // Get the current date
-       const currentTime = new Date().toLocaleTimeString([], {
-         hour: '2-digit',
-         minute: '2-digit',
-       });
-       const newMessageData = {
-         room,
-         author: username,
-         message: currentMessage,
-         time: `${currentDate} ${currentTime}`,
-       };
+    if (currentMessage.trim() !== "") {
+      const currentDate = new Date().toLocaleDateString(); // Get the current date
+      const currentTime = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      const newMessageData = {
+        room,
+        user: username,
+        text: currentMessage,
+        time: `${currentDate} ${currentTime}`,
+      };
+
       // Add the new message to the conversation immediately
       setConversation((prevConversation) => [...prevConversation, newMessageData]);
-      // Emit the message to the server
-      socket.emit('send_message', newMessageData);
-      // Clear the input field
-      setCurrentMessage('');
-   }
- };
 
+      // Emit the message to the server
+      socket.emit("send_message", newMessageData);
+
+      // Clear the input field
+      setCurrentMessage("");
+    }
+  };
 
   return (
     <div className=" w-screen h-screen items-center justify-center bg-gray-100">
@@ -80,21 +72,23 @@ function NotificationDisplay({ username, room }) {
           <div className=" items-center border-t p-4 rounded-lg shadow-lg w-full h-full max-w-screen-md">
           <h2 className="mt-12 text-lg font-semibold mb-3">Admin Push the Notificatoin </h2>
           <input
-             className="flex-grow p-2 outline-none rounded-l-lg"
-             type="text"
-             placeholder="Type your message..."
-             value={currentMessage}
-             onChange={(e) => setCurrentMessage(e.target.value)}
-             onKeyPress={(event) => {
-              event.key === "Enter" && sendMessage();
+            className="flex-grow p-2 outline-none w-full rounded-l-lg"
+            type="text"
+            placeholder="Type your message..."
+            value={currentMessage}
+            onChange={(e) => setCurrentMessage(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                sendMessage();
+              }
             }}
-           />
-           <button
-             className="px-4 py-2 bg-green-700 text-white rounded-r-lg hover:bg-green-900"
-             onClick={sendMessage}
-           >
-             Send
-           </button>
+          />
+          <button
+            className="px-4 py-2 mt-8 bg-green-700 text-white rounded-r-lg hover:bg-green-900"
+            onClick={sendMessage}
+          >
+            Pubish the Notification 
+          </button>
           
           </div>
         </div>
@@ -103,38 +97,32 @@ function NotificationDisplay({ username, room }) {
         </div>
         <div className="flex-grow p-4">
         <ScrollToBottom
-         className="flex-grow overflow-y-auto bg-white p-4"
-         ref={messageContainerRef}
-       >
-         {conversation.map((message, index) => (
-           <div
-             className={`flex ${
-               username === message.user
-                 ? "justify-end"
-                 : "justify-start"
-             } mb-2`}
-             key={index}
-           >
-             <div
-               className={`p-2 rounded ${
-                 username === message.user
-                   ? "bg-blue-100 text-right"
-                   : "bg-gray-100 text-left"
-               }`}
-             >
-               <div className="text-gray-600 text-xs mb-1">
-                 {message.time}
-               </div>
-               <div className="text-gray-600 text-xs mb-1">
-                 {message.user}
-               </div>
-               <div className="text-gray-800">{message.text}</div>
-             </div>
-           </div>
-         ))}
-       </ScrollToBottom>
-        </div>
-     
+          className="flex-grow overflow-y-auto bg-white p-4"
+          ref={messageContainerRef}
+        >
+          {conversation.map((message, index) => (
+            <div
+              className={`mb-2 p-2 rounded-lg ${
+                username === message.user
+                  ? "bg-green-700 hover:bg-green-500 text-left"
+                  : "bg-green-600 hover:bg-green-400 text-left"
+              }`}
+              key={index}
+            >
+              <div className="text-sm text-white mb-1">
+                #{index + 1}
+              </div>
+              <div className="text-white text-xs mb-1">
+                {message.time}
+              </div>
+              <div className="text-white text-xs mb-1">
+                {message.user}
+              </div>
+              <div className="text-white">{message.text}</div>
+            </div>
+          ))}
+        </ScrollToBottom>
+      </div>
       </div>
     </div>
   );
