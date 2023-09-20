@@ -10,9 +10,6 @@ import useAuth from "@/hooks/useAuth";
 import UserModal from "@/components/Modal/Modal";
 import Swal from "sweetalert2";
 import Chat from "@/components/Chat/Chat";
-import io from "socket.io-client";
-// const socket = io.connect("https://steep-mountainous-avatar.glitch.me");
-const socket = io.connect("http://localhost:3001");
 
 
 const WorkShopDetail = ({ params }) => {
@@ -111,13 +108,10 @@ const WorkShopDetail = ({ params }) => {
       
  <div className="mt-8">
         <div className="bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-lg font-semibold mb-3">Chat For Workshop and Client</h2>
+          <h2 className="text-lg font-semibold mb-3">Message to our Workshop Manager</h2>
           <Chat
-            socket={socket}
             username={user?.displayName}
-            room={101}
-            notification={notification}
-            setNotification={setNotification}
+            room={200}
           />
         </div>
       </div>
