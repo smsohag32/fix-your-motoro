@@ -1,51 +1,49 @@
-"use client";
+import React from "react";
 import StarRating from "./StarRating";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
-import Spinner from "@/components/Spinners/Spinner";
-import useReviews from "@/hooks/useReviews";
-import Image from "next/image";
+
+const reviews = [
+  {
+    id: 1,
+    name: "John Doe",
+    rating: 5,
+    reviewText:
+      "Great service! The staff was friendly and fixed my car quickly. Highly recommended.",
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    rating: 4,
+    reviewText:
+      "I had a good experience at Fix Your Motoro. The service was efficient, and they explained everything clearly.",
+  },
+  {
+    id: 4,
+    name: "Emily Brown",
+    rating: 5,
+    reviewText:
+      "Absolutely satisfied with their service. Quick response, professional staff, and reasonable prices.",
+  },
+];
 
 const SuccessReviews = () => {
-  const { reviews, rLoading } = useReviews();
-  if (rLoading) {
-    return <Spinner />;
-  }
-  // review dynamically added
-
   return (
-    <div className="bg-gray-50">
-      <div className="py-12 default-container">
+    <div className="default-container">
+      <div className="py-12 ">
         <SectionTitle
           title={"Customers Review"}
           subTitle="What to say our satisfied customer?"
         />
         <div className="container">
           <div className="grid grid-cols-1 gap-4 mt-12 md:grid-cols-2 lg:grid-cols-3">
-            {reviews?.slice(0, 3).map((review) => (
+            {reviews.map((review) => (
               <div
                 key={review.id}
-                className="bg-white duration-500 hover:scale-x-105 primary-shadow hover-border border-gray-200 border cursor-pointer p-4 rounded-lg"
+                className=" duration-500 hover:scale-x-105 primary-shadow hover-border border-gray-200 border cursor-pointer p-4 rounded-lg"
               >
-                <div className="flex items-center gap-5">
-                  <figure>
-                    <Image
-                      className="rounded-full"
-                      src={review.user_img}
-                      alt="User Pic"
-                      height={60}
-                      width={60}
-                    />
-                  </figure>
-                  <div>
-                    <p className="text-lg font-semibold">{review.user_name}</p>
-                    <StarRating rating={review.rating} />
-                    <p className="mt-2 text-gray-700">
-                      {review.review.length > 30
-                        ? review.review.slice(0, 30) + "..."
-                        : review.review}
-                    </p>
-                  </div>
-                </div>
+                <p className="text-lg font-semibold">{review.name}</p>
+                <StarRating rating={review.rating} />
+                <p className="mt-2 ">{review.reviewText}</p>
               </div>
             ))}
           </div>

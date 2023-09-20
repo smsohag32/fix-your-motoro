@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { MdDeleteOutline } from 'react-icons/md';
 
 const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds, onProductSelect, onQuantityChange }) => {
-  const { userName, userEmail, productID, productImage, productName, price, _id } = singleCartProduct;
+  const { userName, userEmail, productID, productImage, productName, description, price, _id } = singleCartProduct;
   const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(price); // Initialize with the product's initial price as a string
+  const [totalPrice, setTotalPrice] = useState(price);
 
   // Function to update the total price based on quantity
   const updateTotalPrice = (newQuantity) => {
@@ -68,46 +68,44 @@ const UserAddToCardTable = ({ singleCartProduct, i, refetch, selectedProductIds,
   };
 
   return (
-    <tr>
-      <td className="px-6 py-4 whitespace-no-wrap">
+    <div className='grid grid-cols-3  bg-white p-3'>
+      <div className='flex items-center gap-3'>
         <input
           type="checkbox"
           checked={selectedProductIds.includes(_id)}
           onChange={(e) => handleCheckboxChange(_id, e.target.checked)}
         />
-      </td>
-      <td className="px-6 py-4 whitespace-no-wrap text-center">{productName}</td>
-      <td className="relative transform transition-transform duration-300 hover:scale-110 hover:z-10">
-        <Image src={productImage} alt='productImage' height={90} width={90}/>
-      </td>
-      <td className="px-6 py-4 whitespace-no-wrap text-center">{price}</td>
-      <td className="px-6 py-4 whitespace-no-wrap">
+        <Image src={productImage} alt='productImage' height={120} width={120} className='border border-[#69d94f]' />
+      </div>
+      <div className='text-lg flex flex-col justify-center'>
+        <h2>Name: {productName}</h2>
+        <h3>Price: ${price}</h3>
+        <h3>Total Price: ${totalPrice}</h3>
+      </div>
+      <div className='flex flex-col items-center justify-between'>
         <div className="flex items-center">
           <button
-            className="px-[10px] py-1 text-white bg-blue-500 rounded-l focus:outline-none"
+            className="px-[10px] py-1 text-white bg-neutral-300 hover:bg-neutral-400 rounded-l focus:outline-none"
             onClick={decreaseQuantity}
           >
             -
           </button>
           <span className="px-3 py-1">{quantity}</span>
           <button
-            className="px-2 py-1 text-white bg-blue-500 rounded-r focus:outline-none"
+            className="px-2 py-1 text-white bg-neutral-300 hover:bg-neutral-400 rounded-r focus:outline-none"
             onClick={increaseQuantity}
           >
             +
           </button>
         </div>
-      </td>
-      <td className="px-6 py-4 whitespace-no-wrap text-center">{totalPrice}</td>
-      <td className="px-6 py-4 whitespace-no-wrap text-center">
         <button
           onClick={() => handleRemove(_id)}
-          className="p-1 text-2xl text-white bg-red-600 rounded-md hover:bg-red-900"
+          className="p-1 text-2xl  text-red-500 rounded-md hover:text-red-700 border hover:border-red-700"
         >
           <MdDeleteOutline />
         </button>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
 

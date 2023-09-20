@@ -1,4 +1,7 @@
 "use client";
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
@@ -6,6 +9,10 @@ import "@/styles/about.modules.css";
 import { Toaster, toast } from "react-hot-toast";
 
 const GetInTouch = () => {
+  useEffect(() => {
+    AOS.init({ offset: 300 , duration: 700});
+  }, []);
+  
   const form = useRef();
   const handleMessage = (e) => {
     e.preventDefault();
@@ -37,7 +44,7 @@ const GetInTouch = () => {
           subTitle={"Empowering Your Vehicles with Quality Servicing"}
         />
       </div>
-      <div className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:justify-start">
+      <div data-aos="fade-down-right" className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:justify-start">
         <div className="w-full">
           <div className="h-96 map-container">
             <iframe
@@ -63,7 +70,7 @@ const GetInTouch = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-900"
+                className="block text-sm font-medium "
               >
                 Name
               </label>
@@ -72,7 +79,7 @@ const GetInTouch = () => {
                   name="name"
                   type="name"
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2 "
+                  className="w-full border border-gray-300 text-black focus:outline-none focus:border-[#69d94f] px-4 py-2 "
                 />
               </div>
             </div>
@@ -80,7 +87,7 @@ const GetInTouch = () => {
             <div className="mt-4">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium leading-6 "
               >
                 Email address
               </label>
@@ -89,7 +96,7 @@ const GetInTouch = () => {
                   name="email"
                   type="email"
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
+                  className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                 />
               </div>
             </div>
@@ -97,7 +104,7 @@ const GetInTouch = () => {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm font-medium leading-6 "
                 >
                   Message
                 </label>
@@ -105,7 +112,7 @@ const GetInTouch = () => {
               <div className="mt-2">
                 <textarea
                   required
-                  className="w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
+                  className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                   name="message"
                   rows="4"
                   cols="50"

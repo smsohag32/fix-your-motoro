@@ -18,6 +18,7 @@ const ServicePage = ({ params }) => {
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedServiceType, setSelectedServiceType] = useState("On Garage");
   const form = useRef();
   const router = useRouter();
 
@@ -62,7 +63,7 @@ const ServicePage = ({ params }) => {
   const onSubmit = async (data) => {
     const serviceData = {
       service_id: _id,
-      workshop_email: service?.workshop_email || "sohagsheik32@gmail.com",
+      workshop_email: service?.workshop_email,
       service_category: service?.service_category,
       service_image: service?.service_image,
       service_name: service?.service_name,
@@ -112,8 +113,8 @@ const ServicePage = ({ params }) => {
           <figure>
             <Image
               className="rounded-lg shadow-md object-contain"
-              src={service_image}
-              alt={service_name}
+              src={service_image ? service_image : "https://i.ibb.co/4Vj2PZ4/istockphoto-512053124-170667a.webp"}
+              alt={service_name || 'service'}
               width={850}
               height={340}
             />
@@ -153,8 +154,8 @@ const ServicePage = ({ params }) => {
                 </p>
                 <p className="text-xl text-slate-700">{benefits}</p>
               </div>
-              <button onClick={() => setIsOpen(true)}>
-                <button className="primary-btn">Appointment Booking</button>
+              <button onClick={() => setIsOpen(true)} className="primary-btn">
+                Appointment Booking
               </button>
             </div>
           </div>
@@ -189,7 +190,7 @@ const ServicePage = ({ params }) => {
           <h2 className="text-xl font-semibold primary-text">
             Crafting Automotive Perfection: Your Vehicles Trusted Haven
           </h2>
-          <p className="leading-4 tracking-tight text-md text-cyan-800">
+          <div className="leading-4 tracking-tight text-md text-cyan-800">
             At our station, cars arent just machines; they re passions. Witness
             the transformation as we elevate each vehicles performance and
             aesthetics.
@@ -233,7 +234,7 @@ const ServicePage = ({ params }) => {
                 </p>
               </div>
             </div>
-          </p>
+          </div>
         </div>
       </div>
 
@@ -258,7 +259,7 @@ const ServicePage = ({ params }) => {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                    className="mt-1 primary-input"
                     required
                     {...register("firstName")}
                   />
@@ -274,13 +275,13 @@ const ServicePage = ({ params }) => {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                    className="mt-1 primary-input"
                     required
                     {...register("lastName")}
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-3">
                 <div className="col-span-2 sm:col-span-1">
                   <label htmlFor="email" className="block text-sm font-medium">
                     Email
@@ -289,8 +290,8 @@ const ServicePage = ({ params }) => {
                     type="text"
                     id="email"
                     name="email"
-                    value={user?.email}
-                    className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                    defaultValue={user?.email}
+                    className="mt-1 primary-input"
                     placeholder={user?.email}
                   />
                 </div>
@@ -302,7 +303,7 @@ const ServicePage = ({ params }) => {
                     type="text"
                     id="phone"
                     name="phone"
-                    className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                    className="mt-1 primary-input"
                     placeholder="+8801............"
                     required
                     {...register("phone")}
@@ -319,7 +320,7 @@ const ServicePage = ({ params }) => {
                     type="text"
                     id="vehicle"
                     name="vehicle"
-                    className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                    className="mt-1 primary-input"
                     placeholder="Toyota Land Cruiser Prado - 2020"
                     required
                     {...register("vehicle")}
@@ -336,7 +337,7 @@ const ServicePage = ({ params }) => {
                     type="date"
                     id="bookingDate"
                     name="bookingDate"
-                    className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                    className="mt-1 primary-input"
                     required
                     {...register("bookingDate")}
                   />
@@ -355,7 +356,7 @@ const ServicePage = ({ params }) => {
                       type="text"
                       id="streetAddress"
                       name="streetAddress"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                      className="mt-1 primary-input"
                       {...register("streetAddress")}
                     />
                   </div>
@@ -364,7 +365,7 @@ const ServicePage = ({ params }) => {
                       City
                     </label>
                     <select
-                      className=" mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                      className=" mt-1 primary-input"
                       {...register("city")}
                     >
                       <option value="dhaka">dhaka</option>
@@ -387,7 +388,7 @@ const ServicePage = ({ params }) => {
                       type="text"
                       id="state"
                       name="state"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                      className="mt-1 primary-input"
                       {...register("state")}
                     />
                   </div>
@@ -402,34 +403,8 @@ const ServicePage = ({ params }) => {
                       type="text"
                       id="postal"
                       name="postal"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                      className="mt-1 primary-input"
                       {...register("postal")}
-                    />
-                  </div>
-                  <div className="">
-                    <label htmlFor="map" className="block text-sm font-medium">
-                      Latitude *
-                    </label>
-                    <input
-                      type="text"
-                      id="map"
-                      name="map"
-                      placeholder="Type your latitude location"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
-                      {...register("user_lat")}
-                    />
-                  </div>
-                  <div className="">
-                    <label htmlFor="long" className="block text-sm font-medium">
-                      Longitude *
-                    </label>
-                    <input
-                      type="text"
-                      id="long"
-                      name="long"
-                      placeholder="Type your longitude location"
-                      className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
-                      {...register("user_lon")}
                     />
                   </div>
                   <div>
@@ -440,13 +415,70 @@ const ServicePage = ({ params }) => {
                       Service Place
                     </label>
                     <select
-                      className=" mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-sky-500"
+                      className=" mt-1 primary-input"
                       {...register("service_type")}
+                      onChange={(e) => setSelectedServiceType(e.target.value)}
                     >
                       <option value="On Garage">On Garage</option>
                       <option value="On Spot">On Spot</option>
                     </select>
                   </div>
+                  {selectedServiceType === "On Garage" && (
+                    <div>
+                      <label
+                        htmlFor="workshop_email"
+                        className="block text-sm font-medium"
+                      >
+                        Workshop Email
+                      </label>
+                      <select
+                        className="mt-1 primary-input"
+                        {...register("workshop_email")}
+                      >
+                        <option value="sohagsheik32@gmail.com">
+                          sohagsheik32@gmail.com
+                        </option>
+                        <option value="fya6@gmail.com">fya6@gmail.com</option>
+                      </select>
+                    </div>
+                  )}
+
+                  {selectedServiceType === "On Spot" && (
+                    <div>
+                      <label
+                        htmlFor="map"
+                        className="block text-sm font-medium"
+                      >
+                        Latitude *
+                      </label>
+                      <input
+                        type="text"
+                        id="map"
+                        name="map"
+                        placeholder="your latitude location"
+                        className="mt-1 primary-input"
+                        {...register("user_lat")}
+                      />
+                    </div>
+                  )}
+                  {selectedServiceType === "On Spot" && (
+                    <div>
+                      <label
+                        htmlFor="long"
+                        className="block text-sm font-medium"
+                      >
+                        Longitude *
+                      </label>
+                      <input
+                        type="text"
+                        id="long"
+                        name="long"
+                        placeholder="your longitude location"
+                        className="mt-1 primary-input"
+                        {...register("user_lon")}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
 
