@@ -4,7 +4,8 @@ import React, { useEffect, useState, useRef } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:3001"); // Replace with your server URL
+
+const socket = io("https://steep-mountainous-avatar.glitch.me");
 
 function Chat({ username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
