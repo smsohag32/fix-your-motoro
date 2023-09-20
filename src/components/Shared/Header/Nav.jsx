@@ -40,12 +40,7 @@ const Nav = () => {
       </div>
       <span className="text-white">
         <Link href="/" className="flex items-center gap-1">
-<<<<<<< HEAD
           <Image src={logo} alt="logo" width={80} height={80} />
-=======
-          <Image alt="logo" src={logo} width={100} height={80} />
-          <span className="">FYM</span>
->>>>>>> 3fcb5ae79a94dde05c02b5b8c1435ea45a3e12d2
         </Link>
       </span>
 
