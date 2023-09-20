@@ -22,7 +22,6 @@ const WorkShops = () => {
       try {
         workshopLoad(searchText, currentPage, limit).then((data) => {
           setLoading(false);
-          console.log(data);
           setWorkshopsData(data);
           setDistrictText("");
         });
