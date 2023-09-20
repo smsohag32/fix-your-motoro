@@ -58,17 +58,21 @@ const AuthProvider = ({ children }) => {
             email: loggedUser.email,
           })
           .then((data) => {
-            localStorage.setItem("access-token", data.data.token);
+            document.cookie = `token=${data.data.token}; path=/`;
             setLoading(false);
+            console.log(data.data);
           })
           .catch((err) => {
             setLoading(false);
           });
       } else {
-        localStorage.removeItem("access-token");
+        // Remove the token cookie
+        document.cookie =
+          "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         setLoading(false);
       }
     });
+
     return () => unsub();
   }, []);
 

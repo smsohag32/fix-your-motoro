@@ -16,7 +16,7 @@ const SingUp = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        saveUser(user).then((data) => { });
+        saveUser(user).then((data) => {});
         router.push("/");
       })
       .catch();
@@ -28,7 +28,7 @@ const SingUp = () => {
       <div className="my-12 default-container">
         <div className="flex-col max-w-2xl p-8 mx-auto my-8 rounded-lg primary-shadow secondary-border">
           <RegisterFrom />
-          <div className="text-sm font-medium text-gray-600 dark:text-gray-600">
+          <div className="text-sm font-medium text-gray-600 ">
             Already have an account?
             <Link href="/login" className="font-semibold primary-text">
               Login

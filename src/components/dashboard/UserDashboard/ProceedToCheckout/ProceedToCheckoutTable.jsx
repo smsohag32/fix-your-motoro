@@ -1,6 +1,5 @@
 //api route
 
-<<<<<<< HEAD
 const ProceedToCheckoutTable = ({ singleClass }) => {
     const { service_name, service_price, quantity } = singleClass;
 
@@ -31,5 +30,3 @@ const ProceedToCheckoutTable = ({ singleClass }) => {
 };
 
 export default ProceedToCheckoutTable;
-=======
->>>>>>> a183858bf739ccdb2d31928ee4fafd02722540b4
