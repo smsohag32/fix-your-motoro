@@ -1,12 +1,38 @@
 "use client";
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import "@/styles/about.modules.css";
 import { Toaster, toast } from "react-hot-toast";
 
 const GetInTouch = () => {
+  useEffect(() => {
+    AOS.init({ offset: 300 , duration: 700});
+  }, []);
+  
+  const form = useRef();
   const handleMessage = (e) => {
     e.preventDefault();
-    toast.success("message send success");
+    // Send Email ---------------
+    emailjs
+      .sendForm(
+        "service_9w3lzbp",
+        "template_iqzhlvs",
+        form.current,
+        "1leqQsJkGshzPjw2s"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.error(error.text);
+        }
+      );
+    toast.success("Your message has been sent successfully");
     e.target.reset();
   };
 
@@ -18,7 +44,7 @@ const GetInTouch = () => {
           subTitle={"Empowering Your Vehicles with Quality Servicing"}
         />
       </div>
-      <div className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:justify-start">
+      <div data-aos="fade-down-right" className="flex flex-col justify-center gap-10 md:flex-row md:items-center md:justify-start">
         <div className="w-full">
           <div className="h-96 map-container">
             <iframe
@@ -36,7 +62,11 @@ const GetInTouch = () => {
           </div>
         </div>
         <div className="w-full">
-          <form onSubmit={() => handleMessage()} className="max-w-md mx-auto">
+          <form
+            ref={form}
+            onSubmit={handleMessage}
+            className="max-w-md mx-auto"
+          >
             <div>
               <label
                 htmlFor="name"

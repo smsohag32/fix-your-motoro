@@ -45,7 +45,7 @@ const ServiceFrom = () => {
 
           axios
             .post(
-              `https://fya-backend.vercel.app/--------------------`,
+              `https://fya-backend.vercel.app/api/v1/auth/mechanics/workshop`,
               service
             )
             .then(() => {

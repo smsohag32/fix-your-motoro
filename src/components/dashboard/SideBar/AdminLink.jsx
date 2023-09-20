@@ -1,5 +1,6 @@
 "use client";
 import { MdDashboard } from "react-icons/md";
+import { VscPreview } from "react-icons/vsc";
 import { FaHistory, FaUser, FaUsers } from "react-icons/fa";
 import { BiCreditCard, BiMessageAltDetail } from "react-icons/bi";
 import { BsFillBoxFill } from "react-icons/bs";
@@ -52,6 +53,20 @@ const AdminLInk = () => {
 
       <Link
         className={
+          pathName === "/dashboard/admin/User_review" ? "primary-text" : ""
+        }
+        href={"/dashboard/admin/User_review"}
+      >
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+          <VscPreview className="w-8 h-8  group-hover:text-[#69d94f]" />
+          <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
+            User Review
+          </h3>
+        </li>
+      </Link>
+
+      <Link
+        className={
           pathName === "/dashboard/admin/complaint_box" ? "primary-text" : ""
         }
         href={"/dashboard/admin/complaint_box"}
@@ -64,43 +79,37 @@ const AdminLInk = () => {
         </li>
       </Link>
       {/* message section */}
-      
 
       <Link
-            
-            className={
-              pathName === "/dashboard/admin/admin_chat" ? "primary-text" : ""
-            }
-            href={"/dashboard/admin/admin_chat"}
-        >
-          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-            <BiMessageAltDetail className="w-8 h-8  group-hover:text-[#69d94f]" />
-            <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] "> 
-              Message
-           
-            </h3>
+        className={
+          pathName === "/dashboard/admin/admin_chat" ? "primary-text" : ""
+        }
+        href={"/dashboard/admin/admin_chat"}
+      >
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+          <BiMessageAltDetail className="w-8 h-8  group-hover:text-[#69d94f]" />
+          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
+            Message
+          </h3>
         </li>
-        </Link>
+      </Link>
 
-       {/* notification link */}
-          <Link
-           className={
-            pathName === "/dashboard/admin/notification" ? "primary-text" : ""
-          }
-            href="/dashboard/admin/notification"
-            
-          >
-            <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-         
-            <IoMdNotificationsOutline className="w-8 h-8  group-hover:text-[#69d94f]" />
-            
-            <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] "> 
+      {/* notification link */}
+      <Link
+        className={
+          pathName === "/dashboard/admin/notification" ? "primary-text" : ""
+        }
+        href="/dashboard/admin/notification"
+      >
+        <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
+          <IoMdNotificationsOutline className="w-8 h-8  group-hover:text-[#69d94f]" />
+
+          <h3 className="text-base font-semibold text-gray-800 group-hover:text-[#69d94f] ">
             Notification
-           
-            </h3>
-            </li>
-          </Link>
-  
+          </h3>
+        </li>
+      </Link>
+
       <Link
         className={
           pathName === "/dashboard/admin/profile" ? "primary-text" : ""

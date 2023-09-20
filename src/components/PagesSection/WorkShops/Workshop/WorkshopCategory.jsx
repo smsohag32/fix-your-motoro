@@ -23,7 +23,9 @@ const WorkshopCategory = ({ setDistrictText, setSearchText, districtText }) => {
       <div className="pt-2 flex flex-row items-center justify-between overflow-x-auto">
         {divisionData.map((item, index) => (
           <div
-            onClick={() => setDistrict(item)}
+            onClick={() => {
+              setDistrict(item), setDistrictText(divisionData[item][0]);
+            }}
             key={index}
             className={`
         flex 

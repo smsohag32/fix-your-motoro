@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
-import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 import navLinkData from "@/utils/data/navLinkData";
 import Image from "next/image";
@@ -9,6 +8,8 @@ import userLogo from "@/assets/userlogo.png";
 import useAuth from "@/hooks/useAuth";
 import { usePathname, useRouter } from "next/navigation";
 import { MdClose } from "react-icons/md";
+
+import logo from "@/assets/logo.png";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState();
@@ -36,6 +37,7 @@ const Nav = () => {
       </div>
       <span className="text-white">
         <Link href="/" className="flex items-center gap-1">
+          <Image alt="logo" src={logo} width={100} height={80} />
           <span className="">FYM</span>
         </Link>
       </span>

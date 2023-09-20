@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import OurServiceSingleCart from "./OurServiceSingleCart";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
@@ -16,6 +18,7 @@ const Services = () => {
     setIsOpen(false);
   };
   useEffect(() => {
+    AOS.init({ offset: 300 , duration: 700});
     setLoading(true);
     const fetchData = async () => {
       try {
@@ -44,7 +47,7 @@ const Services = () => {
       {loading ? (
         <MidSpinner />
       ) : (
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div data-aos="fade-right" className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {servicesData.slice(0, expertLimit).map((service) => (
             <OurServiceSingleCart
               key={service.service_id}
