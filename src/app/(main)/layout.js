@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Header from "@/components/Shared/Header/Header";
 import { useTheme } from "@/context/ThemeContext";
 import Footer from "@/components/Shared/Footer/Footer";
@@ -9,14 +9,13 @@ export const metadata = {
 };
 
 export default function MainLayout({ children }) {
-  
   const { isDarkMode } = useTheme();
-  const themeClass = isDarkMode ? 'dark-mode' : 'light-mode';
+  const themeClass = isDarkMode ? "dark-mode" : "light-mode";
   return (
     <>
       <div className={`min-h-[67vh] ${themeClass}`}>
         <Header />
-        <div >{children}</div>
+        <div>{children}</div>
         <Footer />
       </div>
     </>
