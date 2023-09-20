@@ -85,7 +85,7 @@ const BlogDetailPage = ({ params }) => {
               onClick={handleCommentSubmit}
               className="block primary-btn mt-1"
             >
-              Add Comment
+              Write a Comment
             </button>
           </div>
         </div>
