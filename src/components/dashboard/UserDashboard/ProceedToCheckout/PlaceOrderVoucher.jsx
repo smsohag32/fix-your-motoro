@@ -1,13 +1,17 @@
 "use client"
+import PaymentCashierModal from '@/components/Modal/userModal/PaymentCashierModal';
 import useAuth from '@/hooks/useAuth';
 import useUserInfo from '@/hooks/useUserInfo';
 import axios from 'axios';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const PlaceOrderVoucher = ({ cartData }) => {
-  
+  const [isOpen, setIsOpen] = useState(false);
   const { userInfo } = useUserInfo();
-  const {user} = useAuth();
+  const { user } = useAuth();
+  const router = useRouter();
   const vatRate = 0.1;
   const shippingFee = 50;
 
@@ -47,30 +51,50 @@ const PlaceOrderVoucher = ({ cartData }) => {
   // Calculate total payment (items total + VAT + shipping fee)
   const totalPayment = totalPrice + vat + shippingFee;
 
-  const handlePlaceOrder = async() => {
-    const orderData = {
-      itemDetails: itemDetails,
-      totalQuantity: totalQuantity,
-      totalPrice: totalPrice.toFixed(2),
-      vat: vat.toFixed(2),
-      shippingFee: shippingFee.toFixed(2),
-      totalPaymentBDT: (totalPayment * 100).toFixed(2),
-      totalPayment: totalPayment.toFixed(2),
-      currency: "BDT",
-      customerName: userInfo?.user?.name || user?.displayName,
-      customerEmail: userInfo?.user?.email || user?.email,
-      customerImage: userInfo?.user?.image || user?.displayURL,
+  const orderData = {
+    itemDetails: itemDetails,
+    totalQuantity: totalQuantity,
+    totalPrice: totalPrice.toFixed(2),
+    vat: vat.toFixed(2),
+    shippingFee: shippingFee.toFixed(2),
+    totalPaymentBDT: (totalPayment * 100).toFixed(2),
+    totalPayment: totalPayment.toFixed(2),
+    currency: "BDT",
+    customerName: userInfo?.user?.name || user?.displayName,
+    customerEmail: userInfo?.user?.email || user?.email,
+    customerImage: userInfo?.user?.image || user?.displayURL,
+  };
+  const PaymentWithSLLCommerze = async () => {
+    const paymentData = {
+      ...orderData,
+      paymentWith: "sllCommerze",
     };
-    console.log('Placing Order with Data:', orderData);
-    const response = await axios.post("https://yoga-mindfulness-server.vercel.app/user/cart/product/order_api", orderData);
+    const response = await axios.post("https://yoga-mindfulness-server.vercel.app/user/cart/product/order_api", paymentData);
     console.log(response);
     window.location.replace(response.data.url)
+  };
+  const CashOnDelivery = async () => {
+    const paymentData = {
+      ...orderData,
+      paymentWith: "cash on delivery",
+      paidStatus: "unpaid"
+    };
+    const response = await axios.post("https://yoga-mindfulness-server.vercel.app/user/cart/product/cash_on_delivery", paymentData);
+    if (response.data.success === true) {
+      toast.success("Order Submitted successfully")
+      router.push("/dashboard/user/user_add_to_card")
+      setIsOpen(false);
+
+    }else{
+      toast.error("Order Submitted failed")
+    }
+
   };
 
   return (
     <div className="max-w-3xl p-4 mx-auto bg-white rounded-md border border-green-500">
       <div className="p-4 mb-6 border-b-2 border-b-green-500">
-      <h1 className='text-3xl mb-5'>Summary</h1>
+        <h1 className='text-3xl mb-5'>Summary</h1>
         <div className="mb-4">
           {itemDetails.map((item, index) => (
             <div key={index} className="mb-2">
@@ -102,8 +126,20 @@ const PlaceOrderVoucher = ({ cartData }) => {
         </div>
       </div>
       <div className="flex justify-center">
-        <button onClick={handlePlaceOrder} className="primary-btn">PLACE ORDER</button>
+        <button onClick={() => setIsOpen(!isOpen)} className="primary-btn">PLACE ORDER</button>
       </div>
+      <PaymentCashierModal
+        PaymentWithSLLCommerze={PaymentWithSLLCommerze}
+        CashOnDelivery={CashOnDelivery}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        totalPayment={totalPayment}
+        shippingFee={shippingFee}
+        vat={vat}
+        totalQuantity={totalQuantity}
+        totalPrice={totalPrice}
+      />
+      <Toaster/>
     </div>
   );
 };
