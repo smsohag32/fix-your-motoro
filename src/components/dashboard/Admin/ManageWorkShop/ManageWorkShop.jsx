@@ -58,9 +58,10 @@ const ManageWorkshop = () => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          const res = axios.delete(url);
-          Swal.fire("Deleted!", "Workshop is deleted done");
-          refetch();
+          axios.delete(url).then((re) => {
+            Swal.fire("Deleted!", "Workshop is deleted done");
+            refetch();
+          });
         }
       });
     } catch (error) {
