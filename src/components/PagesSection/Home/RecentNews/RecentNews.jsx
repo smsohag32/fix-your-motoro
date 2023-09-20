@@ -1,7 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useState } from "react";
 import NewsModal from "./NewsModal";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import Image from "next/image";
@@ -9,15 +7,7 @@ import MidSpinner from "@/components/Spinners/MidSpinner";
 import useBlogs from "@/hooks/UseBlogs";
 import useAuth from "@/hooks/useAuth";
 function RecentNews() {
-<<<<<<< HEAD
   // const articles = newsData.articles; // Access the articles array
-=======
-  useEffect(() => {
-    AOS.init({ offset: 300 , duration: 700});
-  }, []);
-
-  const articles = newsData.articles; // Access the articles array
->>>>>>> d67984d7037cdc624acdd164af3fad0758bdcc39
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   const openModal = (blog) => {
@@ -91,13 +81,8 @@ const displayedBlogs = blogs.slice(0, 3);
         title="Special News"
         subTitle="Recent motor servicing news and blogs"
       />
-<<<<<<< HEAD
       <div className="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
       {displayedBlogs.map((blog) => (
-=======
-      <div data-aos="fade-up-left" className="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
-        {articles.map((article) => (
->>>>>>> d67984d7037cdc624acdd164af3fad0758bdcc39
           <div
             key={blog.id}
             className="flex flex-col items-center pb-5 transition-all duration-500 transform cursor-pointer primary-shadow hover:scale-95"

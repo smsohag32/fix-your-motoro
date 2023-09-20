@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import logo from "@/assets/website-logo.png";
+import logo from "@/assets/logo.png";
 import {
   AiFillFacebook,
   AiFillLinkedin,
@@ -37,8 +37,8 @@ const Footer = () => {
       ></div>
       <div style={{ padding: "20px" }} className="container mx-12px flex flex-col md:flex-row items-center justify-between relative">
         <div className="mb-6 md:mb-0">
-          <Image src={logo} alt="logo" height={120} width={120} />
-          <p className="text-sm mt-2">123 Street Road, Dhaka</p>
+          <Image src={logo} alt="logo" height={200} width={200} />
+          <p className="text-sm ">123 Street Road, Dhaka</p>
           <p className="text-sm">Email: info@fixyourmotornow.com</p>
           <p className="text-sm">Phone: (123) 456-7890</p>
         </div>
