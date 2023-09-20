@@ -4,9 +4,9 @@ import SingleWorkshop from "../SingleWorkShop/SingleWorkshop";
 import SearchContext from "@/context/SearchContext";
 import EmptyState from "@/components/Shared/EmptyState/EmptyState";
 import MidSpinner from "@/components/Spinners/MidSpinner";
-import WorkshopCategory from "./WorkshopCategory";
 import PaginationContent from "./PaginationContent";
 import { workshopLoad } from "@/utils/workshopLoad";
+import WorkshopCategory from "./WorkshopCategory";
 
 const WorkShops = () => {
   const [workshopsData, setWorkshopsData] = useState([]);
@@ -22,7 +22,6 @@ const WorkShops = () => {
       try {
         workshopLoad(searchText, currentPage, limit).then((data) => {
           setLoading(false);
-          console.log(data);
           setWorkshopsData(data);
           setDistrictText("");
         });

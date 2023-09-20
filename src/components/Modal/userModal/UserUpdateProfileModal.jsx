@@ -7,8 +7,6 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 
 
-
-
 const UserUpdateProfileModal = ({ isOpen, setIsOpen, refetch }) => {
     const { user, profileUpdate } = useAuth();
     const { register, handleSubmit, reset, setValue } = useForm();

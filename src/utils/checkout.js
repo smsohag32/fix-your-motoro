@@ -1,4 +1,3 @@
-import React from "react";
 import { loadStripe } from "@stripe/stripe-js"
 const checkout = async ({lineItems}) => {
     let stripepromise = null;

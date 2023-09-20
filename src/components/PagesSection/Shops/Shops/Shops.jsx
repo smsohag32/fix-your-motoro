@@ -12,7 +12,7 @@ const Shops = () => {
   const router = useRouter();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [like, setLike] = useState(true);
+  // const [like, setLike] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
   const [minPrice, setMinPrice] = useState("");
@@ -56,8 +56,6 @@ const Shops = () => {
     .slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
-
-  // console.log(products);
 
 
   return (
@@ -136,7 +134,7 @@ const Shops = () => {
                   </div>
                 </div>
                 <div className="absolute top-2 left-5">
-                  <div className="flex items-center justify-center mr-2">
+                  {/* <div className="flex items-center justify-center mr-2">
                     <div
                       onClick={() => setLike(!like)}
                       className="flex p-2 text-2xl"
@@ -146,17 +144,11 @@ const Shops = () => {
                       />
                     </div>
                     <p className="ml-1">{item.rating.toFixed(1)}</p>
-                  </div>
+                  </div> */}
                 </div>
                 <h3 className="my-2 text-lg font-semibold">{item.name}</h3>
 
                 <div className="flex items-center justify-between my-2">
-                  {/* <button
-                  onClick={() => router.push(`/shops/${item.id}`)}
-                  className="primary-btn"
-                >
-                  View Details
-                </button> */}
                   <button
                     onClick={() => router.push(`/shops/${item?._id}`)}
                     className="rounded-md primary-btn"

@@ -2,6 +2,7 @@
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import Spinner from "@/components/Spinners/Spinner";
 import useAuth from "@/hooks/useAuth";
+import useCartProducts from "@/hooks/useCartProducts";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -11,7 +12,7 @@ const SingleProduct = ({ id }) => {
   const { user } = useAuth();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const { refetch } = useCartProducts();
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -57,13 +58,24 @@ const SingleProduct = ({ id }) => {
       price,
     };
 
-    try {
-      const response = await axios.post(`https://fya-backend.vercel.app/api/v1/auth/carts/${user?.email}`, cartData);
-      if(response.data == "add product successfully"){
-        toast.success("product added to cart successfully")
+    if (user) {
+      try {
+        const response = await axios.post(`https://fya-backend.vercel.app/api/v1/auth/carts/${user?.email}`, cartData);
+        if (response.data == "add product successfully") {
+          toast.success("product added to cart successfully");
+          refetch();
+        } else if (response.data.message == "Product already in the cart") {
+          toast.success("Product already added to cart")
+        }
+
+
+
+      } catch (error) {
+        console.log(error)
       }
-    } catch (error) {
-      console.log(error)
+    } else {
+      toast.success("Please login first to add product");
+      return;
     }
   };
 
@@ -78,6 +90,7 @@ const SingleProduct = ({ id }) => {
         {/* Service Area */}
         <div className="lg:flex justify-between gap-10">
           <figure>
+            {/* img tag */}
             <Image
               className="rounded-lg border  shadow-md"
               src={image ? image : ""}
@@ -104,7 +117,7 @@ const SingleProduct = ({ id }) => {
                     Price:
                   </p>
                   <p className="md:pl-10">
-                    
+
                     <span className="md:inline md:pl-10">
                       <span className="bg-gray-400 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
                         ${price}
