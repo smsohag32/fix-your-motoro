@@ -1,8 +1,7 @@
-import NotificationDisplay from "@/components/dashboard/UserDashboard/Notification";
 const Notification = () => {
   return (
-    <div >
-      <NotificationDisplay />
+    <div className="text-center py-24">
+      <p>No notification found</p>
     </div>
   );
 };
