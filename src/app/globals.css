@@ -67,9 +67,8 @@ body {
   @apply w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2;
 }
 
-/* theme dark or light
-/* globals.css */
-:root {
+ /* theme dark or light */
+ :root {
   --bg-color-light: white;
   --text-color-light: black;
   --bg-color-dark: black;

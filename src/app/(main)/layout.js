@@ -14,9 +14,9 @@ export default function MainLayout({ children }) {
   const themeClass = isDarkMode ? 'dark-mode' : 'light-mode';
   return (
     <>
-      <div>
+      <div className={`min-h-[67vh] ${themeClass}`}>
         <Header />
-        <div className={`min-h-[67vh] ${themeClass}`}>{children}</div>
+        <div >{children}</div>
         <Footer />
       </div>
     </>

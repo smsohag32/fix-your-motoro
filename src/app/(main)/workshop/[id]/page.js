@@ -11,7 +11,8 @@ import UserModal from "@/components/Modal/Modal";
 import Swal from "sweetalert2";
 import Chat from "@/components/Chat/Chat";
 import io from "socket.io-client";
-const socket = io.connect("https://steep-mountainous-avatar.glitch.me");
+// const socket = io.connect("https://steep-mountainous-avatar.glitch.me");
+const socket = io.connect("http://localhost:3001");
 
 
 const WorkShopDetail = ({ params }) => {

@@ -1,3 +1,4 @@
+
 import Providers from "@/providers/Providers";
 import "./globals.css";
 import { Roboto } from "next/font/google";
@@ -16,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="en">
+    <html lang="en" >
       <body className={`select-none ${roboto.className}`}>
       <ThemeProvider>
             <Providers>{children}</Providers>
