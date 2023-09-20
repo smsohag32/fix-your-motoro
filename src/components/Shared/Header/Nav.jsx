@@ -1,17 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
-import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 import navLinkData from "@/utils/data/navLinkData";
 import Image from "next/image";
 import userLogo from "@/assets/userlogo.png";
-import logo from "@/assets/main-logo.png"
 import useAuth from "@/hooks/useAuth";
 import { usePathname, useRouter } from "next/navigation";
 import { MdClose } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import useCartProducts from "@/hooks/useCartProducts";
+
+import logo from "@/assets/logo.png";
 
 const Nav = () => {
   const { cartProducts, cartLoading } = useCartProducts();
@@ -40,7 +40,12 @@ const Nav = () => {
       </div>
       <span className="text-white">
         <Link href="/" className="flex items-center gap-1">
+<<<<<<< HEAD
           <Image src={logo} alt="logo" width={80} height={80} />
+=======
+          <Image alt="logo" src={logo} width={100} height={80} />
+          <span className="">FYM</span>
+>>>>>>> 3fcb5ae79a94dde05c02b5b8c1435ea45a3e12d2
         </Link>
       </span>
 

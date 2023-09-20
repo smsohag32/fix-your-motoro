@@ -8,31 +8,31 @@ const AddCart = () => {
   return (
     <div className="relative overflow-x-auto md:mt-40">
       <PageTitle title="Add To Cart" subTitle="View Your Add to Card" />
-      <table className="md:w-[80%] w-full mx-auto text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
-        <tr>
+      <table className="md:w-[80%] w-full mx-auto text-sm text-left text-gray-500">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-100 ">
+          <tr>
             <th scope="col" className="px-6 py-3 rounded-l-lg">
-                Product name
+              Product name
             </th>
             <th scope="col" className="px-6 py-3">
-                Qty
+              Qty
             </th>
             <th scope="col" className="px-6 py-3 rounded-r-lg">
-                Price
+              Price
             </th>
             <th scope="col" className="px-6 py-3">
-                Pay
+              Pay
             </th>
             <th scope="col" className="px-6 py-3">
-                Delete
+              Delete
             </th>
-        </tr>
+          </tr>
         </thead>
         <tbody>
-          <CartTable/>
+          <CartTable />
         </tbody>
         <tfoot>
-          <tr className="bg-white dark:bg-gray-800">
+          <tr className="bg-white ">
             <th scope="row" className="px-6 py-3 text-base">
               Total
             </th>

@@ -78,8 +78,8 @@ const ServicePage = ({ params }) => {
     );
 
     if (response.data) {
-      router.push("/dashboard/user/appointments");
       // Send Email to user--------ing_
+      router.push("/dashboard/user/appointments");
       try {
         const response = await emailjs.sendForm(
           "service_3kn5ji1",
