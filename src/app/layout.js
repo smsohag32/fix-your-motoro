@@ -11,7 +11,7 @@ const roboto = Roboto({
 export const metadata = {
   title: "Fix Your Motoro",
   description: "FYM",
-  icon: "/redketchup/favicon.ico", // Corrected path
+  icon: "/redketchugp/favicon.ico", 
 };
 
 export default function RootLayout({ children }) {
