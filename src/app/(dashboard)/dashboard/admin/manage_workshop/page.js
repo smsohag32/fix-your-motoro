@@ -1,11 +1,11 @@
-import ManageWorkShop from "@/components/dashboard/Admin/ManageWorkShop/ManageWorkshop";
+import React from 'react';
 
-const ManageWorkshopPage = () => {
+const page = () => {
   return (
-    <div className="md:my-16">
-      <ManageWorkShop/>
+    <div className='md:my-16'>
+      Manage workshop page
     </div>
   );
 };
 
-export default ManageWorkshopPage;
+export default page;
