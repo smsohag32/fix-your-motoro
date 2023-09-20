@@ -6,9 +6,12 @@ import "@/styles/theme-button.modules.css"
 import { useTheme } from "@/context/ThemeContext";
 
 const TopBar = () => {
+
   const { isDarkMode, toggleTheme } = useTheme();
+  
+  const themeClass = isDarkMode ? 'dark-mode' : 'light-mode';
   return (
- <div className="hidden md:flex default-container  justify-between w-full gap-10 ps-4">
+ <div className={`hidden md:flex default-container  justify-between w-full gap-10 ps-4 ${themeClass}`}>
         <button className="modern-button" onClick={toggleTheme}>
       {isDarkMode ? 'Light Mode' : 'Dark Mode'}
     </button>
