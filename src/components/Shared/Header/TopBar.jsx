@@ -1,12 +1,34 @@
+'use client'
 import Link from "next/link";
 import { AiFillPhone, AiTwotoneMail } from "react-icons/ai";
 import SearchBar from "./SearchBar";
+import "@/styles/theme-button.modules.css"
+import { useTheme } from "@/context/ThemeContext";
 
 const TopBar = () => {
+
+  const { isDarkMode, toggleTheme } = useTheme();
+  
+  const themeClass = isDarkMode ? 'dark-mode' : 'light-mode';
   return (
-    <div className="hidden md:flex default-container  justify-between w-full gap-10 ps-4">
+ <div className={`hidden md:flex default-container  justify-between w-full gap-10 ps-4 ${themeClass}`}>
+        <button className="modern-button" onClick={toggleTheme}>
+      {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+    </button>
       <div className="flex py-3 md:py-0 flex-col md:flex-row items-center justify-end flex-1 text-xs md:text-sm gap-2 md:gap-9">
         <SearchBar />
+        <p className="flex items-center ">
+          <span>
+            <AiFillPhone />
+          </span>
+          +88095342563
+        </p>
+        <p className="flex items-center gap-3 ">
+          <span>
+            <AiTwotoneMail />
+          </span>
+          fym@gmail.com
+        </p>
       </div>
       <div className="flex items-center justify-end text-right primary-bg h-14">
         <Link href="/appointment">
@@ -16,6 +38,8 @@ const TopBar = () => {
         </Link>
       </div>
     </div>
+  
+   
   );
 };
 
