@@ -1,23 +1,28 @@
-"use client";
-import Header from "@/components/Shared/Header/Header";
-import { useTheme } from "@/context/ThemeContext";
-import Footer from "@/components/Shared/Footer/Footer";
+import Providers from "@/providers/Providers";
+import  "./globals.css";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  weight: ["100", "300", "400", "500", "700", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
-  title: "FYM",
+  title: "Fix Your Motoro",
   description: "FYM",
+  icon: "/redketchugp/favicon.ico", 
 };
-
 export default function MainLayout({ children }) {
-  const { isDarkMode } = useTheme();
-  const themeClass = isDarkMode ? "dark-mode" : "light-mode";
+  
   return (
-    <>
-      <div className={`min-h-[67vh] ${themeClass}`}>
-        <Header />
-        <div>{children}</div>
-        <Footer />
-      </div>
-    </>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href={metadata.icon} />{" "}
+        {/* Use the icon path from metadata */}
+      </head>
+      <body className={`select-none ${roboto.className} `}>
+        <Providers>{children} </Providers>
+      </body>
+    </html>
   );
 }
