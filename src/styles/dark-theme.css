@@ -1,0 +1,8 @@
+/* Define styles for the dark theme */
+body.dark-mode {
+    background-color: #333333; /* Background color for dark mode */
+    color: #ffffff; /* Text color for dark mode */
+  }
+  
+  /* Add more styles for your dark theme as needed */
+  
