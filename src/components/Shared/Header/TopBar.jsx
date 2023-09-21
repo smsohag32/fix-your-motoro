@@ -10,31 +10,31 @@ const TopBar = () => {
   const { theme, setTheme } = useTheme()
 
   return (
- <div 
- className={`hidden md:flex default-container  justify-between w-full gap-10 ps-4 `}
- >
-       {/* <div>
+    <div
+      className={`hidden md:flex default-container  justify-between w-full gap-10 ps-4 `}
+    >
+      {/* <div>
       : {theme}
       <button onClick={() => setTheme('light')}>Light Mode</button>
       <button onClick={() => setTheme('dark')}>Dark Mode</button>
       <RootLayout theme={theme} />
     </div> */}
-        <div className="theme-changer">
-      <span>Current Theme: {theme}</span>
-      <button
-        className={`theme-button ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}
-        onClick={() => setTheme('light')}
-      >
-        Light Mode
-      </button>
-      <button
-        className={`theme-button ${theme === 'dark' ? 'light-mode' : 'dark-mode'}`}
-        onClick={() => setTheme('dark')}
-      >
-        Dark Mode
-      </button>
-      <MainLayout theme={theme} />
-    </div>
+      <div className="theme-changer">
+        <span>Current Theme: {theme}</span>
+        <button
+          className={`theme-button ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}
+          onClick={() => setTheme('light')}
+        >
+          Light Mode
+        </button>
+        <button
+          className={`theme-button ${theme === 'dark' ? 'light-mode' : 'dark-mode'}`}
+          onClick={() => setTheme('dark')}
+        >
+          Dark Mode
+        </button>
+        <MainLayout theme={theme} />
+      </div>
       <div className="flex py-3 md:py-0 flex-col md:flex-row items-center justify-end flex-1 text-xs md:text-sm gap-2 md:gap-9">
         <SearchBar />
         <p className="flex items-center ">
@@ -58,8 +58,8 @@ const TopBar = () => {
         </Link>
       </div>
     </div>
-  
-   
+
+
   );
 };
 

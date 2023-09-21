@@ -1,28 +1,27 @@
-import Providers from "@/providers/Providers";
-import  "./globals.css";
-import { Roboto } from "next/font/google";
-
-const roboto = Roboto({
-  weight: ["100", "300", "400", "500", "700", "900"],
-  subsets: ["latin"],
-});
+import Header from "@/components/Shared/Header/Header";
+import Footer from "@/components/Shared/Footer/Footer";
+import { ThemeProviders } from "../../context/ThemeProvider";
 
 export const metadata = {
-  title: "Fix Your Motoro",
+  title: "FYM",
   description: "FYM",
-  icon: "/redketchugp/favicon.ico", 
 };
-export default function MainLayout({ children }) {
+
+export default function MainLayout({ children, theme }) {
   
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href={metadata.icon} />{" "}
-        {/* Use the icon path from metadata */}
-      </head>
-      <body className={`select-none ${roboto.className} `}>
-        <Providers>{children} </Providers>
-      </body>
-    </html>
+    <>
+      <div className={`min-h-[67vh] ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}
+        style={{
+          backgroundColor: theme === 'dark' ? 'var(--background)' : 'inherit',
+          color: theme === 'dark' ? 'var(--foreground)' : 'inherit',
+        }}
+        >
+        <Header />
+        <ThemeProviders theme={theme}><div >{children}</div></ThemeProviders>
+        
+        <Footer />
+      </div>
+    </>
   );
 }
