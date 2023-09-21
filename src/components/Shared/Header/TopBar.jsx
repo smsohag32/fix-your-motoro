@@ -5,7 +5,7 @@ import { AiFillPhone, AiTwotoneMail } from "react-icons/ai";
 import SearchBar from "./SearchBar";
 import "@/styles/theme-button.modules.css"
 import { useTheme } from 'next-themes'
-import RootLayout from "@/app/layout";
+import MainLayout from "@/app/(main)/layout";
 const TopBar = () => {
   const { theme, setTheme } = useTheme()
 
@@ -20,7 +20,7 @@ const TopBar = () => {
       <RootLayout theme={theme} />
     </div> */}
         <div className="theme-changer">
-
+      <span>Current Theme: {theme}</span>
       <button
         className={`theme-button ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}
         onClick={() => setTheme('light')}
@@ -33,9 +33,9 @@ const TopBar = () => {
       >
         Dark Mode
       </button>
-      <RootLayout theme={theme} />
+      <MainLayout theme={theme} />
     </div>
-      <div className="flex py-3 md:py-0 flex-col md:flex-row items-center justify-end flex-1 text-black text-xs md:text-sm gap-2 md:gap-9">
+      <div className="flex py-3 md:py-0 flex-col md:flex-row items-center justify-end flex-1 text-xs md:text-sm gap-2 md:gap-9">
         <SearchBar />
         <p className="flex items-center ">
           <span>
