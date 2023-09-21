@@ -100,6 +100,7 @@ const GetInTouch = () => {
               </label>
               <div className="mt-2">
                 <input
+                  placeholder='Your Name'
                   name="name"
                   type="name"
                   required
@@ -118,6 +119,7 @@ const GetInTouch = () => {
               <div className="mt-2">
                 <input
                   name="email"
+                  placeholder='Your Email'
                   type="email"
                   required
                   className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
@@ -135,6 +137,7 @@ const GetInTouch = () => {
               <div className="mt-2">
                 <input
                   name="number"
+                  placeholder='Your Number'
                   type="number"
                   required
                   className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
@@ -156,6 +159,7 @@ const GetInTouch = () => {
                   required
                   className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
                   name="message"
+                  placeholder='Massage'
                   rows="4"
                   cols="50"
                 />
