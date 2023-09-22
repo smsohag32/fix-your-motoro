@@ -35,9 +35,9 @@ const Footer = () => {
         }}
         className="wave"
       ></div>
-      <div style={{ padding: "20px" }} className="container mx-12px flex flex-col md:flex-row items-center justify-between relative">
+      <div style={{ padding: "20px" }} className="container mx-12px flex flex-col md:flex-row placeholder: justify-between relative">
         <div className="mb-6 md:mb-0">
-          <Image src={logo} alt="logo" height={200} width={200} />
+          <Image src={logo} alt="logo" height={150} width={150} />
           <p className="text-sm ">123 Street Road, Dhaka</p>
           <p className="text-sm">Email: info@fixyourmotornow.com</p>
           <p className="text-sm">Phone: (123) 456-7890</p>
@@ -45,10 +45,9 @@ const Footer = () => {
         <div className="mb-6 md:mb-0">
           <h2 className="text-2xl text-gray-400 font-semibold mb-4">Quick Link</h2>
           <ul className="space-y-2">
-          
             <li>
               <Link href="/" className="hover:text-green-500">
-                Dashobard
+                DashBoard
               </Link>
             </li>
             <li>
@@ -71,7 +70,6 @@ const Footer = () => {
                 Blogs
               </Link>
             </li>
-           
           </ul>
         </div>
         <div className="mb-6 md:mb-0">
@@ -111,41 +109,37 @@ const Footer = () => {
         </div>
         <div>
           <h2 className="text-2xl text-gray-400 font-semibold mb-4">Developers Profile</h2>
-          <div className="flex justify-center space-x-4">
+          <div className="flex justify-start md:justify-center space-x-4">
             <ul className="space-y-2">
               <li><Link href={"https://fix-your-motoro.vercel.app/"}>
-                <div className="flex cursor-pointer  hover:text-green-300">Md. Zubaer Hossain
-              <AiOutlineLinkedin /></div>
-            </Link></li>
-            <li><Link href={"https://fix-your-motoro.vercel.app/"}>
-              <div className="flex cursor-pointer hover:text-green-300">Bidan Chandra Roy
-              <AiOutlineLinkedin  /></div>
-            </Link></li>
+                <div className="flex cursor-pointer  hover:text-green-300 items-center">Md. Zubaer Hossain
+                  <AiOutlineLinkedin /></div>
+              </Link></li>
               <li><Link href={"https://fix-your-motoro.vercel.app/"}>
-              <div className="flex cursor-pointer hover:text-green-500">Md. Sohag Sheik
-              <AiOutlineLinkedin /></div>
-            </Link></li>
+                <div className="flex cursor-pointer hover:text-green-300 items-center">Bidhan Chandra Roy
+                  <AiOutlineLinkedin /></div>
+              </Link></li>
+              <li><Link href={"https://fix-your-motoro.vercel.app/"}>
+                <div className="flex cursor-pointer hover:text-green-500 items-center">Md. Sohag Sheik
+                  <AiOutlineLinkedin /></div>
+              </Link></li>
               <li> <Link href={"https://fix-your-motoro.vercel.app/"}>
-              <div className="flex cursor-pointer hover:text-green-300">Sabbir Sarker
-              <AiOutlineLinkedin  /></div>
-            </Link></li>
+                <div className="flex cursor-pointer hover:text-green-300 items-center">Sabbir Sarker
+                  <AiOutlineLinkedin /></div>
+              </Link></li>
               <li><Link href={"https://fix-your-motoro.vercel.app/"}>
-              <div className="flex cursor-pointer hover:text-green-300">Tonmoy Roy
-              <AiOutlineLinkedin  /></div>
-            </Link></li>
+                <div className="flex cursor-pointer hover:text-green-300 items-center">Tonmoy Roy
+                  <AiOutlineLinkedin /></div>
+              </Link></li>
               <li><Link href={"https://fix-your-motoro.vercel.app/"}>
-              <div className="flex cursor-pointer hover:text-green-300">Tarek Aziz
-              <AiOutlineLinkedin  /></div>
-            </Link></li>
-            
-              </ul>
-            
-           
-            
+                <div className="flex cursor-pointer hover:text-green-300 items-center">Tarek Aziz
+                  <AiOutlineLinkedin /></div>
+              </Link></li>
+            </ul>
           </div>
         </div>
         <div>
-          <h2 className="text-2xl font-semibold mb-4 text-gray-400">Follow Us</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-400 text-center mt-4 md:mt-0">Follow Us</h2>
           <div className="flex justify-center space-x-4 text-3xl">
             <Link href={"https://fix-your-motoro.vercel.app/"}>
               <AiOutlineTwitter className="cursor-pointer hover:text-gray-300" />
@@ -159,15 +153,13 @@ const Footer = () => {
             <Link href={"https://fix-your-motoro.vercel.app/"}>
               <AiFillYoutube className="cursor-pointer hover:text-gray-300" />
             </Link>
-           
+
           </div>
-          <div className="text-sm text-center text-gray-400 py-6">
+        </div>
+      </div>
+      <div className="text-sm text-center text-gray-400 py-6 relative">
         &copy; {new Date().getFullYear()}  All rights reserved by Fix Your Motoro Ltd.
       </div>
-        </div>
-        
-      </div>
-      
       <style jsx>{`
         .wave {
           position: absolute;
@@ -188,6 +180,7 @@ const Footer = () => {
           }
         }
       `}</style>
+
     </footer>
   );
 };
