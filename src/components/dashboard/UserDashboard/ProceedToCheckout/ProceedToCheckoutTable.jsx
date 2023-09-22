@@ -5,7 +5,7 @@ const ProceedToCheckoutTable = ({ singleClass }) => {
 
     const removeItem = () => {
         // Add your logic here to remove the item from the cart
-        // For example, you can use a callback function to remove it from your state or data structure
+
     };
 
     return (
