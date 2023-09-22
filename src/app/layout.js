@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href={metadata.icon} />{" "}
         {/* Use the icon path from metadata */}
       </head>
-      <body className={`select-none ${roboto.className}`}>
+      <body className={`select-none ${montserrat.className}`}>
         <ThemeProvider>
           <Providers>{children}</Providers>
         </ThemeProvider>
