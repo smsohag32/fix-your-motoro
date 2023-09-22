@@ -18,6 +18,7 @@
     "aos": "^3.0.0-beta.6",
     "autoprefixer": "^10.4.15",
     "axios": "^1.5.0",
+    "bufferutil": "^4.0.7",
     "chart.js": "^4.4.0",
     "combined-stream": "^1.0.8",
     "encoding": "^0.1.13",
@@ -31,6 +32,7 @@
     "leaflet-geosearch": "^3.8.0",
     "lottie-react": "^2.4.0",
     "next": "^13.4.13",
+    "next-themes": "^0.2.1",
     "node-fetch": "^3.3.2",
     "pdf-lib": "^1.17.1",
     "postcss": "^8.4.29",
@@ -55,7 +57,8 @@
     "socket.io-client": "^4.7.2",
     "sweetalert2": "^11.6.13",
     "swiper": "^10.1.0",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "utf-8-validate": "^5.0.10"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.6",

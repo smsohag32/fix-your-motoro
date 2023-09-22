@@ -1,4 +1,4 @@
-//api route
+import { MdDeleteOutline } from "react-icons/md";
 
 const ProceedToCheckoutTable = ({ singleClass }) => {
     const { service_name, service_price, quantity } = singleClass;

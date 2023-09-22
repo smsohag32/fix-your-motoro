@@ -62,7 +62,7 @@ const ExpertSection = () => {
           className="mt-8 mySwiper"
         >
           {workshopMechanics?.map((article) => (
-            <SwiperSlide key={article.id}>
+            <SwiperSlide key={article._id}>
               <div className="cursor-pointer card-box ">
                 <div>
                   <Image

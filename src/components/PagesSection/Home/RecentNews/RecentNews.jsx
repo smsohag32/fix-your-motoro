@@ -84,7 +84,7 @@ const displayedBlogs = blogs.slice(0, 3);
       <div className="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
       {displayedBlogs.map((blog) => (
           <div
-            key={blog.id}
+            key={blog._id}
             className="flex flex-col items-center pb-5 transition-all duration-500 transform cursor-pointer primary-shadow hover:scale-95"
             onClick={() => openModal(blog)}
           >
