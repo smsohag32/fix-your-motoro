@@ -10,8 +10,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { MdClose } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import useCartProducts from "@/hooks/useCartProducts";
-
 import logo from "@/assets/logo.png";
+
 
 const Nav = () => {
   const { cartProducts, cartLoading } = useCartProducts();
@@ -24,7 +24,7 @@ const Nav = () => {
     await logout();
     router.push("/");
   };
-
+  
   return (
     <nav className="flex items-center justify-between default-container">
       <div className="md:hidden">
@@ -46,8 +46,8 @@ const Nav = () => {
 
       <ul
         className={`flex uppercase text-sm font-bold leading-relaxed flex-col py-8 md:py-0 md:bg-transparent duration-300 ps-10 md:px-0 transition-all transform text-white absolute md:static gap-[1.5rem] md:border-none md:flex-row ${isOpen
-            ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-black text-white z-30"
-            : "-left-60 top-[64px] overflow-hidden duration-100"
+          ? "top-[64px] right-0 border-t-2 left-0 mx-auto w-full bg-black text-white z-30"
+          : "-left-60 top-[64px] overflow-hidden duration-100"
           }`}
       >
         {navLinkData.map((link, index) => (
@@ -65,12 +65,15 @@ const Nav = () => {
       </ul>
 
       <div className="flex items-center gap-5">
-        {user && (
-          <Link href={"/dashboard/user/user_add_to_card"} className="relative cursor-pointer">
-          <FaShoppingCart size={26} />
-          <p className="absolute -top-2 -right-2 bg-red-500 text-white text-[12px] w-5 h-4 rounded-full flex items-center justify-center p-2">{!cartLoading ? cartProducts.length : 0}</p>
-        </Link>
-        )}
+      {user && (
+                <Link href="/dashboard/user/user_add_to_card" className="relative cursor-pointer">
+                  <FaShoppingCart size={26} />
+                  <p className="absolute -top-2 -right-2 bg-red-500 text-white text-[12px] w-5 h-4 rounded-full flex items-center justify-center p-2">
+                    {!cartLoading ? cartProducts.length : 0}
+                  </p>
+                </Link>
+              )}
+
         <div className="flex items-center gap-5">
           {loading ? (
             <Image

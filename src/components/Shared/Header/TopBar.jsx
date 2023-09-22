@@ -1,54 +1,12 @@
-
-'use client'
 import Link from "next/link";
 import { AiFillPhone, AiTwotoneMail } from "react-icons/ai";
 import SearchBar from "./SearchBar";
-import "@/styles/theme-button.modules.css"
-import { useTheme } from 'next-themes'
-import MainLayout from "@/app/(main)/layout";
-const TopBar = () => {
-  const { theme, setTheme } = useTheme()
 
+const TopBar = () => {
   return (
-    <div
-      className={`hidden md:flex default-container  justify-between w-full gap-10 ps-4 `}
-    >
-      {/* <div>
-      : {theme}
-      <button onClick={() => setTheme('light')}>Light Mode</button>
-      <button onClick={() => setTheme('dark')}>Dark Mode</button>
-      <RootLayout theme={theme} />
-    </div> */}
-      <div className="theme-changer">
-        <span>Current Theme: {theme}</span>
-        <button
-          className={`theme-button ${theme === 'light' ? 'light-mode' : 'dark-mode'}`}
-          onClick={() => setTheme('light')}
-        >
-          Light Mode
-        </button>
-        <button
-          className={`theme-button ${theme === 'dark' ? 'light-mode' : 'dark-mode'}`}
-          onClick={() => setTheme('dark')}
-        >
-          Dark Mode
-        </button>
-        <MainLayout theme={theme} />
-      </div>
+    <div className="hidden md:flex default-container  justify-between w-full gap-10 ps-4">
       <div className="flex py-3 md:py-0 flex-col md:flex-row items-center justify-end flex-1 text-xs md:text-sm gap-2 md:gap-9">
         <SearchBar />
-        <p className="flex items-center ">
-          <span>
-            <AiFillPhone />
-          </span>
-          +88095342563
-        </p>
-        <p className="flex items-center gap-3 ">
-          <span>
-            <AiTwotoneMail />
-          </span>
-          fym@gmail.com
-        </p>
       </div>
       <div className="flex items-center justify-end text-right primary-bg h-14">
         <Link href="/appointment">
@@ -58,8 +16,6 @@ const TopBar = () => {
         </Link>
       </div>
     </div>
-
-
   );
 };
 

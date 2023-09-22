@@ -18,50 +18,50 @@ const MechanicForm = () => {
   const imgHostingKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
   const imgHosting = `https://api.imgbb.com/1/upload?key=${imgHostingKey}`;
 
-  // const onSubmit = async (data) => {
-  //   const imgTwo = new FormData();
-  //   imgTwo.append("image", data.mechanic_image[0]);
+  const onSubmit = async (data) => {
+    const imgTwo = new FormData();
+    imgTwo.append("image", data.mechanic_image[0]);
 
-  //   fetch(imgHosting, {
-  //     method: "POST",
-  //     body: imgTwo,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((imgTwoRes) => {
-  //       if (imgTwoRes.success) {
-  //         const mechanic = {
-  //           workshop_email: user?.email,
-  //           img: imgTwoRes.data.display_url,
-  //           name: data.mechanic_name,
-  //           email: data.email,
-  //           phone: data.phone,
-  //           specialty: data.specialty,
-  //           experience: data.experience,
-  //           location: data.location,
-  //           about: data.mechanic_bio,
-  //         };
+    fetch(imgHosting, {
+      method: "POST",
+      body: imgTwo,
+    })
+      .then((response) => response.json())
+      .then((imgTwoRes) => {
+        if (imgTwoRes.success) {
+          const mechanic = {
+            workshop_email: user?.email,
+            img: imgTwoRes.data.display_url,
+            name: data.mechanic_name,
+            email: data.email,
+            phone: data.phone,
+            specialty: data.specialty,
+            experience: data.experience,
+            location: data.location,
+            about: data.mechanic_bio,
+          };
 
-  //         console.log(mechanic);
+          console.log(mechanic);
 
-  //         axios
-  //           .post(
-  //             `https://fya-backend.vercel.app/api/v1/auth/mechanics`,
-  //             mechanic
-  //           )
-  //           .then(() => {
-  //             Swal.fire({
-  //               position: "center",
-  //               icon: "success",
-  //               title: "New Mechanic has been added successfully",
-  //               showConfirmButton: false,
-  //               timer: 1500,
-  //             });
-  //             router.push("/dashboard/workshop/mechanics");
-  //             reset();
-  //           });
-  //       }
-  //     });
-  // };
+          axios
+            .post(
+              `https://fya-backend.vercel.app/api/v1/auth/mechanics`,
+              mechanic
+            )
+            .then(() => {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "New Mechanic has been added successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              router.push("/dashboard/workshop/mechanics");
+              reset();
+            });
+        }
+      });
+  };
 
   return (
     <div>
