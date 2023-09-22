@@ -106,13 +106,13 @@ const Shops = () => {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredShopData.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="relative p-5 transition bg-white rounded-lg shadow-md sm:p-6 hover:bg-red-50"
               >
                 <div className="mt-5 aspect-w-3 aspect-h-2">
                   <Image
                     src={item.image}
-                    alt={item.title}
+                    alt={item.title || "product-image"}
                     width={800}
                     height={600}
                     className="mb-4"

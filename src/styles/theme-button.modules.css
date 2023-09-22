@@ -1,29 +1,30 @@
-/* Button.css */
-.modern-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background: linear-gradient(to right, #4caf50, #00bcd4);
-    color: #fff;
-    transition: background 0.3s ease, transform 0.2s ease;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  .modern-button:hover {
-    background: linear-gradient(to right, #00bcd4, #4caf50);
-    transform: scale(1.05);
-  }
-  
-  .modern-button span {
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* Add more styles as needed */
-  
+/* styles.css */
+.theme-changer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-button.light-mode {
+  background-color:#43b22d;;
+  color: #ffffff;
+}
+
+.theme-button.dark-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.theme-button:hover {
+  background-color: #19613a;
+  color: #ffffff;
+}

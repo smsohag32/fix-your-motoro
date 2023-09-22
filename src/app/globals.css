@@ -66,23 +66,16 @@ body {
 .primary-input {
   @apply w-full border border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2;
 }
+/* styles.module.css */
 
- /* theme dark or light */
- :root {
-  --bg-color-light: white;
-  --text-color-light: black;
-  --bg-color-dark: black;
-  --text-color-dark: white;
-}
+/* Add styles for both light and dark modes here */
 
 .light-mode {
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-  /* Add other styles as needed for the light mode */
+  background-color: #fff;
+  color: #000;
 }
 
 .dark-mode {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
-  /* Add other styles as needed for the dark mode */
+  background-color: #000;
+  color: #fff;
 }

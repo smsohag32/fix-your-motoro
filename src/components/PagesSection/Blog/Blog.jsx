@@ -12,10 +12,8 @@ import { useState } from "react";
 
 const Blog = () => {
   const { blogs, bLoading, refetch } = useBlogs();
-  // console.log(blogs)
   const router = useRouter();
   const { user } = useAuth();
-  // console.log(user)
 
   const handleLike = (blog) => {
     const likeData = {
@@ -74,7 +72,7 @@ const Blog = () => {
           <div className="grid grid-cols-1 gap-5 mt-12">
             {blogs.map((blog) => (
               <div
-                key={blog.id}
+                key={blog._id}
                 className="p-3 primary-shadow hover:transition-all transform duration-500 items-center"
               >
                 <div className="flex gap-5">
