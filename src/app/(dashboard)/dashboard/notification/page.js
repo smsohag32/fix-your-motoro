@@ -1,9 +1,10 @@
-const Notification = () => {
+import Notification from "@/components/dashboard/UserDashboard/Notification";
+const NotificationUser = () => {
   return (
-    <div className="text-center py-24">
-      <p>No notification found</p>
+    <div >
+      <Notification />
     </div>
   );
 };
 
-export default Notification;
+export default NotificationUser;

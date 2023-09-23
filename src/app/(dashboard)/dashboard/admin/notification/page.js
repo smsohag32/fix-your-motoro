@@ -1,7 +1,8 @@
+import NotificationAdmin from "@/components/dashboard/Admin/NotificationAdmin/NotificationAdmin";
 const Notification = () => {
   return (
-    <div>
-      <p className="py-24">No Notification found</p>
+    <div >
+      <NotificationAdmin />
     </div>
   );
 };
