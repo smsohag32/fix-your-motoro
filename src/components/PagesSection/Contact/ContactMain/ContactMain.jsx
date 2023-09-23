@@ -6,10 +6,7 @@ import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 const ContactMain = () => {
   return (
     <div className="">
-        <PageTitle
-            title="Contact Us"
-            subTitle="Choice our Contact"
-        />
+      <PageTitle title="Contact Us" subTitle="Choice our Contact" />
       <div className="grid my-8 md:grid-cols-2 gap-5">
         <Contact />
         <ContactFrom />

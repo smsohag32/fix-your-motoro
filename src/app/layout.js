@@ -1,8 +1,8 @@
 import Providers from "@/providers/Providers";
 import "./globals.css";
-import { Roboto } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-const roboto = Roboto({
+const montserrat = Montserrat({
   weight: ["100", "300", "400", "500", "700", "900"],
   subsets: ["latin"],
 });
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href={metadata.icon} />
       </head>
-      <body className={`select-none ${roboto.className}`}>
+      <body className={`select-none ${montserrat.className}`}>
         <Providers>{children}</Providers>
       </body>
     </html>

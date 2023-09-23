@@ -1,12 +1,10 @@
-import NotificationDisplay from "@/components/dashboard/Admin/NotificationAdmin/NotificationDisplay";
-
-
-const Notification = () => {
+import Notification from "@/components/dashboard/UserDashboard/Notification";
+const NotificationUser = () => {
   return (
-    <div>
-      <NotificationDisplay />
+    <div >
+      <Notification />
     </div>
   );
 };
 
-export default Notification;
+export default NotificationUser;
