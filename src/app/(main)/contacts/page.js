@@ -1,5 +1,4 @@
 import ContactMain from "@/components/PagesSection/Contact/ContactMain/ContactMain";
-import React from "react";
 
 export const metadata = {
   title: "FYM | Contact",

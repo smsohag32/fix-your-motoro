@@ -82,7 +82,7 @@ const PlaceOrderVoucher = ({ cartData }) => {
       paidStatus: "unpaid",
     };
     const response = await axios.post(
-      "https://yoga-mindfulness-server.vercel.app/user/cart/product/cash_on_delivery",
+      "https://fya-backend.vercel.app/api/v1/auth/payment/cash-on",
       paymentData
     );
     if (response.data.success === true) {

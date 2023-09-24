@@ -93,9 +93,8 @@ const AdminLInk = () => {
           </h3>
         </li>
       </Link>
-
-      {/* notification link */}
-      {/* <Link
+   {/* notification link */}
+   <Link
         className={
           pathName === "/dashboard/admin/notification" ? "primary-text" : ""
         }
@@ -108,8 +107,7 @@ const AdminLInk = () => {
             Notification
           </h3>
         </li>
-      </Link> */}
-
+      </Link>
       <Link
         className={
           pathName === "/dashboard/admin/profile" ? "primary-text" : ""
