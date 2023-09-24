@@ -64,7 +64,7 @@ function NotificationDisplay({ username, room }) {
       <div className="bg-white rounded-lg shadow-lg w-full h-full max-w-screen-md">
         <div className="bg-white rounded-b-lg">
           <div className=" items-center border-t p-4 rounded-lg shadow-lg w-full h-full max-w-screen-md">
-            <h2 className="mt-12 text-lg font-semibold mb-3">Publish the Notificatoin for FYM Users</h2>
+            <h2 className="mt-12 text-lg font-semibold mb-3">Publish the Notification for FYM Users</h2>
             <input
               className="flex-grow p-2 outline-none w-full rounded-l-lg"
               type="text"
