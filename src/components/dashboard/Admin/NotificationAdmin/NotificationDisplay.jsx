@@ -70,7 +70,7 @@ function NotificationDisplay({ username, room }) {
       <div className="bg-white rounded-lg shadow-lg w-full h-full max-w-screen-md">
       <div className="bg-white rounded-b-lg">
           <div className=" items-center border-t p-4 rounded-lg shadow-lg w-full h-full max-w-screen-md">
-          <h2 className="mt-12 text-lg font-semibold mb-3">Admin Push the Notificatoin </h2>
+          <h2 className="mt-12 text-lg font-semibold mb-3">Admin Push the Notification </h2>
           <input
             className="flex-grow p-2 outline-none w-full rounded-l-lg"
             type="text"
@@ -87,7 +87,7 @@ function NotificationDisplay({ username, room }) {
             className="px-4 py-2 mt-8 bg-green-700 text-white rounded-r-lg hover:bg-green-900"
             onClick={sendMessage}
           >
-            Pubish the Notification 
+            Publish the Notification 
           </button>
           
           </div>

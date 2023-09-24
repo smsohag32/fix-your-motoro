@@ -8,6 +8,11 @@ import RecentNews from "@/components/PagesSection/Home/RecentNews/RecentNews";
 import SuccessReviews from "@/components/PagesSection/Home/SuccessReviews/SuccessReviews";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 
+export const metadata = {
+  title: "FYM | Home",
+  description: "FYM Home",
+};
+
 const HomePage = () => {
   return (
     <main>

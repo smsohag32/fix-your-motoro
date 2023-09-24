@@ -3,7 +3,7 @@ import Header from "@/components/Shared/Header/Header";
 import Footer from "@/components/Shared/Footer/Footer";
 
 export const metadata = {
-  title: "FYM",
+  title: "FYM ",
   description: "FYM",
 };
 

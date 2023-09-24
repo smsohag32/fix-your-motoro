@@ -16,7 +16,6 @@ const UserAddToCard = () => {
   const router = useRouter();
   const { cartProducts, cartLoading, refetch } = useCartProducts();
   const { userInfo, cLoading, refetch: uRefetch } = useUserInfo();
-  console.log(userInfo?.user)
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
   // State to track selected product IDs and their data

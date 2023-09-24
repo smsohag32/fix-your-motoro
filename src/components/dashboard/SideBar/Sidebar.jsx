@@ -13,6 +13,9 @@ import useAuth from "@/hooks/useAuth";
 import AdminLInk from "./AdminLink";
 import { useRouter } from "next/navigation";
 import logo from "@/assets/dashboard-logo.png"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const Sidebar = () => {
   const { userInfo, cLoading } = useUserInfo();
@@ -25,8 +28,11 @@ const Sidebar = () => {
     router.replace("/");
   };
 
+  useEffect(() => {
+    AOS.init({ offset: 300 , duration: 700});
+  }, []);
   return (
-    <div>
+    <div data-aos="fade-right">
       {/* Technician side nav */}
       <div>
         <Disclosure as="nav">

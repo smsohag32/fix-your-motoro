@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import StarRating from "../../Home/SuccessReviews/StarRating";
 import toast, { Toaster } from "react-hot-toast";
 import MidSpinner from "@/components/Spinners/MidSpinner";
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 const Shops = () => {
   const router = useRouter();
@@ -57,6 +59,9 @@ const Shops = () => {
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
+  useEffect(() => {
+    AOS.init({ offset: 300 , duration: 700});
+  }, []);
 
   return (
     <div className="py-12 default-container">
@@ -106,19 +111,20 @@ const Shops = () => {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredShopData.map((item) => (
               <div
+              
                 key={item._id}
-                className="relative p-5 transition bg-white rounded-lg shadow-md sm:p-6 hover:bg-red-50"
+                className="relative p-5 transition bg-white rounded-lg border hover:border-gray-300 shadow-md sm:p-6 hover:bg-gray-300 duration-300"
               >
-                <div className="mt-5 aspect-w-3 aspect-h-2">
+                <div data-aos="zoom-in" className="mt-2 aspect-w-3 aspect-h-2">
                   <Image
                     src={item.image}
                     alt={item.title || "product-image"}
                     width={800}
                     height={600}
-                    className="mb-4"
+                    className="mb-4 rounded-md hover:rounded-none border"
                   />
                 </div>
-                <div className="absolute bg-yellow-400 border rounded-full top-2 right-5">
+                <div className="absolute bg-yellow-400 border rounded-full top-9 right-8">
                   <p className="p-1 text-gray-700">
                     {item.discount ? (
                       <span>{item.discountPercentage}%</span>
@@ -156,7 +162,7 @@ const Shops = () => {
                     Detail
                   </button>
                   <Toaster />
-                  <p className="text-gray-700">${item.price.toFixed(2)}</p>
+                  <p className="text-gray-700 font-medium">${item.price.toFixed(2)}</p>
                 </div>
               </div>
             ))}

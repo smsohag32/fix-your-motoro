@@ -1,17 +1,16 @@
-"use client";
-import ContactMain from '@/components/PagesSection/Contact/ContactMain/ContactMain';
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import ContactMain from "@/components/PagesSection/Contact/ContactMain/ContactMain";
+import React from "react";
 
+export const metadata = {
+  title: "FYM | Contact",
+  description: "FYM contact",
+};
 const ContactPage = () => {
-    return (
-        <div>
-            <Helmet>
-                <title>FYM | Contact</title>
-            </Helmet>
-            <ContactMain />
-        </div>
-    );
+  return (
+    <div>
+      <ContactMain />
+    </div>
+  );
 };
 
 export default ContactPage;

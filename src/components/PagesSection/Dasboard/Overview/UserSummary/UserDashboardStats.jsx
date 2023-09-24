@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const UserDashboardStats = ({
   totalWorkOrder,
@@ -7,8 +10,12 @@ const UserDashboardStats = ({
   approvedOrder,
   pendingOrder,
 }) => {
+
+  useEffect(() => {
+    AOS.init({ offset: 300 , duration: 700});
+  }, []);
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div data-aos="zoom-in-left" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {/* Total order */}
       <div className="bg-white p-4 rounded-lg shadow-md">
         <div className="flex items-center justify-between">

@@ -10,14 +10,26 @@ import axios from "axios";
 const UserUpdateProfileModal = ({ isOpen, setIsOpen, refetch }) => {
     const { user, profileUpdate } = useAuth();
     const { register, handleSubmit, reset, setValue } = useForm();
+
+
     const onSubmit = async (data) => {
+
+        console.log(data);
+       const updateData = {
+            name: user?.displayName,
+            email: user?.email,
+            image: data.image,
+            phone: data.phone,
+            address: data.address,
+            gender: data.gender
+        }
         try {
-            await axios.put(`https://fya-backend.vercel.app/api/v1/auth/users/${user?.email}`, data);
+            const response = await axios.put(`https://fya-backend.vercel.app/api/v1/auth/users/${user?.email}`, updateData);
             await profileUpdate({
-                displayName: data.name,
+                displayName: user?.displayName,
                 photoURL: data.image,
             });
-            
+
             refetch();
             toast.success("profile updated successfully")
             onCancel();
@@ -42,12 +54,14 @@ const UserUpdateProfileModal = ({ isOpen, setIsOpen, refetch }) => {
                     <div className="flex flex-col">
                         <label htmlFor="name" className="mb-2 font-bold">Name</label>
                         <input type="text" id="name" className="w-full rounded-md p-2  focus:outline-[#69d94f] border border-gray-600"
-                            defaultValue={user?.displayName}
-                            required {...register("name")} />
+                            value={user?.displayName}
+                            required {...register("name")}
+                            disabled />
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="email" className="mb-2 font-bold">Email</label>
-                        <input type="email" id="email" className="w-full rounded-md p-2  focus:outline-[#69d94f] border border-gray-600" value={user?.email} required {...register("email")} />
+                        <input type="email" id="email" className="w-full rounded-md p-2  focus:outline-[#69d94f] border border-gray-600" value={user?.email} required {...register("email")
+                        } disabled />
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="phone" className="mb-2 font-bold">Phone</label>

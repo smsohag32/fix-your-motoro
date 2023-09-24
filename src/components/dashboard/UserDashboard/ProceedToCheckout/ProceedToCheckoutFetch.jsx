@@ -1,10 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react";
-
 import Spinner from "@/components/Spinners/Spinner";
 import Image from "next/image";
 import PlaceOrderVoucher from "./PlaceOrderVoucher";
+
 
 const ProceedToCheckoutFetch = () => {
   const [cartData, setCartData] = useState([]);

@@ -2,8 +2,8 @@ import Sidebar from "@/components/dashboard/SideBar/Sidebar";
 import DashboardTopBar from "@/components/dashboard/Topbar/DashboardTopBar";
 
 export const metadata = {
-  title: "FYM",
-  description: "FYM",
+  title: "FYM | Dashboard",
+  description: "FYM Dashboard",
 };
 
 export default function DashboardLayout({ children }) {
