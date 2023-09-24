@@ -12,27 +12,17 @@ import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import toast, { Toaster } from "react-hot-toast";
-import PaymentCashierModal from "@/components/Modal/userModal/PaymentCashierModal";
-import ServiceBookingModal from "@/components/Modal/userModal/ServiceBookingModal";
 
 const ServicePage = ({ params }) => {
   const { user } = useAuth();
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
-
   const [selectedServiceType, setSelectedServiceType] = useState("On Garage");
   const form = useRef();
   const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm();
-
-  const openPaymentModal = () => {
-    setIsPaymentModalOpen(true);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,47 +67,39 @@ const ServicePage = ({ params }) => {
       service_category: service?.service_category,
       service_image: service?.service_image,
       service_name: service?.service_name,
-      service_price,
       status: "pending",
       email: user?.email,
       ...data,
     };
-console.log(serviceData)
-setIsOpen(false);
-openPaymentModal();
-    // if(!user){
-    //   toast.error("Please login first to book the service")
-    //   return;
-    // }
 
-    // const response = await axios.post(
-    //   "https://fya-backend.vercel.app/api/v1/auth/orders",
-    //   serviceData
-    // );
+    const response = await axios.post(
+      "https://fya-backend.vercel.app/api/v1/auth/orders",
+      serviceData
+    );
 
-    // if (response.data) {
-    //   // Send Email to user--------ing_
-    //   router.push("/dashboard/user/appointments");
-    //   try {
-    //     const response = await emailjs.sendForm(
-    //       "service_3kn5ji1",
-    //       "template_zvkyj0s",
-    //       form.current,
-    //       "1leqQsJkGshzPjw2s"
-    //     );
-    //   } catch (error) {
-    //     console.error("Email could not be sent:", error);
-    //   }
-    //   Swal.fire({
-    //     position: "center",
-    //     icon: "success",
-    //     title: "Appointment booking success",
-    //     showConfirmButton: false,
-    //     timer: 1500,
-    //   });
-    //   setIsOpen(false);
-    //   reset();
-    // }
+    if (response.data) {
+      // Send Email to user--------ing_
+      router.push("/dashboard/user/appointments");
+      try {
+        const response = await emailjs.sendForm(
+          "service_3kn5ji1",
+          "template_zvkyj0s",
+          form.current,
+          "1leqQsJkGshzPjw2s"
+        );
+      } catch (error) {
+        console.error("Email could not be sent:", error);
+      }
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Appointment booking success",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setIsOpen(false);
+      reset();
+    }
   };
 
   return (
@@ -177,7 +159,6 @@ openPaymentModal();
               </button>
             </div>
           </div>
-          
         </div>
         <div className="justify-around p-8 my-12 bg-slate-100 rounded-xl hover:shadow-xl hover:border hover:border-[#69d94f] md:flex">
           <h2 className="font-mono text-4xl font-bold primary-text ">
@@ -210,7 +191,7 @@ openPaymentModal();
             Crafting Automotive Perfection: Your Vehicles Trusted Haven
           </h2>
           <div className="leading-4 tracking-tight text-md text-cyan-800">
-            At our station, cars aren't just machines; they re passions. Witness
+            At our station, cars arent just machines; they re passions. Witness
             the transformation as we elevate each vehicles performance and
             aesthetics.
             <div className="p-4 mt-8 border border-teal-600 rounded">
@@ -502,7 +483,7 @@ openPaymentModal();
               </div>
 
               <div className="md:flex justify-between mt-12">
-                <button  type="submit" className="primary-btn rounded-md">
+                <button type="submit" className="primary-btn rounded-md">
                   Submit
                 </button>
                 <button
@@ -516,8 +497,6 @@ openPaymentModal();
           </div>
         </div>
       </UserModal>
-      {isPaymentModalOpen && <ServiceBookingModal isOpen={isOpen} setIsOpen={setIsOpen} />}
-      <Toaster/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import Modal from "../Modal";
 
-const ServiceBookingModal = ({isOpen, setIsOpen}) => {
+const ServicePaymentModal = ({isOpen, setIsOpen}) => {
   
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="Select Payment Method">
@@ -11,6 +11,6 @@ const ServiceBookingModal = ({isOpen, setIsOpen}) => {
   );
 };
 
-export default ServiceBookingModal;
+export default ServicePaymentModal;
 
 
