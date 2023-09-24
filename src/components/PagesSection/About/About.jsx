@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 

@@ -30,7 +30,7 @@ const SingUp = () => {
           <RegisterFrom />
           <div className="text-sm font-medium text-gray-600 ">
             Already have an account?
-            <Link href="/login" className="font-semibold primary-text">
+            <Link href="/login" className=" font-semibold primary-text ml-1">
               Login
             </Link>
           </div>

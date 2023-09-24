@@ -10,7 +10,7 @@ import useAuth from "@/hooks/useAuth";
 import UserModal from "@/components/Modal/Modal";
 import Swal from "sweetalert2";
 import Chat from "@/components/Chat/Chat";
-
+import Head from "next/head";
 
 const WorkShopDetail = ({ params }) => {
   const [product, setProduct] = useState([]);

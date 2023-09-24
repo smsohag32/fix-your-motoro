@@ -71,7 +71,6 @@ const ContactFrom = () => {
           />
         </div>
       </div>
-
       <input type="submit" className="w-full primary-btn" />
     </div>
   );

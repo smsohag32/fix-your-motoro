@@ -2,10 +2,16 @@
 import useCars from "@/hooks/useCars";
 import Spinner from "@/components/Spinners/Spinner";
 import VehicleCard from "./VehicleCard";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const UserVehicles = () => {
   const { carsData, carLoading, refetch } = useCars();
 
+  useEffect(() => {
+    AOS.init({ offset: 300 , duration: 700});
+  }, []);
   return (
     <div className="min-h-screen p-5 md:mt-10 md:p-8 bg-gray-100">
       <div className="container mx-auto">

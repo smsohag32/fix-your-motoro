@@ -1,4 +1,5 @@
-import ManageWorkshop from "@/components/dashboard/Admin/ManageWorkshop/ManageWorkshop";
+import ManageWorkshop from "@/components/dashboard/Admin/ManageWorkShop/ManageWorkShop";
+
 
 const ManageWorkshopPage = () => {
   return (

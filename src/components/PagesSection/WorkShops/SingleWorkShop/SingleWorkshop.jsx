@@ -13,7 +13,7 @@ const SingleWorkshop = (props) => {
   return (
     <div
       className="border border-green-200"
-      onClick={() => router.push(`/workshop/${_id}`)}
+      onClick={() => router.push(`/workshops/${_id}`)}
     >
       <div className="p-3 hover:border duration-300 transition-all hover:border-green-200 flex flex-col h-80 cursor-pointer ">
         <div className="relative mt-5 h-40">

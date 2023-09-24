@@ -5,12 +5,14 @@ import useAuth from "@/hooks/useAuth";
 import useCars from "@/hooks/useCars";
 import useUserInfo from "@/hooks/useUserInfo";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Spinner from "@/components/Spinners/Spinner";
 import AdminSummary from "./AdminSummary/AdminSummary";
 import WorkshopSummary from "./WorkshopSummary/WorkshopSummary";
 import UserSummary from "./UserSummary/UserSummary";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Overview = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +40,9 @@ const Overview = () => {
       refetch();
     }
   };
+  useEffect(() => {
+    AOS.init({ offset: 300 , duration: 700});
+  }, []);
 
   if (loading || cLoading) {
     return <Spinner />;
@@ -63,7 +68,7 @@ const Overview = () => {
             <UserSummary/>
             <section className="bg-white mt-4 p-4 rounded shadow-md mb-4">
               <h2 className="text-lg font-semibold mb-2">Your Vehicles</h2>
-              <div className="min-h-[40vh] md:p-5 p-1">
+              <div data-aos="fade-up" className="min-h-[40vh] md:p-5 p-1">
                 {carsData?.length > 0 ? (
                   carsData?.map((item) => (
                     <div key={item._id} className="flex flex-col p-5 h-full">

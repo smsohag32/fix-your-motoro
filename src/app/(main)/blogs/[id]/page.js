@@ -7,13 +7,14 @@ import { useQuery } from "@tanstack/react-query";
 import PageTitle from "@/components/Shared/PageTitle/PageTitle";
 import Image from "next/image";
 
+
+
 const BlogDetailPage = ({ params }) => {
   const [loading, setLoading] = useState([]);
   const [comment, setComment] = useState("");
   const { user } = useAuth();
 
-  // console.log(blog);
-  // `https://fya-backend.vercel.app/api/v1/auth/blogs/${params.id}`;
+
   const {
     data: blog,
     refetch,
@@ -57,6 +58,7 @@ const BlogDetailPage = ({ params }) => {
             alt={blog.title}
             width={850}
             height={450}
+            priority
           />
         </figure>
         <h1 className="text-2xl font-bold mt-8 mb-4">{blog.title}</h1>
