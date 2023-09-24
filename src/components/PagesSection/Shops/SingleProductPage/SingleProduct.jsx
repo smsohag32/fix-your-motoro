@@ -67,9 +67,6 @@ const SingleProduct = ({ id }) => {
         } else if (response.data.message == "Product already in the cart") {
           toast.success("Product already added to cart")
         }
-
-
-
       } catch (error) {
         console.log(error)
       }
@@ -79,12 +76,13 @@ const SingleProduct = ({ id }) => {
     }
   };
 
+
   if (loading) {
     return <Spinner />;
   }
 
   return (
-    <div className="">
+    <div>
       <PageTitle title={name} subTitle={""}></PageTitle>
       <div className="default-container pb-8">
         {/* Service Area */}
@@ -111,13 +109,12 @@ const SingleProduct = ({ id }) => {
               <p className="text-slate-600 text-xl font-bold mb-3">
                 Stock: {stock}
               </p>
-              <div className="bg-gray-300 px-8 py-4 rounded-md shadow-xl">
+            <div className="bg-gray-300 px-8 py-4 rounded-md shadow-xl border hover:border-[#69d94f]">
                 <div className="md:flex items-center text-xl my-2">
                   <p className="md:w-[30%] text-left font-mono font-bold text-slate-700">
                     Price:
                   </p>
                   <p className="md:pl-10">
-
                     <span className="md:inline md:pl-10">
                       <span className="bg-gray-400 text-black font-bold text-2xl px-4 py-1 rounded-xl ">
                         ${price}

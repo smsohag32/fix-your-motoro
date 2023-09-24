@@ -74,7 +74,7 @@ const WorkShops = () => {
           ) : (
             <EmptyState
               label={"search again"}
-              address="/workshop"
+              address="/workshops"
               message={`No workshop available ${searchText}`}
             ></EmptyState>
           )}

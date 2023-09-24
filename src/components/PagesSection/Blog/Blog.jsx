@@ -8,41 +8,31 @@ import { useRouter } from "next/navigation";
 import MidSpinner from "@/components/Spinners/MidSpinner";
 import useAuth from "@/hooks/useAuth";
 import { FaRegComment } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import axios from "axios";
 
 const Blog = () => {
   const { blogs, bLoading, refetch } = useBlogs();
   const router = useRouter();
   const { user } = useAuth();
 
-  const handleLike = (blog) => {
+  useEffect(() => {
+    AOS.init({ offset: 300, duration: 700 });
+  }, []);
+
+  const handleLike = async (blog) => {
     const likeData = {
       user_photo: user?.photoURL,
       user_email: user?.email,
       user_name: user?.displayName,
     };
-    fetch(
-      `https://fya-backend.vercel.app/api/v1/auth/blogs/like/${blog?._id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(likeData),
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        refetch();
-      })
-      .catch((error) => {
-        console.error("Error updating workshop status:", error);
-      });
+
+    const response = await axios.patch(`https://fya-backend.vercel.app/api/v1/auth/blogs/like/${blog?._id}`, likeData);
+    if (response.data) {
+      refetch();
+    };
   };
 
   if (bLoading) {
@@ -72,6 +62,7 @@ const Blog = () => {
           <div className="grid grid-cols-1 gap-5 mt-12">
             {blogs.map((blog) => (
               <div
+                data-aos="fade-up"
                 key={blog._id}
                 className="p-3 primary-shadow hover:transition-all transform duration-500 items-center"
               >
@@ -104,8 +95,7 @@ const Blog = () => {
                           <div className="flex items-center gap-1">
                             <button
                               // make react conditional
-                              className={`text-3xl
-                                `}
+                              className={`text-3xl`}
                               onClick={() => handleLike(blog)}
                             >
                               <AiOutlineHeart />
@@ -122,7 +112,7 @@ const Blog = () => {
                             </button>
                           </div> */}
                           <div
-                            onClick={() => router.push(`/blog/${blog?._id}`)}
+                            onClick={() => router.push(`/blogs/${blog?._id}`)}
                             className="flex items-center gap-2 cursor-pointer px-2 border-b rounded-md font-mono text-green-600 text-xl"
                           >
                             <button className="">..Read More</button>

@@ -1,13 +1,17 @@
-import UserHistory from '@/components/dashboard/UserDashboard/UserHistory';
-import React from 'react';
+import UserHistory from "@/components/dashboard/UserDashboard/UserHistory";
+import React from "react";
 
-const UserHostoryPage = () => {
-    return (
-        <div>
-            
-           <UserHistory/>
-        </div>
-    );
+export const metadata = {
+  title: "FYM | Dashboard | user | user history",
+  description: "FYM Dashboard user history",
 };
 
-export default UserHostoryPage;
+const UserHistoryPage = () => {
+  return (
+    <div>
+      <UserHistory />
+    </div>
+  );
+};
+
+export default UserHistoryPage;
