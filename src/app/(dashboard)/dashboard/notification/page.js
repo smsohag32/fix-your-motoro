@@ -1,7 +1,8 @@
-import Notification from "@/components/dashboard/UserDashboard/Notification";
+import Notification from "../admin/notification/page";
+
 const NotificationUser = () => {
   return (
-    <div >
+    <div>
       <Notification />
     </div>
   );

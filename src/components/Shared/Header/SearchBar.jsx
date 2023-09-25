@@ -15,8 +15,8 @@ const SearchBar = () => {
   // handle to college search
   const handleSearch = async () => {
     setLoading(true);
-    if (!(pathName === "/workshop")) {
-      router.push("/workshop");
+    if (!(pathName === "/workshops")) {
+      router.push("/workshops");
     }
     setSearchText(text);
   };
