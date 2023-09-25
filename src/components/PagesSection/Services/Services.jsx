@@ -32,7 +32,7 @@ const Services = () => {
     };
     fetchData();
   }, [selectedOption]);
-
+  const numberOfServicesToExclude = 5;
   return (
     <>
       <div className="my-8 text-right">
@@ -47,7 +47,7 @@ const Services = () => {
         <MidSpinner />
       ) : (
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {servicesData.map((service) => (
+          {servicesData.slice(0, servicesData.length - numberOfServicesToExclude).map((service) => (
             <SingleService
               key={service._id}
               service={service}

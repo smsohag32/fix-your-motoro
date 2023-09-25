@@ -75,11 +75,11 @@ const GetInTouch = () => {
                 Name
               </label>
               <div className="mt-2">
-                <input
+              <input
                   name="name"
-                  type="name"
+                  type="text"
                   required
-                  className="w-full border border-gray-300 text-black focus:outline-none focus:border-[#69d94f] px-4 py-2 "
+                  className="w-full primary-input"
                 />
               </div>
             </div>
@@ -96,7 +96,7 @@ const GetInTouch = () => {
                   name="email"
                   type="email"
                   required
-                  className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
+                  className="w-full primary-input"
                 />
               </div>
             </div>
@@ -112,7 +112,7 @@ const GetInTouch = () => {
               <div className="mt-2">
                 <textarea
                   required
-                  className="w-full border text-black border-gray-300 focus:outline-none focus:border-[#69d94f] px-4 py-2"
+                  className="w-full primary-input"
                   name="message"
                   rows="4"
                   cols="50"

@@ -1,19 +1,16 @@
 'use client'
 import NotificationDisplay from "./NotificationDisplay";
 
-function NotificationAdmin() { 
+function NotificationAdmin() {
 
-const username ="Admin_FYM";
+  const username = "Admin_FYM";
   return (
-     
-    <div className="">
-     
+    <div className="md:mt-16">
       <NotificationDisplay
         username={username}
         room={500}
       />
     </div>
-
   );
 }
 

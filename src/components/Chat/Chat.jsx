@@ -1,5 +1,5 @@
-// Chat.js
 "use client";
+import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import io from "socket.io-client";
@@ -51,7 +51,7 @@ function Chat({ username, room }) {
         room,
         user: username,
         text: currentMessage,
-        time: `${currentDate} ${currentTime}`,
+        time: `${currentDate}  ${currentTime}`,
       };
 
       // Add the new message to the conversation immediately
@@ -66,8 +66,8 @@ function Chat({ username, room }) {
   };
 
   return (
-    <div className="flex flex-col h-screen">
-      <div className="bg-gradient-to-r from-green-500 to-green-900 text-white p-4">
+    <div className="flex flex-col h-screen mt-5">
+      <div className="bg-gradient-to-r from-[#389c22] to-[#379a22] text-white p-4">
         <p className="text-xl font-semibold">FYM Chat</p>
       </div>
       <ScrollToBottom
@@ -84,19 +84,19 @@ function Chat({ username, room }) {
             key={index}
           >
             <div
-              className={`p-2 rounded ${
+              className={`p-4 border border-gray-400 rounded ${
                 username === message.user
                   ? "bg-blue-100 text-right"
                   : "bg-gray-100 text-left"
               }`}
             >
-              <div className="text-gray-600 text-xs mb-1">
+              <div className="font-semibold text-xs mb-1">
                 {message.time}
               </div>
-              <div className="text-gray-600 text-xs mb-1">
+              <div className="font-semibold text-xs mb-1">
                 {message.user}
               </div>
-              <div className="text-gray-800">{message.text}</div>
+              <div className="text-gray-900">{message.text}</div>
             </div>
           </div>
         ))}
@@ -104,7 +104,7 @@ function Chat({ username, room }) {
       <div className="bg-white border-t p-4">
         <div className="flex">
           <input
-            className="flex-grow p-2 outline-none rounded-l-lg"
+            className="flex-grow p-2 primary-input"
             type="text"
             placeholder="Type your message..."
             value={currentMessage}
@@ -116,7 +116,7 @@ function Chat({ username, room }) {
             }}
           />
           <button
-            className="px-4 py-2 bg-green-700 text-white rounded-r-lg hover:bg-green-900"
+            className="px-4 py-2 primary-bg text-white rounded-r-lg hover:bg-[#379a22]"
             onClick={sendMessage}
           >
             Send

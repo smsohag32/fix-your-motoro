@@ -56,20 +56,7 @@ function WorkshopAgentLink() {
             </h3>
           </li>
         </Link>
-        <Link
-          className={
-            pathName === "/dashboard/workshop/reviews" ? "primary-text" : ""
-          }
-          href={"/dashboard/workshop/reviews"}
-        >
-          <li className="flex items-center justify-start gap-4 p-2 pl-5 m-auto mb-2 rounded-md cursor-pointer hover:bg-gray-200 group hover:shadow-lg">
-            <MdOutlineReviews className="w-8 h-8  group-hover:text-[#69d94f]" />
-            <h3 className="text-base font-semibold  group-hover:text-[#69d94f] ">
-              Reviews
-            </h3>
-          </li>
-        </Link>
-
+        
         <Link
           className={
             pathName === "/dashboard/workshop/services" ? "primary-text" : ""

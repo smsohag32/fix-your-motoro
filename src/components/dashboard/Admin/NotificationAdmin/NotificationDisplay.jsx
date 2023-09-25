@@ -1,4 +1,3 @@
-'use client'
 import React, { useEffect, useState, useRef } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import io from 'socket.io-client';
@@ -34,7 +33,7 @@ function NotificationDisplay({ username, room }) {
 
   const sendMessage = () => {
     if (currentMessage.trim() !== "") {
-      const currentDate = new Date().toLocaleDateString(); // Get the current date
+      const currentDate = new Date().toLocaleDateString();
       const currentTime = new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -59,14 +58,14 @@ function NotificationDisplay({ username, room }) {
   };
 
   return (
-    <div className=" w-screen h-screen items-center justify-center bg-gray-100">
+    <div className="items-center justify-center bg-gray-100">
 
-      <div className="bg-white rounded-lg shadow-lg w-full h-full max-w-screen-md">
+      <div className="bg-white rounded-lg shadow-lg w-full h-full">
         <div className="bg-white rounded-b-lg">
-          <div className=" items-center border-t p-4 rounded-lg shadow-lg w-full h-full max-w-screen-md">
-            <h2 className="mt-12 text-lg font-semibold mb-3">Publish the Notificatoin for FYM Users</h2>
+          <div className=" items-center border-t p-4 rounded-lg shadow-lg w-full h-full">
+            <h2 className="mt-6 text-lg font-semibold mb-3">Publish the Notification for FYM Users</h2>
             <input
-              className="flex-grow p-2 outline-none w-full rounded-l-lg"
+              className="flex-grow primary-input"
               type="text"
               placeholder="Fix Your Motoro Notification... "
               value={currentMessage}
@@ -78,14 +77,14 @@ function NotificationDisplay({ username, room }) {
               }}
             />
             <button
-              className="px-4 py-2 mt-8 bg-green-700 text-white rounded-r-lg hover:bg-green-900"
+              className="px-4 py-2 mt-8 bg-[#1b630d] text-white rounded-r-lg hover:bg-[#379a22]"
               onClick={sendMessage}
             >
               Publish the Notification
             </button>
           </div>
         </div>
-        <div className="mt-12 bg-gradient-to-r from-green-500 to-green-900 p-4 rounded-t-lg">
+        <div className="mt-12 bg-gradient-to-r from-[#389c22] to-[#379a22] p-4 rounded-t-lg">
           <p className="text-xl text-white font-semibold">FYM Notification</p>
         </div>
         <div className="flex-grow p-4">
@@ -93,21 +92,21 @@ function NotificationDisplay({ username, room }) {
           {conversation.slice().reverse().map((message, index) => (
             <div
               className={`mb-2 p-2 rounded-lg ${username === message.user
-                  ? "bg-green-700 hover:bg-green-500 text-left"
-                  : "bg-green-600 hover-bg-green-400 text-left"
+                  ? "bg-gray-300 font-medium cursor-pointer border hover:border-[#379a22] text-left"
+                  : "bg-gray-300 font-medium cursor-pointer border hover:border-[#379a22] text-left"
                 }`}
               key={index}
             >
-              <div className="text-sm text-white mb-1">
+              <div className="text-sm mb-1">
                 #{conversation.length - index}
               </div>
-              <div className="text-white text-xs mb-1">
+              <div className=" text-xs mb-1">
                 {message.time}
               </div>
-              <div className="text-white text-xs mb-1">
+              <div className=" text-xs mb-1">
                 {message.user}
               </div>
-              <div className="text-white">{message.text}</div>
+              <div className="">{message.text}</div>
             </div>
           ))}
 

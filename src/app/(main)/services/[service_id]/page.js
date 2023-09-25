@@ -113,8 +113,12 @@ const ServicePage = ({ params }) => {
           <figure>
             <Image
               className="rounded-lg shadow-md object-contain"
-              src={service_image ? service_image : "https://i.ibb.co/4Vj2PZ4/istockphoto-512053124-170667a.webp"}
-              alt={service_name || 'service'}
+              src={
+                service_image
+                  ? service_image
+                  : "https://i.ibb.co/4Vj2PZ4/istockphoto-512053124-170667a.webp"
+              }
+              alt={service_name || "service"}
               width={850}
               height={340}
             />
@@ -439,6 +443,7 @@ const ServicePage = ({ params }) => {
                           sohagsheik32@gmail.com
                         </option>
                         <option value="fya6@gmail.com">fya6@gmail.com</option>
+                        <option value="fya6@gmail.com">info@fya.com</option>
                       </select>
                     </div>
                   )}

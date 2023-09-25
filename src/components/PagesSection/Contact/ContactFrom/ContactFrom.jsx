@@ -11,9 +11,9 @@ const ContactFrom = () => {
         <div className="mt-2">
           <input
             name="name"
-            type="name"
+            type="text"
             required
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 mb-5 placeholder:text-gray-400 "
+            className="block w-full primary-input"
           />
         </div>
       </div>
@@ -30,24 +30,7 @@ const ContactFrom = () => {
             name="email"
             type="email"
             required
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 mb-5 placeholder:text-gray-400 "
-          />
-        </div>
-      </div>
-
-      <div>
-        <label
-          htmlFor="phone"
-          className="block text-sm font-medium leading-6 text-gray-900"
-        >
-          Phone Number
-        </label>
-        <div className="mt-2">
-          <input
-            name="number"
-            type="number"
-            required
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 mb-5 placeholder:text-gray-400 "
+            className="block w-full primary-input "
           />
         </div>
       </div>
@@ -64,14 +47,14 @@ const ContactFrom = () => {
         <div className="mt-2">
           <textarea
             required
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 mb-5 placeholder:text-gray-400 "
+            className="block w-full primary-input "
             name=""
             rows="4"
             cols="50"
           />
         </div>
       </div>
-      <input type="submit" className="w-full primary-btn" />
+      <input type="submit" className="w-full primary-btn mt-3" />
     </div>
   );
 };

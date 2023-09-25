@@ -18,7 +18,7 @@ const Services = () => {
     setIsOpen(false);
   };
   useEffect(() => {
-    AOS.init({ offset: 300 , duration: 700});
+    AOS.init({ offset: 300, duration: 700 });
     setLoading(true);
     const fetchData = async () => {
       try {
@@ -39,23 +39,23 @@ const Services = () => {
   const expertLimit = 3;
   return (
     <>
-       <div className="py-12 mt-12 default-container">
-      <SectionTitle
-        title="Special Services"
-        subTitle="We are provide motor servicing"
-      />
-      {loading ? (
-        <MidSpinner />
-      ) : (
-        <div data-aos="fade-right" className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {servicesData.slice(0, expertLimit).map((service) => (
-            <OurServiceSingleCart
-              key={service._id}
-              service={service}
-            ></OurServiceSingleCart>
-          ))}
-        </div>
-      )}
+      <div className="py-12 mt-12 default-container">
+        <SectionTitle
+          title="Special Services"
+          subTitle="We are provide motor servicing"
+        />
+        {loading ? (
+          <MidSpinner />
+        ) : (
+          <div data-aos="fade-right" className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {servicesData.slice(0, expertLimit).map((service) => (
+              <OurServiceSingleCart
+                key={service._id}
+                service={service}
+              ></OurServiceSingleCart>
+            ))}
+          </div>
+        )}
 
       </div>
     </>

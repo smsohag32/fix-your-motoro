@@ -111,7 +111,7 @@ const Nav = () => {
             <>
               <button
                 onClick={handleLogOut}
-                className="w-10 font-bold text-center cursor-pointer"
+                className="w-10 font-bold text-center cursor-pointer mr-3"
               >
                 {loading ? "" : "Logout"}
               </button>
@@ -119,7 +119,7 @@ const Nav = () => {
           ) : (
             <>
               <Link
-                className="w-10 font-bold text-center cursor-pointer"
+                className="w-10 font-bold text-center cursor-pointer mr-3"
                 href="/login"
               >
                 {loading ? "" : "Login"}
