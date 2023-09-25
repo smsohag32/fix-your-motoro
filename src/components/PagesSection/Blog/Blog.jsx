@@ -57,12 +57,11 @@ const Blog = () => {
         title="Latest Blog Posts"
         subTitle="Stay up to date with new technologies"
       />
-      <div className="">
-        <div className="">
-          <div className="grid grid-cols-1 gap-5 mt-12">
+      <div>      
+          <div data-aos="fade-up" className="grid grid-cols-1 gap-5 mt-12">
             {blogs.map((blog) => (
               <div
-                data-aos="fade-up"
+                
                 key={blog._id}
                 className="p-3 primary-shadow hover:transition-all transform duration-500 items-center"
               >
@@ -126,7 +125,6 @@ const Blog = () => {
               </div>
             ))}
           </div>
-        </div>
       </div>
     </div>
   );
